@@ -1,0 +1,44 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts output='assets/compiled/frontend_province.js'
+    'bundles/syliusweb/js/province-choices.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'sylius.checkout.contacts.header'|trans|raw }}</h1>
+</div>
+
+{% include 'SyliusWebBundle:Frontend/Checkout:_progressBar.html.twig' %}
+
+<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="form-horizontal" novalidate>
+
+{{ form_errors(form) }}
+
+<fieldset>
+    <div class="row">
+        <div class="col-md-6 address-container">
+            <div class="well">
+                <h4>{{ 'sylius.checkout.finalize.order.shipping_contacts'|trans }}</h4>
+                {{ form_row(form.email) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.phone) }}
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+{{ form_widget(form._token) }}
+
+<div class="form-actions">
+    <a href="{{ path('sylius_cart_summary') }}" class="btn btn-lg"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
+    <button type="submit" class="btn btn-primary btn-lg">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
+</div>
+
+</form>
+{% endblock %}

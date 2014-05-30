@@ -1,0 +1,1 @@
+<div class="box"><a href="{{ path('sylius_product_index_by_taxon', {'page' : 1, 'category': t.slug}) }}"><img src="{{ t.path ? image('media/image/'~t.path).resize(199, 212, '#fff') : 'http://placehold.it/347x240' }}" alt="{{ t.name }}"></a><div class="description"><a href="{{ path('sylius_product_index_by_taxon', {'page' : 1, 'category': t.slug }) }}">{{ t.name }}</a></div></div>

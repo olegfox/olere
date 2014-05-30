@@ -1,0 +1,17 @@
+sylius:
+    label:
+        product:
+            name: Name
+            import_image: Select product images
+            import_file: Select a .xslx file with a list of products
+            description: Description
+            properties: Properties
+            available_on: Available on
+            meta_keywords: Meta keywords
+            meta_description: Meta description
+        property:
+            name: Internal name
+            presentation: Presentation
+        prototype:
+            name: Name
+            properties: Properties

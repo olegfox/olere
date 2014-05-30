@@ -1,0 +1,4 @@
+{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import list %}
+{% from 'SyliusWebBundle:Frontend/Macros:misc.html.twig' import pagination %}
+{{ list(products) }}
+{{ pagination(products) }}

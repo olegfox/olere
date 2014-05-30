@@ -1,0 +1,52 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import create %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('js/uploadify/uploadify.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+        <li>{{ 'sylius.breadcrumb.import.index'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-plus-sign"></i> {{ 'sylius.import.create_header'|trans|raw }}</h1>
+    </div>
+
+    {{ form_errors(form) }}
+
+    <form action="" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
+        {% include 'SyliusWebBundle:Backend/Import:_form.html.twig' %}
+        {{ create() }}
+    </form>
+    {% if data is defined %}
+        <table>
+            {% for d in data %}
+
+                <tr>
+                    <td>{{ d.articul }}</td>
+                    <td>
+                        {% if d.image!="" %}
+                        <img src="{{ asset("import/files/"~d.image) }}" />
+                        {% endif %}
+                    </td>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.th }}</td>
+                    <td>{{ d.price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/uploadify/jquery.uploadify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/init_uploadify.js') }}"></script>
+{% endblock %}

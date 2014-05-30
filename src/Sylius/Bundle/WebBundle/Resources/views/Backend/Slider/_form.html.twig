@@ -1,0 +1,8 @@
+{% form_theme form 'SyliusWebBundle::forms.html.twig' %}
+
+<fieldset>
+    {{ form_row(form.image, {'attr': {'class': 'input-lg'}}) }}
+    <br>
+</fieldset>
+
+{{ form_rest(form) }}

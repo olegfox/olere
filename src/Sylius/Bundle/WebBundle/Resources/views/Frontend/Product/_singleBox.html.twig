@@ -1,0 +1,1 @@
+<div class="box"><a href="{{ path('sylius_product_show', {'slug': product.slug}) }}"><img src="{{ product.image ? image('media/image/'~product.image.path).resize(199, 212, '#fff') : 'http://placehold.it/347x240' }}" alt="{{ product.name }}"></a><div class="description"><a href="{{ path('sylius_product_show', {'slug': product.slug}) }}">{{ product.name }}</a></div></div>

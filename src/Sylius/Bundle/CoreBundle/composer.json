@@ -1,0 +1,71 @@
+{
+    "name": "sylius/core-bundle",
+    "type": "symfony-bundle",
+    "description": "Sylius core bundle. It integrates all other bundles into full stack Symfony2 ecommerce solution.",
+    "keywords": ["shop", "ecommerce", "store", "webshop", "sylius"],
+    "homepage": "http://sylius.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Paweł Jędrzejewski",
+            "homepage": "http://pjedrzejewski.com"
+        },
+        {
+            "name":     "Sylius project",
+            "homepage": "http://sylius.org"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "http://github.com/Sylius/Sylius/contributors"
+        }
+    ],
+    "require": {
+        "php":                            ">=5.3.3",
+
+        "symfony/framework-bundle":       "~2.3",
+        "sylius/product-bundle":          "0.9.*@dev",
+        "sylius/variable-product-bundle": "0.9.*@dev",
+        "sylius/cart-bundle":             "0.9.*@dev",
+        "sylius/order-bundle":            "0.9.*@dev",
+        "sylius/money-bundle":            "0.9.*@dev",
+        "sylius/taxation-bundle":         "0.9.*@dev",
+        "sylius/shipping-bundle":         "0.9.*@dev",
+        "sylius/addressing-bundle":       "0.9.*@dev",
+        "sylius/promotions-bundle":       "0.9.*@dev",
+        "sylius/inventory-bundle":        "0.9.*@dev",
+        "sylius/taxonomies-bundle":       "0.9.*@dev",
+        "sylius/settings-bundle":         "0.9.*@dev",
+        "sylius/payum-bundle":            "0.9.*@dev",
+        "sylius/payments-bundle":         "0.9.*@dev",
+        "sylius/flow-bundle":             "0.9.*@dev",
+        "sylius/resource-bundle":         "0.9.*@dev",
+        "friendsofsymfony/user-bundle":   "2.0.*@dev",
+        "jms/serializer-bundle":          "0.12.*",
+        "knplabs/gaufrette":              "0.2.*@dev",
+        "knplabs/knp-gaufrette-bundle":   "0.2.*@dev",
+        "mathiasverraes/money":           "*@dev",
+        "swiftmailer/swiftmailer":        "~5.0",
+        "hwi/oauth-bundle":               "0.3.*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "1.2.*",
+        "phpspec/phpspec":  "~2.0",
+        "symfony/form":     "~2.3"
+    },
+    "suggest": {
+        "sylius/web-bundle": "Provides default web interface",
+        "sylius/fixtures-bundle": "Provides default Sylius fixtures"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Sylius\\Bundle\\CoreBundle\\": "" }
+    },
+    "target-dir": "Sylius/Bundle/CoreBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.9-dev"
+        }
+    }
+}

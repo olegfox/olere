@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+>
+
+    <mapped-superclass name="Sylius\Bundle\CoreBundle\Model\Slider" table="sylius_slider">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="image" column="image" type="text">
+        </field>
+    </mapped-superclass>
+
+</doctrine-mapping>

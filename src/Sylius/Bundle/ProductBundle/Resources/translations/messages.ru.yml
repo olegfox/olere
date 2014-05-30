@@ -1,0 +1,20 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+  label:
+    product:
+      name: Название
+      import_image: Выберите изображения продуктов
+      import_file: Выберите .xlsx файл со списком продуктов
+      description: Описание
+      properties: Свойства
+      available_on: Доступно с
+      meta_keywords: Ключевые слова метаданных
+      meta_description: Описание метаданных
+    property:
+      name: Внутреннее название
+      presentation: Публичное название
+    prototype:
+      name: Название
+      properties: Свойства

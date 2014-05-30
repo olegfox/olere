@@ -1,0 +1,5 @@
+{% form_theme form 'SyliusWebBundle::forms.html.twig' %}
+
+{% for taxonomyForm in form.taxons %}
+    {{ form_row(taxonomyForm) }}
+{% endfor %}

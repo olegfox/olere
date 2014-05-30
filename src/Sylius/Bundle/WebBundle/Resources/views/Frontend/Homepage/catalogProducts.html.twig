@@ -1,0 +1,37 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block content %}
+    {#<div class="slider flexslider">#}
+    {#<ul class="slides">#}
+    {#&#123;&#35;{% for slider in sliders %}&#35;&#125;#}
+    {#<li>#}
+    {#<img src="{{ asset("images/slider.jpg") }}"#}
+    {#alt="{{ asset("images/slider.jpg") }}" width="1076px" />#}
+    {#</li>#}
+    {#<li>#}
+    {#<img src="{{ asset("images/slider2.jpg") }}"#}
+    {#alt="{{ asset("images/slider2.jpg") }}" width="1076px" />#}
+    {#</li>#}
+    {#&#123;&#35;{% endfor %}&#35;&#125;#}
+    {#</ul>#}
+    {#</div>#}
+    <div class="catalog">
+        {% include "SyliusWebBundle:Frontend/Product:latest.html.twig" %}
+        {#{{ render(url('sylius_partial_product_latest', {'limit': 9, 'template': 'SyliusWebBundle:Frontend/Product:latest.html.twig'})) }}#}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/flexslider.js') }}"></script>
+    {% if slug is defined and slug != '' %}
+        <script type="text/javascript">
+            $(function(){
+                $("a[href='/{{ slug }}']").parent().parent().parent().find(".dop-character").show();
+                $(window).scrollTop($("a[href='/{{ slug }}']").parent().parent().offset().top - 100);
+            });
+        </script>
+    {% endif %}
+{% endblock %}

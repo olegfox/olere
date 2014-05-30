@@ -1,0 +1,16 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block content %}
+    <!-- Catalog -->
+    <div class="catalog">
+        <div class="head">
+            Каталог
+        </div>
+        {{ render(url('sylius_collections_main')) }}
+    </div>
+
+    <div class="content">
+        {#{{ render(url('sylius_page_show_content', {'id' : 'collections'})) }}#}
+    </div>
+
+{% endblock %}

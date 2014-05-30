@@ -1,0 +1,69 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% set form = sylius_cart_form({'product': product}) %}
+
+{% block content %}
+    <!-- Page product -->
+    <div class="product">
+        <div class="head">
+            Каталог / {{ product.taxons[0].name }}
+        </div>
+        <div class="wrap_description">
+            <div class="description">
+                {% for property in product.properties %}
+                    {{ property.name }}: {{ property.value }}<br><br>
+                {% endfor %}
+
+                Описание: {{ product.description }}<br><br><br>
+            </div>
+            <div class="subPreview">
+                Дополнительные виды:
+                <div class="blockPreview">
+                    {% for image in product.images %}
+                        <img onclick="preview('{{ asset('media/image/'~image.path) }}', '{{ image ? image('media/image/'~image.path).cropResize(500, 500).jpeg() : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="pictureProduct">
+            <a href="{{ asset('media/image/'~product.image.path) }}" class="fancybox"><img src="{{ product.image ? image('media/image/'~product.image.path).cropResize(500, 500).jpeg() : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" ></a>
+        </div>
+        <div class="buyBlock">
+            <div class="name">
+                {{ product.name }}
+            </div>
+            <div class="articul">
+                Артикул: {{ product.sku }}
+            </div>
+            <div class="price">
+                Цена: {{ sylius_calculate_price(product)|sylius_price }}
+            </div>
+            {% set form = sylius_cart_form({'product': product}) %}
+            <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
+                  class="clearfix form-horizontal">
+                {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                {% else %}
+                    {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                    {{ form_widget(form._token) }}
+                {% endif %}
+            <button type="submit" class="addCart">Добавить в корзину</button>
+            </form>
+        </div>
+    </div>
+
+<!-- Catalog -->
+    <div class="catalog latestProducts">
+        <div class="head">
+            С этим товаром покупают
+        </div>
+        <div class="box">
+            <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
+        </div><div class="box">
+            <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
+        </div><div class="box">
+            <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
+        </div><div class="box">
+            <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
+        </div>
+    </div>
+{% endblock %}

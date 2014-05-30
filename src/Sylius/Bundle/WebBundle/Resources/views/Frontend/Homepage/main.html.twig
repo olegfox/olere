@@ -1,0 +1,47 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset("css/flexslider.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset("css/flexslider-custom.css") }}" type="text/css"/>
+{% endblock %}
+
+{% block slider %}
+    <div class="flexslider">
+        <ul class="slides">
+            {% if sliders is defined %}
+                {% for s in sliders %}
+                    <li>
+                        <img src="{{ asset('images/slider/'~s.image) }}"
+                             alt="{{ asset('images/slider/'~s.image) }}"/>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="content">
+        {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
+    </div>
+
+    <!-- Catalog -->
+    <div class="catalog">
+        <div class="head">
+            Каталог
+        </div>
+        {{ render(url('sylius_collection_main')) }}
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        {{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/flexslider.js') }}"></script>
+{% endblock %}

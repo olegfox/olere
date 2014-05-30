@@ -1,0 +1,2 @@
+{% set product = variant.product %}
+<img src="http://{{ app.request.host }}{{ product.image ? product.image.path|imagine_filter('sylius_product_list') : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="100%" />

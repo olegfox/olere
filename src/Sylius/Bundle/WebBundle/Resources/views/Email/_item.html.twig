@@ -1,0 +1,21 @@
+{% set product = item.variant.product %}
+<tr>
+    <td class="td td1" style="width: 179px; padding-top: 0px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ include('SyliusWebBundle:Email:_variant.html.twig', {'variant': item.variant}) }}
+    </td>
+    <td class="td td2" style="width: 274px; text-align: left; padding-left: 5px; padding-right: 5px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ product.getName() }}
+    </td>
+    <td class="td td3" style="width: 84px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ item.quantity }}
+    </td>
+    <td class="td td4" style="width: 79px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ product.getSku() }}
+    </td>
+    <td class="td td5" style="width: 84px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ item.unitPrice|sylius_price('RUB') }}
+    </td>
+    <td class="td td6" style="width: 100px; display: table-cell; vertical-align: top; padding-top: 20px; word-break: break-all; background: none; color: #555555; font-size: 11px; font-weight: 900; text-transform: uppercase; border: solid 2px #eaeef1; text-align: center;">
+        {{ item.total|sylius_price('RUB') }}
+    </td>
+</tr>

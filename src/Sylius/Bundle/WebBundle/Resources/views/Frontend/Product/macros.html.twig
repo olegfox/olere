@@ -1,0 +1,52 @@
+{% macro list(products) %}
+
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+    {% if products|length > 0 %}
+        <div class="steakyTable">
+            <table>
+                <tr>
+                    <th class="th1">Изображение</th>
+                    <th class="th2">{{ sylius_resource_sort('name', 'Название') }}</th>
+                    <th class="th3">Артикул</th>
+                    <th class="th4">{{ sylius_resource_sort('price', 'Цена') }}</th>
+                    <th class="th6">Кол-во</th>
+                    <th class="th7">Купить</th>
+                </tr>
+            </table>
+        </div>
+        <table class="catalogTable">
+        <tr>
+            <th class="th1">Изображение</th>
+            <th class="th2">{{ sylius_resource_sort('name', 'Название') }}</th>
+            <th class="th3">Артикул</th>
+            <th class="th4">{{ sylius_resource_sort('price', 'Цена') }}</th>
+            <th class="th6">Кол-во</th>
+            <th class="th7">Купить</th>
+        </tr>
+        <tr>
+            <td class="border-none" colspan="6"></td>
+        </tr>
+    {% endif %}
+    {% for product in products %}
+        {% include 'SyliusWebBundle:Frontend/Product:_single.html.twig' %}
+    {% else %}
+        {{ alerts.info('sylius.product.no_results'|trans) }}
+    {% endfor %}
+    {% if products|length > 0 %}
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro grid(products, size = 3) %}
+
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+    {% for product in products %}
+        {% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}
+    {% else %}
+        <div class="col-md-12">
+            {{ alerts.info('sylius.product.no_results'|trans) }}
+        </div>
+    {% endfor %}
+
+{% endmacro %}

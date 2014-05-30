@@ -1,0 +1,3 @@
+{% macro grid(collections, size = 4) %}
+
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% for t in collections[0].getTaxons() %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBox.html.twig' %}{% endfor %}{% endmacro %}

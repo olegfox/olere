@@ -1,0 +1,9 @@
+<div class="wrap_trash">
+    <div class="trash">
+        {% set cart = sylius_cart_get() %}
+        <span>В вашей корзине <span>{{ cart.getQuantity() }}</span> товар(ов) на сумму <span>{{ cart.total|sylius_price('RUB') }}</span></span>
+        <a class="last" href="{{ path("sylius_cart_summary") }}">
+            Завершить покупку
+        </a>
+    </div>
+</div>

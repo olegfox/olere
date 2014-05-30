@@ -1,0 +1,13 @@
+.flexslider {
+    width: 100%;
+    margin: 0px auto 0px auto;
+}
+
+.flexslider .slides > li {
+    overflow: hidden;
+}
+
+.flexslider .slides > li img {
+    height: auto;
+    width: 100%;
+}

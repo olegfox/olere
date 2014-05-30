@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% set settings = sylius_settings_all('general') %}
+<html>
+<head>
+    <title>
+        {% block title %}
+            {{ settings.title|default('sylius.meta.frontend_title'|trans) }}
+        {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}">
+    <meta name="keywords" content="{{ settings.meta_keywords|default('sylius.meta.frontend_keywords'|trans) }}">
+
+    {# stylesheets... #}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+              type="text/css"/>
+        {% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
+        'bundles/syliusweb/css/frontend.css'
+        'bundles/syliusweb/css/blueimp-gallery.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/flexslider-custom.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css"
+              media="screen"/>
+        <link rel="stylesheet" href="{{ asset('js/fancybox/source/helpers/jquery.fancybox-buttons.css') }}"
+              type="text/css" media="screen"/>
+        {% endstylesheets %}
+        {% set cart = sylius_cart_get() %}
+        {% if cart.total > 0 and app.request.attributes.get('_route') != 'sylius_cart_summary' and app.request.attributes.get('_route') != 'sylius_checkout_display' %}
+            <link rel="stylesheet" href="{{ asset('css/bottom.menu.cart.css') }}"
+                  type="text/css"/>
+        {% endif %}
+    {% endblock %}
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% include 'SyliusWebBundle:Frontend/Cart:bottom.menu.html.twig' %}
+<!-- Topmenu -->
+<div class="wrap_top">
+    <div class="top">
+        <div class="topPhone">
+            Тел 8 800 950 14 51
+        </div>
+        <div class="topTimes">
+            Время работы: с 9 до 21
+        </div>
+        <div class="topCallback">
+            <input type="button" class="buttonCallback" value="Заказать обратный звонок" />
+        </div>
+        <div class="topMyAccount">
+            <a href="#">Личный кабинет</a>
+        </div>
+        <div class="topTrash">
+            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
+        </div>
+        <div class="topSearch">
+            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+        </div>
+        <div class="last"></div>
+    </div>
+</div>
+
+<!-- Container -->
+<div class="container">
+
+    <!-- Logo -->
+    <div class="logoBox">
+        <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo.jpg') }}" width="147px" height="61px" alt="{{ asset('images/logo.jpg') }}"></a>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu">
+        {#<ul>#}
+            {#<li><a href="#">Каталог</a></li>#}
+            {#<li><a href="#">Коллекции</a></li>#}
+            {#<li><a href="#">Оптовым клиентам</a></li>#}
+            {#<li><a href="#">Доставка</a></li>#}
+            {#<li><a href="#">О компании</a></li>#}
+            {#<li><a href="#">Контакты</a></li>#}
+            {#<li class="last"></li>#}
+        {#</ul>#}
+        {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+    </div>
+
+    <!-- Slider -->
+    {% block slider %}
+    {% endblock %}
+
+    <!-- Content -->
+    {% block content %}
+    {% endblock %}
+    <div class="push"></div>
+</div>
+
+<!-- BottomMenu -->
+<div class="wrap_bottomMenu">
+    <div class="bottomMenu">
+        {{ knp_menu_render('sylius.frontend.bottom_menu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+    </div>
+</div>
+
+<!-- Footer -->
+{% block footer %}
+<div class="wrap_footer">
+    <div class="footer">
+        {{ knp_menu_render('sylius.frontend.social', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+    </div>
+</div>
+{% endblock %}
+{# Confirmation modal #}
+{% include 'SyliusWebBundle::confirm-modal.html.twig' %}
+
+{# javascripts... #}
+{% block javascripts %}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/fixed.menu.after.scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/list.product.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/button.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('js/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('js/fancybox/source/helpers/jquery.fancybox-buttons.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('js/fancybox/source/helpers/jquery.fancybox-media.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    {% javascripts output='assets/compiled/frontend.js'
+    'bundles/syliusweb/js/jquery.blueimp-gallery.min.js'
+    'bundles/syliusweb/js/confirm-modal.js'
+    'bundles/syliusweb/js/frontend.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

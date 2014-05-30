@@ -1,0 +1,10 @@
+{% form_theme form 'SyliusWebBundle::forms.html.twig' %}
+
+<fieldset>
+    {% include 'SyliusWebBundle:Backend/Import/Form:_categorization.html.twig' %}
+    {{ form_row(form.image, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.file) }}
+    <br>
+</fieldset>
+
+{{ form_rest(form) }}

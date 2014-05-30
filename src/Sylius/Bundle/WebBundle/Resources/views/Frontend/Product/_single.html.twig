@@ -1,0 +1,85 @@
+<tr>
+    <td colspan="6">
+        {% set form = sylius_cart_form({'product': product}) %}
+        <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
+              class="clearfix form-horizontal">
+            <div class="td td1">
+                <a class="fancybox" href="{{ product.image.path|imagine_filter('sylius_large') }}" title="{{ product.name }}">
+                    <img src="{{ product.image ? image('media/image/'~product.image.path).cropResize(177, 162).jpeg() : 'http://placehold.it/175x160' }}"
+                         alt="{{ product.name }}"/>
+                </a>
+            </div>
+            <div class="td td2">
+                {{ product.name }}
+                <a href="{{ path('sylius_product_show_pushstate', {'slug': product.slug}) }}" class="character" onclick="return false;">характеристики</a>
+            </div>
+            <div class="td td3">
+                {{ product.getSku() }}
+            </div>
+            <div class="td td4">
+                {{ sylius_calculate_price(product)|sylius_price('RUB') }}
+            </div>
+            <div class="td td6">
+                {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                {% else %}
+                    {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                    {{ form_widget(form._token) }}
+                {% endif %}
+            </div>
+            <div class="td td7">
+                {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                    <span class="label label-warning">{{ 'sylius.out_of_stock'|trans }}</span>
+                {% else %}
+                    {% if sylius_is_restricted(product) %}
+                        <button disabled="disabled" class="btn btn-success btn-lg btn-block"><i
+                                    class="icon-shopping-cart icon-white icon-large"></i> {{ 'sylius.product_not_available_in_zone'|trans }}
+                        </button>
+                    {% else %}
+                        <button type="submit" class="add_trash"> В корзину
+                        </button>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </form>
+        <div class="dop-character">
+            <div class="center">
+                ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ
+            </div>
+            <table>
+                <tr>
+                    <td colspan="2" class="td_description">{{ product.getDescription()|nl2br|raw }}</td>
+                </tr>
+                {% if product.getMasterVariant().getWeight() %}
+                <tr>
+                    <td>Вес</td>
+                    <td>{{ product.getMasterVariant().getWeight() }} кг</td>
+                </tr>
+                {% endif %}
+                {% if product.getMasterVariant().getHeight() %}
+                <tr>
+                    <td>Высота</td>
+                    <td>{{ product.getMasterVariant().getHeight() }} мм</td>
+                </tr>
+                {% endif %}
+                {% if product.getMasterVariant().getWidth() %}
+                <tr>
+                    <td>Ширина</td>
+                    <td>{{ product.getMasterVariant().getWidth() }} мм</td>
+                </tr>
+                {% endif %}
+                {% if product.getMasterVariant().getDepth() %}
+                <tr>
+                    <td>Глубина</td>
+                    <td>{{ product.getMasterVariant().getDepth() }} мм</td>
+                </tr>
+                {% endif %}
+                {% for property in product.properties %}
+                <tr>
+                    <td>{{ property.name }}</td>
+                    <td>{{ property.value }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </td>
+</tr>
