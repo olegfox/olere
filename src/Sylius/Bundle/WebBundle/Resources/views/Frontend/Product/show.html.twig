@@ -6,7 +6,11 @@
     <!-- Page product -->
     <div class="product">
         <div class="head">
-            Каталог / {{ product.taxons[0].name }}
+            {% if app.request.attributes.get('_route') == "sylius_product_show_collections" %}
+            <a href="{{ path("sylius_collections") }}">Коллекции</a> / <a href="{{ path("sylius_product_index_by_taxon_collections", {"page" : 1, "category" :  product.taxons[1].slug} ) }}">{{ product.taxons[1].name }}</a>
+            {% else %}
+            <a href="{{ path("sylius_catalog") }}">Каталог</a> / <a href="{{ path("sylius_product_index_by_taxon", {"page" : 1, "category" : product.taxons[0].slug} ) }}">{{ product.taxons[0].name }}</a>
+            {% endif %}
         </div>
         <div class="wrap_description">
             <div class="description">
@@ -57,8 +61,6 @@
             С этим товаром покупают
         </div>
         <div class="box">
-            <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
-        </div><div class="box">
             <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">
         </div><div class="box">
             <img src="{{ asset("images/box.jpg") }}" alt="{{ asset("images/box.jpg") }}">

@@ -20,6 +20,10 @@
     <mapped-superclass name="Sylius\Bundle\CoreBundle\Model\Taxon" table="sylius_taxon">
         <field name="path" nullable="true" />
 
+        <field name="position" type="integer">
+            <gedmo:sortable-position/>
+        </field>
+
        <many-to-many field="products" mapped-by="taxons" target-entity="Sylius\Bundle\ProductBundle\Model\ProductInterface"/>
     </mapped-superclass>
 

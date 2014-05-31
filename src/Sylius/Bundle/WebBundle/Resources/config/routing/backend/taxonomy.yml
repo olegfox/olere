@@ -45,3 +45,8 @@ sylius_backend_taxonomy_show:
         _controller: sylius.controller.taxonomy:showAction
         _sylius:
             template: SyliusWebBundle:Backend/Taxonomy:show.html.twig
+
+sylius_backend_taxon_change_order:
+    pattern: /order_change/{drag}/{drop}
+    defaults:
+        _controller: sylius.controller.backend.dashboard:taxonOrderChangeAction

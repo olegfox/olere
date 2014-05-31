@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sylius\Bundle\CoreBundle\Model\Slider;
 use Sylius\Bundle\CoreBundle\Form\Type\SliderType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Backend dashboard controller.
@@ -96,5 +97,19 @@ class DashboardController extends Controller
         }
 
         return $this->redirect($this->generateUrl('sylius_backend_slider_index'));
+    }
+
+    public function taxonOrderChangeAction($drag, $drop){
+        $taxonRepository = $this->get('sylius.repository.taxon');
+
+        $dragTaxon = $taxonRepository->findOneBy(array("id" => $drag));
+        $dropTaxon = $taxonRepository->findOneBy(array("id" => $drop));
+
+        $dragTaxon->setPosition($drop);
+        $dropTaxon->setPosition($drag);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+        return new Response("ok");
     }
 }

@@ -41,6 +41,8 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
      */
     protected $products;
 
+    private $position;
+
     public function __construct()
     {
         parent::__construct();
@@ -163,5 +165,15 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     {
         $explode = explode("/", $this->getPermalink());
         return $explode[1];
+    }
+
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

@@ -4,7 +4,11 @@
     <!-- Catalog -->
     <div class="catalog">
         <div class="head">
+            {% if app.request.attributes.get('_route') == "sylius_collections" %}
+            Коллекции
+            {% else %}
             Каталог
+            {% endif %}
         </div>
         {{ render(url('sylius_collections_main')) }}
     </div>
