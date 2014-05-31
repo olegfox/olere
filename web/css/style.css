@@ -9,7 +9,7 @@ a, a:hover, a:focus{
 }
 .wrap_top{
     height: 38px;
-    background: #e8e8e8;
+    background: #fff;
 }
 .wrap_top .top{
     height: 38px;
@@ -24,17 +24,18 @@ a, a:hover, a:focus{
 }
 .wrap_top .top div{
     display: inline-block;
+    color: #000;
 }
 .wrap_top .top .last{
     width: 100%;
 }
 .wrap_top .top .topCallback .buttonCallback{
     border: 0px;
-    background: #5a5a5a;
+    background: #fff;
     height: 24px;
     width: 192px;
     line-height: 24px;
-    color: #fff;
+    color: #000;
     font-family: Arial;
     font-size: 14px;
     text-align: center;
@@ -42,16 +43,31 @@ a, a:hover, a:focus{
     cursor: pointer;
 }
 .wrap_top .top .topSearch .searchText{
-    border: 0px;
     background: #fff;
-    height: 24px;
-    width: 142px;
+    height: 30px;
+    width: 155px;
     line-height: 24px;
-    color: #888888;
+    color: #000;
     font-family: Arial;
     font-size: 14px;
     text-align: left;
     padding: 0px 7px;
+    border: solid 2px #e6e6e6;
+}
+::-webkit-input-placeholder {
+    color: #000;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #000;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #000;
+}
+
+:-ms-input-placeholder {
+    color: #000;
 }
 .wrap_top .top .topSearch .searchSubmit{
     border: 0px;
@@ -78,20 +94,29 @@ a, a:hover, a:focus{
 .container .push{
     height: 130px;
 }
-.container .logoBox{
+.logoBox{
+    max-width: 972px;
+    min-width: 972px;
+    margin: 0px auto;
     height: 120px;
     line-height: 120px;
     text-align: center;
 }
-.container .logoBox img{
+.logoBox img{
     vertical-align: middle;
+}
+.wrap_menu{
+    border-top: solid 2px #000;
 }
 .menu{
     height: 42px;
     line-height: 42px;
-    background: #000;
+    background: #fff;
     padding: 0px 20px;
     overflow: hidden;
+    max-width: 972px;
+    min-width: 972px;
+    margin: 0px auto;
 }
 .menu ul{
     text-align: justify;
@@ -105,7 +130,7 @@ a, a:hover, a:focus{
     display: inline-block;
 }
 .menu ul li a{
-    color: #fff;
+    color: #000;
     font-family: Arial;
     font-size: 14px;
 }
@@ -358,8 +383,8 @@ a, a:hover, a:focus{
 }
 
 /* Fixed menu */
-.f-nav0{ z-index: 2000; position: fixed; left: 0; top: 0; width: 100%;background: #e8e8e8;}
-.f-nav{ z-index: 2000; position: fixed; left: 0; right: 0; margin: 0px auto; top: 38px; max-width: 972px; min-width: 972px;}
+.f-nav0{ z-index: 2000; position: fixed; left: 0; top: 0; width: 100%;background: #fff;}
+.f-nav{ z-index: 2000; position: fixed; left: 0; right: 0; margin: 0px auto; top: 38px;}
 /* End Fixed menu */
 
 tr.tDnD_whileDrag{

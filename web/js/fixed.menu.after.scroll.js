@@ -16,13 +16,13 @@ function fixedMenuAfterScroll() {
         }
 
         if ($(this).scrollTop() >= 158) {
-            $('.menu.clone').remove();
-            var nav = $('.menu').clone().appendTo("body").addClass('clone');
+            $('.wrap_menu.clone').remove();
+            var nav = $('.wrap_menu').clone().appendTo("body").addClass('clone');
             if (nav.hasClass("f-nav") == false) {
                 nav.addClass("f-nav");
             }
         } else {
-            $('.menu.clone').remove();
+            $('.wrap_menu.clone').remove();
         }
 
         if ($(this).scrollTop() >= 175) {

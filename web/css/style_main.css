@@ -1,0 +1,47 @@
+.f-nav0{ z-index: 2000; position: fixed; left: 0; top: 0; width: 100%;background: #fff;}
+.f-nav{ z-index: 2000; position: fixed; left: 0; right: 0; margin: 0px auto; top: 38px;}
+
+.wrap_menu{
+    border-top: solid 2px #000;
+}
+.menu{
+    height: 42px;
+    line-height: 42px;
+    background: #fff;
+    padding: 0px 20px;
+    overflow: hidden;
+    max-width: 972px;
+    min-width: 972px;
+    margin: 0px auto;
+}
+.menu ul{
+    text-align: justify;
+    padding: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-before: 0px;
+}
+.menu ul li{
+    list-style: none;
+    display: inline-block;
+}
+.menu ul li a{
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+}
+.menu ul li.last{
+    width: 100%;
+}
+
+.logoBox{
+    max-width: 972px;
+    min-width: 972px;
+    margin: 0px auto;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+}
+.logoBox img{
+    vertical-align: middle;
+}
