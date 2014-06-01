@@ -6,6 +6,13 @@
 
 {% block content %}
     <div class="catalog">
+        <div class="head">
+            {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
+                <a href="{{ path("sylius_collections") }}">Коллекции</a> / {{ taxon.name }}
+            {% else %}
+                <a href="{{ path("sylius_catalog") }}">Каталог</a> / {{ taxon.name }}
+            {% endif %}
+        </div>
         {{ grid(products) }}
         {{ pagination(products) }}
     </div>

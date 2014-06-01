@@ -8,9 +8,11 @@ function fixedMenuAfterScroll() {
         if ($(this).scrollTop() > 0) {
             $('.wrap_top.clone').remove();
             var nav0 = $('.wrap_top').clone().appendTo("body").addClass('clone');
+            nav0.hide();
             if (nav0.hasClass("f-nav0") == false) {
                 nav0.addClass("f-nav0");
             }
+            nav0.show();
         } else {
             $('.wrap_top.clone').remove();
         }
@@ -18,9 +20,11 @@ function fixedMenuAfterScroll() {
         if ($(this).scrollTop() >= 38) {
             $('.wrap_menu.clone').remove();
             var nav = $('.wrap_menu').clone().appendTo("body").addClass('clone');
+            nav.hide();
             if (nav.hasClass("f-nav") == false) {
                 nav.addClass("f-nav");
             }
+            nav.show();
         } else {
             $('.wrap_menu.clone').remove();
         }

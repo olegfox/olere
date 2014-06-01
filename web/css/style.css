@@ -14,9 +14,9 @@ a, a:hover, a:focus{
 .wrap_top .top{
     height: 38px;
     line-height: 38px;
-    max-width: 972px;
+    max-width: 1400px;
     margin: 0px auto;
-    padding: 0px;
+    padding: 0px 20px;
     font-family: Arial;
     font-size: 14px;
     overflow: hidden;
@@ -82,10 +82,10 @@ a, a:hover, a:focus{
     cursor: pointer;
 }
 .container{
-    max-width: 972px;
-    min-width: 972px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0px auto;
-    padding: 0px;
+    padding: 0px 20px;
     min-height: 100%;
     height: auto !important;
     height: 100%;
@@ -111,10 +111,9 @@ a, a:hover, a:focus{
     height: 85px;
     line-height: 85px;
     background: #000;
-    padding: 0px;
+    padding: 0px 20px;
     overflow: hidden;
-    max-width: 972px;
-    min-width: 972px;
+    max-width: 1400px;
     margin: 0px auto;
 }
 .menu ul{
@@ -134,6 +133,9 @@ a, a:hover, a:focus{
     color: #fff;
     font-family: Arial;
     font-size: 14px;
+}
+.menu ul li.current a{
+    color: #ffff00;
 }
 .menu ul li.last{
     width: 100%;
@@ -156,7 +158,7 @@ a, a:hover, a:focus{
 }
 .content{
     background: #e8e8e8;
-    padding: 15px;
+    padding: 20px;
     min-height: 270px;
     font-family: Arial;
     font-size: 14px;
@@ -170,7 +172,7 @@ a, a:hover, a:focus{
     font-family: Arial;
     font-size: 14px;
     color: #000;
-    padding: 0px 20px;
+    padding: 0px;
 }
 .catalog .head{
     border-bottom: solid 2px #000;
@@ -183,7 +185,7 @@ a, a:hover, a:focus{
 }
 .latestProducts .head{
     border-bottom: solid 2px #e9e9e9;
-    padding: 0px;
+    padding: 0px
 }
 .catalog .box{
     width: 33%;
@@ -206,9 +208,9 @@ a, a:hover, a:focus{
     position: relative;
 }
 .wrap_bottomMenu .bottomMenu{
-    max-width: 932px;
+    max-width: 1400px;
     margin: 0px auto;
-    padding: 0px;
+    padding: 0px 20px;
     overflow: hidden;
 }
 .wrap_bottomMenu .bottomMenu ul{
@@ -237,9 +239,9 @@ a, a:hover, a:focus{
     position: relative;
 }
 .wrap_footer .footer{
-    max-width: 932px;
+    max-width: 1400px;
     margin: 0px auto;
-    padding: 0px;
+    padding: 0px 20px;
     overflow: hidden;
 }
 .wrap_footer .footer ul{
@@ -305,6 +307,9 @@ a, a:hover, a:focus{
     width: 100%;
     vertical-align: middle;
     text-align: center;
+}
+.product .pictureProduct div{
+    display: inline-block;
 }
 .product .buyBlock{
     width: 170px;
