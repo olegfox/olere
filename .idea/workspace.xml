@@ -41,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="58" selection-start="4221" selection-end="4221" vertical-scroll-proportion="0.8229342" vertical-offset="817" max-vertical-offset="1425">
+            <state line="87" column="58" selection-start="4221" selection-end="4221" vertical-scroll-proportion="-54.375" vertical-offset="0" max-vertical-offset="1425">
               <folding />
             </state>
           </provider>
@@ -59,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="smoothZoom.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="smoothZoom.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/smoothZoom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="1" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+            <state line="21" column="25" selection-start="935" selection-end="935" vertical-scroll-proportion="0.5" vertical-offset="0" max-vertical-offset="630">
               <folding />
             </state>
           </provider>
@@ -170,10 +170,10 @@
         <option value="$PROJECT_DIR$/web/css/smoothZoom.css" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/layout.html.twig" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/web/js/smoothZoom.js" />
         <option value="$PROJECT_DIR$/web/js/init_smoothZoom.js" />
         <option value="$PROJECT_DIR$/web/js/script.js" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/show.html.twig" />
+        <option value="$PROJECT_DIR$/web/js/smoothZoom.js" />
       </list>
     </option>
   </component>
@@ -1932,13 +1932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/smoothZoom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="1" selection-start="687" selection-end="687" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/init_smoothZoom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="4" selection-start="18" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
@@ -1955,7 +1948,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="58" selection-start="4221" selection-end="4221" vertical-scroll-proportion="0.8229342" vertical-offset="817" max-vertical-offset="1425">
+        <state line="87" column="58" selection-start="4221" selection-end="4221" vertical-scroll-proportion="-54.375" vertical-offset="0" max-vertical-offset="1425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/smoothZoom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="25" selection-start="935" selection-end="935" vertical-scroll-proportion="0.5" vertical-offset="0" max-vertical-offset="630">
           <folding />
         </state>
       </provider>
