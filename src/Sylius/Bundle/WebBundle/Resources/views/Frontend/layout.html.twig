@@ -67,14 +67,17 @@
         <div class="last"></div>
     </div>
 </div>
-<!-- Logo -->
-<div class="logoBox">
-    <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo.jpg') }}" width="147px" height="61px" alt="{{ asset('images/logo.jpg') }}"></a>
-</div>
+{#<!-- Logo -->#}
+{#<div class="logoBox">#}
+    {#<a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo.jpg') }}" width="147px" height="61px" alt="{{ asset('images/logo.jpg') }}"></a>#}
+{#</div>#}
 
 <!-- Menu -->
 <div class="wrap_menu">
     <div class="menu">
+        <div class="logoBox">
+            <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo2.jpg') }}" width="160px" height="64px" alt="{{ asset('images/logo2.jpg') }}"></a>
+        </div>
         {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     </div>
 </div>

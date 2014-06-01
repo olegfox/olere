@@ -102,8 +102,8 @@ class DashboardController extends Controller
     public function taxonOrderChangeAction($drag, $drop){
         $taxonRepository = $this->get('sylius.repository.taxon');
 
-        $dragTaxon = $taxonRepository->findOneBy(array("id" => $drag));
-        $dropTaxon = $taxonRepository->findOneBy(array("id" => $drop));
+        $dragTaxon = $taxonRepository->findOneBy(array("position" => $drag));
+        $dropTaxon = $taxonRepository->findOneBy(array("position" => $drop));
 
         $dragTaxon->setPosition($drop);
         $dropTaxon->setPosition($drag);

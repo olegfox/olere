@@ -15,7 +15,7 @@ function fixedMenuAfterScroll() {
             $('.wrap_top.clone').remove();
         }
 
-        if ($(this).scrollTop() >= 158) {
+        if ($(this).scrollTop() >= 38) {
             $('.wrap_menu.clone').remove();
             var nav = $('.wrap_menu').clone().appendTo("body").addClass('clone');
             if (nav.hasClass("f-nav") == false) {
