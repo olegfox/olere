@@ -33,6 +33,6 @@ function footerBottom(){
 }
 
 function preview(original, image, name){
-    $(".product .pictureProduct").html("<a href='"+original+"' class='fancybox'><img src='"+image+"' alt='"+name+"' ></a>");
-    $(".fancybox").fancybox();
+    $(".product .pictureProduct").html("<img src='"+image+"' alt='"+name+"' >");
+    smoothZoom();
 }
