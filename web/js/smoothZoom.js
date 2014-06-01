@@ -13,7 +13,10 @@ function smoothZoom(){
             responsive: false,
             responsive_maintain_ratio: true,
             max_WIDTH: '',
-            max_HEIGHT: ''
+            max_HEIGHT: '',
+            zoom_MAX: 100,
+            speed: 1,
+            smooth: 10
         });
         $(".smooth_zoom_preloader div").hide();
         $(".smooth_zoom_preloader div.noSel").show();
