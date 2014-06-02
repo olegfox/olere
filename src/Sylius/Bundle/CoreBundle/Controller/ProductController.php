@@ -214,7 +214,7 @@ class ProductController extends ResourceController
             ->getRepository()
             ->createByTaxonPaginator($taxon, $sorting);
 
-        $paginator->setMaxPerPage(15);
+        $paginator->setMaxPerPage(30);
         $paginator->setCurrentPage($request->query->get('page', $page));
 
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
@@ -237,7 +237,7 @@ class ProductController extends ResourceController
             ->getRepository()
             ->createByTaxonPaginator($taxon);
 
-        $paginator->setMaxPerPage(15);
+        $paginator->setMaxPerPage(30);
         $paginator->setCurrentPage($request->query->get('page', $page));
 
         if ($slug != '') {
