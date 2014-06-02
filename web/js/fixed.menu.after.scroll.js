@@ -19,12 +19,11 @@ function fixedMenuAfterScroll() {
 
         if ($(this).scrollTop() >= 0) {
             $('.wrap_menu.clone').remove();
-            var nav = $('.wrap_menu').clone().appendTo("body").addClass('clone');
-            nav.hide();
+            var nav = $('.wrap_menu').clone().appendTo("body").addClass('clone hide');
             if (nav.hasClass("f-nav") == false) {
                 nav.addClass("f-nav");
             }
-            nav.show();
+            nav.removeClass('hide');
         } else {
             $('.wrap_menu.clone').remove();
         }

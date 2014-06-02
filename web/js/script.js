@@ -33,6 +33,6 @@ function footerBottom(){
 }
 
 function preview(original, image, name){
-    $(".product .pictureProduct").html("<img src='"+image+"' alt='"+name+"' >");
+    $(".product .pictureProduct").html("<img src='"+image+"' alt='"+name+"' width='500px'>");
     smoothZoom();
 }

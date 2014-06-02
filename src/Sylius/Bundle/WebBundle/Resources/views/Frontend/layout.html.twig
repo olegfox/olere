@@ -43,8 +43,11 @@
 </head>
 <body>
 {% include 'SyliusWebBundle:Frontend/Cart:bottom.menu.html.twig' %}
+{% if app.request.attributes.get('_route') != 'sylius_homepage' %}
+<div class="topBolvan"></div>
+{% endif %}
 <!-- Topmenu -->
-<div class="wrap_top">
+<div class="wrap_top{% if app.request.attributes.get('_route') != 'sylius_homepage' %} f-nav0{% endif %}">
     <div class="top">
         <div class="topPhone">
             Тел 8 800 950 14 51
@@ -55,16 +58,15 @@
         <div class="topCallback">
             <input type="button" class="buttonCallback" value="Заказать обратный звонок" />
         </div>
-        <div class="topSearch">
-            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+        <div class="topTrash">
+            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
         </div>
         <div class="topMyAccount">
             <a href="#">Личный кабинет</a>
         </div>
-        <div class="topTrash">
-            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
+        <div class="topSearch">
+            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
         </div>
-        <div class="last"></div>
     </div>
 </div>
 {#<!-- Logo -->#}
@@ -73,10 +75,10 @@
 {#</div>#}
 
 <!-- Menu -->
-<div class="wrap_menu">
+<div class="wrap_menu{% if app.request.attributes.get('_route') != 'sylius_homepage' %} f-nav{% endif %}">
     <div class="menu">
         <div class="logoBox">
-            <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo2.jpg') }}" width="144px" height="64px" alt="{{ asset('images/logo2.jpg') }}"></a>
+            <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo2.jpg') }}" alt="{{ asset('images/logo2.jpg') }}"></a>
         </div>
         {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     </div>
@@ -117,7 +119,10 @@
 {% block javascripts %}
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/fixed.menu.after.scroll.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('js/fixed.menu.after.scroll.js') }}"></script>#}
+    {% if app.request.attributes.get('_route') != 'sylius_homepage' %}
+        <script type="text/javascript" src="{{ asset('js/menu.resize.scroll.js') }}"></script>
+    {% endif %}
     <script type="text/javascript" src="{{ asset('js/list.product.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/flexslider.js') }}"></script>

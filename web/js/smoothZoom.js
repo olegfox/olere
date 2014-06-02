@@ -15,13 +15,13 @@ function smoothZoom(){
             max_WIDTH: '',
             max_HEIGHT: '',
             zoom_MAX: 100,
-            speed: 1,
-            smooth: 10
+            animation_SPEED_ZOOM: 1,
+            animation_SMOOTHNESS: 10
         });
         $(".smooth_zoom_preloader div").hide();
         $(".smooth_zoom_preloader div.noSel").show();
         $(window).resize(function(){
-            $('.pictureProduct').html($('.pictureProduct img'));
+            $('.pictureProduct').html($('.pictureProduct img').attr("width", "500px"));
             smoothZoom();
         });
     }).each(function() {
