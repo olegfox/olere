@@ -213,7 +213,11 @@ sylius:
     security:
       existing_customer: Существующий клиент
       header: 'Войти <small>или зарегистрироваться</small>'
-      login: Войти
+      login:
+        header: 'Войти <small>или зарегистрироваться</small>'
+        email: E-Mail
+        forgot_password: Забыли пароль?
+        no_account: Регистрация
       new_customer: Новый клиент
       register: Зарегистрироваться
     shipping:

@@ -1,9 +1,6 @@
 sylius_installer:
     resource: @SyliusInstallerBundle/Resources/config/routing.yml
 
-sylius_web:
-    resource: @SyliusWebBundle/Resources/config/routing/main.yml
-
 payum_capture:
     resource: "@PayumBundle/Resources/config/routing/capture.xml"
 
@@ -45,3 +42,6 @@ facebook_login:
 
 google_login:
     pattern: /login/check-google
+
+sylius_web:
+    resource: @SyliusWebBundle/Resources/config/routing/main.yml

@@ -98,6 +98,11 @@ class FrontendMenuBuilder extends MenuBuilder
     {
         $menu = $this->factory->createItem('root');
         $pagemenu = array(
+            "home" => array(
+                "name" => "OLERE.RU",
+                "route" => "sylius_homepage",
+                "routeParameters" => array()
+            ),
             "catalog" => array(
                 "name" => "Каталог",
                 "route" => "sylius_catalog",

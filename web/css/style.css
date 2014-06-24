@@ -10,6 +10,7 @@ a, a:hover, a:focus{
 .wrap_top{
     height: 38px;
     background: #fff;
+    border-bottom: solid 2px #000;
 }
 .wrap_top .top{
     height: 38px;
@@ -24,6 +25,7 @@ a, a:hover, a:focus{
 .wrap_top .top div{
     display: inline-block;
     color: #000;
+    float: left;
 }
 .wrap_top .top .last{
     width: 100%;
@@ -51,6 +53,8 @@ a, a:hover, a:focus{
     text-align: left;
     padding: 0px 7px;
     border: solid 2px #e6e6e6;
+    top: -1px;
+    position: relative;
 }
 ::-webkit-input-placeholder {
     color: #000;
@@ -145,7 +149,7 @@ a, a:hover, a:focus{
     -webkit-padding-start: 0px;
     -webkit-margin-after: 0px;
     -webkit-margin-before: 0px;
-    display: table-cell;
+    display: block;
     width: 100%;
 }
 .menu ul li{
@@ -153,9 +157,9 @@ a, a:hover, a:focus{
     display: inline-block;
 }
 .menu ul li a{
-    color: #fff;
-    font-family: Arial;
-    font-size: 20px;
+    color: #fff; /* text color */
+    font-family: "Arial Black";
+    font-size: 21px;
 }
 .menu ul li.current a{
     color: #e25d7c;
@@ -227,12 +231,116 @@ a, a:hover, a:focus{
     -moz-transition:.5s;
     -webkit-transition:.5s;
     transition:.5s;
+    position: relative;
 }
+
+.catalog .inner_box_click{
+    border: solid 8px #000;
+}
+.catalog .inner_box_click .topBox{
+    position: absolute;
+    width: 100%;
+}
+.catalog .inner_box_click .nameBox{
+    padding: 20px 20px 0px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+}
+.catalog .inner_box_click .nameBox .name{
+    display: inline-block;
+}
+.catalog .inner_box_click .nameBox .articul{
+    display: inline-block;
+    float: right;
+}
+.catalog .inner_box_click .composition{
+    padding: 0px 20px;
+}
+
+.catalog .inner_box_click .bottomBox{
+    padding: 10px 20px;
+}
+
+.catalog .inner_box_click .bottomBox{
+    height: 36px;
+    line-height: 36px;
+    display: table;
+    width: 100%;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.catalog .inner_box_click .bottomBox form{
+    float: right;
+}
+
+.catalog .inner_box_click .bottomBox .form-group{
+    margin-bottom: 0px;
+}
+
+.catalog .inner_box_click .bottomBox *{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.catalog .inner_box_click .bottomBox label{
+    display: none;
+}
+
+.catalog .inner_box_click .bottomBox button[type="submit"],
+.catalog .inner_box_click .bottomBox input[type="number"]{
+    border: solid 2px #d0d0d0;
+    width: 89px;
+    height: 39px;
+    background: none;
+    font-weight: bold;
+    border-radius: inherit;
+}
+
+.catalog .inner_box_click .bottomBox button[type="submit"]{
+    margin-left: 21px;
+}
+
+.catalog .inner_box_click .bottomBox .price{
+    font-weight: bold;
+}
+
+.catalog .inner_box_click .descriptionBox{
+    min-height: 140px;
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    position: absolute;
+    z-index: 100;
+    left: -8px;
+    right: -8px;
+}
+
+.catalog .inner_box_click .descriptionBox .header{
+    text-transform: uppercase;
+    color: #e08c43;
+    font-family: "Arial";
+    font-size: 14px;
+}
+
+.catalog .box .clickBox{
+    display: none;
+}
+
 .catalog .inner_box:hover{
     border: solid 2px #c6c6c6;
 }
+.catalog .inner_box_click:hover{
+    border: solid 8px #000;
+}
 .catalog .box img{
     width: 100%;
+    margin: 42px 0px 59px;
+    padding: 0;
 }
 .catalog .box .wrap_description{
     height: 60px;
@@ -474,4 +582,10 @@ tr.tDnD_whileDrag{
 }
 #top-link:hover{
     opacity: 1;
+}
+h4, .container form{
+    padding: 0 20px;
+}
+.page-header{
+    margin: 40px 20px 20px 20px;
 }

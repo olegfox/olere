@@ -1,0 +1,13 @@
+# Security
+security:
+    login:
+        email: "Email:"
+        header: 'Войти <small>или зарегистрироваться</small>'
+        password: "Пароль"
+        forgot_password: Забыли пароль?
+        no_account: Регистрация
+
+# Registration
+registration:
+    register_header: <h1>Регистрация</h1>
+    confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>
