@@ -3,6 +3,26 @@ html, body{
     padding: 0px;
     height: 100%;
 }
+b, strong{
+    font-weight: normal;
+}
+th{
+    font-weight: normal;
+}
+.well{
+    min-height: 84px;
+}
+label{
+    font-weight: normal;
+}
+hr{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.progress{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 a, a:hover, a:focus{
     text-decoration: none;
     color: #000;
@@ -18,7 +38,7 @@ a, a:hover, a:focus{
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 20px;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 18px;
     overflow: hidden;
 }
@@ -36,7 +56,7 @@ a, a:hover, a:focus{
     height: 24px;
     line-height: 24px;
     color: #000;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 18px;
     text-align: center;
     padding: 0px 7px;
@@ -48,7 +68,7 @@ a, a:hover, a:focus{
     width: 155px;
     line-height: 24px;
     color: #000;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 18px;
     text-align: left;
     padding: 0px 7px;
@@ -78,7 +98,7 @@ a, a:hover, a:focus{
     width: 45px;
     line-height: 23px;
     color: #fff;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     text-align: center;
     cursor: pointer;
@@ -158,11 +178,14 @@ a, a:hover, a:focus{
 }
 .menu ul li a{
     color: #fff; /* text color */
-    font-family: "Arial Black";
+    font-family: "Open Sans";
     font-size: 21px;
 }
+.menu ul li a:hover{
+    color: #c25c00;
+}
 .menu ul li.current a{
-    color: #e25d7c;
+    color: #c25c00;
 }
 .menu ul li.last{
     width: 100%;
@@ -187,7 +210,7 @@ a, a:hover, a:focus{
     background: #e8e8e8;
     padding: 20px;
     min-height: 270px;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     color: #000;
     margin: 20px;
@@ -199,7 +222,7 @@ a, a:hover, a:focus{
     border-bottom: solid 2px #000;
     height: 40px;
     line-height: 40px;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     color: #000;
     padding: 0px;
@@ -209,7 +232,7 @@ a, a:hover, a:focus{
     border-bottom: solid 2px #000;
     height: 60px;
     line-height: 60px;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 20px;
     color: #000;
     padding: 0px;
@@ -244,7 +267,7 @@ a, a:hover, a:focus{
 .catalog .inner_box_click .nameBox{
     padding: 20px 20px 0px 20px;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 16px;
     width: 100%;
 }
@@ -276,6 +299,7 @@ a, a:hover, a:focus{
 
 .catalog .inner_box_click .bottomBox form{
     float: right;
+    padding: 0;
 }
 
 .catalog .inner_box_click .bottomBox .form-group{
@@ -297,7 +321,7 @@ a, a:hover, a:focus{
     width: 89px;
     height: 39px;
     background: none;
-    font-weight: bold;
+    font-weight: normal;
     border-radius: inherit;
 }
 
@@ -306,7 +330,7 @@ a, a:hover, a:focus{
 }
 
 .catalog .inner_box_click .bottomBox .price{
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .catalog .inner_box_click .descriptionBox{
@@ -323,7 +347,7 @@ a, a:hover, a:focus{
 .catalog .inner_box_click .descriptionBox .header{
     text-transform: uppercase;
     color: #e08c43;
-    font-family: "Arial";
+    font-family: "Open Sans";
     font-size: 14px;
 }
 
@@ -348,7 +372,7 @@ a, a:hover, a:focus{
     text-align: center;
 }
 .catalog .box .description{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 20px;
     color: #000;
     max-height: 60px;
@@ -382,7 +406,7 @@ a, a:hover, a:focus{
 }
 .wrap_bottomMenu .bottomMenu ul li a{
     color: #000;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
 }
 .wrap_bottomMenu .bottomMenu ul li.last{
@@ -411,12 +435,12 @@ a, a:hover, a:focus{
     list-style: none;
     display: inline-block;
     color: #9a9a9a;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
 }
 .wrap_footer .footer ul li a{
     color: #9a9a9a;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
 }
 .wrap_footer .footer ul li.last{
@@ -427,7 +451,7 @@ a, a:hover, a:focus{
     border-bottom: solid 2px #e9e9e9;
     height: 60px;
     line-height: 60px;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 20px;
     color: #000;
     padding: 0px;
@@ -440,13 +464,13 @@ a, a:hover, a:focus{
     vertical-align: top;
 }
 .product .wrap_description .description{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     color: #000;
     width: 230px;
 }
 .product .wrap_description .subPreview{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     color: #000;
     margin-top: 15px;
@@ -474,19 +498,19 @@ a, a:hover, a:focus{
     padding-top: 25px;
 }
 .product .buyBlock .name{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 24px;
     color: #000;
     margin-bottom: 14px;
 }
 .product .buyBlock .articul{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 18px;
     color: #000;
     margin-bottom: 20px;
 }
 .product .buyBlock .price{
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 18px;
     color: #000;
 }
@@ -495,7 +519,7 @@ a, a:hover, a:focus{
     height: 45px;
     line-height: 45px;
     background: #000;
-    font-family: Arial;
+    font-family: Open Sans;
     font-size: 14px;
     color: #fff;
     text-align: center;
