@@ -225,8 +225,11 @@ a, a:hover, a:focus{
     font-size: 20px;
     color: #000;
     padding: 0px;
-    margin-bottom: 42px;
+    margin-bottom: 18px;
     background: #dcdcdc;
+}
+.catalogMain .head{
+    background: none;
 }
 .borderHead{
     position: absolute;
@@ -236,8 +239,8 @@ a, a:hover, a:focus{
     z-index: 0;
 }
 .latestProducts .head{
-    border-bottom: solid 2px #e9e9e9;
-    padding: 0px
+    padding: 0px;
+    background: none;
 }
 .catalog .boxes{
     border: solid 1px #dcdcdc;
@@ -252,6 +255,14 @@ a, a:hover, a:focus{
     display: inline-block;
     margin-top: -1px;
     margin-bottom: -1px;
+}
+.latestProducts .box{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.catalog .boxCat{
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .catalog .box0 .inner_box{
     border-right: solid 1px #dcdcdc;
@@ -360,9 +371,11 @@ a, a:hover, a:focus{
     padding: 15px 10px;
     position: absolute;
     z-index: 100;
-    left: 0px;
-    right: 0px;
+    left: -1px;
+    right: -1px;
     border-bottom: solid 1px #dcdcdc;
+    border-right: solid 1px #dcdcdc;
+    border-left: solid 1px #dcdcdc;
 }
 .catalog .inner_box_click .wrap_descriptionBoxBorderTop{
     height: 1px;
@@ -395,6 +408,12 @@ a, a:hover, a:focus{
     width: 100%;
     margin: 42px 0px 59px;
     padding: 0;
+}
+.latestProducts .box img{
+    margin: 0;
+}
+.catalog .boxCat img{
+    margin: 0px;
 }
 .catalog .box .wrap_description{
     height: 60px;
@@ -477,10 +496,12 @@ a, a:hover, a:focus{
     float: right;
 }
 /* Product */
+.buyBlock form{
+    padding: 0!important;
+}
 .product .head{
-    border-bottom: solid 2px #e9e9e9;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     font-family: Open Sans;
     font-size: 20px;
     color: #000;
@@ -497,6 +518,7 @@ a, a:hover, a:focus{
     font-family: Open Sans;
     font-size: 14px;
     color: #000;
+    word-wrap: break-word;
     width: 230px;
 }
 .product .wrap_description .subPreview{
