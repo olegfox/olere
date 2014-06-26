@@ -62,8 +62,8 @@
         <div class="topCallback">
             <input type="button" class="buttonCallback" value="Заказать обратный звонок" />
         </div>
-        <div class="topTrash">
-            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
+        <div class="topSearch">
+            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
         </div>
         <div class="topMyAccount">
             {% if is_granted('ROLE_USER') %}
@@ -76,9 +76,10 @@
                 <a href="{{ path("fos_user_security_login") }}">Вход</a>
             {% endif %}
         </div>
-        <div class="topSearch">
-            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+        <div class="topTrash">
+            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
         </div>
+        <div class="last"></div>
     </div>
 </div>
 {#<!-- Logo -->#}
@@ -92,6 +93,9 @@
         {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     </div>
 </div>
+
+{% block border %}
+{% endblock %}
 
 <!-- Container -->
 <div class="container">

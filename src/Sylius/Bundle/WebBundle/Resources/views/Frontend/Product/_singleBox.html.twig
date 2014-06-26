@@ -1,46 +1,47 @@
-<div class="box">
-    <div class="inner_box">
-        <div class="topBox clickBox">
-            <div class="nameBox">
-                <div class="name">{{ product.name }}</div>
-                <div class="articul">АРТ: {{ product.getSku() }}</div>
-            </div>
-            {#<div class="composition">#}
+{% if loop.index0%3 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%3 }}">
+        <div class="inner_box">
+            <div class="topBox clickBox">
+                <div class="nameBox">
+                    <div class="name">{{ product.name }}</div>
+                    <div class="articul">АРТ: {{ product.getSku() }}</div>
+                </div>
+                {#<div class="composition">#}
                 {#{{ product.properties[2].value }}#}
-            {#</div>#}
-        </div>
-        <a href="{% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}{{ path('sylius_product_show_collections', {'slug': product.slug}) }}{% else %}{{ path('sylius_product_show', {'slug': product.slug}) }}{% endif %}">
-            <img src="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/347x240' }}"
-                 alt="{{ product.name }}">
-        </a>
+                {#</div>#}
+            </div>
+            <a href="{% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}{{ path('sylius_product_show_collections', {'slug': product.slug}) }}{% else %}{{ path('sylius_product_show', {'slug': product.slug}) }}{% endif %}">
+                <img src="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/347x240' }}"
+                     alt="{{ product.name }}">
+            </a>
 
-        {#<div class="wrap_description">#}
+            {#<div class="wrap_description">#}
             {#<div class="description">#}
-                {#<a href="{% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}{{ path('sylius_product_show_collections', {'slug': product.slug}) }}{% else %}{{ path('sylius_product_show', {'slug': product.slug}) }}{% endif %}">{{ product.name }}</a>#}
+            {#<a href="{% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}{{ path('sylius_product_show_collections', {'slug': product.slug}) }}{% else %}{{ path('sylius_product_show', {'slug': product.slug}) }}{% endif %}">{{ product.name }}</a>#}
             {#</div>#}
-        {#</div>#}
-        <div class="bottomBox clickBox">
-            <div class="price">
-                {{ sylius_calculate_price(product)|sylius_price }}
+            {#</div>#}
+            <div class="bottomBox clickBox">
+                <div class="price">
+                    {{ sylius_calculate_price(product)|sylius_price }}
+                </div>
+                {% set form = sylius_cart_form({'product': product}) %}
+                <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
+                      class="clearfix form-horizontal">
+                    {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                    {% else %}
+                        {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                        {{ form_widget(form._token) }}
+                    {% endif %}
+                    <button type="submit" class="addCart">Купить</button>
+                </form>
             </div>
-            {% set form = sylius_cart_form({'product': product}) %}
-            <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
-                  class="clearfix form-horizontal">
-                {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
-                {% else %}
-                    {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-                    {{ form_widget(form._token) }}
-                {% endif %}
-                <button type="submit" class="addCart">Купить</button>
-            </form>
-        </div>
-        <div class="descriptionBox clickBox">
-            <div class="header">Дополнительная информация:</div>
-            <div class="property">
-                {% for property in product.properties %}
-                    {{ property.name }}: {{ property.value }}<br>
-                {% endfor %}
+            <div class="wrap_descriptionBoxBorderTop"><div class="descriptionBoxBorderTop"></div></div>
+            <div class="descriptionBox clickBox">
+                <div class="header">Дополнительная информация:</div>
+                <div class="property">
+                    {% for property in product.properties %}
+                        {{ property.name }}: {{ property.value }}<br>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>{% if loop.index0%3 == 2 or loop.index == count %}</div>{% endif %}

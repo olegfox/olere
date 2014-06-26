@@ -37,4 +37,4 @@
     {% endif %}
 {% endmacro %}
 
-{% macro grid(products, size = 3) %}{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% for product in products %}{% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}{% else %}<div class="col-md-12">{{ alerts.info('sylius.product.no_results'|trans) }}</div>{% endfor %}{% endmacro %}
+{% macro grid(productss, size = 3) %}{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% if productss|length > 0 %}<div class="boxes">{% endif %}{% set count = 0 %}{% for p in productss %}{% set count = count + 1 %}{% endfor %}{% for product in productss %}{% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}{% else %}<div class="col-md-12">{{ alerts.info('sylius.product.no_results'|trans) }}</div>{% endfor %}{% if productss|length > 0 %}</div>{% endif %}{% endmacro %}

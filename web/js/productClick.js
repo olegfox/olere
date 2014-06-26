@@ -4,7 +4,7 @@ $(function(){
             if(!$(this).parent().hasClass("inner_box_click")){
 //                reset
                 $(".inner_box_click").parent().css({
-                    padding : "8px"
+                    padding : "0px"
                 });
                 $(".inner_box_click .clickBox").css({
                     display : "none"
@@ -27,7 +27,7 @@ $(function(){
                     "transition":".0s"
                 });
                 $(this).parent().parent().css({
-                    padding : "5px"
+                    padding : "0px"
                 });
                 $(this).parent().addClass("inner_box_click");
                 $(this).parent().find(".clickBox").css({
@@ -48,7 +48,7 @@ $(function(){
                     "transition":".0s"
                 });
                 $(this).parent().parent().parent().parent().css({
-                    padding : "5px"
+                    padding : "0px"
                 });
                 $(this).parent().parent().parent().addClass("inner_box_click");
                 $(this).parent().parent().parent().find(".clickBox").css({
