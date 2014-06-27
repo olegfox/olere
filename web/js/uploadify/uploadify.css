@@ -8,6 +8,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	position: relative;
 	margin-bottom: 1em;
 }
+.uploadify object{
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    height: 43px;
+}
 .uploadify-button {
     color: #ffffff;
     background-color: #428bca;
