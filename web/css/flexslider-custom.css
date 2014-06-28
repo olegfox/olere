@@ -2,8 +2,14 @@
     width: 100%;
     margin: 0px auto 0px auto;
     padding: 0px 20px;
+    max-width: 1200px;
 }
-
+.borderSlider{
+    position: relative;
+    height: 1px;
+    background: #dcdcdc;
+    margin-top: 20px;
+}
 .flexslider .slides > li {
     overflow: hidden;
 }

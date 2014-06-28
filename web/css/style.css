@@ -207,13 +207,13 @@ a, a:hover, a:focus{
     width: 100%;
 }
 .content{
-    background: #e8e8e8;
     padding: 20px;
     min-height: 270px;
     font-family: Open Sans;
     font-size: 14px;
     color: #000;
     margin: 20px;
+    border: solid 1px #dcdcdc;
 }
 .catalog{
     padding: 0px 20px;
@@ -430,9 +430,9 @@ a, a:hover, a:focus{
     vertical-align: middle;
 }
 .wrap_bottomMenu{
-    background: #e8e8e8;
-    height: 40px;
-    line-height: 40px;
+    background: #dcdcdc;
+    height: 50px;
+    line-height: 50px;
     margin-top: 10px;
     position: relative;
 }
@@ -456,7 +456,7 @@ a, a:hover, a:focus{
 .wrap_bottomMenu .bottomMenu ul li a{
     color: #000;
     font-family: Open Sans;
-    font-size: 14px;
+    font-size: 20px;
 }
 .wrap_bottomMenu .bottomMenu ul li.last{
     width: 100%;
