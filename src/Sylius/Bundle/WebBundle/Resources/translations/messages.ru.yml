@@ -314,6 +314,7 @@ sylius:
     no_results: Отсутствуют предметы для отображения
     shipping_state: Статус доставки
     sku: Артикул
+    skuCode: Код артикула
     updated_at: Изменено
   locale:
     code: Код
@@ -399,7 +400,8 @@ sylius:
     no_items: Нет элементов для отображения.
     order: заказ
     show_header: Детали посылки
-    sku: Идентификатор товарной позиции
+    sku: Артикул
+    skuCode: Код артикула
     state: Cтатус
     tracking_code: Код отслеживания
     update: Редактировать
@@ -478,13 +480,15 @@ sylius:
     no_taxons: У этого товара не заданы категории
     options: Опции
     price: Розничная цена
+    priceOpt: Оптовая цена
     properties: Свойства
     restricted_zone: Зона ограничений
     shipping_category: Категория доставки
     show: Посмотреть больше
     show_header: 'Детали товара <small>Просмотр товара "<strong>%product%</strong>"</small>'
     show_in_store: Показать в магазине
-    sku: ИПТ
+    sku: Артикул
+    skuCode: Код артикула
     stock: На складе
     tabs:
       categorization: Каталоги

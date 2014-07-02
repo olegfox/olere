@@ -456,7 +456,7 @@ a, a:hover, a:focus{
 .wrap_bottomMenu .bottomMenu ul li a{
     color: #000;
     font-family: Open Sans;
-    font-size: 20px;
+    font-size: 16px;
 }
 .wrap_bottomMenu .bottomMenu ul li.last{
     width: 100%;

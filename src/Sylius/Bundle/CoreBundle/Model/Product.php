@@ -113,6 +113,24 @@ class Product extends BaseProduct implements ProductInterface
     /**
      * {@inheritdoc}
      */
+    public function getSkuCode()
+    {
+        return $this->getMasterVariant()->getSkuCode();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSkuCode($skuCode)
+    {
+        $this->getMasterVariant()->setSkuCode($skuCode);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getVariantSelectionMethod()
     {
         return $this->variantSelectionMethod;
@@ -182,6 +200,24 @@ class Product extends BaseProduct implements ProductInterface
     public function setPrice($price)
     {
         $this->getMasterVariant()->setPrice($price);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriceOpt()
+    {
+        return $this->getMasterVariant()->getPriceOpt();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPriceOpt($priceOpt)
+    {
+        $this->getMasterVariant()->setPriceOpt($priceOpt);
 
         return $this;
     }

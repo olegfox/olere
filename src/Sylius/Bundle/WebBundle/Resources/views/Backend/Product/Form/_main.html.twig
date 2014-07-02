@@ -5,6 +5,7 @@
     {{ form_row(form.description, {'attr': {'class': 'input-lg', 'rows': 10}}) }}
     {{ form_row(form.shortDescription, {'attr': {'class': 'input-lg', 'rows': 3}}) }}
     {{ form_row(form.masterVariant.sku) }}
+    {{ form_row(form.masterVariant.skuCode) }}
     <hr />
     <div class="row">
         <div class="col-md-6">
@@ -12,6 +13,7 @@
             {{ form_widget(form.masterVariant.availableOn, {'label': false}) }}
             {{ form_row(form.masterVariant.availableOnDemand) }}
             {{ form_row(form.masterVariant.price) }}
+            {{ form_row(form.masterVariant.priceOpt) }}
             {{ form_row(form.masterVariant.onHand) }}
             <hr />
             {{ form_row(form.taxCategory) }}

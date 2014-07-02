@@ -11,6 +11,7 @@
             <th class="info">{{ sylius_resource_sort('name', 'sylius.product.name'|trans) }}</th>
             <th class="stock">{{ 'sylius.product.stock'|trans }}</th>
             <th class="retail-price">{{ 'sylius.product.price'|trans }}</th>
+            <th class="retail-price">{{ 'sylius.product.priceOpt'|trans }}</th>
             <th class="updated-at">{{ sylius_resource_sort('updatedAt', 'Updated At') }}</th>
             <th></th>
         </tr>
@@ -67,6 +68,9 @@
             {% if not product.hasOptions %}
                 <td class="retail-price">
                     {{ product.masterVariant.price|sylius_price('RUB') }}
+                </td>
+                <td class="retail-price">
+                    {{ product.masterVariant.priceOpt|sylius_price('RUB') }}
                 </td>
             {% else %}
                 <td class="retail-price text-muted">

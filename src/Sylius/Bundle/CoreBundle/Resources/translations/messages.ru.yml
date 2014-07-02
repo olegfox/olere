@@ -88,6 +88,7 @@ sylius:
       images: Изображения
       on_hand: Количество на складе
       price: Цена
+      priceOpt: Цена опт.
       sku: Идентификатор товарной позиции
       weight: Вес
       width: Ширина

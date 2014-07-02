@@ -31,11 +31,25 @@ class Variant extends BaseVariant implements VariantInterface
     protected $sku;
 
     /**
+     * Variant SKUCode.
+     *
+     * @var string
+     */
+    protected $skuCode;
+
+    /**
      * The variant price.
      *
      * @var integer
      */
     protected $price;
+
+    /**
+     * The variant priceOpt.
+     *
+     * @var integer
+     */
+    protected $priceOpt;
 
     /**
      * On hold.
@@ -141,6 +155,24 @@ class Variant extends BaseVariant implements VariantInterface
     /**
      * {@inheritdoc}
      */
+    public function getSkuCode()
+    {
+        return $this->skuCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSkuCode($skuCode)
+    {
+        $this->skuCode = $skuCode;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getPrice()
     {
         return $this->price;
@@ -152,6 +184,24 @@ class Variant extends BaseVariant implements VariantInterface
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriceOpt()
+    {
+        return $this->priceOpt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPriceOpt($priceOpt)
+    {
+        $this->priceOpt = $priceOpt;
 
         return $this;
     }
@@ -238,6 +288,7 @@ class Variant extends BaseVariant implements VariantInterface
         parent::setDefaults($masterVariant);
 
         $this->setPrice($masterVariant->getPrice());
+        $this->setPriceOpt($masterVariant->getPriceOpt());
 
         return $this;
     }

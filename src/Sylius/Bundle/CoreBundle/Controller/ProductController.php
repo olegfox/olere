@@ -22,6 +22,7 @@ use Sylius\Bundle\CoreBundle\Model\VariantImage;
 use Sylius\Bundle\CoreBundle\Uploader\ImageUploader;
 use Gaufrette\Filesystem;
 use Gaufrette\Adapter\Local as LocalAdapter;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Product controller.
@@ -70,7 +71,7 @@ class ProductController extends ResourceController
         if ($request->isMethod('POST')) {
             $form->bind($request);
             $xls = $form['file']->getData();
-            $newFileName = uniqid() . '.' . $xls->guessExtension();
+            $newFileName = uniqid() . '.' . 'xlsx';
             $xls->move('import/xls/', $newFileName);
             $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
             $objWorksheet = $objPHPExcel->getActiveSheet();
@@ -87,10 +88,14 @@ class ProductController extends ResourceController
             for ($row = 2; $row <= $highestRow; $row++) {
                 $articul = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
                 $name = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
-                $sost = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
+                $gb = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
                 $color = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
-                $gb = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
-                $price = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
+                $sost = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
+                $description = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
+                $collection = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
+                $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
+                $priceOpt = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                $price = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
                 $data[$i] = array(
                     "articul" => $articul,
                     "name" => $name,
@@ -98,6 +103,10 @@ class ProductController extends ResourceController
                     "color" => $color,
                     "gb" => $gb,
                     "price" => $price,
+                    "description" => $description,
+                    "collection" => $collection,
+                    "codeArticul" => $codeArticul,
+                    "priceOpt" => $priceOpt,
                     "image" => ""
                 );
                 if ($imagesJson != "") {
@@ -112,10 +121,28 @@ class ProductController extends ResourceController
                 if ($name != "") {
                     $product = $repository->createNew();
                     $product->setName($name);
-                    $product->setDescription("");
+                    $product->setDescription($description);
                     $product->setPrice($price * 100);
-                    $product->setTaxons($form['taxons']->getData());
+                    $product->setPriceOpt($priceOpt * 100);
+//                    Массив taxons
+                    $taxons = $form['taxons']->getData();
+//                    Если в форме выбрана коллекция
+                    if(count($form['taxons']->getData()) > 1){
+                        $product->setTaxons($taxons);
+                    }else{// если не выбрана, то берём из таблицы
+//                    Находим в базе коллекцию по названию из таблицы
+                        $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
+                        if($col){
+                            $taxs = new ArrayCollection();
+                            $taxs[0] = $taxons[0];
+                            $taxs[1] = $col;
+                            $product->setTaxons($taxs);
+                        }else{
+                            continue;
+                        }
+                    }
                     $product->getMasterVariant()->setSku($articul);
+                    $product->getMasterVariant()->setSkuCode($codeArticul);
 
 
 

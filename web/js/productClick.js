@@ -1,5 +1,5 @@
 $(function(){
-    $(".inner_box a").click(function(){
+    $(".inner_box a").hover(function(){
         if($(this).parent().hasClass("inner_box")){
             if(!$(this).parent().hasClass("inner_box_click")){
 //                reset

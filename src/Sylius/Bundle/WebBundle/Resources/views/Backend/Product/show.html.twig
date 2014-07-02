@@ -68,6 +68,10 @@
                     <td>{{ product.sku }}</td>
                 </tr>
                 <tr>
+                    <td>{{ 'sylius.product.skuCode'|trans }}</td>
+                    <td>{{ product.skuCode }}</td>
+                </tr>
+                <tr>
                     <td>{{ 'sylius.product.name'|trans }}</td>
                     <td>{{ product.name }}</td>
                 </tr>
@@ -136,6 +140,10 @@
                 <tr>
                     <td>{{ 'sylius.product.price'|trans }}</td>
                     <td>{{ product.masterVariant.price|sylius_price('RUB') }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'sylius.product.priceOpt'|trans }}</td>
+                    <td>{{ product.masterVariant.priceOpt|sylius_price('RUB') }}</td>
                 </tr>
             </tbody>
         </table>
