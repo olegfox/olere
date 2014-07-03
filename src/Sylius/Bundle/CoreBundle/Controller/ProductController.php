@@ -86,16 +86,16 @@ class ProductController extends ResourceController
             $filesystem = new Filesystem($adapter);
             $imageUploader = new ImageUploader($filesystem);
             for ($row = 2; $row <= $highestRow; $row++) {
-                $articul = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
-                $name = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
-                $gb = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
-                $color = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
-                $sost = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
-                $description = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
-                $collection = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
-                $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                $priceOpt = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
-                $price = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
+                $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue();
+                $name = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
+                $gb = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
+                $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
+                $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
+                $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
+                $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
+                $codeArticul = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
+                $priceOpt = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
+                $price = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
                 $data[$i] = array(
                     "articul" => $articul,
                     "name" => $name,
@@ -109,16 +109,16 @@ class ProductController extends ResourceController
                     "priceOpt" => $priceOpt,
                     "image" => ""
                 );
-                if ($imagesJson != "") {
-                    $images = json_decode($imagesJson);
-                    foreach ($images as $image) {
-                        $path_parts = explode(".", $image);
-                        if ($path_parts[0] == $articul) {
-                            $data[$i]["image"] = $image;
+                if ($name != "") {
+                    if ($imagesJson != "") {
+                        $images = json_decode($imagesJson);
+                        foreach ($images as $image) {
+                            $path_parts = explode(".", $image);
+                            if (strstr($path_parts[0], $articul) != false) {
+                                $data[$i]["image"][] = $image;
+                            }
                         }
                     }
-                }
-                if ($name != "") {
                     $product = $repository->createNew();
                     $product->setName($name);
                     $product->setDescription($description);
@@ -192,12 +192,14 @@ class ProductController extends ResourceController
                     /* end Add product property */
 
 
-                    if ($data[$i]["image"] != "") {
-                        $variantImage = new VariantImage();
-                        $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $data[$i]["image"]);
-                        $variantImage->setFile($fileinfo);
-                        $imageUploader->upload($variantImage);
-                        $product->getMasterVariant()->addImage($variantImage);
+                    if ($data[$i]["image"][0] != "") {
+                        foreach($data[$i]["image"] as $im){
+                            $variantImage = new VariantImage();
+                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
+                            $variantImage->setFile($fileinfo);
+                            $imageUploader->upload($variantImage);
+                            $product->getMasterVariant()->addImage($variantImage);
+                        }
                     }
                     $product->getMasterVariant()->setOnHand(1);
                     $manager->persist($product);

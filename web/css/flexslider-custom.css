@@ -8,7 +8,7 @@
     position: relative;
     height: 1px;
     background: #dcdcdc;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .flexslider .slides > li {
     overflow: hidden;
@@ -17,4 +17,31 @@
 .flexslider .slides > li img {
     height: auto;
     width: 100%;
+}
+.flexslider .text{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 308px;
+}
+.flexslider .text .header{
+    color: #000;
+    font-family: "Calibri";
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+.flexslider .text p{
+    color: #000;
+    font-family: "Calibri";
+    font-size: 18px;
+    margin-bottom: 17px;
+}
+.flexslider .text .btn{
+    border: solid 1px #000;
+    color: #000;
+    font-family: "Calibri";
+    font-size: 18px;
+    width: 273px;
+    border-radius: 0;
 }
