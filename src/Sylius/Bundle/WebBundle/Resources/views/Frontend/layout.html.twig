@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% set settings = sylius_settings_all('general') %}
-<html>
+<html{% block html %}{% endblock %}>
 <head>
     <title>
         {% block title %}

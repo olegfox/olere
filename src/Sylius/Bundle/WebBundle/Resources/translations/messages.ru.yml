@@ -673,7 +673,7 @@ sylius:
     filter:
       all: Все пользователи
       unconfirmed: Неподтвержденные пользователи
-    first_name: Имя
+    first_name: Имя контактного лица
     general_info: 'Информация о пользователе «%username%»'
     id: ID
     index_header: 'Пользователи <small>список всех пользователей зарегистрированных в магазине</small>'

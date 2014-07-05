@@ -35,6 +35,10 @@ class User extends BaseUser implements UserInterface
     protected $billingAddress;
     protected $shippingAddress;
     protected $addresses;
+    protected $inn;
+    protected $nameCompany;
+    protected $phone;
+    protected $city;
 
     public function __construct()
     {
@@ -348,5 +352,77 @@ class User extends BaseUser implements UserInterface
         $this->setUsernameCanonical($emailCanonical);
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setInn($inn)
+    {
+        $this->inn = $inn;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getInn()
+    {
+        return $this->inn;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNameCompany($nameCompany)
+    {
+        $this->nameCompany = $nameCompany;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNameCompany()
+    {
+        return $this->nameCompany;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

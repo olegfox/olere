@@ -81,6 +81,11 @@
         <field name="deletedAt" column="deleted_at" type="datetime" nullable="true" />
 
         <gedmo:soft-deleteable field-name="deletedAt" />
+
+        <field name="inn" column="inn" type="string" nullable="true" />
+        <field name="nameCompany" column="nameCompany" type="string" nullable="true" />
+        <field name="phone" column="phone" type="string" nullable="true" />
+        <field name="city" column="city" type="string" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>

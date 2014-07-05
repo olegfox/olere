@@ -118,11 +118,11 @@ class FrontendMenuBuilder extends MenuBuilder
                 "route" => "sylius_page_show",
                 "routeParameters" => array("id" => "customers")
             ),
-            "delivery" => array(
+            /*"delivery" => array(
                 "name" => "Доставка",
                 "route" => "sylius_page_show",
                 "routeParameters" => array("id" => "delivery")
-            ),
+            ),*/
             "about" => array(
                 "name" => "О нас",
                 "route" => "sylius_page_show",
@@ -182,11 +182,11 @@ class FrontendMenuBuilder extends MenuBuilder
                 "route" => "sylius_page_show",
                 "routeParameters" => array("id" => "buy_retail")
             ),
-            "delivery" => array(
+            /*"delivery" => array(
                 "name" => "Доставка",
                 "route" => "sylius_page_show",
                 "routeParameters" => array("id" => "delivery")
-            ),
+            ),*/
             "about" => array(
                 "name" => "О компании",
                 "route" => "sylius_page_show",

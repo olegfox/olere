@@ -6,8 +6,26 @@ security:
         password: "Пароль"
         forgot_password: Забыли пароль?
         no_account: Регистрация
+        phone: Контактный телефон
+        password: Пароль
+        repeat_password: Введите пароль повторно
 
 # Registration
 registration:
     register_header: <h1>Регистрация</h1>
     confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>
+    submit: "Готово"
+    first_name:
+        not_blank: "Введите имя контактного лица"
+        min: "Имя контактного лица должно быть больше 2 символов"
+        max: "Имя контактного лица должно быть не больше 255 символов"
+
+form:
+    name: "Имя контактного лица"
+    inn: "ИНН из 10 цифр"
+    nameCompany: "Название компании"
+    city: "Город"
+    email: "Электронная почта"
+    phone: "Контактный телефон"
+    password: "Пароль"
+    password_confirmation: "Введите пароль повторно"

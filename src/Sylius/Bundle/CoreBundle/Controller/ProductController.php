@@ -114,9 +114,11 @@ class ProductController extends ResourceController
                         $images = json_decode($imagesJson);
                         foreach ($images as $image) {
                             $path_parts = explode(".", $image);
-                            if (strstr($path_parts[0], $articul) != false) {
-                                $data[$i]["image"][] = $image;
-                            }
+                            if (@stristr($path_parts[0], $articul) === false) {
+                                
+                            }else{
+								$data[$i]["image"][] = $image;
+							}
                         }
                     }
                     $product = $repository->createNew();
@@ -134,8 +136,12 @@ class ProductController extends ResourceController
                         $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
                         if($col){
                             $taxs = new ArrayCollection();
-                            $taxs[0] = $taxons[0];
-                            $taxs[1] = $col;
+							if(count($form['taxons']->getData()) > 0){
+								$taxs[0] = $taxons[0];
+								$taxs[1] = $col;
+							}else{
+								$taxs[0] = $col;
+							}
                             $product->setTaxons($taxs);
                         }else{
                             continue;
@@ -192,14 +198,16 @@ class ProductController extends ResourceController
                     /* end Add product property */
 
 
-                    if ($data[$i]["image"][0] != "") {
-                        foreach($data[$i]["image"] as $im){
-                            $variantImage = new VariantImage();
-                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
-                            $variantImage->setFile($fileinfo);
-                            $imageUploader->upload($variantImage);
-                            $product->getMasterVariant()->addImage($variantImage);
-                        }
+                    if (isset($data[$i]["image"][0])) {
+						if($data[$i]["image"][0] != ""){
+							foreach($data[$i]["image"] as $im){
+								$variantImage = new VariantImage();
+								$fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
+								$variantImage->setFile($fileinfo);
+								$imageUploader->upload($variantImage);
+								$product->getMasterVariant()->addImage($variantImage);
+							}
+						}
                     }
                     $product->getMasterVariant()->setOnHand(1);
                     $manager->persist($product);

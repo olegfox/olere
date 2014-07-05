@@ -1,0 +1,66 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block html %} ng-app="register"{% endblock %}
+
+{% block border %}
+    <div class="borderHead borderHead2"></div>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    {{ 'registration.register_header'|trans|raw }}
+</div>
+<form name="form" action="{{ path('fos_user_opt_register') }}" method="post" class="form-horizontal registerForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
+    <fieldset class="well">
+        <div class="left">
+            <div class="form-group">
+                {{ form_label(form.firstName) }}
+                {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'ng-model' : 'user.firstName', 'ng-minlength' : '2', 'ng-maxlength' : '255'}, 'required' : 'required'  }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.inn) }}
+                {{ form_widget(form.inn, { 'attr': {'class': 'form-control', 'ng-model' : 'user.inn', 'ng-minlength' : '10', 'ng-maxlength' : '10', 'ng-pattern' : 'onlyNumbers'}, 'required' : 'required' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.nameCompany) }}
+                {{ form_widget(form.nameCompany, { 'attr': {'class': 'form-control', 'ng-model' : 'user.nameCompany'}, 'required' : 'required' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}
+            </div>
+        </div>
+        <div class="right">
+            <div class="form-group">
+                {{ form_label(form.email, '') }}
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : 'form.email', 'ng-model' : 'user.email'}, 'required' : 'required' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.phone, '') }}
+                {{ form_widget(form.phone, { 'attr': {'class': 'form-control', 'ng-model' : 'user.phone', 'ng-pattern' : 'phoneNumberPattern'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.plainPassword, '') }}
+                {{ form_widget(form.plainPassword) }}
+            </div>
+        </div>
+        <div class="form-actions clearfix">
+            <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
+        </div>
+        {{ form_errors(form) }}
+        {#<div class="alert alert-danger" ng-show="user.firstName.$error.required">{{ 'registration.first_name.not_blank'|trans }}</div>#}
+        {#<div class="alert alert-danger" ng-show="user.firstName.$error.min">{{ 'registration.first_name.min'|trans }}</div>#}
+        {#<div class="alert alert-danger" ng-show="user.firstName.$error.max">{{ 'registration.first_name.max'|trans }}</div>#}
+    </fieldset>
+    {{ form_end(form) }}
+</form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/jquery.maskedinput.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/angular.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/register.js") }}"></script>
+{% endblock %}

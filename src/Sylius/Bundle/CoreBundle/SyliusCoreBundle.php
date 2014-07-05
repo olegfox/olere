@@ -25,6 +25,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SyliusCoreBundle extends Bundle
 {
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
+
     public static function getSupportedDrivers()
     {
         return array(

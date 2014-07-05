@@ -22,6 +22,9 @@
             <div class="bottomBox clickBox">
                 <div class="price">
                     {{ sylius_calculate_price(product)|sylius_price }}
+                    {% if is_granted('ROLE_USER_OPT') %}
+                        {{ product.priceOpt|sylius_price }}
+                    {% endif %}
                 </div>
                 {% set form = sylius_cart_form({'product': product}) %}
                 <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
