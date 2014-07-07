@@ -130,20 +130,37 @@ class ProductController extends ResourceController
                     $taxons = $form['taxons']->getData();
 //                    Если в форме выбрана коллекция
                     if(count($form['taxons']->getData()) > 1){
+//                        print "Коллекция выбрана";
                         $product->setTaxons($taxons);
                     }else{// если не выбрана, то берём из таблицы
+//                    Находим в базе каталог по названию из таблицы
+//                        print "Коллекция не выбрана";
+                        $nameCat = mb_substr($name, 0, strlen($name) - 4);
+//                        print 'Сокращённое название каталога: '.$nameCat;
+                        $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat.'%');
 //                    Находим в базе коллекцию по названию из таблицы
                         $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
                         if($col){
+//                            print "Коллекция найдена";
                             $taxs = new ArrayCollection();
 							if(count($form['taxons']->getData()) > 0){
+//                                print "Каталог выбран";
 								$taxs[0] = $taxons[0];
 								$taxs[1] = $col;
 							}else{
-								$taxs[0] = $col;
+//                                print "Каталог и коллекция не выбрана";
+                                if($cat){
+//                                    print "Каталог и коллекция найдены";
+								    $taxs[0] = $cat;
+								    $taxs[1] = $col;
+                                }else{
+//                                    print "Каталог не найден";
+                                    $taxs[0] = $col;
+                                }
 							}
                             $product->setTaxons($taxs);
                         }else{
+//                            print "Коллекция не найдена";
                             continue;
                         }
                     }

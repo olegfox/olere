@@ -32,7 +32,7 @@
                 <tr>
                     <td>{{ d.articul }}</td>
                     <td>
-                        {% if d.image[0]!="" %}
+                        {% if d.image[0] is defined %}
                         <img src="{{ asset("import/files/"~d.image[0]) }}" />
                         {% endif %}
                     </td>

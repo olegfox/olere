@@ -33,4 +33,16 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             ->getResult()
         ;
     }
+
+    public function findOneByCatName($nameCat)
+    {
+        $qb = $this->getQueryBuilder();
+        return $qb
+            ->where(
+                $qb->expr()->like('o.name', ':name')
+            )
+            ->setParameter('name', $nameCat.'%')
+            ->getQuery()
+            ->getSingleResult();
+    }
 }
