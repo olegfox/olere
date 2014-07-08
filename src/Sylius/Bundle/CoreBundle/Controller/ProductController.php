@@ -71,171 +71,171 @@ class ProductController extends ResourceController
         if ($request->isMethod('POST')) {
             $form->bind($request);
             $xls = $form['file']->getData();
-            $newFileName = uniqid() . '.' . 'xlsx';
-            $xls->move('import/xls/', $newFileName);
-            $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
-            $objWorksheet = $objPHPExcel->getActiveSheet();
-            $highestRow = $objWorksheet->getHighestRow();
+            if ($xls != "") {
+                $newFileName = uniqid() . '.' . 'xlsx';
+                $xls->move('import/xls/', $newFileName);
+                $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
+                $objWorksheet = $objPHPExcel->getActiveSheet();
+                $highestRow = $objWorksheet->getHighestRow();
 //            foreach ($objWorksheet->getDrawingCollection() as $drawing) {
 //                    print "imageContents = ".$drawing->getPath()."<br/>";
 //            }
-            $data = array();
-            $i = 0;
-            $imagesJson = $request->get('gallery');
-            $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
-            $filesystem = new Filesystem($adapter);
-            $imageUploader = new ImageUploader($filesystem);
-            for ($row = 2; $row <= $highestRow; $row++) {
-                $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue();
-                $name = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
-                $gb = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
-                $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
-                $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
-                $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
-                $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
-                $codeArticul = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
-                $priceOpt = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                $price = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
-                $data[$i] = array(
-                    "articul" => $articul,
-                    "name" => $name,
-                    "sost" => $sost,
-                    "color" => $color,
-                    "gb" => $gb,
-                    "price" => $price,
-                    "description" => $description,
-                    "collection" => $collection,
-                    "codeArticul" => $codeArticul,
-                    "priceOpt" => $priceOpt,
-                    "image" => ""
-                );
-                if ($name != "") {
-                    if ($imagesJson != "") {
-                        $images = json_decode($imagesJson);
-                        foreach ($images as $image) {
-                            $path_parts = explode(".", $image);
-                            if (@stristr($path_parts[0], $articul) === false) {
-                                
-                            }else{
-								$data[$i]["image"][] = $image;
-							}
+                $data = array();
+                $i = 0;
+                $imagesJson = $request->get('gallery');
+                $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
+                $filesystem = new Filesystem($adapter);
+                $imageUploader = new ImageUploader($filesystem);
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue();
+                    $name = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
+                    $gb = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
+                    $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
+                    $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
+                    $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
+                    $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
+                    $codeArticul = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
+                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
+                    $price = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $data[$i] = array(
+                        "articul" => $articul,
+                        "name" => $name,
+                        "sost" => $sost,
+                        "color" => $color,
+                        "gb" => $gb,
+                        "price" => $price,
+                        "description" => $description,
+                        "collection" => $collection,
+                        "codeArticul" => $codeArticul,
+                        "priceOpt" => $priceOpt,
+                        "image" => ""
+                    );
+                    if ($name != "") {
+                        if ($imagesJson != "") {
+                            $images = json_decode($imagesJson);
+                            foreach ($images as $image) {
+                                $path_parts = explode(".", $image);
+                                if (@stristr($path_parts[0], $articul) === false) {
+
+                                } else {
+                                    $data[$i]["image"][] = $image;
+                                }
+                            }
                         }
-                    }
-                    $product = $repository->createNew();
-                    $product->setName($name);
-                    $product->setDescription($description);
-                    $product->setPrice($price * 100);
-                    $product->setPriceOpt($priceOpt * 100);
+                        $product = $repository->createNew();
+                        $product->setName($name);
+                        $product->setDescription($description);
+                        $product->setPrice($price * 100);
+                        $product->setPriceOpt($priceOpt * 100);
 //                    Массив taxons
-                    $taxons = $form['taxons']->getData();
+                        $taxons = $form['taxons']->getData();
 //                    Если в форме выбрана коллекция
-                    if(count($form['taxons']->getData()) > 1){
+                        if (count($form['taxons']->getData()) > 1) {
 //                        print "Коллекция выбрана";
-                        $product->setTaxons($taxons);
-                    }else{// если не выбрана, то берём из таблицы
+                            $product->setTaxons($taxons);
+                        } else { // если не выбрана, то берём из таблицы
 //                    Находим в базе каталог по названию из таблицы
 //                        print "Коллекция не выбрана";
-                        $nameCat = mb_substr($name, 0, strlen($name) - 4);
+                            $nameCat = mb_substr($name, 0, strlen($name) - 4);
 //                        print 'Сокращённое название каталога: '.$nameCat;
-                        $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat.'%');
+                            $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat . '%');
 //                    Находим в базе коллекцию по названию из таблицы
-                        $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
-                        if($col){
+                            $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
+                            if ($col) {
 //                            print "Коллекция найдена";
-                            $taxs = new ArrayCollection();
-							if(count($form['taxons']->getData()) > 0){
+                                $taxs = new ArrayCollection();
+                                if (count($form['taxons']->getData()) > 0) {
 //                                print "Каталог выбран";
-								$taxs[0] = $taxons[0];
-								$taxs[1] = $col;
-							}else{
+                                    $taxs[0] = $taxons[0];
+                                    $taxs[1] = $col;
+                                } else {
 //                                print "Каталог и коллекция не выбрана";
-                                if($cat){
+                                    if ($cat) {
 //                                    print "Каталог и коллекция найдены";
-								    $taxs[0] = $cat;
-								    $taxs[1] = $col;
-                                }else{
+                                        $taxs[0] = $cat;
+                                        $taxs[1] = $col;
+                                    } else {
 //                                    print "Каталог не найден";
-                                    $taxs[0] = $col;
+                                        $taxs[0] = $col;
+                                    }
                                 }
-							}
-                            $product->setTaxons($taxs);
-                        }else{
+                                $product->setTaxons($taxs);
+                            } else {
 //                            print "Коллекция не найдена";
-                            continue;
+                                continue;
+                            }
                         }
+                        $product->getMasterVariant()->setSku($articul);
+                        $product->getMasterVariant()->setSkuCode($codeArticul);
+
+
+                        /* Add product property */
+                        $propertyRepository = $this->container->get('sylius.repository.property');
+                        $productPropertyRepository = $this->container->get('sylius.repository.product_property');
+
+                        /* Color property */
+                        $color_property = $propertyRepository->findOneBy(array('id' => 10));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($color_property)
+                            ->setValue($color);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Color property */
+
+                        /* Gb property */
+                        $gb_property = $propertyRepository->findOneBy(array('id' => 11));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($gb_property)
+                            ->setValue($gb);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Gb property */
+
+                        /* Sost property */
+                        $sost_property = $propertyRepository->findOneBy(array('id' => 12));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($sost_property)
+                            ->setValue($sost);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Gb property */
+
+                        /* end Add product property */
+
+
+                        if (isset($data[$i]["image"][0])) {
+                            if ($data[$i]["image"][0] != "") {
+                                foreach ($data[$i]["image"] as $im) {
+                                    $variantImage = new VariantImage();
+                                    $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
+                                    $variantImage->setFile($fileinfo);
+                                    $imageUploader->upload($variantImage);
+                                    $product->getMasterVariant()->addImage($variantImage);
+                                }
+                            }
+                        }
+                        $product->getMasterVariant()->setOnHand(1);
+                        $manager->persist($product);
                     }
-                    $product->getMasterVariant()->setSku($articul);
-                    $product->getMasterVariant()->setSkuCode($codeArticul);
-
-
-
-                    /* Add product property */
-                    $propertyRepository = $this->container->get('sylius.repository.property');
-                    $productPropertyRepository = $this->container->get('sylius.repository.product_property');
-
-                    /* Color property */
-                    $color_property = $propertyRepository->findOneBy(array('id' => 10));
-                    $productProperty = $productPropertyRepository->createNew();
-
-                    $productProperty
-                        ->setProperty($color_property)
-                        ->setValue($color)
-                    ;
-
-                    $product->addProperty($productProperty);
-
-                    /* end Color property */
-
-                    /* Gb property */
-                    $gb_property = $propertyRepository->findOneBy(array('id' => 11));
-                    $productProperty = $productPropertyRepository->createNew();
-
-                    $productProperty
-                        ->setProperty($gb_property)
-                        ->setValue($gb)
-                    ;
-
-                    $product->addProperty($productProperty);
-
-                    /* end Gb property */
-
-                    /* Sost property */
-                    $sost_property = $propertyRepository->findOneBy(array('id' => 12));
-                    $productProperty = $productPropertyRepository->createNew();
-
-                    $productProperty
-                        ->setProperty($sost_property)
-                        ->setValue($sost)
-                    ;
-
-                    $product->addProperty($productProperty);
-
-                    /* end Gb property */
-
-                    /* end Add product property */
-
-
-                    if (isset($data[$i]["image"][0])) {
-						if($data[$i]["image"][0] != ""){
-							foreach($data[$i]["image"] as $im){
-								$variantImage = new VariantImage();
-								$fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
-								$variantImage->setFile($fileinfo);
-								$imageUploader->upload($variantImage);
-								$product->getMasterVariant()->addImage($variantImage);
-							}
-						}
-                    }
-                    $product->getMasterVariant()->setOnHand(1);
-                    $manager->persist($product);
+                    $i++;
                 }
-                $i++;
+                $manager->flush();
+                return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
+                    'form' => $form->createView(),
+                    'data' => $data
+                ));
+            }else{
+                return new Response("Ошибка загрузки, файл xlsx не выбран.");
             }
-            $manager->flush();
-            return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
-                'form' => $form->createView(),
-                'data' => $data
-            ));
         }
 
         return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
