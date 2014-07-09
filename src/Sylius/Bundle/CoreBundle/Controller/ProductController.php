@@ -241,36 +241,35 @@ class ProductController extends ResourceController
             return false;
         }
 
-        $result = ftp_login($connect, '', '');
+        $result = ftp_login($connect, 'anonymous', '');
 
         if ($result == false) return false;
 
         if ($result) {
             $count = 0;
-            ftp_chdir($connect, '/');
+//            ftp_chdir($connect, '/');
             $files = ftp_nlist($connect, ".");
             foreach ($products as $p) {
                 $sku = $p->getSku();
 //                Scan ftp for sku
                 foreach ($files as $file) {
-                    $fileName = explode(".", $file);
-                    if (@stristr($fileName[0], $sku) === false) {
+                    $fileName = str_replace('./', '', $file);
+                    if (@stristr($fileName, $sku) === false) {
 
                     } else {
                         $fl = 0;
                         foreach ($p->getMasterVariant()->getImages() as $image) {
                             $path = $image->getPath();
-                            $path_parts = explode(".", $path);
-                            if ($path_parts[0] == $fileName[0]) {
+//                            $path_parts = explode(".", $path);
+                            if ($path == $fileName) {
                                 $fl = 1;
                             }
                         }
                         if ($fl == 0) {
                             $variantImage = new VariantImage();
-                            $variantImage->setPath($file);
+                            $variantImage->setPath($fileName);
                             $p->getMasterVariant()->addImage($variantImage);
                             $manager->flush();
-//                                print $fileName[0]."<br>";
                             $count++;
                         }
                     }
