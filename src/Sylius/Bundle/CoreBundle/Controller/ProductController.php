@@ -111,59 +111,40 @@ class ProductController extends ResourceController
                         "image" => ""
                     );
                     if ($name != "") {
-                        if ($imagesJson != "") {
-                            $images = json_decode($imagesJson);
-                            foreach ($images as $image) {
-                                $path_parts = explode(".", $image);
-                                if (@stristr($path_parts[0], $articul) === false) {
-
-                                } else {
-                                    $data[$i]["image"][] = $image;
-                                }
+//                        if ($imagesJson != "") {
+//                            $images = json_decode($imagesJson);
+//                            foreach ($images as $image) {
+//                                $path_parts = explode(".", $image);
+//                                if (@stristr($path_parts[0], $articul) === false) {
+//
+//                                } else {
+//                                    $data[$i]["image"][] = $image;
+//                                }
+//                            }
+//                        }
+                        $nameCat = mb_substr($name, 0, strlen($name) - 4);
+//                        print 'Сокращённое название каталога: '.$nameCat;
+                        $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat . '%');
+//                    Находим в базе коллекцию по названию из таблицы
+                        $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
+                        $taxs = new ArrayCollection();
+                        if ($col || $cat) {
+                            if ($cat) {
+                                $taxs[] = $cat;
+                            }
+                            if ($col) {
+                                $taxs[] = $col;
                             }
                         }
                         $product = $repository->createNew();
+                        $product->setCatalog($name);
+                        $product->setCollection($collection);
                         $product->setName($name);
                         $product->setDescription($description);
                         $product->setPrice($price * 100);
                         $product->setPriceOpt($priceOpt * 100);
-//                    Массив taxons
-                        $taxons = $form['taxons']->getData();
-//                    Если в форме выбрана коллекция
-                        if (count($form['taxons']->getData()) > 1) {
-//                        print "Коллекция выбрана";
-                            $product->setTaxons($taxons);
-                        } else { // если не выбрана, то берём из таблицы
-//                    Находим в базе каталог по названию из таблицы
-//                        print "Коллекция не выбрана";
-                            $nameCat = mb_substr($name, 0, strlen($name) - 4);
-//                        print 'Сокращённое название каталога: '.$nameCat;
-                            $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat . '%');
-//                    Находим в базе коллекцию по названию из таблицы
-                            $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
-                            if ($col) {
-//                            print "Коллекция найдена";
-                                $taxs = new ArrayCollection();
-                                if (count($form['taxons']->getData()) > 0) {
-//                                print "Каталог выбран";
-                                    $taxs[0] = $taxons[0];
-                                    $taxs[1] = $col;
-                                } else {
-//                                print "Каталог и коллекция не выбрана";
-                                    if ($cat) {
-//                                    print "Каталог и коллекция найдены";
-                                        $taxs[0] = $cat;
-                                        $taxs[1] = $col;
-                                    } else {
-//                                    print "Каталог не найден";
-                                        $taxs[0] = $col;
-                                    }
-                                }
-                                $product->setTaxons($taxs);
-                            } else {
-//                            print "Коллекция не найдена";
-                                continue;
-                            }
+                        if (count($taxs) > 0) {
+                            $product->setTaxons($taxs);
                         }
                         $product->getMasterVariant()->setSku($articul);
                         $product->getMasterVariant()->setSkuCode($codeArticul);
@@ -212,35 +193,95 @@ class ProductController extends ResourceController
                         /* end Add product property */
 
 
-                        if (isset($data[$i]["image"][0])) {
-                            if ($data[$i]["image"][0] != "") {
-                                foreach ($data[$i]["image"] as $im) {
-                                    $variantImage = new VariantImage();
-                                    $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
-                                    $variantImage->setFile($fileinfo);
-                                    $imageUploader->upload($variantImage);
-                                    $product->getMasterVariant()->addImage($variantImage);
-                                }
-                            }
-                        }
+//                        if (isset($data[$i]["image"][0])) {
+//                            if ($data[$i]["image"][0] != "") {
+//                                foreach ($data[$i]["image"] as $im) {
+//                                    $variantImage = new VariantImage();
+//                                    $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
+//                                    $variantImage->setFile($fileinfo);
+//                                    $imageUploader->upload($variantImage);
+//                                    $product->getMasterVariant()->addImage($variantImage);
+//                                }
+//                            }
+//                        }
                         $product->getMasterVariant()->setOnHand(1);
                         $manager->persist($product);
+                        $i++;
                     }
-                    $i++;
                 }
                 $manager->flush();
                 return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
                     'form' => $form->createView(),
                     'data' => $data
                 ));
-            }else{
-                return new Response("Ошибка загрузки, файл xlsx не выбран.");
             }
         }
 
         return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    private function uploadFTP($name, $NewName, $login, $pass, $host, $path)
+    {
+
+
+    }
+
+    public function importScanAction(Request $request)
+    {
+        header('Content-Type: text/html; charset=UTF-8');
+        $repository = $this->container->get('sylius.repository.product');
+        $manager = $this->container->get('sylius.manager.product');
+//        if ($request->isMethod('POST')) {
+        $products = $repository->findAll();
+        $connect = ftp_connect('95.84.192.162');
+
+        if (!$connect) {
+            return false;
+        }
+
+        $result = ftp_login($connect, '', '');
+
+        if ($result == false) return false;
+
+        if ($result) {
+            $count = 0;
+            ftp_chdir($connect, '/');
+            $files = ftp_nlist($connect, ".");
+            foreach ($products as $p) {
+                $sku = $p->getSku();
+//                Scan ftp for sku
+                foreach ($files as $file) {
+                    $fileName = explode(".", $file);
+                    if (@stristr($fileName[0], $sku) === false) {
+
+                    } else {
+                        $fl = 0;
+                        foreach ($p->getMasterVariant()->getImages() as $image) {
+                            $path = $image->getPath();
+                            $path_parts = explode(".", $path);
+                            if ($path_parts[0] == $fileName[0]) {
+                                $fl = 1;
+                            }
+                        }
+                        if ($fl == 0) {
+                            $variantImage = new VariantImage();
+                            $variantImage->setPath($file);
+                            $p->getMasterVariant()->addImage($variantImage);
+                            $manager->flush();
+//                                print $fileName[0]."<br>";
+                            $count++;
+                        }
+                    }
+                }
+            }
+            ftp_quit($connect);
+            return new Response("Обновление картинок завершено. Обновлено " . $count . " картинок.");
+        }
+//        }
+
+        return new Response("fail");
     }
 
     /**

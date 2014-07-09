@@ -24,6 +24,8 @@ twig:
             - 'SyliusWebBundle::forms.html.twig'
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        ftp_path: %ftp_path%
 
 assetic:
     debug:          %kernel.debug%

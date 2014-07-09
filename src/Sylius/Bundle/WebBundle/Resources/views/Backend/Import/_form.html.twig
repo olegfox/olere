@@ -1,7 +1,7 @@
 {% form_theme form 'SyliusWebBundle::forms.html.twig' %}
 
 <fieldset>
-    {% include 'SyliusWebBundle:Backend/Import/Form:_categorization.html.twig' %}
+    <a href="{{ path('sylius_backend_import_scan') }}" class="btn input-lg" target="_blank">Запустить обновление картинок</a>
     {{ form_row(form.image, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.file) }}
     <br>

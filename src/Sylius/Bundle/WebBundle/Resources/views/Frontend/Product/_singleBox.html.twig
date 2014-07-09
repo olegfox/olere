@@ -10,7 +10,7 @@
                 {#</div>#}
             </div>
             <a href="{% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}{{ path('sylius_product_show_collections', {'slug': product.slug}) }}{% else %}{{ path('sylius_product_show', {'slug': product.slug}) }}{% endif %}">
-                <img src="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/347x240' }}"
+                <img src="{{ product.image ? image(ftp_path~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/347x240' }}"
                      alt="{{ product.name }}">
             </a>
 

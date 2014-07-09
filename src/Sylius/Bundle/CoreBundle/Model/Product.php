@@ -79,6 +79,10 @@ class Product extends BaseProduct implements ProductInterface
      */
     protected $restrictedZone;
 
+    protected $catalog;
+
+    protected $collection;
+
     /**
      * Constructor.
      */
@@ -319,5 +323,41 @@ class Product extends BaseProduct implements ProductInterface
             self::VARIANT_SELECTION_CHOICE => 'Variant choice',
             self::VARIANT_SELECTION_MATCH  => 'Options matching',
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCatalog($catalog)
+    {
+        $this->catalog = $catalog;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCollection()
+    {
+        return $this->collection;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCollection($collection)
+    {
+        $this->collection = $collection;
+
+        return $this;
     }
 }

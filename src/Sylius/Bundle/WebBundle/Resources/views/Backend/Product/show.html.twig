@@ -153,8 +153,9 @@
         {% if product.images|length > 0 %}
             <div id="gallery">
                 {% for image in product.images %}
-                <a href="{{ image.path|imagine_filter('sylius_large') }}" title="{{ product.name }}" class="thumbnail">
-                    <img src="{{ image.path|imagine_filter('sylius_small') }}" alt="{{ product.name }}" />
+                    {{ ftp_path~image.path }}
+                <a href="{{ image(ftp_path~image.path).zoomCrop(640, 480) }}" title="{{ product.name }}" class="thumbnail">
+                    <img src="{{ image(ftp_path~image.path).zoomCrop(120, 90) }}" alt="{{ product.name }}" />
                 </a>
                 {% endfor %}
             </div>

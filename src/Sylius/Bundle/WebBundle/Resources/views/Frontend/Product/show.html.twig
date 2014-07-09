@@ -35,14 +35,14 @@
                 Дополнительные фото:
                 <div class="blockPreview">
                     {% for image in product.images %}
-                        <img onclick="preview('{{ asset('media/image/'~image.path) }}', '{{ image ? asset('media/image/'~image.path) : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
+                        <img onclick="preview('{{ ftp_path~image.path }}', '{{ image ? ftp_path~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image(ftp_path~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image(ftp_path~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
                     {% endfor %}
                 </div>
             </div>
         </div>
         <div class="pictureProduct">
             {#<a href="{{ asset('media/image/'~product.image.path) }}" class="fancybox">#}
-                <img src="{{ product.image ? asset('media/image/'~product.image.path) : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="500px">
+                <img src="{{ product.image ? ftp_path~product.image.path : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="500px">
             {#</a>#}
         </div>
         <div class="buyBlock">

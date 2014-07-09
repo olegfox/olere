@@ -28,7 +28,6 @@ class ImportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('taxons', 'sylius_taxon_selection')
             ->add('image', 'file', array(
                 'label' => 'sylius.label.product.import_image',
                 "attr" => array(
