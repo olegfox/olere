@@ -17,26 +17,28 @@
             <div class="left">
                 <div class="form-group">
                     {{ form_label(form.firstName) }}
-                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'ng-model' : 'user.firstName', 'ng-minlength' : '2', 'ng-maxlength' : '255'}, 'required' : 'required'  }) }}
+                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'ng-model' : 'user.firstName', 'ng-minlength' : '2', 'ng-maxlength' : '255'}, 'required' : 'required'  }) }}<span>*</span>
                 </div>
                 <div class="form-group">
                     {{ form_label(form.city) }}
-                    {{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}
+                    {{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}<span>*</span>
                 </div>
                 <div class="form-group">
                     {{ form_label(form.email, '') }}
-                    {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : 'form.email', 'ng-model' : 'user.email'}, 'required' : 'required' }) }}
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : 'form.email', 'ng-model' : 'user.email'}, 'required' : 'required' }) }}<span>*</span>
                 </div>
                 <div class="form-group">
                     {{ form_label(form.phone, '') }}
-                    {{ form_widget(form.phone, { 'attr': {'class': 'form-control', 'ng-model' : 'user.phone', 'ng-pattern' : 'phoneNumberPattern'} }) }}
+                    {{ form_widget(form.phone, { 'attr': {'class': 'form-control', 'ng-model' : 'user.phone'} }) }}<span>*</span>
                 </div>
             </div>
             <div class="right">
-                <div class="form-group">
-                    {{ form_label(form.plainPassword, '') }}
-                    {{ form_widget(form.plainPassword) }}
-                </div>
+                {% for passwordField in form.plainPassword %}
+                    <div class="form-group">
+                        {{ form_label(passwordField, '') }}
+                        {{ form_widget(passwordField, { 'attr': {'class': 'form-input'} }) }}<span>*</span>
+                    </div>
+                {% endfor %}
             </div>
             <div class="form-actions clearfix">
                 <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>

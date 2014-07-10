@@ -27,7 +27,7 @@ a, a:hover, a:focus{
 .wrap_top{
     height: 38px;
     background: #fff;
-    border-bottom: solid 2px #000;
+    border-bottom: solid 1px #dcdcdc;
 }
 .wrap_top .top{
     height: 38px;
@@ -226,6 +226,9 @@ a, a:hover, a:focus{
     margin-bottom: 18px;
     background: #dcdcdc;
 }
+.catalog .head a:hover{
+    color: #01c4ba;
+}
 .catalogMain .head{
     background: none;
 }
@@ -291,21 +294,21 @@ a, a:hover, a:focus{
 .catalog .inner_box_click{
 
 }
-.catalog .inner_box_click .topBox{
+.catalog .topBox{
     position: absolute;
     width: 100%;
 }
-.catalog .inner_box_click .nameBox{
+.catalog .nameBox{
     padding: 10px 10px 0px 10px;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 16px;
     width: 100%;
 }
-.catalog .inner_box_click .nameBox .name{
+.catalog .nameBox .name{
     display: inline-block;
 }
-.catalog .inner_box_click .nameBox .articul{
+.catalog .nameBox .articul{
     display: inline-block;
     float: right;
 }
@@ -313,11 +316,11 @@ a, a:hover, a:focus{
     padding: 0px 20px;
 }
 
-.catalog .inner_box_click .bottomBox{
+.catalog .bottomBox{
     padding: 10px;
 }
 
-.catalog .inner_box_click .bottomBox{
+.catalog .bottomBox{
     height: 36px;
     line-height: 36px;
     display: table;
@@ -328,49 +331,55 @@ a, a:hover, a:focus{
     width: 100%;
 }
 
-.catalog .inner_box_click .bottomBox form{
+.catalog .bottomBox form{
     float: right;
     padding: 0;
 }
 
-.catalog .inner_box_click .bottomBox .form-group{
+.catalog .bottomBox .form-group{
     margin-bottom: 0px;
 }
 
-.catalog .inner_box_click .bottomBox *{
+.catalog .bottomBox *{
     display: inline-block;
     vertical-align: middle;
 }
 
-.catalog .inner_box_click .bottomBox label{
+.catalog .bottomBox label{
     display: none;
 }
 
-.catalog .inner_box_click .bottomBox button[type="submit"],
-.catalog .inner_box_click .bottomBox input[type="number"]{
+.catalog .bottomBox button[type="submit"],
+.catalog .bottomBox input[type="number"]{
     border: solid 1px #000;
     width: 89px;
     height: 34px;
     background: none;
     font-weight: normal;
     border-radius: inherit;
+    display: none;
+    font-size: 16px;
 }
+.catalog .inner_box_click .bottomBox button[type="submit"],
 .catalog .inner_box_click .bottomBox input[type="number"]{
+    display: inline-block;
+}
+.catalog .bottomBox input[type="number"]{
     width: 79px;
 }
-.catalog .inner_box_click .bottomBox button[type="submit"]{
+.catalog .bottomBox button[type="submit"]{
     line-height: 31px;
 }
 
-.catalog .inner_box_click .bottomBox button[type="submit"]{
+.catalog .bottomBox button[type="submit"]{
     margin-left: 14px;
 }
 
-.catalog .inner_box_click .bottomBox .price{
+.catalog .bottomBox .price{
     font-weight: normal;
 }
 
-.catalog .inner_box_click .descriptionBox{
+.catalog .descriptionBox{
     min-height: 111px;
     background: #fff;
     color: #000;
@@ -382,18 +391,22 @@ a, a:hover, a:focus{
     border-bottom: solid 1px #dcdcdc;
     border-right: solid 1px #dcdcdc;
     border-left: solid 1px #dcdcdc;
+    display: none;
 }
-.catalog .inner_box_click .wrap_descriptionBoxBorderTop{
+.catalog .inner_box_click .descriptionBox{
+    display: block;
+}
+.catalog .wrap_descriptionBoxBorderTop{
     height: 1px;
     background: #fff;
 }
-.catalog .inner_box_click .descriptionBoxBorderTop{
+.catalog .descriptionBoxBorderTop{
     height: 1px;
     background: #dcdcdc;
     margin: 0 10px;
 }
 
-.catalog .inner_box_click .descriptionBox .header{
+.catalog .descriptionBox .header{
     text-transform: uppercase;
     color: #000;
     font-family: "Open Sans";
@@ -401,7 +414,7 @@ a, a:hover, a:focus{
 }
 
 .catalog .box .clickBox{
-    display: none;
+    /*display: none;*/
 }
 
 .catalog .inner_box:hover{
@@ -489,7 +502,7 @@ a, a:hover, a:focus{
 .wrap_footer .footer ul li{
     list-style: none;
     display: inline-block;
-    color: #9a9a9a;
+    color: #000;
     font-family: Open Sans;
     font-size: 14px;
     vertical-align: top;
@@ -497,8 +510,14 @@ a, a:hover, a:focus{
 .form-group {
     margin-bottom: 22px;
 }
+.form-group span{
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    margin-left: 10px;
+}
 .wrap_footer .footer ul li a{
-    color: #9a9a9a;
+    color: #000;
     font-family: Open Sans;
     font-size: 14px;
 }
@@ -680,19 +699,25 @@ h4, .container form{
     line-height: 50px;
 }
 .page-header h1{
-    color: #000; /* text color */
+    color: #000;
     font-family: "Calibri";
     font-size: 21px;
     margin: 0;
     height: 50px;
     line-height: 50px;
+    display: inline-block;
+}
+.page-header span{
+    color: gray;
+    font-family: "Calibri";
+    font-size: 16px;
 }
 .well{
     min-height: 84px;
     background: none;
     border: 1px solid #dcdcdc;
     border-radius: 0;
-    padding: 115px 88px 50px 88px;
+    padding: 50px 88px 50px 88px;
 }
 .well .left{
     float: left;
@@ -713,6 +738,18 @@ h4, .container form{
     margin: 294px 0 0 0;
     width: 100%;
 }
+.registerOptForm .form-actions{
+    padding: 22px 0 0 0;
+    text-align: left;
+    background: none;
+    border-top: 1px solid #dcdcdc;
+    margin: 310px 0 0 0;
+    width: 100%;
+}
+.registerForm .form-actions .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
 .registerForm .alert-danger{
     margin: 22px auto 0px auto;
     position: relative;
@@ -725,6 +762,7 @@ h4, .container form{
     color: #000;
     font-family: "Calibri";
     font-size: 21px;
+    display: inline-block;
 }
 .btn-lg{
     color: #fff;
@@ -741,9 +779,17 @@ h4, .container form{
     border: 0;
     background: #000;
 }
+.btn-success.active{
+    background: #01c4ba;
+}
 .help-block{
     display: none;
 }
 .form-control.ng-invalid{
     border: solid 1px red;
+}
+.form-control.ng-valid{
+    background: url("/images/ok.png");
+    background-repeat: no-repeat;
+    background-position: right center;
 }

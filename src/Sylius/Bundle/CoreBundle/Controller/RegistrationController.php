@@ -34,6 +34,9 @@ class RegistrationController extends BaseController
         $form = $formFactory->createForm();
         $form->remove("inn");
         $form->remove("nameCompany");
+        $form->remove("formCompany");
+        $form->remove("profileCompany");
+        $form->remove("countPoint");
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {

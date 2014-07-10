@@ -14,6 +14,7 @@ namespace Sylius\Bundle\TaxonomiesBundle\Controller;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Taxon controller.
@@ -49,5 +50,17 @@ class TaxonController extends ResourceController
     protected function getTaxonomyRepository()
     {
         return $this->get('sylius.repository.taxonomy');
+    }
+
+    public function deleteAction(Request $request){
+        $id = $request->get('id');
+        $repository = $this->get('sylius.repository.taxon');
+        $taxon = $repository->findOneBy(array("id" => $id));
+        if($taxon){
+            $manager = $this->getDoctrine()->getManager();
+            $taxon->setPermalink(uniqid());
+            $manager->flush();
+        }
+        return parent::deleteAction($request);
     }
 }

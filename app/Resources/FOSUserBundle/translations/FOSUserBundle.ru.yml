@@ -12,7 +12,8 @@ security:
 
 # Registration
 registration:
-    register_header: <h1>Регистрация</h1>
+    register_header: <h1>Регистрация</h1><span> поля отмеченные * обязательны для заполенения</span>
+    register_header_opt: <h1>Регистрация оптовых покупателей</h1><span> поля отмеченные * обязательны для заполенения</span>
     confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>
     submit: "Готово"
     first_name:
@@ -21,11 +22,14 @@ registration:
         max: "Имя контактного лица должно быть не больше 255 символов"
 
 form:
-    name: "Имя контактного лица"
+    name: "Имя"
     inn: "ИНН из 10 цифр"
     nameCompany: "Название компании"
+    formCompany: "Форма компании"
+    profileCompany: "Профиль деятельности компании"
+    countPoint: "Кол-во торговых точек"
     city: "Город"
-    email: "Электронная почта"
-    phone: "Контактный телефон"
+    email: "Электронная почта (логин)"
+    phone: "Телефон"
     password: "Пароль"
     password_confirmation: "Введите пароль повторно"

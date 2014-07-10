@@ -43,15 +43,15 @@
 
         $scope.onlyNumbers = /^\d+$/;
 
-        $scope.phoneNumberPattern = (function() {
-            var regexp = /^\(?(\d{3})\)?[ .-]?(\d{7})$/;
-            return {
-                test: function(value) {
-                    if( $scope.requireTel === false ) return true;
-                    else return regexp.test(value);
-                }
-            };
-        })();
+//        $scope.phoneNumberPattern = (function() {
+//            var regexp = /^\(?(\d{3})\)?[ .-]?(\d{7})$/;
+//            return {
+//                test: function(value) {
+//                    if( $scope.requireTel === false ) return true;
+//                    else return regexp.test(value);
+//                }
+//            };
+//        })();
 
         $scope.submit=function(){
 
@@ -60,6 +60,6 @@
 
     $("#fos_user_registration_form_inn").mask("9999999999");
 
-    $("#fos_user_registration_form_phone").mask("(999) 9999999");
+//    $("#fos_user_registration_form_phone").mask("(999) 9999999");
 
 }());

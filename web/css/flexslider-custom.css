@@ -25,6 +25,7 @@
     bottom: 0;
     margin: auto 0;
     height: 308px;
+    padding-left: 20px;
 }
 .flexslider .text .header{
     color: #fff;

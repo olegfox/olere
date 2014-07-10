@@ -1,0 +1,30 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% from 'SyliusWebBundle:Frontend/Taxon:macros.html.twig' import gridSub %}
+
+{% block border %}
+    <div class="borderHead"></div>
+{% endblock %}
+
+{#{% macro while(taxon) %}#}
+    {#{% import _self as self %}#}
+    {#{% if taxon.parent %}#}
+        {#taxon.parent.name /#}
+        {#{{ self.while() }}#}
+    {#{% endif %}#}
+{#{% endmacro %}#}
+
+{% block content %}
+    <div class="catalog">
+        <div class="head">
+            {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
+                <a href="{{ path("sylius_collections") }}">Коллекции</a> / {{ taxon.name }}
+            {% else %}
+                <a href="{{ path("sylius_catalog") }}">Каталог</a> / {{ taxon.name }}
+            {% endif %}
+        </div>
+        {{ gridSub(collections) }}
+    </div>
+{% endblock %}
+
+

@@ -300,6 +300,14 @@ class ProductController extends ResourceController
         $taxon = $this->get('sylius.repository.taxon')
             ->findOneBySlug($category);
 
+        if(count($taxon->getChildren()) > 0){
+            $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
+            return $this->render('SyliusWebBundle:Frontend/Taxon:sub_collection.html.twig', array(
+                'collections' => $collections,
+                'taxon' => $taxon
+            ));
+        }
+
         if (!isset($taxon)) {
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }

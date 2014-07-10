@@ -33,6 +33,25 @@ class RegistrationFormType extends BaseType
         $builder->add('nameCompany', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.nameCompany"
         )));
+        $builder->add('formCompany', 'choice', array(
+            'choices'   => array(
+                'ООО2' => 'ООО',
+                'ИП' => 'ИП',
+                'ЗАО' => 'ЗАО',
+                'ГК' => 'ГК',
+                'Совместная закупка' => 'Совместная закупка',
+            ),
+            'label' => false,
+            'translation_domain' => 'FOSUserBundle',
+            'empty_value' => 'form.formCompany'
+        ));
+        $builder->add('profileCompany', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.profileCompany"
+        )));
+        $builder->add('countPoint', 'number', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.countPoint"
+        )));
+
 
         parent::buildForm($builder, $options);
 

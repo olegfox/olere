@@ -119,12 +119,12 @@
                     <td>{{ 'sylius.product.shipping_category'|trans }}</td>
                     <td>{{ product.shippingCategory|default('sylius.product.no_shipping_category'|trans) }}</td>
                 </tr>
-                <tr>
-                    <td>{{ 'sylius.product.available_on_demand'|trans }}</td>
-                    <td>
-                        {{ misc.state_label(product.masterVariant.availableOnDemand) }}
-                    </td>
-                </tr>
+                {#<tr>#}
+                    {#<td>{{ 'sylius.product.available_on_demand'|trans }}</td>#}
+                    {#<td>#}
+                        {#{{ misc.state_label(product.masterVariant.availableOnDemand) }}#}
+                    {#</td>#}
+                {#</tr>#}
                 {% if product.restrictedZone %}
                     <tr>
                         <td>{{ 'sylius.product.restricted_zone'|trans }}</td>

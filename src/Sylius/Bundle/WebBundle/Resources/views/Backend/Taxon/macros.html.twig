@@ -45,8 +45,8 @@
         </div>
     </td>
 </tr>
-{% if taxon.children|length > 0 %}
-    {{ _self.tree(taxonomy, taxon.children) }}
-{% endif %}
+{#{% if taxon.children|length > 0 %}#}
+    {#{{ _self.tree(taxonomy, taxon.children) }}#}
+{#{% endif %}#}
 {% endfor %}
 {% endmacro %}

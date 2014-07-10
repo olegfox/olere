@@ -3,6 +3,7 @@
 {% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
 {% from 'SyliusWebBundle:Backend/Product:macros.html.twig' import list as list_products %}
 {% from 'SyliusWebBundle:Backend/Taxon:macros.html.twig' import list as list_taxons %}
+{% from 'SyliusWebBundle:Backend/Taxon:macros.html.twig' import tree %}
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 
 {% set taxonomy = taxon.taxonomy %}
@@ -24,7 +25,19 @@
     </div>
     <h1><i class="glyphicon glyphicon-tags"></i> {{ 'sylius.taxon.product_index_header'|trans({'%name%': taxon.name})|raw }}</h1>
 </div>
-
+{% if taxon.getChildren()|length > 0 %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{{ taxon.name }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{ tree(taxon.getTaxonomy(), taxon.getChildren()) }}
+        </tbody>
+    </table>
+{% endif %}
 {{ pagination(products) }}
 {{ list_products(products) }}
 {{ pagination(products) }}

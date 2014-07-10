@@ -39,6 +39,9 @@ class User extends BaseUser implements UserInterface
     protected $nameCompany;
     protected $phone;
     protected $city;
+    protected $formCompany;
+    protected $profileCompany;
+    protected $countPoint;
 
     public function __construct()
     {
@@ -424,5 +427,59 @@ class User extends BaseUser implements UserInterface
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFormCompany($formCompany)
+    {
+        $this->formCompany = $formCompany;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormCompany()
+    {
+        return $this->formCompany;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setProfileCompany($profileCompany)
+    {
+        $this->profileCompany = $profileCompany;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProfileCompany()
+    {
+        return $this->profileCompany;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCountPoint($countPoint)
+    {
+        $this->countPoint = $countPoint;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCountPoint()
+    {
+        return $this->countPoint;
     }
 }

@@ -86,6 +86,9 @@
         <field name="nameCompany" column="nameCompany" type="string" nullable="true" />
         <field name="phone" column="phone" type="string" nullable="true" />
         <field name="city" column="city" type="string" nullable="true" />
+        <field name="formCompany" column="formCompany" type="string" nullable="true" />
+        <field name="profileCompany" column="profileCompany" type="string" nullable="true" />
+        <field name="countPoint" column="countPoint" type="string" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>
