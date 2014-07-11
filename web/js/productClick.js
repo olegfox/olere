@@ -9,29 +9,29 @@ $(function(){
                 $(".inner_box_click").parent().css({
                     padding : "0px"
                 });
-                $(".inner_box_click .clickBox").css({
+                $(".inner_box_click .descriptionBox").css({
                     display : "none"
                 });
-//                $(".inner_box").css({
-//                    "-o-transition":".5s",
-//                    "-ms-transition":".5s",
-//                    "-moz-transition":".5s",
-//                    "-webkit-transition":".5s",
-//                    "transition":".5s"
-//                });
+////                $(".inner_box").css({
+////                    "-o-transition":".5s",
+////                    "-ms-transition":".5s",
+////                    "-moz-transition":".5s",
+////                    "-webkit-transition":".5s",
+////                    "transition":".5s"
+////                });
                 $(".inner_box_click").removeClass("inner_box_click");
 
 
-                $(this).parent().css({
-                    "-o-transition":".0s",
-                    "-ms-transition":".0s",
-                    "-moz-transition":".0s",
-                    "-webkit-transition":".0s",
-                    "transition":".0s"
-                });
-                $(this).parent().parent().css({
-                    padding : "0px"
-                });
+//                $(this).parent().css({
+//                    "-o-transition":".0s",
+//                    "-ms-transition":".0s",
+//                    "-moz-transition":".0s",
+//                    "-webkit-transition":".0s",
+//                    "transition":".0s"
+//                });
+//                $(this).parent().parent().css({
+//                    padding : "0px"
+//                });
                 $(this).parent().addClass("inner_box_click");
                 $(this).parent().find(".clickBox").css({
                     display : "table"
@@ -47,13 +47,13 @@ $(function(){
             }
         }else{
             if(!$(this).parent().parent().parent().hasClass("inner_box_click")){
-                $(this).parent().parent().parent().css({
-                    "-o-transition":".0s",
-                    "-ms-transition":".0s",
-                    "-moz-transition":".0s",
-                    "-webkit-transition":".0s",
-                    "transition":".0s"
-                });
+//                $(this).parent().parent().parent().css({
+//                    "-o-transition":".0s",
+//                    "-ms-transition":".0s",
+//                    "-moz-transition":".0s",
+//                    "-webkit-transition":".0s",
+//                    "transition":".0s"
+//                });
                 $(this).parent().parent().parent().parent().css({
                     padding : "0px"
                 });
@@ -69,6 +69,9 @@ $(function(){
             }
         }
     }, function(){
-//        $(".inner_box_click").removeClass("inner_box_click");
+        $(".inner_box_click .descriptionBox").css({
+            display : "none"
+        });
+        $(".inner_box_click").removeClass("inner_box_click");
     });
 });

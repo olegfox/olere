@@ -52,7 +52,14 @@
 //                }
 //            };
 //        })();
-
+        $scope.$watch('user', function() {
+            $("input.ng-valid").each(function(){
+                $(this).parent().find("span.valid").css("display", 'inline-block');
+            });
+            $("input.ng-invalid").each(function(){
+                $(this).parent().find("span.valid").css("display", 'none');
+            });
+        }, true);
         $scope.submit=function(){
 
         }

@@ -399,6 +399,10 @@ a, a:hover, a:focus{
 .catalog .wrap_descriptionBoxBorderTop{
     height: 1px;
     background: #fff;
+    display: none;
+}
+.catalog .inner_box_click .wrap_descriptionBoxBorderTop{
+    display: block;
 }
 .catalog .descriptionBoxBorderTop{
     height: 1px;
@@ -515,6 +519,16 @@ a, a:hover, a:focus{
     line-height: 40px;
     display: inline-block;
     margin-left: 10px;
+}
+.form-group span.valid{
+    height: 40px;
+    width: 27px;
+    line-height: 40px;
+    display: inline-block;
+    position: absolute;
+    margin-left: -35px;
+    background: url(/images/ok.png) left center no-repeat;
+    display: none;
 }
 .wrap_footer .footer ul li a{
     color: #000;
@@ -710,7 +724,7 @@ h4, .container form{
 .page-header span{
     color: gray;
     font-family: "Calibri";
-    font-size: 16px;
+    font-size: 21px;
 }
 .well{
     min-height: 84px;
@@ -757,39 +771,38 @@ h4, .container form{
 .form-control{
     width: 414px;
     height: 38px;
-    border: solid 1px #000;
+    border: solid 1px #dcdcdc;
     border-radius: 0;
     color: #000;
     font-family: "Calibri";
     font-size: 21px;
     display: inline-block;
 }
+::-webkit-input-placeholder {color:#000!important;}
+::-moz-placeholder          {color:#000!important;}/* Firefox 19+ */
+:-moz-placeholder           {color:#000!important;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#000!important;}
 .btn-lg{
     color: #fff;
     font-family: "Calibri";
     font-size: 21px;
     border-radius: 0;
     padding: 0;
-    background: #000;
+    background: #01c4ba;
     border: 0;
     width: 150px;
     height: 45px;
 }
-.btn-success:hover, .btn-success:focus, .btn-success[disabled]{
+.btn-success[disabled]{
     border: 0;
     background: #000;
 }
-.btn-success.active{
+.btn-success:hover, .btn-success:focus, .btn-success.active{
     background: #01c4ba;
 }
 .help-block{
     display: none;
 }
 .form-control.ng-invalid{
-    border: solid 1px red;
-}
-.form-control.ng-valid{
-    background: url("/images/ok.png");
-    background-repeat: no-repeat;
-    background-position: right center;
+    /*border: solid 1px red;*/
 }

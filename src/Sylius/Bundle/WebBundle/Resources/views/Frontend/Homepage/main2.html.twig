@@ -1,0 +1,58 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset("css/flexslider.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset("css/flexslider-custom.css") }}" type="text/css"/>
+{% endblock %}
+
+{% block slider %}
+    <div class="flexslider">
+        <ul class="slides">
+            {% if sliders is defined %}
+                    <li>
+                        <img src="{{ asset('images/slider/'~sliders[0].image) }}"
+                             alt="{{ asset('images/slider/'~sliders[0].image) }}"/>
+                        <div class="text">
+                            <div class="header">
+                                Украшения и бижутерия из серебра оптом и в розницу
+                            </div>
+                            <p>
+                                - Большой ассоритмент продукции
+                            </p>
+                            <p>
+                                - Оригинальняые модели
+                            </p>
+                            <p>
+                                - Хорошее качество изделий
+                            </p>
+                            <p>
+                                - Низкие цены
+                            </p>
+                            <a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация оптовых клиентов</a>
+                        </div>
+                    </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="borderSlider"></div>
+{% endblock %}
+{% block content %}
+    <div class="content">
+        {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
+    </div>
+
+    <!-- Catalog -->
+    <div class="catalog catalogMain">
+        <div class="head">
+            Каталог
+        </div>
+        {{ render(url('sylius_collection_main')) }}
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        {{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}
+    </div>
+{% endblock %}

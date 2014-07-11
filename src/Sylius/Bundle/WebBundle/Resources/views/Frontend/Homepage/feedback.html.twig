@@ -1,5 +1,7 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
+{% from 'SyliusWebBundle:Frontend/Macros:alerts.html.twig' import success %}
+
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block html %} ng-app="register"{% endblock %}
@@ -10,18 +12,14 @@
 
 {% block content %}
     <div class="page-header">
-        {{ 'registration.register_header'|trans|raw }}
+        {{ 'registration.feedback'|trans|raw }}
     </div>
-    <form name="form" action="{{ path('fos_user_registration_register') }}" method="post" class="form-horizontal registerForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
+    <form name="form" action="{{ path('sylius_feedback') }}" method="post" class="form-horizontal registerForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
         <fieldset class="well">
             <div class="left">
                 <div class="form-group">
                     {{ form_label(form.firstName) }}
                     <span class="valid"></span>{{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'ng-model' : 'user.firstName', 'ng-minlength' : '2', 'ng-maxlength' : '255'}, 'required' : 'required'  }) }}<span>*</span>
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.city) }}
-                    <span class="valid"></span>{{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}<span>*</span>
                 </div>
                 <div class="form-group">
                     {{ form_label(form.email, '') }}
@@ -32,24 +30,16 @@
                     <span class="valid"></span>{{ form_widget(form.phone, { 'attr': {'class': 'form-control', 'ng-model' : 'user.phone'} }) }}<span>*</span>
                 </div>
             </div>
-            <div class="right">
-                {% for passwordField in form.plainPassword %}
-                    <div class="form-group">
-                        {{ form_label(passwordField, '') }}
-                        <span class="valid"></span>{{ form_widget(passwordField, { 'attr': {'class': 'form-input'} }) }}<span>*</span>
-                    </div>
-                {% endfor %}
-            </div>
             <div class="form-actions clearfix">
                 <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
             </div>
             {{ form_errors(form) }}
-            {#<div class="alert alert-danger" ng-show="user.firstName.$error.required">{{ 'registration.first_name.not_blank'|trans }}</div>#}
-            {#<div class="alert alert-danger" ng-show="user.firstName.$error.min">{{ 'registration.first_name.min'|trans }}</div>#}
-            {#<div class="alert alert-danger" ng-show="user.firstName.$error.max">{{ 'registration.first_name.max'|trans }}</div>#}
         </fieldset>
         {{ form_end(form) }}
     </form>
+    {% if send is defined %}
+        {{ success("Спасибо. Скоро с вами свяжутся!") }}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

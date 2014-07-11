@@ -60,7 +60,7 @@
             Время работы: с 9 до 19
         </div>
         <div class="topCallback">
-            <input type="button" class="buttonCallback" value="Заказать обратный звонок" />
+            <a href="{{ path('sylius_feedback') }}" class="buttonCallback">Заказать обратный звонок</a>
         </div>
         <div class="topSearch">
             {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}

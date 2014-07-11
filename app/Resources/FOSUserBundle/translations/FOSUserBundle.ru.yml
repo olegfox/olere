@@ -12,8 +12,9 @@ security:
 
 # Registration
 registration:
-    register_header: <h1>Регистрация</h1><span> поля отмеченные * обязательны для заполенения</span>
-    register_header_opt: <h1>Регистрация оптовых покупателей</h1><span> поля отмеченные * обязательны для заполенения</span>
+    register_header: <h1>Регистрация.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
+    register_header_opt: <h1>Регистрация оптовых покупателей.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
+    feedback: <h1>Обратный звонок.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
     confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>
     submit: "Готово"
     first_name:
@@ -30,6 +31,7 @@ form:
     countPoint: "Кол-во торговых точек"
     city: "Город"
     email: "Электронная почта (логин)"
+    email2: "Электронная почта"
     phone: "Телефон"
     password: "Пароль"
     password_confirmation: "Введите пароль повторно"
