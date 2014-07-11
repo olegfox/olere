@@ -210,6 +210,7 @@ class ProductController extends ResourceController
                     }
                 }
                 $manager->flush();
+                $this->importScanAction($request);
                 return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
                     'form' => $form->createView(),
                     'data' => $data

@@ -33,9 +33,29 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             ->getResult()
         ;
     }
+//
+//    function cmp($a, $b)
+//    {
+//        if ($a['percent'] == $b['percent']) {
+//            return 0;
+//        }
+//        return ($a['percent'] < $b['percent']) ? -1 : 1;
+//    }
 
     public function findOneByCatName($nameCat)
     {
+//        $percent = "";
+//        $taxons = $this->findAll();
+//        $p = array();
+//        $i = 0;
+//        foreach($taxons as $t){
+//            $p[$i]['taxon'] = $t;
+//            similar_text ( $t->getName(), $nameCat, $percent);
+//            $p[$i]['percent'] =  $percent;
+//            $i++;
+//        }
+//        usort($p, "cmp");
+//        return json_encode($p);
         $qb = $this->getQueryBuilder();
         $q = $qb
             ->where(

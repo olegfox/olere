@@ -3,8 +3,8 @@ $(function(){
         if($(this).parent().hasClass("inner_box")){
             if(!$(this).parent().hasClass("inner_box_click")){
 //                reset
-                if($(this).find('img').attr('data-img2') != ""){
-                    $(this).find('img').attr('src', $(this).find('img').attr('data-img2'));
+                if($(this).find('img').attr('data-image2') != ""){
+                    $(this).find('img').attr('src', $(this).find('img').attr('data-image2'));
                 }
                 $(".inner_box_click").parent().css({
                     padding : "0px"
@@ -41,8 +41,8 @@ $(function(){
                 });
                 return false;
             }else{
-                if($(this).find('img').attr('data-img1') != ""){
-                    $(this).find('img').attr('src', $(this).find('img').attr('data-img1'));
+                if($(this).find('img').attr('data-image1') != ""){
+                    $(this).find('img').attr('src', $(this).find('img').attr('data-image1'));
                 }
             }
         }else{
@@ -63,8 +63,8 @@ $(function(){
                 });
                 return false;
             }else{
-                if($(this).find('img').attr('data-img1') != ""){
-                    $(this).find('img').attr('src', $(this).find('img').attr('data-img1'));
+                if($(this).find('img').attr('data-image1') != ""){
+                    $(this).find('img').attr('src', $(this).find('img').attr('data-image1'));
                 }
             }
         }
@@ -72,6 +72,9 @@ $(function(){
         $(".inner_box_click .descriptionBox").css({
             display : "none"
         });
+        if($(this).find('img').attr('data-image1') != ""){
+            $(this).find('img').attr('src', $(this).find('img').attr('data-image1'));
+        }
         $(".inner_box_click").removeClass("inner_box_click");
     });
 });
