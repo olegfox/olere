@@ -13,6 +13,7 @@ security:
 # Registration
 registration:
     register_header: <h1>Регистрация.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
+    register_headerType: <h1>Регистрация.</h1>
     register_header_opt: <h1>Регистрация оптовых покупателей.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
     feedback: <h1>Обратный звонок.</h1><span> Поля отмеченные * обязательны для заполенения.</span>
     confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>

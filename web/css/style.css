@@ -744,6 +744,12 @@ h4, .container form{
 .registerForm label{
     display: none;
 }
+.registerTypeForm label{
+    display: block;
+    color: #000;
+    font-family: "Calibri";
+    font-size: 21px;
+}
 .registerForm .form-actions{
     padding: 50px 0 0 0;
     text-align: left;

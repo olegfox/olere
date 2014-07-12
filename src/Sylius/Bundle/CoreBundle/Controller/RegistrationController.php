@@ -12,6 +12,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends BaseController
 {
+    public function registerTypeAction(Request $request){
+        if ('POST' === $request->getMethod()) {
+            if($request->get("type") == 0){
+                return new RedirectResponse('/register');
+            }else{
+                return new RedirectResponse('/opt/register');
+            }
+        }
+
+
+        return $this->container->get('templating')->renderResponse('SyliusWebBundle:Frontend/Account:registerType.html.twig');
+    }
+
     public function registerAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
