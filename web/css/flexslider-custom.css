@@ -5,6 +5,13 @@
     background: url(/images/sliderBg.jpg) no-repeat;
     background-size: cover;
 }
+.flexslider2{
+    width: 100%;
+    margin: 0px auto 0px auto;
+    max-width: 100%;
+    background: none;
+    background-size: cover;
+}
 .borderSlider{
     position: relative;
     height: 1px;

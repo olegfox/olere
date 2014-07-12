@@ -69,7 +69,7 @@ class HomepageController extends Controller
      *
      * @return Response
      */
-    public function mainAction()
+    public function mainAction(Request $request)
     {
 //        $response = $this->forward('sylius.controller.page:showAction', array(
 //            "_sylius" => array(
@@ -77,6 +77,9 @@ class HomepageController extends Controller
 //            )
 //        ));
 //        $page = $this->get('sylius.repository.page')->findPage("main");
+        if($request->getHost() == "sylius.olegfox.tk"){
+            return $this->main2Action();
+        }
         $repository = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Slider');
         $sliders = $repository->findAll();

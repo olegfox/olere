@@ -8,31 +8,15 @@
 {% endblock %}
 
 {% block slider %}
-    <div class="flexslider">
+    <div class="flexslider flexslider2">
         <ul class="slides">
             {% if sliders is defined %}
+                {% for slider in sliders %}
                     <li>
-                        <img src="{{ asset('images/slider/'~sliders[0].image) }}"
-                             alt="{{ asset('images/slider/'~sliders[0].image) }}"/>
-                        <div class="text">
-                            <div class="header">
-                                Украшения и бижутерия из серебра оптом и в розницу
-                            </div>
-                            <p>
-                                - Большой ассоритмент продукции
-                            </p>
-                            <p>
-                                - Оригинальняые модели
-                            </p>
-                            <p>
-                                - Хорошее качество изделий
-                            </p>
-                            <p>
-                                - Низкие цены
-                            </p>
-                            <a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация оптовых клиентов</a>
-                        </div>
+                        <img src="{{ asset('images/slider/'~slider.image) }}"
+                             alt="{{ asset('images/slider/'~slider.image) }}"/>
                     </li>
+                {% endfor %}
             {% endif %}
         </ul>
     </div>
