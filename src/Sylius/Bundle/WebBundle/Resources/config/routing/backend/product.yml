@@ -57,3 +57,8 @@ sylius_backend_product_show:
             template: SyliusWebBundle:Backend/Product:show.html.twig
             method: findForDetailsPage
             arguments: [$id]
+
+sylius_backend_product_change_order:
+    pattern: /order_change/{drag}/{drop}
+    defaults:
+        _controller: sylius.controller.backend.dashboard:productOrderChangeAction

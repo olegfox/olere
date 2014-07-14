@@ -1,0 +1,7 @@
+.flexslider ul.slides{
+    padding: 0px 20px 0px 20px;
+}
+.flexslider2{
+    max-height: 424px;
+    overflow: hidden!important;
+}

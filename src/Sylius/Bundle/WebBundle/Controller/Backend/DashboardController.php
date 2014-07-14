@@ -112,4 +112,19 @@ class DashboardController extends Controller
         $manager->flush();
         return new Response("ok");
     }
+
+    public function productOrderChangeAction($drag, $drop){
+        $taxonRepository = $this->get('sylius.repository.product');
+
+        $dragTaxon = $taxonRepository->findOneBy(array("position" => $drag));
+        $dropTaxon = $taxonRepository->findOneBy(array("position" => $drop));
+
+        $dragTaxon->setPosition($drop);
+        $dropTaxon->setPosition($drag);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+        return new Response("ok");
+    }
+
 }

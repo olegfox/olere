@@ -132,6 +132,7 @@ a, a:hover, a:focus{
 }
 .container .push{
     height: 130px;
+    z-index: 0;
 }
 .logoBox{
     margin: 0px auto;
@@ -226,7 +227,8 @@ a, a:hover, a:focus{
     margin-bottom: 18px;
     background: #dcdcdc;
 }
-.catalog .head a:hover{
+.catalog .head a:hover,
+.product .head a:hover{
     color: #01c4ba;
 }
 .catalogMain .head{
@@ -338,6 +340,7 @@ a, a:hover, a:focus{
 
 .catalog .bottomBox .form-group{
     margin-bottom: 0px;
+    margin-top: -3px;
 }
 
 .catalog .bottomBox *{
@@ -458,6 +461,7 @@ a, a:hover, a:focus{
     line-height: 50px;
     margin-top: 10px;
     position: relative;
+    z-index: 2;
 }
 .wrap_bottomMenu .bottomMenu{
     max-width: 1200px;
@@ -480,6 +484,12 @@ a, a:hover, a:focus{
     color: #000;
     font-family: Open Sans;
     font-size: 16px;
+}
+.wrap_bottomMenu .bottomMenu ul li a:hover{
+    color: #01c4ba;
+}
+.wrap_bottomMenu .bottomMenu ul li.active a{
+    color: #01c4ba;
 }
 .wrap_bottomMenu .bottomMenu ul li.last{
     width: 100%;

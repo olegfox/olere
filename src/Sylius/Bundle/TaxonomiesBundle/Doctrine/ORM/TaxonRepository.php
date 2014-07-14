@@ -33,7 +33,7 @@ class TaxonRepository extends EntityRepository implements TaxonRepositoryInterfa
             ->getResult()
         ;
     }
-//
+
 //    function cmp($a, $b)
 //    {
 //        if ($a['percent'] == $b['percent']) {

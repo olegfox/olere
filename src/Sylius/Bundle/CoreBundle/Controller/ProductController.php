@@ -122,7 +122,10 @@ class ProductController extends ResourceController
 //                                }
 //                            }
 //                        }
-                        $nameCat = mb_substr($name, 0, strlen($name) - 4);
+                        $nameCat = $name;
+                        if(strlen($name) > 10){
+                            $nameCat = mb_substr($name, 0, 10);
+                        }
 //                        print 'Сокращённое название каталога: '.$nameCat;
                         $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat . '%');
 //                    Находим в базе коллекцию по названию из таблицы

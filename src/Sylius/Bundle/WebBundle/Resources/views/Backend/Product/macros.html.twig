@@ -19,6 +19,7 @@
     <tbody>
     {% for product in products %}
         <tr id="{{ product.id }}">
+            <td class="hidden" id="td{{ loop.index }}">{{ loop.index }}</td>
             <td class="id">
                 {{ product.id }}
             </td>
