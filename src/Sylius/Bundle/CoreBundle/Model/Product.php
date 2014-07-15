@@ -85,7 +85,7 @@ class Product extends BaseProduct implements ProductInterface
 
     private $position;
 
-    private $category;
+    private $position2;
 
     /**
      * Constructor.
@@ -386,17 +386,17 @@ class Product extends BaseProduct implements ProductInterface
     /**
      * {@inheritdoc}
      */
-    public function getCategory()
+    public function getPosition2()
     {
-        return $this->category;
+        return $this->position2;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCategory($category)
+    public function setPosition2($position2)
     {
-        $this->category = $category;
+        $this->position2 = $position2;
 
         return $this;
     }
