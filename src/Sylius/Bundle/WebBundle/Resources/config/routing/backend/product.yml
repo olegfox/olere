@@ -64,6 +64,6 @@ sylius_backend_product_change_order:
         _controller: sylius.controller.backend.dashboard:productOrderChangeAction
 
 sylius_backend_product_reset_position:
-    pattern: /reset_position
+    pattern: /reset_position/products/
     defaults:
         _controller: sylius.controller.backend.dashboard:productPositionResetAction

@@ -33,7 +33,23 @@ class ProductRepository extends VariableProductRepository
     public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null)
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
-        if (isset($sorting["name"])) {
+        if (isset($sorting["position"])) {
+            $taxonomyId = $taxon->getTaxonomy()->getId();
+
+            if($taxonomyId == 8){
+                $queryBuilder
+                    ->innerJoin('product.taxons', 'taxon')
+                    ->andWhere('taxon = :taxon')
+                    ->orderBy("product.position", $sorting["position"])
+                    ->setParameter('taxon', $taxon);
+            }else{
+                $queryBuilder
+                    ->innerJoin('product.taxons', 'taxon')
+                    ->andWhere('taxon = :taxon')
+                    ->orderBy("product.position2", $sorting["position"])
+                    ->setParameter('taxon', $taxon);
+            }
+        }elseif (isset($sorting["name"])) {
             $queryBuilder
                 ->innerJoin('product.taxons', 'taxon')
                 ->andWhere('taxon = :taxon')

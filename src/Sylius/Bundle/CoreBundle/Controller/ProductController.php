@@ -374,9 +374,13 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }
 
+        $sorting = array(
+            "position" => 'ASC'
+        );
+
         $paginator = $this
             ->getRepository()
-            ->createByTaxonPaginator($taxon);
+            ->createByTaxonPaginator($taxon, $sorting);
 
         $paginator->setMaxPerPage($this->config->getPaginationMaxPerPage());
         $paginator->setCurrentPage($request->query->get('page', 1));

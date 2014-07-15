@@ -140,6 +140,7 @@ class DashboardController extends Controller
         $products = $taxonRepository->findAll();
         foreach($products as $p){
             $p->setPosition($p->getId());
+            $p->setPosition2($p->getId());
         }
         $manager = $this->getDoctrine()->getManager();
         $manager->flush();
