@@ -135,4 +135,15 @@ class DashboardController extends Controller
         return new Response("ok");
     }
 
+    public function productPositionResetAction(){
+        $taxonRepository = $this->get('sylius.repository.product');
+        $products = $taxonRepository->findAll();
+        foreach($products as $p){
+            $p->setPosition($p->getId());
+        }
+        $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+        return new Response("ok");
+    }
+
 }
