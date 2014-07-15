@@ -7,15 +7,14 @@
 {% block html %} ng-app="register"{% endblock %}
 
 {% block border %}
-    <div class="borderHead borderHead2"></div>
+    <div class="bgForm"></div>
 {% endblock %}
 
 {% block content %}
-    <div class="page-header">
-        {{ 'registration.feedback'|trans|raw }}
-    </div>
-    <form name="form" action="{{ path('sylius_feedback') }}" method="post" class="form-horizontal registerForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
+    <form name="form" action="{{ path('sylius_feedback') }}" method="post" class="form-horizontal registerForm feedbackForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
         <fieldset class="well">
+            {{ 'registration.feedback'|trans|raw }}
+            <hr>
             <div class="left">
                 <div class="form-group">
                     {{ form_label(form.firstName) }}
@@ -31,7 +30,7 @@
                 </div>
             </div>
             <div class="form-actions clearfix">
-                <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
+                <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.next'|trans }}</button>
             </div>
             {{ form_errors(form) }}
         </fieldset>

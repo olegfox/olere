@@ -3,10 +3,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block content %}
-    <div class="page-header">
-        {{ 'security.login.header'|trans|raw }}
-    </div>
-
     {% if error %}
         <div class="alert alert-danger">
             {{ error }}
@@ -18,22 +14,24 @@
         {#<small>Mr. Sylius Demo Guide</small>#}
     {#</blockquote>#}
 
-    <form action="{{ path('fos_user_security_check') }}" method="post" class="form-horizontal">
-        <fieldset>
+    <form action="{{ path('fos_user_security_check') }}" method="post" class="form-horizontal registerForm feedbackForm loginForm">
+        <fieldset class="well">
+            {{ 'registration.login'|trans|raw }}
+            <hr>
             <div class="form-group">
                 <label for="username" class="col-sm-3 control-label">{{ 'security.login.email'|trans }}</label>
                 <div class="col-sm-9">
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Электронная почта" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">{{ 'security.login.password'|trans }}</label>
                 <div class="col-sm-9">
-                    <input type="password" id="password" name="_password" class="form-control" />
+                    <input type="password" id="password" name="_password" class="form-control" placeholder="Пароль" />
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-9">
+                <div class="col-sm-9">
                     <div class="checkbox">
                         <label for="remember_me">
                             {{ 'security.login.remember_me'|trans }} &nbsp; <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
@@ -43,14 +41,14 @@
             </div>
             <div class="pull-right">
                 <p>
-                    <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-info btn-sm">{{ 'security.login.forgot_password'|trans }}</a>
                     <a href="{{ path('fos_user_type_register') }}" class="btn btn-primary btn-sm">{{ 'security.login.no_account'|trans }}</a>
                 </p>
             </div>
+            <div class="form-actions clearfix">
+                <button type="submit" class="btn btn-primary btn-lg" name="login"><i class="icon-lock"></i> {{ 'security.login.submit'|trans }}</button>
+                <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-info btn-sm btn-sm2">{{ 'form.forgot_password'|trans }}</a>
+            </div>
         </fieldset>
-        <div class="form-actions clearfix">
-            <button type="submit" class="btn btn-primary btn-lg" name="login"><i class="icon-lock"></i> {{ 'security.login.submit'|trans }}</button>
-        </div>
     </form>
 
 {% endblock %}

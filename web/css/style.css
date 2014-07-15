@@ -742,6 +742,7 @@ h4, .container form{
     border: 1px solid #dcdcdc;
     border-radius: 0;
     padding: 50px 88px 50px 88px;
+    position: relative;
 }
 .well .left{
     float: left;
@@ -750,6 +751,9 @@ h4, .container form{
 .well .right{
     float: right;
     margin-right: 15px;
+}
+.feedbackForm{
+    margin-top: 85px;
 }
 .registerForm label{
     display: none;
@@ -768,6 +772,54 @@ h4, .container form{
     margin: 294px 0 0 0;
     width: 100%;
 }
+.feedbackForm .form-actions{
+    border-top: 0;
+}
+.feedbackForm label[for="remember_me"]{
+    display: block!important;
+}
+.loginForm .form-actions{
+    margin: 35px 0 0 0;
+}
+.loginForm .btn-sm{
+    width: 254px;
+    height: 45px;
+    background: #fff;
+    border: solid 2px #bdbdbd;
+    border-radius: 0;
+    color: #868686;
+    font-family: Arial;
+    font-size: 18px;
+}
+.loginForm .btn-sm2{
+    background: #cecece;
+    color: #7b7b7b;
+    border: 0;
+    line-height: 35px;
+    margin-left: 3px;
+}
+.loginForm .pull-right{
+    position: absolute;
+    right: 85px;
+    top: 40px;
+}
+.feedbackForm h1{
+    font-size: 29px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.bgForm{
+    /*background: url(/images/bg-feedback.jpg) no-repeat;*/
+    /*background-size: contain;*/
+}
+.feedbackForm hr{
+    margin-left: 0px;
+    margin-right: 0px;
+    border-top: solid 1px#dcdcdc;
+    height: 1px;
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
 .registerOptForm .form-actions{
     padding: 22px 0 0 0;
     text-align: left;
@@ -783,6 +835,9 @@ h4, .container form{
 .registerForm .alert-danger{
     margin: 22px auto 0px auto;
     position: relative;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+    background: #01c4ba;
 }
 .form-control{
     width: 414px;
