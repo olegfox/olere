@@ -113,14 +113,22 @@ class DashboardController extends Controller
         return new Response("ok");
     }
 
-    public function productOrderChangeAction($drag, $drop){
+    public function productOrderChangeAction($drag, $drop, $type){
         $taxonRepository = $this->get('sylius.repository.product');
 
-        $dragTaxon = $taxonRepository->findOneBy(array("position" => $drag));
-        $dropTaxon = $taxonRepository->findOneBy(array("position" => $drop));
+        if($type == 0){
+            $dragTaxon = $taxonRepository->findOneBy(array("position" => $drag));
+            $dropTaxon = $taxonRepository->findOneBy(array("position" => $drop));
 
-        $dragTaxon->setPosition($drop);
-        $dropTaxon->setPosition($drag);
+            $dragTaxon->setPosition($drop);
+            $dropTaxon->setPosition($drag);
+        }else{
+            $dragTaxon = $taxonRepository->findOneBy(array("position2" => $drag));
+            $dropTaxon = $taxonRepository->findOneBy(array("position2" => $drop));
+
+            $dragTaxon->setPosition2($drop);
+            $dropTaxon->setPosition2($drag);
+        }
 
         $manager = $this->getDoctrine()->getManager();
         $manager->flush();

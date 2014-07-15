@@ -43,3 +43,14 @@
 {{ pagination(products) }}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/jquery.tablednd.js") }}"></script>
+    {% if taxon.getTaxonomy().getId() == 8 %}
+        <script type="text/javascript" src="{{ asset("js/wallPrioritiesProducts.js") }}"></script>
+    {% endif %}
+    {% if taxon.getTaxonomy().getId() == 9 %}
+        <script type="text/javascript" src="{{ asset("js/wallPrioritiesProducts2.js") }}"></script>
+    {% endif %}
+{% endblock %}

@@ -59,6 +59,6 @@ sylius_backend_product_show:
             arguments: [$id]
 
 sylius_backend_product_change_order:
-    pattern: /order_change/{drag}/{drop}
+    pattern: /order_change/{drag}/{drop}/{type}
     defaults:
         _controller: sylius.controller.backend.dashboard:productOrderChangeAction

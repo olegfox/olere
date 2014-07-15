@@ -27,7 +27,9 @@
         <field name="collection" column="collection" type="string" nullable="true" />
 
         <field name="position" type="integer">
-            <gedmo:sortable-position/>
+        </field>
+
+        <field name="position2" type="integer">
         </field>
 
         <many-to-one field="taxCategory" target-entity="Sylius\Bundle\TaxationBundle\Model\TaxCategoryInterface">
