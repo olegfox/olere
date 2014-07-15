@@ -5,15 +5,14 @@
 {% block html %} ng-app="register"{% endblock %}
 
 {% block border %}
-    <div class="borderHead borderHead2"></div>
+
 {% endblock %}
 
 {% block content %}
-    <div class="page-header">
-        {{ 'registration.register_headerType'|trans|raw }}
-    </div>
     <form name="form" action="{{ path('fos_user_type_register') }}" method="post" class="form-horizontal registerForm registerTypeForm" ng-submit="submit">
         <fieldset class="well">
+            {{ 'registration.register_headerType'|trans|raw }}
+            <hr>
             <div class="left">
                 <div class="form-group">
                     <label for="type">Выберите тип покупателя</label>

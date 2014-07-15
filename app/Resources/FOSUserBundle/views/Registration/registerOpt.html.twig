@@ -5,15 +5,13 @@
 {% block html %} ng-app="register"{% endblock %}
 
 {% block border %}
-    <div class="borderHead borderHead2"></div>
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-    {{ 'registration.register_header_opt'|trans|raw }}
-</div>
 <form name="form" action="{{ path('fos_user_opt_register') }}" method="post" class="form-horizontal registerForm registerOptForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
     <fieldset class="well">
+        {{ 'registration.register_header_opt'|trans|raw }}
+        <hr>
         <div class="left">
             <div class="form-group">
                 {{ form_label(form.firstName) }}

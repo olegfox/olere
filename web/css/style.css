@@ -752,7 +752,8 @@ h4, .container form{
     float: right;
     margin-right: 15px;
 }
-.feedbackForm{
+.feedbackForm,
+.registerForm{
     margin-top: 85px;
 }
 .registerForm label{
@@ -768,8 +769,16 @@ h4, .container form{
     padding: 50px 0 0 0;
     text-align: left;
     background: none;
-    border-top: 1px solid #dcdcdc;
     margin: 294px 0 0 0;
+    border-top: 0;
+    width: 100%;
+}
+.registerOptForm .form-actions{
+    padding: 50px 0 0 0;
+    text-align: left;
+    background: none;
+    margin: 35px 0 0 -15px;
+    border-top: 0;
     width: 100%;
 }
 .feedbackForm .form-actions{
@@ -784,12 +793,13 @@ h4, .container form{
 .loginForm .btn-sm{
     width: 254px;
     height: 45px;
-    background: #fff;
+    background: #fff!important;
     border: solid 2px #bdbdbd;
     border-radius: 0;
     color: #868686;
     font-family: Arial;
     font-size: 18px;
+    line-height: 32px;
 }
 .loginForm .btn-sm2{
     background: #cecece;
@@ -812,7 +822,8 @@ h4, .container form{
     /*background: url(/images/bg-feedback.jpg) no-repeat;*/
     /*background-size: contain;*/
 }
-.feedbackForm hr{
+.feedbackForm hr,
+.registerForm hr{
     margin-left: 0px;
     margin-right: 0px;
     border-top: solid 1px#dcdcdc;
