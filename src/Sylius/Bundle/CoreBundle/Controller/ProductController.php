@@ -299,7 +299,9 @@ class ProductController extends ResourceController
      */
     public function indexByTaxonAction(Request $request, $page, $category)
     {
-        $sorting = $request->get("sorting");
+        $sorting = array(
+            "position" => 'ASC'
+        );
 
         $taxon = $this->get('sylius.repository.taxon')
             ->findOneBySlug($category);
@@ -339,9 +341,13 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }
 
+        $sorting = array(
+            "position" => 'ASC'
+        );
+
         $paginator = $this
             ->getRepository()
-            ->createByTaxonPaginator($taxon);
+            ->createByTaxonPaginator($taxon, $sorting);
 
         $paginator->setMaxPerPage(30);
         $paginator->setCurrentPage($request->query->get('page', $page));
