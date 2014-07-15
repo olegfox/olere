@@ -1,6 +1,8 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
 {% from 'SyliusWebBundle:Frontend/Taxon:macros.html.twig' import gridSub %}
+{% from 'SyliusWebBundle:Frontend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
 
 {% block border %}
     <div class="borderHead"></div>
@@ -24,6 +26,8 @@
             {% endif %}
         </div>
         {{ gridSub(collections) }}
+        {{ grid(products) }}
+        {{ pagination(products) }}
     </div>
 {% endblock %}
 

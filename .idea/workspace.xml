@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="790bd95c-e439-4c66-bd8f-01bd92751966" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig" />
     </list>
     <ignored path="Migura.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,37 +27,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="show.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1210" selection-end="1210" vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="629">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexByTaxon.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/indexByTaxon.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="0" selection-start="919" selection-end="982" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="714">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="macros.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/macros.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/macros.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="19" selection-start="892" selection-end="892" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="1819">
+            <state line="6" column="43" selection-start="475" selection-end="475" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="221">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wallPrioritiesProducts2.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/wallPrioritiesProducts2.js">
+      <file leaf-file-name="collection.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/collection.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="57" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+            <state line="2" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="153">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="taxonomy.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxonomy.yml">
+      <file leaf-file-name="sub_collection.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="40" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taxon.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxon.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="67" selection-start="925" selection-end="945" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+            <state line="22" column="83" selection-start="812" selection-end="817" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="680">
               <folding />
             </state>
           </provider>
@@ -64,25 +75,16 @@
       <file leaf-file-name="ProductController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="53" selection-start="14274" selection-end="14274" vertical-scroll-proportion="1.3125" vertical-offset="4556" max-vertical-offset="7361">
+            <state line="320" column="40" selection-start="13417" selection-end="13417" vertical-scroll-proportion="0.3939394" vertical-offset="4913" max-vertical-offset="7497">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ProductRepository.php">
+      <file leaf-file-name="taxonomy.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxonomy.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="33" selection-start="1520" selection-end="1520" vertical-scroll-proportion="-17.153847" vertical-offset="217" max-vertical-offset="3060">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/product.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="65" selection-start="239" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+            <state line="46" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -91,25 +93,25 @@
       <file leaf-file-name="product.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/product.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="16" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1258">
+            <state line="22" column="21" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="productIndex.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/productIndex.html.twig">
+      <file leaf-file-name="create.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="16" selection-start="1508" selection-end="1508" vertical-scroll-proportion="-14.538462" vertical-offset="200" max-vertical-offset="1054">
+            <state line="24" column="14" selection-start="1000" selection-end="1000" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="527">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/index.html.twig">
+      <file leaf-file-name="update.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/update.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="42" selection-start="1137" selection-end="1137" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="697">
+            <state line="26" column="14" selection-start="1101" selection-end="1101" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="561">
               <folding />
             </state>
           </provider>
@@ -133,7 +135,6 @@
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/User.orm.xml" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/User.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/macros.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/macros.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/macros.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" />
@@ -167,7 +168,6 @@
         <option value="$PROJECT_DIR$/web/css/catalog.css" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/TaxonomiesBundle/Doctrine/ORM/TaxonRepository.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/productIndex.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Product.orm.xml" />
@@ -178,6 +178,8 @@
         <option value="$PROJECT_DIR$/web/js/wallPrioritiesProducts.js" />
         <option value="$PROJECT_DIR$/web/js/wallPrioritiesProducts2.js" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ProductRepository.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
       </list>
     </option>
@@ -395,7 +397,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
+              <option name="myItemId" value="Frontend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,53 +435,91 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Taxonomy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
+              <option name="myItemId" value="Frontend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Taxon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Product" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -665,7 +705,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
+              <option name="myItemId" value="backend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1228,7 +1268,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5935706" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4940669" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30204964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1282,26 +1322,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/account.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/main.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="9" selection-start="645" selection-end="645" vertical-scroll-proportion="0.40568182" vertical-offset="0" max-vertical-offset="880" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/main.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="25" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.7956621" vertical-offset="0" max-vertical-offset="1564" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style_main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Frontend/HomepageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="13" selection-start="2471" selection-end="2471" vertical-scroll-proportion="-12.423077" vertical-offset="765" max-vertical-offset="3553" />
@@ -1332,24 +1352,9 @@
         <state line="22" column="0" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="2244" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/macros.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="176" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="221" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/_singleBox.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="858" selection-start="596" selection-end="858" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/_singleBoxSub.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="545" selection-start="545" selection-end="545" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/FrontendMenuBuilder.php">
@@ -1402,11 +1407,6 @@
         <state line="5" column="30" selection-start="124" selection-end="124" vertical-scroll-proportion="0.094339624" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/collection.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="0.039812647" vertical-offset="0" max-vertical-offset="854" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="8" selection-start="1423" selection-end="1499" vertical-scroll-proportion="0.50514287" vertical-offset="0" max-vertical-offset="2754" />
@@ -1417,14 +1417,11 @@
         <state line="1" column="25" selection-start="35" selection-end="35" vertical-scroll-proportion="0.018867925" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/indexByTaxon.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="82" selection-start="414" selection-end="414" vertical-scroll-proportion="0.15542857" vertical-offset="0" max-vertical-offset="875" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="204" column="19" selection-start="3530" selection-end="3530" vertical-scroll-proportion="0.32954547" vertical-offset="3178" max-vertical-offset="14093" />
+        <state line="204" column="19" selection-start="3530" selection-end="3530" vertical-scroll-proportion="0.32954547" vertical-offset="3178" max-vertical-offset="14093">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/wallPriorities.js">
@@ -1456,20 +1453,6 @@
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Taxon.orm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="0" selection-start="825" selection-end="927" vertical-scroll-proportion="0.5543071" vertical-offset="78" max-vertical-offset="612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/macros.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="23" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="14" selection-start="975" selection-end="975" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="527">
           <folding />
         </state>
       </provider>
@@ -1530,27 +1513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/productIndex.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="16" selection-start="1508" selection-end="1508" vertical-scroll-proportion="-14.538462" vertical-offset="200" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxonomy.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="40" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/product.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="16" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxon.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="67" selection-start="925" selection-end="945" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
@@ -1565,16 +1527,118 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="14" selection-start="964" selection-end="964" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="544">
+          <folding>
+            <marker date="1401528138003" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1401528138003" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1401528138003" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/macros.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="20" selection-start="452" selection-end="452" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/macros.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="20" selection-start="1092" selection-end="1092" vertical-scroll-proportion="-17.807692" vertical-offset="132" max-vertical-offset="986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/productIndex.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="23" selection-start="1752" selection-end="1752" vertical-scroll-proportion="-22.384615" vertical-offset="200" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="14" selection-start="1000" selection-end="1000" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxon/update.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="14" selection-start="1101" selection-end="1101" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/product.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="65" selection-start="239" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+        <state line="4" column="34" selection-start="134" selection-end="134" vertical-scroll-proportion="0.07727273" vertical-offset="0" max-vertical-offset="880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/product.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="21" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/taxonomy.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="61" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Taxonomy/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1210" selection-end="1210" vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/_singleBoxSub.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="545" selection-start="545" selection-end="545" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/macros.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="43" selection-start="475" selection-end="475" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/collection.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/indexByTaxon.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="919" selection-end="982" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/sub_collection.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="83" selection-start="812" selection-end="817" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="680">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="53" selection-start="14274" selection-end="14274" vertical-scroll-proportion="1.3125" vertical-offset="4556" max-vertical-offset="7361">
+        <state line="320" column="40" selection-start="13417" selection-end="13417" vertical-scroll-proportion="0.3939394" vertical-offset="4913" max-vertical-offset="7497">
           <folding />
         </state>
       </provider>

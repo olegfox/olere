@@ -308,9 +308,17 @@ class ProductController extends ResourceController
 
         if(count($taxon->getChildren()) > 0){
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
+            $paginator = $this
+                ->getRepository()
+                ->createByTaxonPaginator($taxon, $sorting);
+
+            $paginator->setMaxPerPage(30);
+            $paginator->setCurrentPage($request->query->get('page', $page));
+
             return $this->render('SyliusWebBundle:Frontend/Taxon:sub_collection.html.twig', array(
                 'collections' => $collections,
-                'taxon' => $taxon
+                'taxon' => $taxon,
+                'products' => $paginator
             ));
         }
 

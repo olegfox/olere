@@ -23,3 +23,9 @@
 {{ list(taxonomy, taxonomy.taxons) }}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/jquery.tablednd.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/wallPriorities.js") }}"></script>
+{% endblock %}
