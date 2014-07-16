@@ -51,13 +51,15 @@
             {% endfor %}
         </div>
         <div class="form-actions clearfix">
-            <div class="form-group">
-                {{ form_label(form.profileCompany, '') }}
-                {{ form_widget(form.profileCompany, { 'attr': {'class': 'form-control'} }) }}
-            </div>
-            <div class="form-group">
-                {{ form_label(form.countPoint, '') }}
-                {{ form_widget(form.countPoint, { 'attr': {'class': 'form-control'} }) }}
+            <div class="left">
+                <div class="form-group">
+                    {{ form_label(form.profileCompany, '') }}
+                    {{ form_widget(form.profileCompany, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.countPoint, '') }}
+                    {{ form_widget(form.countPoint, { 'attr': {'class': 'form-control'} }) }}
+                </div>
             </div>
             <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
         </div>

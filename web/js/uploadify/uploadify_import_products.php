@@ -36,7 +36,7 @@ if (!empty($_FILES)) {
     $targetFile = rtrim($targetPath, '/') . '/' . $newFileName;
 
     if (in_array($fileParts['extension'], $fileTypes)) {
-        uploadFTP($tempFile, $newFileName, 'anonymous', '', '95.84.192.162', '/');
+        uploadFTP($tempFile, $newFileName, 'anonymous', '', 'fotobank.olere.ru', '/');
 //        move_uploaded_file($tempFile, $targetFile);
         echo $newFileName;
     } else {

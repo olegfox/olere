@@ -22,6 +22,8 @@ $(function(){
     $(window).resize(function(){
         footerBottom();
     });
+
+    $('input, textarea').placeholder();
 });
 
 function footerBottom(){

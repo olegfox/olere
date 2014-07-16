@@ -239,7 +239,7 @@ class ProductController extends ResourceController
         $manager = $this->container->get('sylius.manager.product');
 //        if ($request->isMethod('POST')) {
         $products = $repository->findAll();
-        $connect = ftp_connect('95.84.192.162');
+        $connect = ftp_connect('fotobank.olere.ru');
 
         if (!$connect) {
             return false;

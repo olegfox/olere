@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Calibri';
+    src: url(/fonts/calibri.ttf);
+}
 html, body{
     margin: 0px;
     padding: 0px;
@@ -212,10 +216,12 @@ a, a:hover, a:focus{
     font-size: 14px;
     color: #000;
     margin: 20px;
+    margin: 20px 0px\0/;
     border: solid 1px #dcdcdc;
 }
 .catalog{
     padding: 0px 20px;
+    padding: 0px\0/;
 }
 .catalog .head{
     height: 50px;
@@ -332,7 +338,18 @@ a, a:hover, a:focus{
     bottom: 0px;
     width: 100%;
 }
-
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* Safari only override */
+    ::i-block-chrome,.catalog .bottomBox{
+        bottom: 20px;
+    }
+}
+@media only screen and (min-device-width: 481px) and
+(max-device-width: 1024px) and (orientation:landscape) {
+    .catalog .bottomBox{
+        bottom: 20px;
+    }
+}
 .catalog .bottomBox form{
     float: right;
     padding: 0;
@@ -341,6 +358,10 @@ a, a:hover, a:focus{
 .catalog .bottomBox .form-group{
     margin-bottom: 0px;
     margin-top: -3px;
+}
+
+.catalog .bottomBox .form-group input[type="number"]{
+    line-height: 20px\0/;
 }
 
 .catalog .bottomBox *{
@@ -380,6 +401,7 @@ a, a:hover, a:focus{
 
 .catalog .bottomBox .price{
     font-weight: normal;
+    height: 36px;
 }
 
 .catalog .descriptionBox{
@@ -686,6 +708,7 @@ tr.tDnD_whileDrag{
 }
 .product{
     padding: 0px 20px;
+    padding: 0px\0/;
 }
 
 #top-link a {
@@ -714,6 +737,7 @@ tr.tDnD_whileDrag{
 }
 h4, .container form{
     padding: 0 20px;
+    padding: 0\0/;
 }
 .page-header{
     margin: 0 20px 30px 20px;
@@ -746,11 +770,22 @@ h4, .container form{
 }
 .well .left{
     float: left;
-    margin-left: 15px;
+    width: 50%;
+    padding-left: 15px;
 }
 .well .right{
     float: right;
-    margin-right: 15px;
+    width: 50%;
+    text-align: right;
+    padding-right: 15px;
+}
+.form-actions .left{
+    float: none;
+    width: 50%;
+    padding-left: 0px;
+}
+.form-actions .left .form-control{
+    width: 92%!important;
 }
 .feedbackForm,
 .registerForm{
@@ -773,7 +808,7 @@ h4, .container form{
     border-top: 0;
     width: 100%;
 }
-.registerOptForm .form-actions{
+.registerTypeForm .form-actions{
     padding: 50px 0 0 0;
     text-align: left;
     background: none;
@@ -802,7 +837,7 @@ h4, .container form{
     line-height: 32px;
 }
 .loginForm .btn-sm2{
-    background: #cecece;
+    background: #cecece!important;
     color: #7b7b7b;
     border: 0;
     line-height: 35px;
@@ -813,7 +848,10 @@ h4, .container form{
     right: 85px;
     top: 40px;
 }
-.feedbackForm h1{
+.feedbackForm h1,
+.registerForm h1,
+.registerOptForm h1,
+.loginForm h1{
     font-size: 29px;
     margin-top: 0;
     margin-bottom: 0;
@@ -835,8 +873,7 @@ h4, .container form{
     padding: 22px 0 0 0;
     text-align: left;
     background: none;
-    border-top: 1px solid #dcdcdc;
-    margin: 310px 0 0 0;
+    margin: 332px 0 0 0;
     width: 100%;
 }
 .registerForm .form-actions .form-group{
@@ -851,13 +888,15 @@ h4, .container form{
     background: #01c4ba;
 }
 .form-control{
-    width: 414px;
+    width: 89%;
+    max-width: 414px;
     height: 38px;
     border: solid 1px #dcdcdc;
     border-radius: 0;
     color: #000;
     font-family: "Calibri";
     font-size: 21px;
+    line-height: 25px\0/;
     display: inline-block;
 }
 ::-webkit-input-placeholder {color:#000!important;}
@@ -877,7 +916,7 @@ h4, .container form{
 }
 .btn-success[disabled]{
     border: 0;
-    background: #000;
+    background: #000!important;
 }
 .btn-success:hover, .btn-success:focus, .btn-success.active{
     background: #01c4ba;

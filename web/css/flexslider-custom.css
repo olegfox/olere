@@ -4,6 +4,8 @@
     max-width: 100%;
     background: url(/images/sliderBg.jpg) no-repeat;
     background-size: cover;
+    height: 400px\0/;
+    overflow: hidden!important;
 }
 .flexslider2{
     width: 100%;
