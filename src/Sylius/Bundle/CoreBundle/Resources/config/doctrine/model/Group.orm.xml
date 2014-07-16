@@ -10,6 +10,10 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
+
+        <field type="boolean" name="showPrice" column="showPrice" />
+        <field type="boolean" name="showOptPrice" column="showOptPrice" />
+
     </mapped-superclass>
 
 </doctrine-mapping>

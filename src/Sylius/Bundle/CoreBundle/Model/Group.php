@@ -20,6 +20,45 @@ use FOS\UserBundle\Model\Group as BaseGroup;
  */
 class Group extends BaseGroup implements GroupInterface
 {
+    protected $showPrice;
+    protected $showOptPrice;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShowPrice()
+    {
+        return $this->showPrice;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShowPrice($showPrice)
+    {
+        $this->showPrice = $showPrice;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShowOptPrice()
+    {
+        return $this->showOptPrice;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShowOptPrice($showOptPrice)
+    {
+        $this->showOptPrice = $showOptPrice;
+
+        return $this;
+    }
+
     public function __construct()
     {
         $this->roles = array();

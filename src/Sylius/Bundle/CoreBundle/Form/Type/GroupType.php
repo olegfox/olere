@@ -38,6 +38,16 @@ class GroupType extends AbstractType
             ->add('roles', 'list', array(
                 'label' => 'sylius.form.group.roles'
             ))
+            ->add('showPrice', 'choice',
+                array(
+                    'label' => 'Показывать розничные цены?',
+                    'choices' => array(0 => 'ДА', 1 => 'НЕТ')
+                ))
+            ->add('showOptPrice', 'choice',
+                array(
+                    'label' => 'Показывать оптовые цены?',
+                    'choices' => array(0 => 'ДА', 1 => 'НЕТ')
+                ))
         ;
 
     }

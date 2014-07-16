@@ -22,7 +22,7 @@
                 <a href="{{ path("sylius_catalog") }}">Каталог</a> / {{ taxon.name }}
             {% endif %}
         </div>
-        {{ grid(products) }}
+        {{ grid(products, groups) }}
         {{ pagination(products) }}
     </div>
 {% endblock %}

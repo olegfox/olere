@@ -1,5 +1,7 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
+{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
+
 {# stylesheets... #}
 {% block stylesheets %}
     {{ parent() }}
@@ -53,7 +55,7 @@
                 Артикул: {{ product.sku }}
             </div>
             <div class="price">
-                Цена: {{ sylius_calculate_price(product)|sylius_price }}
+                Цена: {{ showPrice(product, groups) }}
             </div>
             {% set form = sylius_cart_form({'product': product}) %}
             <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"

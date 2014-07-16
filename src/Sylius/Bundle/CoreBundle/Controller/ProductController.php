@@ -306,6 +306,8 @@ class ProductController extends ResourceController
         $taxon = $this->get('sylius.repository.taxon')
             ->findOneBySlug($category);
 
+        $groups = $this->get('sylius.repository.group')->findAll();
+
         if(count($taxon->getChildren()) > 0){
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
             $paginator = $this
@@ -318,7 +320,8 @@ class ProductController extends ResourceController
             return $this->render('SyliusWebBundle:Frontend/Taxon:sub_collection.html.twig', array(
                 'collections' => $collections,
                 'taxon' => $taxon,
-                'products' => $paginator
+                'products' => $paginator,
+                'groups' => $groups
             ));
         }
 
@@ -336,7 +339,8 @@ class ProductController extends ResourceController
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
             'taxon' => $taxon,
             'products' => $paginator,
-            'permalink' => "/catalog/" . $page . "/" . $category
+            'permalink' => "/catalog/" . $page . "/" . $category,
+            'groups' => $groups
         ));
     }
 
@@ -440,6 +444,15 @@ class ProductController extends ResourceController
     {
         return $this->render('SyliusWebBundle:Backend/Product:filterForm.html.twig', array(
             'form' => $this->get('form.factory')->createNamed('criteria', 'sylius_product_filter', $request->query->get('criteria'))->createView()
+        ));
+    }
+
+    public function showAction(Request $request){
+        $groups = $this->get('sylius.repository.group')->findAll();
+        $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
+        return $this->render($this->config->getTemplate('show.html.twig'), array(
+            'product' => $product,
+            'groups' => $groups
         ));
     }
 

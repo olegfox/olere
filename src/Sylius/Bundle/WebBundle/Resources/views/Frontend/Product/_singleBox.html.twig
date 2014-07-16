@@ -1,3 +1,5 @@
+{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
+
 {% if loop.index0%3 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%3 }}">
         <div class="inner_box">
             <div class="topBox clickBox">
@@ -23,10 +25,7 @@
             {#</div>#}
             <div class="bottomBox clickBox">
                 <div class="price">
-                    {{ sylius_calculate_price(product)|sylius_price }}
-                    {% if is_granted('ROLE_USER_OPT') %}
-                        {{ product.priceOpt|sylius_price }}
-                    {% endif %}
+                    {{ showPrice(product, groups) }}
                 </div>
                 {% set form = sylius_cart_form({'product': product}) %}
                 <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
