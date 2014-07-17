@@ -1,6 +1,5 @@
-{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
-
 {% if loop.index0%3 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%3 }}">
+        {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
         <div class="inner_box">
             <div class="topBox clickBox">
                 <div class="nameBox">

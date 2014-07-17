@@ -159,7 +159,8 @@ sylius:
     summary:
       add_coupon: OK
       checkout: Оформить заказ
-      clear: Очистка корзины
+      clear: Очистить корзину
+      next: Продолжить покупки
       grand_total: Всего в корзине
       product: Продукт
       quantity: Количество
