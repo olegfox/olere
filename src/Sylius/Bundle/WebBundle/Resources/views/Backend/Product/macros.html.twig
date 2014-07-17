@@ -7,11 +7,12 @@
 <table class="sylius-products-table table table-bordered">
     <thead>
         <tr>
+            <th><input class="iCheck-helper" id="allRemove" type="checkbox" onchange="allRemove(this);"/></th>
             <th class="id">{{ sylius_resource_sort('id', '#id') }}</th>
             <th class="info">{{ sylius_resource_sort('name', 'sylius.product.name'|trans) }}</th>
             <th class="stock">{{ 'sylius.product.stock'|trans }}</th>
-            <th class="retail-price">{{ 'sylius.product.price'|trans }}</th>
-            <th class="retail-price">{{ 'sylius.product.priceOpt'|trans }}</th>
+            <th class="retail-price">{{ sylius_resource_sort('variant.price', 'sylius.product.price'|trans) }}</th>
+            <th class="retail-price">{{ sylius_resource_sort('variant.priceOpt', 'sylius.product.priceOpt'|trans) }}</th>
             <th class="updated-at">{{ sylius_resource_sort('updatedAt', 'Updated At') }}</th>
             <th></th>
         </tr>
@@ -20,6 +21,7 @@
     {% for product in products %}
         <tr id="{{ product.id }}">
             <td class="hidden" id="td{{ loop.index }}">{{ loop.index }}</td>
+            <td class="remove"><input name="idx[]" class="iCheck-helper idx" type="checkbox" value="{{ product.id }}"/></td>
             <td class="id">
                 {{ product.id }}
             </td>
@@ -94,6 +96,14 @@
     {% endfor %}
     </tbody>
 </table>
+    <form action="{{ path('sylius_backend_product_delete_all') }}" method="post" class="delete-action-form" novalidate>
+        <input type="hidden" name="idx_all" id="idx_all" value="">
+        <button class="btn btn-danger" type="button" onclick="deleteAll(this);">
+            <i class="glyphicon glyphicon-trash"></i> <span>{{ 'sylius.delete'|trans }}</span>
+        </button>
+    </form>
+    <br>
+    <br>
 {% else %}
 {{ alerts.info('sylius.product.no_results'|trans) }}
 {% endif %}

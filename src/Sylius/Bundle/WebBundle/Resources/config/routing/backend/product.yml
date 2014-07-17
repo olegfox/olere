@@ -29,6 +29,12 @@ sylius_backend_product_update:
             template: SyliusWebBundle:Backend/Product:update.html.twig
             redirect: sylius_backend_product_show
 
+sylius_backend_product_delete_all:
+    pattern: /delete/all
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.product:deleteAllAction
+
 sylius_backend_product_delete:
     pattern: /{id}
     methods: [DELETE]

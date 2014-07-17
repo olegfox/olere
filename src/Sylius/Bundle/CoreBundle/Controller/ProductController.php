@@ -456,6 +456,23 @@ class ProductController extends ResourceController
         ));
     }
 
+    public function deleteAllAction(Request $request){
+        $idx = $request->get('idx_all');
+        $repository = $this->container->get('sylius.repository.product');
+        $manager = $this->container->get('sylius.manager.product');
+        if($idx){
+            $idx = json_decode($idx);
+            if(count($idx) > 0){
+                foreach($idx as $id){
+                    $product = $repository->findOneBy(array("id" => $id));
+                    $manager->remove($product);
+                    $manager->flush();
+                }
+            }
+        }
+        return $this->redirectHandler->redirectToReferer();
+    }
+
 //    public function deleteAction(Request $request){
 //        $repository = $this->container->get('sylius.repository.product');
 //        $manager = $this->container->get('sylius.manager.product');
