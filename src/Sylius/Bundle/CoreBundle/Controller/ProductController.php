@@ -94,9 +94,10 @@ class ProductController extends ResourceController
                     $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
                     $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
-                    $codeArticul = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
-                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                    $price = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
+                    $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
+                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $price = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
                     $data[$i] = array(
                         "articul" => $articul,
                         "name" => $name,
@@ -108,6 +109,7 @@ class ProductController extends ResourceController
                         "collection" => $collection,
                         "codeArticul" => $codeArticul,
                         "priceOpt" => $priceOpt,
+                        "catalog" => $catalog,
                         "image" => ""
                     );
                     if ($name != "") {
@@ -127,7 +129,7 @@ class ProductController extends ResourceController
                             $nameCat = mb_substr($name, 0, 10);
                         }
 //                        print 'Сокращённое название каталога: '.$nameCat;
-                        $cat = $this->get('sylius.repository.taxon')->findOneByCatName($nameCat . '%');
+                        $cat = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $catalog));
 //                    Находим в базе коллекцию по названию из таблицы
                         $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
                         $taxs = new ArrayCollection();
@@ -256,35 +258,39 @@ class ProductController extends ResourceController
             foreach ($products as $p) {
                 $sku = $p->getSku();
 //                Scan ftp for sku
-                $files = array();
+                $images = array();
+//                print "sku = ".$sku;
                 foreach ($files as $file) {
                     $fileName = str_replace('./', '', $file);
                     if (@stristr($fileName, $sku) === false) {
 
                     } else {
                         $fl = 0;
-                        foreach ($files as $f) {
-                            if ($f == $fileName) {
+                        foreach ($images as $i) {
+                            if ($i == $fileName) {
                                 $fl = 1;
                             }
                         }
-//                        foreach ($p->getMasterVariant()->getImages() as $image) {
-//                            $path = $image->getPath();
-////                            $path_parts = explode(".", $path);
-//                            if ($path == $fileName) {
-//                                $fl = 1;
-//                            }
-//                        }
+                        foreach ($p->getMasterVariant()->getImages() as $image) {
+                            $path = $image->getPath();
+//                            $path_parts = explode(".", $path);
+                            if ($path == $fileName) {
+                                $fl = 1;
+                            }
+                        }
+//                        print "fl = ".$fl;
                         if ($fl == 0) {
-                            $files[] = $fileName;
+                            $images[] = $fileName;
                         }
                     }
                 }
-                if(count($files) > 0){
-                    sort($files);
-                    foreach ($files as $f) {
+//                print var_dump($files);
+                if(count($images) > 0){
+                    natcasesort($images);
+                    $images=array_reverse($images);
+                    foreach ($images as $i) {
                         $variantImage = new VariantImage();
-                        $variantImage->setPath($f);
+                        $variantImage->setPath($i);
                         $p->getMasterVariant()->addImage($variantImage);
                         $manager->flush();
                         $count++;

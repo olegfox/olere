@@ -177,10 +177,14 @@ class FrontendMenuBuilder extends MenuBuilder
     {
         $menu = $this->factory->createItem('root');
         $bottom_menu = array(
+//            "buy_retail" => array(
+//                "name" => "Купить в розницу",
+//                "route" => "sylius_page_show",
+//                "routeParameters" => array("id" => "buy_retail")
+//            ),
             "buy_retail" => array(
                 "name" => "Купить в розницу",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "buy_retail")
+                'uri' => 'http://sylius.olegfox.tk/'
             ),
             /*"delivery" => array(
                 "name" => "Доставка",
