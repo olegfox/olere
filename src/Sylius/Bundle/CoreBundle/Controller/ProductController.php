@@ -256,26 +256,38 @@ class ProductController extends ResourceController
             foreach ($products as $p) {
                 $sku = $p->getSku();
 //                Scan ftp for sku
+                $files = array();
                 foreach ($files as $file) {
                     $fileName = str_replace('./', '', $file);
                     if (@stristr($fileName, $sku) === false) {
 
                     } else {
                         $fl = 0;
-                        foreach ($p->getMasterVariant()->getImages() as $image) {
-                            $path = $image->getPath();
-//                            $path_parts = explode(".", $path);
-                            if ($path == $fileName) {
+                        foreach ($files as $f) {
+                            if ($f == $fileName) {
                                 $fl = 1;
                             }
                         }
+//                        foreach ($p->getMasterVariant()->getImages() as $image) {
+//                            $path = $image->getPath();
+////                            $path_parts = explode(".", $path);
+//                            if ($path == $fileName) {
+//                                $fl = 1;
+//                            }
+//                        }
                         if ($fl == 0) {
-                            $variantImage = new VariantImage();
-                            $variantImage->setPath($fileName);
-                            $p->getMasterVariant()->addImage($variantImage);
-                            $manager->flush();
-                            $count++;
+                            $files[] = $fileName;
                         }
+                    }
+                }
+                if(count($files) > 0){
+                    sort($files);
+                    foreach ($files as $f) {
+                        $variantImage = new VariantImage();
+                        $variantImage->setPath($f);
+                        $p->getMasterVariant()->addImage($variantImage);
+                        $manager->flush();
+                        $count++;
                     }
                 }
             }

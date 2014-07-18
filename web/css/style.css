@@ -140,10 +140,10 @@ a, a:hover, a:focus{
 }
 .logoBox{
     margin: 0px auto;
-    height: 85px;
-    line-height: 85px;
+    height: 70px;
+    line-height: 70px;
     display: table-cell;
-    padding-right: 110px;
+    padding-right: 40px;
 }
 .logoBox img{
     vertical-align: middle;
@@ -171,7 +171,7 @@ a, a:hover, a:focus{
     -webkit-padding-start: 0px;
     -webkit-margin-after: 0px;
     -webkit-margin-before: 0px;
-    display: block;
+    display: table-cell;
     width: 100%;
 }
 .menu ul li{
@@ -660,7 +660,7 @@ a, a:hover, a:focus{
 
 /* bottom menu cart */
 .wrap_trash{
-    background: #c0de98;
+    background: #000;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -673,7 +673,7 @@ a, a:hover, a:focus{
 .wrap_trash .trash{
     margin: 0 auto;
     position: relative;
-    color: #000;
+    color: #fff;
     font-size: 16px;
     max-width: 1160px;
     min-width: 960px;
@@ -682,7 +682,7 @@ a, a:hover, a:focus{
 .wrap_trash .trash a.last{
     position: absolute;
     right: 0px;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     background: none;
 }

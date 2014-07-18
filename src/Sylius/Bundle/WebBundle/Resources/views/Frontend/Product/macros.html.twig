@@ -14,7 +14,7 @@
     {% elseif is_granted('ROLE_USER') %}
         {{ price(product, groups[1]) }}
     {% else %}
-        {{ price(product, groups[3]) }}
+        {{ price(product, groups[2]) }}
     {% endif %}
 {% endmacro %}
 
