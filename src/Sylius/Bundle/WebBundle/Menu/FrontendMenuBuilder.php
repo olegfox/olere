@@ -182,10 +182,6 @@ class FrontendMenuBuilder extends MenuBuilder
 //                "route" => "sylius_page_show",
 //                "routeParameters" => array("id" => "buy_retail")
 //            ),
-            "buy_retail" => array(
-                "name" => "Купить в розницу",
-                'uri' => 'http://sylius.olegfox.tk/'
-            ),
             /*"delivery" => array(
                 "name" => "Доставка",
                 "route" => "sylius_page_show",
@@ -218,6 +214,9 @@ class FrontendMenuBuilder extends MenuBuilder
             )
         );
         $menu->setCurrentUri($this->request->getRequestUri());
+        $menu->addChild('buy_retail', array(
+            'uri' => 'http://sylius.olegfox.tk/'
+        ))->setLabel("Купить в розницу");
         foreach ($bottom_menu as $key => $p) {
             $menu->addChild($key, array(
                 'route' => $p["route"],

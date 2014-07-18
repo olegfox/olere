@@ -96,7 +96,8 @@ class Product extends BaseProduct implements ProductInterface
 
         $this->setMasterVariant(new Variant());
         $this->taxons = new ArrayCollection();
-
+        $this->position = $this->id;
+        $this->position2 = $this->id;
         $this->variantSelectionMethod = self::VARIANT_SELECTION_CHOICE;
     }
 
