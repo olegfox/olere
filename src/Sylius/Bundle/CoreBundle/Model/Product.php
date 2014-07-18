@@ -96,8 +96,6 @@ class Product extends BaseProduct implements ProductInterface
 
         $this->setMasterVariant(new Variant());
         $this->taxons = new ArrayCollection();
-        $this->position = $this->id;
-        $this->position2 = $this->id;
         $this->variantSelectionMethod = self::VARIANT_SELECTION_CHOICE;
     }
 
@@ -114,6 +112,12 @@ class Product extends BaseProduct implements ProductInterface
      */
     public function setSku($sku)
     {
+        if($this->position == NULL){
+            $this->position = $this->getId();
+        }
+        if($this->position2 == NULL){
+            $this->position2 = $this->getId();
+        }
         $this->getMasterVariant()->setSku($sku);
 
         return $this;
