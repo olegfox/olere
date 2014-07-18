@@ -211,6 +211,9 @@ class ProductController extends ResourceController
 //                        }
                         $product->getMasterVariant()->setOnHand(1);
                         $manager->persist($product);
+                        $manager->flush();
+                        $product->setPosition($product->getId());
+                        $product->setPosition2($product->getId());
                         $i++;
                     }
                 }
