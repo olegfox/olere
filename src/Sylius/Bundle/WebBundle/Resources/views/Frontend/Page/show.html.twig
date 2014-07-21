@@ -1,5 +1,9 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block metaDescription %}{{ page.metaDescription }}{% endblock %}
+{% block metaKeywords %}{{ page.metaKeywords }}{% endblock %}
+
 {% block content %}
 <div class="content">
 {#<div class="page-header">#}

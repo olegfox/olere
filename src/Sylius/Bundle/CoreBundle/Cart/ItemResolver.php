@@ -23,6 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sylius\Bundle\CoreBundle\Checker\RestrictedZoneCheckerInterface;
 use Sylius\Bundle\CartBundle\Provider\CartProviderInterface;
 use Sylius\Bundle\CoreBundle\Calculator\PriceCalculatorInterface;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Item resolver for cart bundle.
@@ -75,6 +76,8 @@ class ItemResolver implements ItemResolverInterface
      */
     protected $restrictedZoneChecker;
 
+    protected $securityContext;
+
     /**
      * Constructor.
      *
@@ -84,6 +87,7 @@ class ItemResolver implements ItemResolverInterface
      * @param FormFactoryInterface           $formFactory
      * @param AvailabilityCheckerInterface   $availabilityChecker
      * @param RestrictedZoneCheckerInterface $restrictedZoneChecker
+     * @param SecurityContextInterface $securityContext
      */
     public function __construct(
         CartProviderInterface          $cartProvider,
@@ -91,7 +95,8 @@ class ItemResolver implements ItemResolverInterface
         RepositoryInterface            $productRepository,
         FormFactoryInterface           $formFactory,
         AvailabilityCheckerInterface   $availabilityChecker,
-        RestrictedZoneCheckerInterface $restrictedZoneChecker
+        RestrictedZoneCheckerInterface $restrictedZoneChecker,
+        SecurityContextInterface $securityContext
     )
     {
         $this->cartProvider = $cartProvider;
@@ -100,6 +105,7 @@ class ItemResolver implements ItemResolverInterface
         $this->formFactory = $formFactory;
         $this->availabilityChecker = $availabilityChecker;
         $this->restrictedZoneChecker = $restrictedZoneChecker;
+        $this->securityContext = $securityContext;
     }
 
     /**
@@ -133,9 +139,15 @@ class ItemResolver implements ItemResolverInterface
             throw new ItemResolvingException('Submitted form is invalid.');
         }
 
-        $item->setUnitPrice(
-            $this->priceCalculator->calculate($variant)
-        );
+        if($this->securityContext->isGranted('ROLE_USER_OPT')){
+            $item->setUnitPrice(
+                $variant->getPriceOpt()
+            );
+        }else{
+            $item->setUnitPrice(
+                $variant->getPrice()
+            );
+        }
 
         $quantity = $item->getQuantity();
         foreach ($this->cartProvider->getCart()->getItems() as $cartItem) {

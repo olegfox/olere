@@ -123,6 +123,7 @@
             <argument type="service" id="form.factory" />
             <argument type="service" id="sylius.availability_checker" />
             <argument type="service" id="sylius.checker.restricted_zone" />
+            <argument type="service" id="security.context" />
         </service>
 
         <!-- checker -->

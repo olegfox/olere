@@ -155,7 +155,7 @@ sylius:
   browse_products: Обзор продукции
   cancel: Отмена
   cart:
-    empty: Пустая
+    empty: Корзина пуста
     summary:
       add_coupon: OK
       checkout: Оформить заказ
@@ -417,6 +417,9 @@ sylius:
   out_of_stock: Нет на складе
   page:
     body: Содержание
+    metaTitle: Мета-заголовок
+    metaKeywords: Ключевые слова
+    metaDescription: Мета-описание
     create: Создать новую страницу
     create_header: Создание страницы
     id: ID

@@ -688,7 +688,7 @@ a, a:hover, a:focus{
 }
 .wrap_trash .trash a.last:hover{
     background: none;
-    color: #000;
+    color: #fff;
 }
 /* end bottom menu cart */
 .pagination{
@@ -944,4 +944,21 @@ h4, .container form{
 }
 .form-control.ng-invalid{
     /*border: solid 1px red;*/
+}
+
+.alert-info,
+.alert-success{
+    border: 1px solid #dcdcdc;
+    border-radius: 0;
+    background: none;
+    padding: 20px;
+    margin: 25px 20px;
+    color: #000;
+}
+.alert h4{
+    display: none;
+}
+.col-md-12 .aler-info,
+.col-md-12 .alert-success{
+    margin: 25px -15px;
 }
