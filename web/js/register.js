@@ -65,7 +65,11 @@
         }
     }]);
 
-    $("#fos_user_registration_form_inn").mask("9999999999");
+    $("#fos_user_registration_form_inn").bind("change keyup input click", function() {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });
 
 //    $("#fos_user_registration_form_phone").mask("(999) 9999999");
 

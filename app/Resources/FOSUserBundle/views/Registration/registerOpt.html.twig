@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 {{ form_label(form.inn) }}
-                <span class="valid"></span>{{ form_widget(form.inn, { 'attr': {'class': 'form-control', 'ng-model' : 'user.inn', 'ng-minlength' : '10', 'ng-maxlength' : '10', 'ng-pattern' : 'onlyNumbers'}, 'required' : 'required' }) }}<span>*</span>
+                <span class="valid"></span>{{ form_widget(form.inn, { 'attr': {'class': 'form-control', 'ng-model' : 'user.inn', 'ng-minlength' : '10', 'ng-maxlength' : '12', 'ng-pattern' : 'onlyNumbers'}, 'required' : 'required' }) }}<span>*</span>
             </div>
             <div class="form-group">
                 {{ form_label(form.formCompany) }}

@@ -35,6 +35,12 @@ sylius_backend_product_delete_all:
     defaults:
         _controller: sylius.controller.product:deleteAllAction
 
+sylius_backend_product_edit_group:
+    pattern: /edit/group
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.product:editGroupAction
+
 sylius_backend_product_delete:
     pattern: /{id}
     methods: [DELETE]

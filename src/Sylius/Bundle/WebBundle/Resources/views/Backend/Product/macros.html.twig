@@ -33,18 +33,21 @@
                     </a>
                     <div class="media-body">
                         <h5 class="media-heading">
-                            <a class="name"
-                               href="{{ path('sylius_backend_product_show', {'id': product.id}) }}"
-                               title="{{ 'sylius.product.view_details'|trans({'%product%': product.name})|escape('html_attr') }}">
-                                {{ product.name }}
-                            </a>
+                            {#<a class="name"#}
+                               {#href="{{ path('sylius_backend_product_show', {'id': product.id}) }}"#}
+                               {#title="{{ 'sylius.product.view_details'|trans({'%product%': product.name})|escape('html_attr') }}">#}
+                               <input type="text" value="{{ product.name }}" name="name" id="name" onchange="editProduct({{ product.id }}, '{{ path('sylius_backend_product_edit_group') }}');">
+                            {#</a>#}
                             {% if not product.isAvailable %}
                                 <span class="label label-default">{{ 'sylius.product.unavailable'|trans }}</span>
                             {% endif %}
                         </h5>
                         <div class="media-body">
                             {% if product.sku %}
-                                <strong>{{ 'sylius.product.sku'|trans }}: </strong> <code class="sku">{{ product.sku }}</code>
+                                <strong>{{ 'sylius.product.sku'|trans }}: </strong>
+                                {#<code class="sku">{{ product.sku }}</code>#}
+                                <br>
+                                <input type="text" value="{{ product.sku }}" name="sku" id="sku" onchange="editProduct({{ product.id }}, '{{ path('sylius_backend_product_edit_group') }}');">
                             {% endif %}
                         </div>
                     </div>
@@ -70,10 +73,12 @@
             {# Retail Price #}
             {% if not product.hasOptions %}
                 <td class="retail-price">
-                    {{ product.masterVariant.price|sylius_price('RUB') }}
+                    <input type="text" value="{{ product.masterVariant.price/100 }}" name="price" id="price" onchange="editProduct({{ product.id }}, '{{ path('sylius_backend_product_edit_group') }}');">
+                    {#{{ product.masterVariant.price|sylius_price('RUB') }}#}
                 </td>
                 <td class="retail-price">
-                    {{ product.masterVariant.priceOpt|sylius_price('RUB') }}
+                    <input type="text" value="{{ product.masterVariant.priceOpt/100 }}" name="priceOpt" id="priceOpt" onchange="editProduct({{ product.id }}, '{{ path('sylius_backend_product_edit_group') }}');">
+                    {#{{ product.masterVariant.priceOpt|sylius_price('RUB') }}#}
                 </td>
             {% else %}
                 <td class="retail-price text-muted">

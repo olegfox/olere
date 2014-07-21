@@ -27,7 +27,7 @@ registration:
 
 form:
     name: "Имя"
-    inn: "ИНН из 10 цифр"
+    inn: "ИНН из 10(12) цифр"
     nameCompany: "Название компании"
     formCompany: "Форма компании"
     profileCompany: "Профиль деятельности компании"

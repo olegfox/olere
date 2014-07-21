@@ -19,3 +19,17 @@ function deleteAll(object){
         }
     });
 }
+
+function editProduct(id, route){
+    $.post(route, {
+        id: id,
+        name: $("tr#"+id).find("#name").val(),
+        sku: $("tr#"+id).find("#sku").val(),
+        price: $("tr#"+id).find("#price").val(),
+        priceOpt: $("tr#"+id).find("#priceOpt").val()
+    }, function(data){
+        if(data != "ok"){
+            alert("Ошибка!");
+        }
+    });
+}

@@ -494,6 +494,42 @@ class ProductController extends ResourceController
         return $this->redirectHandler->redirectToReferer();
     }
 
+    public function editGroupAction(Request $request){
+        $id = $request->get('id');
+        if($id){
+            $name = $request->get('name');
+            $sku = $request->get('sku');
+            $price = $request->get('price');
+            $priceOpt = $request->get('priceOpt');
+
+            $repository = $this->container->get('sylius.repository.product');
+            $manager = $this->container->get('sylius.manager.product');
+
+            $product = $repository->findOneBy(array("id" => $id));
+
+            if($product){
+
+                if($name != ''){
+                    $product->setName($name);
+                }
+                if($sku != ''){
+                    $product->setSku($sku);
+                }
+                if($price != ''){
+                    $product->setPrice($price*100);
+                }
+                if($priceOpt != ''){
+                    $product->setPriceOpt($priceOpt*100);
+                }
+
+                $manager->flush();
+                return new Response("ok");
+            }
+        }
+
+        return new Response("no");
+    }
+
 //    public function deleteAction(Request $request){
 //        $repository = $this->container->get('sylius.repository.product');
 //        $manager = $this->container->get('sylius.manager.product');
