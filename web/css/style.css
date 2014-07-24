@@ -822,6 +822,10 @@ h4, .container form{
 .cartForm .form-actions{
     margin: 11px 0 0 0;
 }
+.cartForm input[type="number"]{
+    line-height: 21px;
+    font-size: 16px;
+}
 .feedbackForm label[for="remember_me"]{
     display: block!important;
 }
