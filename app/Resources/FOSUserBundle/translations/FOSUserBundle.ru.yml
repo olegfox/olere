@@ -14,6 +14,8 @@ security:
 registration:
     register_header: <h1>Регистрация.</h1><span> Поля отмеченные * обязательны для заполнения.</span>
     register_headerType: <h1>Регистрация</h1>
+    register_headerRequest: <h1>Восстановление пароля</h1>
+    register_headerProfileEdit: <h1>Редактирование профиля</h1>
     register_header_opt: <h1>Регистрация оптовых покупателей.</h1><span> Поля отмеченные * обязательны для заполнения.</span>
     feedback: <h1>Заказать обратный звонок</h1>
     confirmed_header: <h1>Добро пожаловать <small>Регистрация прошла успешно</small></h1>
@@ -39,3 +41,27 @@ form:
     password: "Пароль"
     password_confirmation: "Введите пароль повторно"
     forgot_password: "Напомнить пароль"
+    new_password: "Новый пароль"
+    new_password_confirmation: "Подтвердите пароль"
+
+# Password resetting
+resetting:
+    password_already_requested: Пароль для данного пользователя уже запрашивался за последние 24 часа.
+    check_email: Письмо на адрес %email% уже отправлено. Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
+    request:
+        invalid_username: Пользователь "%username%" не существует.
+        username: "Имя пользователя:"
+        submit: Обновление пароля
+    reset:
+        submit: Изменить пароль
+    flash:
+        success: Пароль успешно сброшен
+    email:
+        subject: Сброс пароля
+        message: |
+            Приветствуем, %username%!
+
+            Для сброса пароля, пожалуйста, пройдите по ссылке %confirmationUrl%
+
+            С наилучшими пожеланиями,
+            команда сайта.

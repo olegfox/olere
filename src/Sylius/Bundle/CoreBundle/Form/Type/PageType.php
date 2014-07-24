@@ -39,13 +39,13 @@ class PageType extends AbstractType
                 'label' => 'sylius.form.page.title'
             ))
             ->add('metaTitle', 'text', array(
-                'label' => 'sylius.form.page.metaTitle'
+                'label' => 'Заголовок (title страницы)'
             ))
             ->add('metaKeywords', 'text', array(
-                'label' => 'sylius.form.page.metaKeywords'
+                'label' => 'Ключевые слова'
             ))
             ->add('metaDescription', 'textarea', array(
-                'label' => 'sylius.form.page.metaDescription'
+                'label' => 'Мета-описание'
             ))
             ->add('body', 'textarea', array(
                 'required' => false,

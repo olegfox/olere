@@ -1,12 +1,119 @@
-<h4>{{ 'sylius.account.home.welcome'|trans }}</h4>
-<br>
+<form class="form-horizontal registerForm profileShow">
+    <fieldset class="well">
+        <h1>{{ 'sylius.account.home.welcome'|trans }}</h1>
+        <hr>
+        {% if is_granted('ROLE_USER_OPT') %}
+            <div class="left">
+                <div class="form-group">
+                    <div class="form-control">
+                        Имя: {{ app.user.firstName }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Инн: {{ app.user.inn }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Форма компании: {{ app.user.formCompany }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Название компании: {{ app.user.nameCompany }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Город: {{ app.user.city }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Профиль деятельности: {{ app.user.profileCompany }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Количество торговых точек: {{ app.user.countPoint }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Организация: {{ app.user.organization }}
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="form-group">
+                    <div class="form-control">
+                        Электронная почта (логин): {{ app.user.email }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Телефон: {{ app.user.phone }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        КПП: {{ app.user.kpp }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Рассчетный счет: {{ app.user.currentAccount }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Банк: {{ app.user.bank }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Корр. счет: {{ app.user.correspondentAccount }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        БИК: {{ app.user.bik }}
+                    </div>
+                </div>
+            </div>
+        {% elseif is_granted('ROLE_USER') %}
+            <div class="left">
+                <div class="form-group">
+                    <div class="form-control">
+                        Имя: {{ app.user.firstName }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Город: {{ app.user.city }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Электронная почта (логин): {{ app.user.email }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Телефон: {{ app.user.phone }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Адрес доставки: {{ app.user.address }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="form-actions clearfix">
+            <a href="{{ path("fos_user_profile_edit") }}" class="btn btn-success btn-lg">Изменить</a>
+        </div>
 
-<div class="row">
-    <div class="col-md-7">{{ 'sylius.account.home.outline'|trans }} </div>
-    <div class="col-md-5">
-        <strong>{{ app.user.lastName|upper }} {{ app.user.firstName }}</strong><br><br>
-        {{ 'sylius.account.home.id'|trans }} {{ app.user.id }} <br>
-        {{ 'sylius.account.home.email'|trans }} {{ app.user.email }}<br>
-        {{ 'sylius.account.home.since'|trans }} {{ app.user.createdAt|date() }}
-    </div>
-</div>
+    </fieldset>
+</form>

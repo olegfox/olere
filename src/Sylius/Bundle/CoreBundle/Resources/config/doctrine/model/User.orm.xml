@@ -89,6 +89,13 @@
         <field name="formCompany" column="formCompany" type="string" nullable="true" />
         <field name="profileCompany" column="profileCompany" type="string" nullable="true" />
         <field name="countPoint" column="countPoint" type="string" nullable="true" />
+        <field name="organization" column="organization" type="string" nullable="true" />
+        <field name="kpp" column="kpp" type="string" nullable="true" />
+        <field name="currentAccount" column="currentAccount" type="string" nullable="true" />
+        <field name="bank" column="bank" type="string" nullable="true" />
+        <field name="correspondentAccount" column="correspondentAccount" type="string" nullable="true" />
+        <field name="bik" column="bik" type="string" nullable="true" />
+        <field name="address" column="address" type="string" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>

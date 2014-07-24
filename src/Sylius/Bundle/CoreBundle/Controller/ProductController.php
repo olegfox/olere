@@ -93,6 +93,9 @@ class ProductController extends ResourceController
                     $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
                     $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
                     $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
+                    if($description == NULL){
+                        $description = "";
+                    }
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
                     $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
                     $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();

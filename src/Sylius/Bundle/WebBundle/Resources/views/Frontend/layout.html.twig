@@ -66,10 +66,10 @@
         </div>
         <div class="topMyAccount">
             {% if is_granted('ROLE_USER') %}
-                {% if app.request.attributes.get('_route') == "fos_user_profile_edit" %}
+                {% if app.request.attributes.get('_route') == "fos_user_profile_edit" or app.request.attributes.get('_route') == "fos_user_profile_show" %}
                     <a href="{{ path("fos_user_security_logout") }}">Выход</a>
                 {% else %}
-                    <a href="{{ path("fos_user_profile_edit") }}">Личный кабинет</a>
+                    <a href="{{ path("fos_user_profile_show") }}">Личный кабинет</a>
                 {% endif %}
             {% else %}
                 <a href="{{ path("fos_user_security_login") }}">Вход</a>

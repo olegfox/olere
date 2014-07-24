@@ -23,17 +23,66 @@ class ProfileFormType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('firstName', 'text', array(
-                'label'    => 'sylius.form.profile.firstName'
-            ))
-            ->add('lastName', 'text', array(
-                'label'    => 'sylius.form.profile.lastName'
-            ))
-            ->add('email', 'email', array(
-                'label'    => 'sylius.form.profile.email'
-            ))
-        ;
+        $builder->add('firstName', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.name"
+        )));
+        $builder->add('city', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.city"
+        )));
+        $builder->add('phone', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.phone"
+        )));
+        $builder->add('inn', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.inn"
+        )));
+        $builder->add('nameCompany', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.nameCompany"
+        )));
+        $builder->add('formCompany', 'choice', array(
+            'choices' => array(
+                'ООО2' => 'ООО',
+                'ИП' => 'ИП',
+                'ЗАО' => 'ЗАО',
+                'ГК' => 'ГК',
+                'Совместная закупка' => 'Совместная закупка',
+            ),
+            'label' => false,
+            'translation_domain' => 'FOSUserBundle',
+            'empty_value' => 'form.formCompany'
+        ));
+        $builder->add('profileCompany', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.profileCompany"
+        )));
+        $builder->add('countPoint', 'number', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "form.countPoint"
+        )));
+        $builder->add('organization', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "Организация"
+        )));
+        $builder->add('kpp', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "КПП"
+        )));
+        $builder->add('currentAccount', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "Расчетный счет"
+        )));
+        $builder->add('bank', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "Банк"
+        )));
+        $builder->add('correspondentAccount', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "Корр. счет"
+        )));
+        $builder->add('bik', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "БИК"
+        )));
+        $builder->add('address', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
+            "placeholder" => "Адрес доставки"
+        )))->add('email', 'email', array(
+                'label' => false,
+                'translation_domain' => 'FOSUserBundle',
+                "attr" => array(
+                    "placeholder" => "form.email"
+                )
+            ));
     }
 
     public function getName()

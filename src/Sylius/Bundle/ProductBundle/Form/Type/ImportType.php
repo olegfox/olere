@@ -28,13 +28,13 @@ class ImportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', 'file', array(
-                'label' => 'sylius.label.product.import_image',
-                "attr" => array(
-                    "accept" => "image/*",
-                    "multiple" => "multiple",
-                )
-            ))
+//            ->add('image', 'file', array(
+//                'label' => 'sylius.label.product.import_image',
+//                "attr" => array(
+//                    "accept" => "image/*",
+//                    "multiple" => "multiple",
+//                )
+//            ))
             ->add('file', 'file', array(
                 'label' => 'sylius.label.product.import_file'
             ))

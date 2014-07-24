@@ -4,7 +4,6 @@
     border: 1px solid #ddd;
     background-color: #fff;
     width: 750px;
-    height: 596px;
 }
 
 body .redactor_air {
@@ -28,7 +27,7 @@ body .redactor_box_fullscreen {
     display: block;
     margin: 0;
     padding: 0;
-    height: 100%!important;
+    height: 596px!important;
 }
 
 .redactor-link-tooltip {

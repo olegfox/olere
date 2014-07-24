@@ -11,6 +11,11 @@ sylius_backend_user_index:
             method: createFilterPaginator
             arguments: [$criteria, $sorting, $deleted]
 
+sylius_backend_user_export:
+    pattern: /export/
+    defaults:
+        _controller: sylius.controller.user:exportAction
+
 sylius_backend_user_create:
     pattern: /new
     methods: [GET, POST]

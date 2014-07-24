@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form name="form" action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }}
+      method="POST" class="form-horizontal registerForm requestForm" ng-controller="RegisterController as reg"
+      novalidate>
+    <fieldset class="well">
+        {{ 'registration.register_headerRequest'|trans|raw }}
+        <hr>
+        <div class="left">
+            {% for passwordField in form.plainPassword %}
+                {% if loop.index == 1 %}
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(passwordField, { 'attr': {'class': 'form-input', 'placeholder' : 'form.new_password'|trans, 'ng-maxlength' : '10', 'ng-minlength' : '5', 'ng-model' : 'user.password'}, 'required' : 'required'  }) }}
+                        <span>*</span>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(passwordField, { 'attr': {'class': 'form-input', 'placeholder' : 'form.new_password_confirmation'|trans, 'ng-maxlength' : '10', 'ng-minlength' : '5', 'ng-model' : 'user.passwordConfirm', 'password-match' : 'user.password'}, 'required' : 'required' }) }}
+                        <span>*</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="form-actions clearfix">
+            <button type="submit" class="btn btn-success btn-lg"
+                    ng-disabled="form.$invalid">{{ 'registration.next'|trans }}</button>
+        </div>
+        {{ form_errors(form) }}
+    </fieldset>
+    {{ form_end(form) }}
+</form>

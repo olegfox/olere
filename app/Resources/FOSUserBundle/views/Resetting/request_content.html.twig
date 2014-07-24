@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form name="form" action="{{ path('fos_user_resetting_send_email') }}" method="POST"
+      class="form-horizontal registerForm requestForm" ng-controller="RegisterController as reg" novalidate>
+    <fieldset class="well">
+        {{ 'registration.register_headerRequest'|trans|raw }}
+        <hr>
+        <div class="left">
+            <div class="form-group">
+                <span class="valid"></span><input type="email" class="form-control" id="username" name="username"
+                                                  ng-model="user.email" placeholder="{{ 'form.email'|trans }}"
+                                                  required="required"/><span>*</span>
+            </div>
+        </div>
+        <div class="form-actions clearfix">
+            <button type="submit" class="btn btn-success btn-lg"
+                    ng-disabled="form.$invalid">{{ 'registration.next'|trans }}</button>
+        </div>
+    </fieldset>
+</form>

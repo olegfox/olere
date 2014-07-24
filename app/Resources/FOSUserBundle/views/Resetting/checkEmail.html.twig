@@ -1,0 +1,9 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% import 'SyliusWebBundle:Frontend/Macros:alerts.html.twig' as alerts %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+    {{ alerts.info('resetting.check_email'|trans({'%email%': email})) }}
+{% endblock %}

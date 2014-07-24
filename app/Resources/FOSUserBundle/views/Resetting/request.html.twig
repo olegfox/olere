@@ -1,0 +1,17 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block html %} ng-app="register"{% endblock %}
+
+{% block border %}
+{% endblock %}
+
+{% block content %}
+{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/jquery.maskedinput.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/angular.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/register.js") }}"></script>
+{% endblock %}

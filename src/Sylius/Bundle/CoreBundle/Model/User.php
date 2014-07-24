@@ -42,6 +42,13 @@ class User extends BaseUser implements UserInterface
     protected $formCompany;
     protected $profileCompany;
     protected $countPoint;
+    protected $organization;
+    protected $kpp;
+    protected $currentAccount;
+    protected $bank;
+    protected $correspondentAccount;
+    protected $bik;
+    protected $address;
 
     public function __construct()
     {
@@ -481,5 +488,131 @@ class User extends BaseUser implements UserInterface
     public function getCountPoint()
     {
         return $this->countPoint;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOrganization($organization)
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setKpp($kpp)
+    {
+        $this->kpp = $kpp;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getKpp()
+    {
+        return $this->kpp;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCurrentAccount($currentAccount)
+    {
+        $this->currentAccount = $currentAccount;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCurrentAccount()
+    {
+        return $this->currentAccount;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setBank($bank)
+    {
+        $this->bank = $bank;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBank()
+    {
+        return $this->bank;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCorrespondentAccount($correspondentAccount)
+    {
+        $this->correspondentAccount = $correspondentAccount;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCorrespondentAccount()
+    {
+        return $this->correspondentAccount;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setBik($bik)
+    {
+        $this->bik = $bik;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBik()
+    {
+        return $this->bik;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

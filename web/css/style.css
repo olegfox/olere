@@ -921,6 +921,23 @@ h4, .container form{
 ::-moz-placeholder          {color:#000!important;}/* Firefox 19+ */
 :-moz-placeholder           {color:#000!important;}/* Firefox 18- */
 :-ms-input-placeholder      {color:#000!important;}
+.profileShow .form-control{
+    border: 0;
+    height: auto;
+    box-shadow: none;
+}
+.profileShow .btn{
+    line-height: 45px;
+}
+.profileShow .right .form-control{
+    text-align: left;
+}
+.profileEditForm .form-actions{
+    margin-top: 300px;
+}
+.profileShow .form-actions{
+    margin-top: 510px;
+}
 .btn-lg{
     color: #fff;
     font-family: "Calibri";
@@ -958,7 +975,7 @@ h4, .container form{
 .alert h4{
     display: none;
 }
-.col-md-12 .aler-info,
+.col-md-12 .alert-info,
 .col-md-12 .alert-success{
     margin: 25px -15px;
 }
