@@ -25,10 +25,13 @@ class ProfileFormType extends BaseType
     {
         $builder->add('firstName', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.name"
-        )));
-        $builder->add('city', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
-            "placeholder" => "form.city"
-        )));
+        )))
+            ->add('city', 'entity', array(
+                'label' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'class' => 'Sylius\Bundle\CoreBundle\Model\City',
+                'empty_value' => 'Выберите город'
+            ));
         $builder->add('phone', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.phone"
         )));
@@ -40,7 +43,7 @@ class ProfileFormType extends BaseType
         )));
         $builder->add('formCompany', 'choice', array(
             'choices' => array(
-                'ООО2' => 'ООО',
+                'ООО' => 'ООО',
                 'ИП' => 'ИП',
                 'ЗАО' => 'ЗАО',
                 'ГК' => 'ГК',

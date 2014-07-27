@@ -773,6 +773,9 @@ h4, .container form{
     width: 50%;
     padding-left: 15px;
 }
+.orderForm .well .left{
+    float: none;
+}
 .well .right{
     float: right;
     width: 50%;
@@ -793,6 +796,9 @@ h4, .container form{
 }
 .registerForm label{
     display: none;
+}
+.orderForm label{
+    display: block;
 }
 .registerTypeForm label{
     display: block;
@@ -821,6 +827,9 @@ h4, .container form{
 }
 .cartForm .form-actions{
     margin: 11px 0 0 0;
+}
+.orderForm .form-actions{
+    margin: 0;
 }
 .cartForm input[type="number"]{
     line-height: 21px;
@@ -937,7 +946,7 @@ h4, .container form{
     text-align: left;
 }
 .profileEditForm .form-actions{
-    margin-top: 300px;
+    margin-top: 490px;
 }
 .profileShow .form-actions{
     margin-top: 510px;
@@ -952,6 +961,13 @@ h4, .container form{
     border: 0;
     width: 150px;
     height: 45px;
+    line-height: 45px;
+}
+a.btn-lg:hover{
+    color: #fff;
+}
+.btn-lg i{
+    font-size: 16px;
 }
 .btn-success[disabled]{
     border: 0;
@@ -965,6 +981,13 @@ h4, .container form{
 }
 .form-control.ng-invalid{
     /*border: solid 1px red;*/
+}
+.form-control.border-null{
+    border: 0;
+    box-shadow: none;
+}
+.form-group.time select.form-control{
+    width: 73px;
 }
 
 .alert-info,

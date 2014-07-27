@@ -37,9 +37,85 @@ class ContactsStepType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', 'email', array("label" => "Email"))
-            ->add('username', 'text', array("label" => "Имя"))
-            ->add('phone', 'text', array("label" => "Номер телефона"))
+            ->add('city', 'entity', array(
+                'required' => 'required',
+                'label' => 'Город',
+                'class' => 'Sylius\Bundle\CoreBundle\Model\City',
+                'empty_value' => 'Укажите свой город',
+                'empty_data'  => null,
+                'attr' => array(
+                    'ng-model' => 'ord.city',
+                )
+            ))
+            ->add('delivery', 'choice', array(
+                'required' => 'required',
+                'choices' => array(
+                    0 => "курьер по МСК в предлах МКАД.",
+                    1 => "самовывоз"
+                ),
+                'label' => 'Способ доставки',
+                'expanded' => true
+            ))
+            ->add('address', 'text', array(
+                'required' => 'required',
+                'attr' => array(
+                    'placeholder' => 'Адрес доставки',
+                    'ng-model' => 'ord.address',
+                )
+            ))
+            ->add('transport', 'choice', array(
+                'required' => 'required',
+                'label' => 'Транспортные компании',
+                'choices' => array(
+                    0 => 'Деловые линии',
+                    1 => 'Байкал сервис',
+                    2 => 'Пони экспресс',
+                    3 => 'Почта России'
+                ),
+                'empty_value' => 'Выберите транспортную компанию',
+                'empty_data'  => null,
+                'attr' => array(
+                    'ng-model' => 'ord.transport',
+                )
+            ))
+            ->add('username', 'text', array(
+                'required' => 'required',
+                "attr" => array(
+                    'ng-model' => 'ord.username',
+                    'placeholder' => 'Имя'
+                )
+            ))
+            ->add('email', 'email', array(
+                'required' => 'required',
+                'attr' => array(
+                    'ng-model' => 'ord.email',
+                    'placeholder' => 'Электронная почта'
+                )
+            ))
+            ->add('phone', 'text', array(
+                'required' => 'required',
+                'attr' => array(
+                    'ng-model' => 'ord.phone',
+                    'placeholder' => 'Номер телефона'
+                )
+            ))
+            ->add('timeBegin', 'time', array(
+                'required' => '',
+                'input'  => 'datetime',
+                'widget' => 'choice'
+            ))
+            ->add('timeEnd', 'time', array(
+                'required' => '',
+                'input'  => 'datetime',
+                'widget' => 'choice'
+            ))
+            ->add('comment', 'textarea', array(
+                'required' => '',
+                'attr' => array(
+                    'ng-model' => 'ord.comment',
+                    'placeholder' => 'Комментарий'
+                )
+            ))
         ;
     }
 

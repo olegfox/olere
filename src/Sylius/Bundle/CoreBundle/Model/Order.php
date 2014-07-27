@@ -33,6 +33,20 @@ class Order extends Cart implements OrderInterface
 
     protected $phone;
 
+    protected $city;
+
+    protected $delivery;
+
+    protected $address;
+
+    protected $transport;
+
+    protected $timeBegin;
+
+    protected $timeEnd;
+
+    protected $comment;
+
     /**
      * Order shipping address.
      *
@@ -557,5 +571,89 @@ class Order extends Cart implements OrderInterface
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    public function setDelivery($delivery)
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    public function getDelivery()
+    {
+        return $this->delivery;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function setTransport($transport)
+    {
+        $this->transport = $transport;
+
+        return $this;
+    }
+
+    public function getTransport()
+    {
+        return $this->transport;
+    }
+
+    public function setTimeBegin($timeBegin)
+    {
+        $this->timeBegin = $timeBegin;
+
+        return $this;
+    }
+
+    public function getTimeBegin()
+    {
+        return $this->timeBegin;
+    }
+
+    public function setTimeEnd($timeEnd)
+    {
+        $this->timeEnd = $timeEnd;
+
+        return $this;
+    }
+
+    public function getTimeEnd()
+    {
+        return $this->timeEnd;
+    }
+
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

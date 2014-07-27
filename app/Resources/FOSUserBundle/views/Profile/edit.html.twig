@@ -50,5 +50,17 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset("js/jquery.maskedinput.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/angular.min.js") }}"></script>
+    {% if is_granted('ROLE_USER') %}
+        {% set user = app.security.getToken().getUser() %}
+        <script type="text/javascript">
+            window.user = {
+                firstName: '{{ user.firstName }}',
+                city: '{% if user.city.id is defined %}{{ user.city.id }}{% endif %}',
+                email: '{{ user.email }}',
+                phone: '{{ user.phone }}',
+                address : '{{ user.address }}'
+            };
+        </script>
+    {% endif %}
     <script type="text/javascript" src="{{ asset("js/register.js") }}"></script>
 {% endblock %}

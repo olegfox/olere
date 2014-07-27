@@ -1,44 +1,97 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
+{% block html %} ng-app="order"{% endblock %}
+
 {% block javascripts %}
-{{ parent() }}
-{% javascripts output='assets/compiled/frontend_province.js'
-    'bundles/syliusweb/js/province-choices.js'
-%}
+    {{ parent() }}
+    {% if is_granted('ROLE_USER') %}
+        {% set user = app.security.getToken().getUser() %}
+        <script type="text/javascript">
+            window.ord = {
+                username : '{{ user.firstName }}',
+                city : '{% if user.city.id is defined %}{{ user.city.id }}{% endif %}',
+                email : '{{ user.email }}',
+                phone : '{{ user.phone }}',
+                address : '{{ user.address }}'
+            };
+        </script>
+    {% endif %}
+    {% javascripts output='assets/compiled/frontend_province.js'
+    'bundles/syliusweb/js/province-choices.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+    <script type="text/javascript" src="{{ asset("js/jquery.maskedinput.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/angular.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/order.js") }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1>{{ 'sylius.checkout.contacts.header'|trans|raw }}</h1>
-</div>
 
-{% include 'SyliusWebBundle:Frontend/Checkout:_progressBar.html.twig' %}
+    {#{% include 'SyliusWebBundle:Frontend/Checkout:_progressBar.html.twig' %}#}
 
-<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" class="form-horizontal" novalidate>
+    <form name="form" method="post"
+          action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}"
+          class="form-horizontal registerForm orderForm" ng-submit="submit" ng-controller="OrderController" novalidate>
 
-{{ form_errors(form) }}
-
-<fieldset>
-    <div class="row">
-        <div class="col-md-6 address-container">
+        <fieldset>
             <div class="well">
-                <h4>{{ 'sylius.checkout.finalize.order.shipping_contacts'|trans }}</h4>
-                {{ form_row(form.email) }}
-                {{ form_row(form.username) }}
-                {{ form_row(form.phone) }}
+                <h1>{{ 'sylius.checkout.finalize.order.shipping_contacts'|trans }}</h1>
+                <hr>
+                <div class="left">
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.city) }}<span>*</span>
+                    </div>
+                    <div class="form-group" ng-if="ord.city == 2">
+                        <div class="form-control border-null">
+                            Выберите способ доставки
+                        </div>
+                        <div class="form-control border-null">
+                            <label for="sylius_checkout_contacts_delivery_0">{{ form_widget(form.delivery[0], {attr : {'ng-model' : 'ord.delivery'} }) }} курьер по МСК в предлах МКАД.(<a href="#">доставка</a>)</label>
+                        </div>
+                        <div class="form-control border-null">
+                            <label for="sylius_checkout_contacts_delivery_1">{{ form_widget(form.delivery[1], {attr : {'ng-model' : 'ord.delivery'} }) }} самовывоз (<a href="{{ path('sylius_page_show', {id : '/contacts'}) }}">контакты</a>)</label>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="ord.delivery == 0 && ord.city == 2">
+                        <span class="valid"></span>{{ form_widget(form.address) }}<span>*</span>
+                    </div>
+                    <div class="form-group" ng-if="ord.city != 2 && ord.city != null">
+                        <span class="valid"></span>{{ form_widget(form.transport) }}<span>*</span>
+                    </div>
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.email) }}<span>*</span>
+                    </div>
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.username) }}<span>*</span>
+                    </div>
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.phone) }}<span>*</span>
+                    </div>
+                    <div class="form-group time">
+                        <div class="form-control border-null">
+                            Время доставки
+                        </div>
+                        <br>
+                        <span class="valid"></span>{{ form_widget(form.timeBegin) }} - {{ form_widget(form.timeEnd) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.comment) }}
+                    </div>
+                </div>
+                <div class="form-actions clearfix">
+                    <a href="{{ path('sylius_cart_summary') }}" class="btn btn-lg"><i
+                                class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            ng-disabled="form.$invalid">{{ 'sylius.checkout.forward'|trans }} <i
+                                class="icon-chevron-right"></i>
+                    </button>
+                </div>
+                {{ form_errors(form) }}
             </div>
-        </div>
-    </div>
-</fieldset>
+        </fieldset>
 
-{{ form_widget(form._token) }}
+        {{ form_widget(form._token) }}
 
-<div class="form-actions">
-    <a href="{{ path('sylius_cart_summary') }}" class="btn btn-lg"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
-    <button type="submit" class="btn btn-primary btn-lg">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
-</div>
 
-</form>
+    </form>
 {% endblock %}

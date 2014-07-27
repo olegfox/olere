@@ -53,7 +53,9 @@ class ProfileController extends BaseController
         $formFactory = $this->container->get('fos_user.profile.form.factory');
 
         $form = $formFactory->createForm();
-        if($this->container->get('security.context')->isGranted('ROLE_USER')){
+        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
+            $form->remove("address");
+        }elseif($this->container->get('security.context')->isGranted('ROLE_USER')){
             $form->remove("inn");
             $form->remove("nameCompany");
             $form->remove("formCompany");
@@ -65,8 +67,6 @@ class ProfileController extends BaseController
             $form->remove("bank");
             $form->remove("correspondentAccount");
             $form->remove("bik");
-        }elseif($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
-            $form->remove("address");
         }
         $form->setData($user);
 
@@ -95,12 +95,16 @@ class ProfileController extends BaseController
         if ($this->container->get('security.context')->isGranted('ROLE_USER_OPT')) {
             return $this->container->get('templating')->renderResponse(
                 'FOSUserBundle:Profile:editOpt.html.'.$this->container->getParameter('fos_user.template.engine'),
-                array('form' => $form->createView())
+                array(
+                    'form' => $form->createView()
+                )
             );
         }elseif($this->container->get('security.context')->isGranted('ROLE_USER')){
             return $this->container->get('templating')->renderResponse(
                 'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-                array('form' => $form->createView())
+                array(
+                    'form' => $form->createView()
+                )
             );
         }
     }

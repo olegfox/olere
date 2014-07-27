@@ -21,9 +21,12 @@ class RegistrationFormType extends BaseType
         $builder->add('firstName', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.name"
         )));
-        $builder->add('city', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
-            "placeholder" => "form.city"
-        )));
+        $builder->add('city', 'entity', array(
+            'label' => false,
+            'translation_domain' => 'FOSUserBundle',
+            'class' => 'Sylius\Bundle\CoreBundle\Model\City',
+            'empty_value' => 'Выберите город'
+        ));
         $builder->add('phone', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.phone"
         )));
@@ -34,7 +37,7 @@ class RegistrationFormType extends BaseType
             "placeholder" => "form.nameCompany"
         )));
         $builder->add('formCompany', 'choice', array(
-            'choices'   => array(
+            'choices' => array(
                 'ООО2' => 'ООО',
                 'ИП' => 'ИП',
                 'ЗАО' => 'ЗАО',
@@ -58,7 +61,7 @@ class RegistrationFormType extends BaseType
         // remove the username field
         $builder->remove('username');
         $builder->remove('plainPassword');
-        $builder ->add('plainPassword', 'repeated', array(
+        $builder->add('plainPassword', 'repeated', array(
             'type' => 'password',
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => false, 'attr' => array(

@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-control">
-                        Город: {{ app.user.city }}
+                        Город: {% if app.user.city.name is defined %}{{ app.user.city.name }}{% endif %}
                     </div>
                 </div>
                 <div class="form-group">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-control">
-                        Город: {{ app.user.city }}
+                        Город: {% if app.user.city.name is defined %}{{ app.user.city.name }}{% endif %}
                     </div>
                 </div>
                 <div class="form-group">

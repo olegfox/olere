@@ -44,6 +44,13 @@
         <field type="string" name="email" column="email" nullable="true" />
         <field type="string" name="username" column="username" nullable="true" />
         <field type="string" name="phone" column="phone" nullable="true" />
+        <field type="string" name="city" column="city" nullable="true" />
+        <field type="string" name="delivery" column="delivery" nullable="true" />
+        <field type="string" name="address" column="address" nullable="true" />
+        <field type="string" name="transport" column="transport" nullable="true" />
+        <field type="datetime" name="timeBegin" column="timeBegin" nullable="true" />
+        <field type="datetime" name="timeEnd" column="timeEnd" nullable="true" />
+        <field type="string" name="comment" column="comment" nullable="true" />
 
         <many-to-many field="promotions" target-entity="Sylius\Bundle\PromotionsBundle\Model\PromotionInterface">
             <join-table name="sylius_promotion_order">
