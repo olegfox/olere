@@ -307,6 +307,8 @@ class ProductController extends ResourceController
                             $p->getMasterVariant()->addImage($variantImage);
                             $manager->flush();
                             $count++;
+                        }else{
+                            print("Не удалось скачать файл ".$i."\n");
                         }
                     }
                 }

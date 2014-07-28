@@ -26,11 +26,12 @@ class ProfileFormType extends BaseType
         $builder->add('firstName', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.name"
         )))
-            ->add('city', 'entity', array(
+            ->add('city', 'text', array(
                 'label' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'class' => 'Sylius\Bundle\CoreBundle\Model\City',
-                'empty_value' => 'Выберите город'
+                'attr' => array(
+                    "placeholder" => "Введите название города"
+                )
             ));
         $builder->add('phone', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.phone"

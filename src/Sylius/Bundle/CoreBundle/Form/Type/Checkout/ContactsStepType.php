@@ -37,14 +37,12 @@ class ContactsStepType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('city', 'entity', array(
+            ->add('city', 'text', array(
                 'required' => 'required',
                 'label' => 'Город',
-                'class' => 'Sylius\Bundle\CoreBundle\Model\City',
-                'empty_value' => 'Укажите свой город',
-                'empty_data'  => null,
                 'attr' => array(
                     'ng-model' => 'ord.city',
+                    'placeholder' => 'Укажите свой город'
                 )
             ))
             ->add('delivery', 'choice', array(

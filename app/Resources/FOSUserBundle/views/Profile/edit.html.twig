@@ -55,7 +55,7 @@
         <script type="text/javascript">
             window.user = {
                 firstName: '{{ user.firstName }}',
-                city: '{% if user.city.id is defined %}{{ user.city.id }}{% endif %}',
+                city: '{{ user.city}}',
                 email: '{{ user.email }}',
                 phone: '{{ user.phone }}',
                 address : '{{ user.address }}'

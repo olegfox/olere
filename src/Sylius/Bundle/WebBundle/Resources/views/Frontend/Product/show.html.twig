@@ -44,7 +44,7 @@
         </div>
         <div class="pictureProduct">
             {#<a href="{{ asset('media/image/'~product.image.path) }}" class="fancybox">#}
-                <img src="{{ product.image ? 'media/image/'~product.image.path : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="500px">
+                <img src="{{ product.image ? '/media/image/'~product.image.path : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="500px">
             {#</a>#}
         </div>
         <div class="buyBlock">

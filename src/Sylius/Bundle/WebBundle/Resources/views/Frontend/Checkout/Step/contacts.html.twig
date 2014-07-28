@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <span class="valid"></span>{{ form_widget(form.city) }}<span>*</span>
                     </div>
-                    <div class="form-group" ng-if="ord.city == 2">
+                    <div class="form-group" ng-if="ord.city == 'Москва'">
                         <div class="form-control border-null">
                             Выберите способ доставки
                         </div>
@@ -52,10 +52,10 @@
                             <label for="sylius_checkout_contacts_delivery_1">{{ form_widget(form.delivery[1], {attr : {'ng-model' : 'ord.delivery'} }) }} самовывоз (<a href="{{ path('sylius_page_show', {id : '/contacts'}) }}">контакты</a>)</label>
                         </div>
                     </div>
-                    <div class="form-group" ng-if="ord.delivery == 0 && ord.city == 2">
+                    <div class="form-group" ng-if="ord.delivery == 0 && ord.city == 'Москва'">
                         <span class="valid"></span>{{ form_widget(form.address) }}<span>*</span>
                     </div>
-                    <div class="form-group" ng-if="ord.city != 2 && ord.city != null">
+                    <div class="form-group" ng-if="ord.city != 'Москва' && ord.city != null">
                         <span class="valid"></span>{{ form_widget(form.transport) }}<span>*</span>
                     </div>
                     <div class="form-group">

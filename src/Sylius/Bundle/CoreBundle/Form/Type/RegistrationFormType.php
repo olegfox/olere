@@ -21,11 +21,12 @@ class RegistrationFormType extends BaseType
         $builder->add('firstName', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.name"
         )));
-        $builder->add('city', 'entity', array(
+        $builder->add('city', 'text', array(
             'label' => false,
             'translation_domain' => 'FOSUserBundle',
-            'class' => 'Sylius\Bundle\CoreBundle\Model\City',
-            'empty_value' => 'Выберите город'
+            'attr' => array(
+                "placeholder" => "Введите название города"
+            )
         ));
         $builder->add('phone', 'text', array('label' => false, 'translation_domain' => 'FOSUserBundle', "attr" => array(
             "placeholder" => "form.phone"

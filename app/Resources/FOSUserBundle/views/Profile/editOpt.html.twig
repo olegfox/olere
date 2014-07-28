@@ -94,7 +94,7 @@
                 firstName: '{{ user.firstName }}',
                 inn: '{{ user.inn }}',
                 nameCompany: '{{ user.nameCompany }}',
-                city: '{% if user.city.id is defined %}{{ user.city.id }}{% endif %}',
+                city: '{{ user.city.id }}',
                 email: '{{ user.email }}',
                 phone: '{{ user.phone }}',
                 address : '{{ user.address }}',
