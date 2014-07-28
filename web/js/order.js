@@ -17,7 +17,6 @@
             timeEnd : '',
             comment: ''
         };
-        alert(window.ord.username);
         if(window.ord){
            $scope.ord.city = window.ord.city;
            $scope.ord.username = window.ord.username;
