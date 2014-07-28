@@ -93,7 +93,7 @@ class ProductController extends ResourceController
                     $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
                     $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
                     $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
-                    if($description == NULL){
+                    if ($description == NULL) {
                         $description = "";
                     }
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
@@ -128,7 +128,7 @@ class ProductController extends ResourceController
 //                            }
 //                        }
                         $nameCat = $name;
-                        if(strlen($name) > 10){
+                        if (strlen($name) > 10) {
                             $nameCat = mb_substr($name, 0, 10);
                         }
 //                        print 'Сокращённое название каталога: '.$nameCat;
@@ -248,6 +248,9 @@ class ProductController extends ResourceController
 //        if ($request->isMethod('POST')) {
         $products = $repository->findAll();
         $connect = ftp_connect('fotobank.olere.ru');
+        $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
+        $filesystem = new Filesystem($adapter);
+        $imageUploader = new ImageUploader($filesystem);
 
         if (!$connect) {
             return false;
@@ -278,7 +281,7 @@ class ProductController extends ResourceController
                             }
                         }
                         foreach ($p->getMasterVariant()->getImages() as $image) {
-                            $path = $image->getPath();
+                            $path = $image->getOriginal();
 //                            $path_parts = explode(".", $path);
                             if ($path == $fileName) {
                                 $fl = 1;
@@ -291,15 +294,20 @@ class ProductController extends ResourceController
                     }
                 }
 //                print var_dump($files);
-                if(count($images) > 0){
+                if (count($images) > 0) {
                     natcasesort($images);
-                    $images=array_reverse($images);
+                    $images = array_reverse($images);
                     foreach ($images as $i) {
-                        $variantImage = new VariantImage();
-                        $variantImage->setPath($i);
-                        $p->getMasterVariant()->addImage($variantImage);
-                        $manager->flush();
-                        $count++;
+                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY)) {
+                            $variantImage = new VariantImage();
+                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
+                            $variantImage->setFile($fileinfo);
+                            $imageUploader->upload($variantImage);
+                            $variantImage->setOriginal($i);
+                            $p->getMasterVariant()->addImage($variantImage);
+                            $manager->flush();
+                            $count++;
+                        }
                     }
                 }
             }
@@ -332,7 +340,7 @@ class ProductController extends ResourceController
 
         $groups = $this->get('sylius.repository.group')->findAll();
 
-        if(count($taxon->getChildren()) > 0){
+        if (count($taxon->getChildren()) > 0) {
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
             $paginator = $this
                 ->getRepository()
@@ -471,7 +479,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function showAction(Request $request){
+    public function showAction(Request $request)
+    {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
         return $this->render($this->config->getTemplate('show.html.twig'), array(
@@ -480,14 +489,15 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function deleteAllAction(Request $request){
+    public function deleteAllAction(Request $request)
+    {
         $idx = $request->get('idx_all');
         $repository = $this->container->get('sylius.repository.product');
         $manager = $this->container->get('sylius.manager.product');
-        if($idx){
+        if ($idx) {
             $idx = json_decode($idx);
-            if(count($idx) > 0){
-                foreach($idx as $id){
+            if (count($idx) > 0) {
+                foreach ($idx as $id) {
                     $product = $repository->findOneBy(array("id" => $id));
                     $manager->remove($product);
                     $manager->flush();
@@ -497,9 +507,10 @@ class ProductController extends ResourceController
         return $this->redirectHandler->redirectToReferer();
     }
 
-    public function editGroupAction(Request $request){
+    public function editGroupAction(Request $request)
+    {
         $id = $request->get('id');
-        if($id){
+        if ($id) {
             $name = $request->get('name');
             $sku = $request->get('sku');
             $price = $request->get('price');
@@ -510,19 +521,19 @@ class ProductController extends ResourceController
 
             $product = $repository->findOneBy(array("id" => $id));
 
-            if($product){
+            if ($product) {
 
-                if($name != ''){
+                if ($name != '') {
                     $product->setName($name);
                 }
-                if($sku != ''){
+                if ($sku != '') {
                     $product->setSku($sku);
                 }
-                if($price != ''){
-                    $product->setPrice($price*100);
+                if ($price != '') {
+                    $product->setPrice($price * 100);
                 }
-                if($priceOpt != ''){
-                    $product->setPriceOpt($priceOpt*100);
+                if ($priceOpt != '') {
+                    $product->setPriceOpt($priceOpt * 100);
                 }
 
                 $manager->flush();

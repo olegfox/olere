@@ -20,6 +20,8 @@ class VariantImage extends Image implements VariantImageInterface
      */
     protected $variant;
 
+    protected $original;
+
     /**
      * {@inheritdoc}
      */
@@ -34,6 +36,24 @@ class VariantImage extends Image implements VariantImageInterface
     public function setVariant(VariantInterface $variant = null)
     {
         $this->variant = $variant;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOriginal()
+    {
+        return $this->original;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOriginal($original)
+    {
+        $this->original = $original;
 
         return $this;
     }

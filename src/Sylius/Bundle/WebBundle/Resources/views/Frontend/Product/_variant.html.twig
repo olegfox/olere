@@ -1,6 +1,6 @@
 {% set product = variant.product %}
 <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="thumbnail pull-left" style="margin-right: 15px;">
-    <img src="{{ product.image ? image(ftp_path~product.image.path).zoomCrop(120, 90) : 'http://placehold.it/50x40' }}" alt="{{ product.name }}" />
+    <img src="{{ product.image ? image('media/image/'~product.image.path).zoomCrop(120, 90) : 'http://placehold.it/50x40' }}" alt="{{ product.name }}" />
 </a>
 <div>
     <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}"><strong>{{ product.name }}</strong></a>

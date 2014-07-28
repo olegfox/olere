@@ -153,9 +153,9 @@
         {% if product.images|length > 0 %}
             <div id="gallery">
                 {% for image in product.images %}
-                    {{ ftp_path~image.path }}
-                <a href="{{ image(ftp_path~image.path).zoomCrop(640, 480) }}" title="{{ product.name }}" class="thumbnail">
-                    <img src="{{ image(ftp_path~image.path).zoomCrop(120, 90) }}" alt="{{ product.name }}" />
+                    {#{{ ftp_path~image.path }}#}
+                <a href="{{ image('media/image/'~image.path).zoomCrop(640, 480) }}" title="{{ product.name }}" class="thumbnail">
+                    <img src="{{ image('media/image/'~image.path).zoomCrop(120, 90) }}" alt="{{ product.name }}" />
                 </a>
                 {% endfor %}
             </div>

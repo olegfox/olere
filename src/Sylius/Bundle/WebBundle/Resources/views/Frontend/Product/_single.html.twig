@@ -5,7 +5,7 @@
               class="clearfix form-horizontal">
             <div class="td td1">
                 <a class="fancybox" href="{{ product.image.path|imagine_filter('sylius_large') }}" title="{{ product.name }}">
-                    <img src="{{ product.image ? image(ftp_path~product.image.path).cropResize(177, 162).jpeg() : 'http://placehold.it/175x160' }}"
+                    <img src="{{ product.image ? image('media/image/'~product.image.path).cropResize(177, 162).jpeg() : 'http://placehold.it/175x160' }}"
                          alt="{{ product.name }}"/>
                 </a>
             </div>

@@ -1,2 +1,2 @@
 {% set product = variant.product %}
-<img src="http://{{ app.request.host }}{{ product.image ? image(ftp_path~product.image.path).cropResize(177, 162).jpeg() : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="100%" />
+<img src="http://{{ app.request.host }}{{ product.image ? image('media/image/'~product.image.path).cropResize(177, 162).jpeg() : 'http://placehold.it/175x160' }}" alt="{{ product.name }}" width="100%" />
