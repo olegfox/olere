@@ -87,6 +87,8 @@ class Product extends BaseProduct implements ProductInterface
 
     private $position2;
 
+    private $children;
+
     /**
      * Constructor.
      */
@@ -398,6 +400,44 @@ class Product extends BaseProduct implements ProductInterface
         $this->position2 = $position2;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addChildren(Product $child)
+    {
+        if (!$this->hasChildren($child)) {
+            $this->children[] = $child;
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeChildren(Product $child)
+    {
+        $this->children->removeElement($child);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasChildren(Product $child)
+    {
+        return $this->children->contains($child);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 
 }

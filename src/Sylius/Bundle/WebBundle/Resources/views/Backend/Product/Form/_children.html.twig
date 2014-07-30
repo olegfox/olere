@@ -1,0 +1,5 @@
+{% form_theme form 'SyliusWebBundle::forms.html.twig' %}
+
+<div class="tab-pane" id="children">
+    {% render(path('sylius_backend_product_children', {parent : product.id})) %}
+</div>

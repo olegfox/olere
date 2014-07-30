@@ -1,0 +1,14 @@
+{% from 'SyliusWebBundle:Backend/Product:macros.html.twig' import children %}
+
+<div>
+    <div class="childrenProducts">
+        <select onchange="changeTaxon(this, {{ parent }});">
+            {% for taxon in taxons %}
+                <option {% if taxon.parent.id is not defined %}disabled{% endif %}{% if loop.index == 1 %} selected{% endif %} value="{{ taxon.id }}">{{ taxon.name }}</option>
+            {% endfor %}
+        </select>
+        <div class="products"></div>
+    </div><div class="selectedProducts">
+        {{ children(children, parent, 0) }}
+    </div>
+</div>

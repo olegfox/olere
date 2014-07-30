@@ -1,6 +1,7 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
+{% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
 
 {# stylesheets... #}
 {% block stylesheets %}
@@ -37,7 +38,7 @@
                 Дополнительные фото:
                 <div class="blockPreview">
                     {% for image in product.images %}
-                        <img onclick="preview('{{ 'media/image/'~image.path }}', '{{ image ? 'media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
+                        <img onclick="preview('{{ '/media/image/'~image.path }}', '{{ image ? '/media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
                     {% endfor %}
                 </div>
             </div>
@@ -72,31 +73,14 @@
     </div>
 
 <!-- Catalog -->
+    {% if product.getChildren()|length > 0 %}
     <div class="catalog latestProducts">
         <div class="head">
             С этим товаром покупают
-        </div><div class="boxes"><div class="row"><div class="box box0">
-               <div class="inner_box">
-                    <a href="#">
-                        <img src="{{ image('images/box.jpg').resize(500, 500, '#fff') }}" alt="images/box.jpg">
-                    </a>
-                </div>
-            </div><div class="box box1">
-                <div class="inner_box">
-                    <a href="#">
-                        <img src="{{ image('images/box.jpg').resize(500, 500, '#fff') }}" alt="images/box.jpg">
-                    </a>
-                </div>
-            </div><div class="box box2">
-                <div class="inner_box">
-                    <a href="#">
-                        <img src="{{ image('images/box.jpg').resize(500, 500, '#fff') }}" alt="images/box.jpg">
-                    </a>
-                </div>
-            </div>
         </div>
-        </div>
+        {{ grid(product.getChildren(), groups) }}
     </div>
+    {% endif %}
 {% endblock %}
 
 {# javascripts... #}
@@ -105,4 +89,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    {% if product.getChildren()|length > 0 %}
+        <script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>
+    {% endif %}
 {% endblock %}

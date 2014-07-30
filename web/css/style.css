@@ -29,13 +29,13 @@ a, a:hover, a:focus{
     color: #000;
 }
 .wrap_top{
-    height: 38px;
+    height: 50px;
     background: #fff;
     border-bottom: solid 1px #dcdcdc;
 }
 .wrap_top .top{
-    height: 38px;
-    line-height: 38px;
+    height: 50px;
+    line-height: 50px;
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 20px;
@@ -143,12 +143,12 @@ a, a:hover, a:focus{
     height: 70px;
     line-height: 70px;
     display: table-cell;
-    padding-right: 40px;
+    padding-right: 120px;
 }
 .logoBox img{
     vertical-align: middle;
     max-height: 64px;
-    height: 80%;
+    width: 100px;
     margin-top: -5px;
 }
 .wrap_menu{
@@ -222,6 +222,9 @@ a, a:hover, a:focus{
 .catalog{
     padding: 0px 20px;
     padding: 0px\0/;
+}
+.catalog.latestProducts{
+    margin-bottom: 110px;
 }
 .catalog .head{
     height: 50px;
@@ -704,7 +707,7 @@ tr.tDnD_whileDrag{
     background: gray;
 }
 .topBolvan{
-    height: 38px;
+    height: 50px;
 }
 .product{
     padding: 0px 20px;

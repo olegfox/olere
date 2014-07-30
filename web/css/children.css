@@ -1,0 +1,41 @@
+.childrenProducts{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+.childrenProducts .products{
+    width: 100%;
+}
+.selectedProducts{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    margin-top: 23px;
+}
+.childrenProducts .products ul,
+.selectedProducts ul{
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 10px;
+    border: solid 1px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.childrenProducts .products ul li,
+.selectedProducts ul li{
+    border-bottom: solid 1px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.childrenProducts .products ul li .image,
+.selectedProducts ul li .image{
+    display: inline-block;
+}
+.childrenProducts .products ul li .name,
+.selectedProducts ul li .name{
+    display: inline-block;
+    padding-left: 20px;
+}

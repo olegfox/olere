@@ -242,6 +242,7 @@ class ProductController extends ResourceController
 
     public function importScanAction(Request $request)
     {
+        set_time_limit(0);
         header('Content-Type: text/html; charset=UTF-8');
         $repository = $this->container->get('sylius.repository.product');
         $manager = $this->container->get('sylius.manager.product');
@@ -259,7 +260,8 @@ class ProductController extends ResourceController
         $result = ftp_login($connect, 'anonymous', '');
 
         if ($result == false) return false;
-
+        ftp_set_option($connect, FTP_TIMEOUT_SEC, 80000);
+        ftp_pasv($connect, true);
         if ($result) {
             $count = 0;
 //            ftp_chdir($connect, '/');
@@ -298,18 +300,18 @@ class ProductController extends ResourceController
                     natcasesort($images);
                     $images = array_reverse($images);
                     foreach ($images as $i) {
-                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY)) {
-                            $variantImage = new VariantImage();
-                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
-                            $variantImage->setFile($fileinfo);
-                            $imageUploader->upload($variantImage);
-                            $variantImage->setOriginal($i);
-                            $p->getMasterVariant()->addImage($variantImage);
-                            $manager->flush();
-                            $count++;
-                        }else{
-                            print("Не удалось скачать файл ".$i."\n");
-                        }
+//                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
+                        $variantImage = new VariantImage();
+                        $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
+                        $variantImage->setFile($fileinfo);
+                        $imageUploader->upload($variantImage);
+                        $variantImage->setOriginal($i);
+                        $p->getMasterVariant()->addImage($variantImage);
+                        $manager->flush();
+                        $count++;
+//                        }else{
+//                            print("Не удалось скачать файл ".$i."\n");
+//                        }
                     }
                 }
             }
@@ -488,6 +490,46 @@ class ProductController extends ResourceController
         return $this->render($this->config->getTemplate('show.html.twig'), array(
             'product' => $product,
             'groups' => $groups
+        ));
+    }
+
+    public function childrenActiveAction(Request $request)
+    {
+        $idParent = $request->get("parent");
+        $idChild = $request->get("child");
+        if ($idParent != '' && $idChild != '') {
+            $parent = $this->get('sylius.repository.product')->findOneById($idParent);
+            $child = $this->get('sylius.repository.product')->findOneById($idChild);
+            if ($parent && $child) {
+                $manager = $this->container->get('sylius.manager.product');
+                if ($request->get("active") == 1) {
+                    $parent->addChildren($child);
+                } else {
+                    $parent->removeChildren($child);
+                }
+                $manager->flush();
+                return new Response("ok");
+            }
+        }
+        return new Response("no");
+    }
+
+    public function childrenAction(Request $request, $parent)
+    {
+        $product = $this->get('sylius.repository.product')->findOneById($parent);
+        $taxons = $this->get('sylius.repository.taxon')->findAll();
+        return $this->render('SyliusWebBundle:Backend/Product:children.html.twig', array(
+            'children' => $product->getChildren(),
+            'parent' => $parent,
+            'taxons' => $taxons
+        ));
+    }
+
+    public function productsTaxonAction(Request $request, $taxon, $parent){
+        $taxon = $this->get('sylius.repository.taxon')->findOneById($taxon);
+        return $this->render('SyliusWebBundle:Backend/Product:productsTaxon.html.twig', array(
+            'products' => $taxon->getProducts(),
+            'parent' => $parent
         ));
     }
 

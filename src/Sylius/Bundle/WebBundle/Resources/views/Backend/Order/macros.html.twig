@@ -14,9 +14,8 @@
             <th>{{ sylius_resource_sort('createdAt', 'sylius.order.created_at'|trans, null, {'route_params' : router_paramters}) }}</th>
             <th>{{ sylius_resource_sort('number', 'sylius.order.number'|trans, null, {'route_params' : router_paramters}) }}</th>
             <th>{{ sylius_resource_sort('paymentState', 'sylius.order.payment_state'|trans, null, {'route_params' : router_paramters}) }}</th>
-            <th>{{ sylius_resource_sort('shippingState', 'sylius.order.shipment_state'|trans, null, {'route_params' : router_paramters}) }}</th>
-            <th>{{ sylius_resource_sort('user', 'sylius.order.user'|trans, null, {'route_params' : router_paramters}) }}</th>
-            <th>{{ sylius_resource_sort('total', 'sylius.order.total'|trans, null, {'route_params' : router_paramters}) }}</th>
+            {#<th>{{ sylius_resource_sort('shippingState', 'sylius.order.shipment_state'|trans, null, {'route_params' : router_paramters}) }}</th>#}
+            {#<th>{{ sylius_resource_sort('total', 'sylius.order.total'|trans, null, {'route_params' : router_paramters}) }}</th>#}
             <th></th>
         </tr>
     </thead>
@@ -30,21 +29,18 @@
                     <strong>#{{ order.number }}</strong>
                 </a>
             </td>
-            <td>
-                {% include 'SyliusWebBundle:Backend/Order:_paymentState.html.twig' %}
-            </td>
-            <td>
-                {% include 'SyliusWebBundle:Backend/Order:_shippingState.html.twig' %}
-            </td>
-            <td>
-                <p>{{ order.user.fullName }} <br><a href="{{ path('sylius_backend_user_show', {'id': order.user.id}) }}">{{ order.user.email }}</a></p>
-            </td>
+            {#<td>#}
+                {#{% include 'SyliusWebBundle:Backend/Order:_paymentState.html.twig' %}#}
+            {#</td>#}
+            {#<td>#}
+                {#{% include 'SyliusWebBundle:Backend/Order:_shippingState.html.twig' %}#}
+            {#</td>#}
             <td>{{ order.total|sylius_price(order.currency) }}</td>
             <td>
                 <div class="pull-right">
                 {{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }}
                 {% if not order.deleted %}
-                {{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}
+                {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}
                 {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
                 {% endif %}
                 </div>
@@ -76,8 +72,8 @@
             <th>{{ 'sylius.order.number'|trans }}</th>
             <th>{{ 'sylius.order.payment_state'|trans }}</th>
             <th>{{ 'sylius.order.shipment_state'|trans }}</th>
-            <th>{{ 'sylius.order.user'|trans }}</th>
-            <th>{{ 'sylius.order.total'|trans }}</th>
+            {#<th>{{ 'sylius.order.user'|trans }}</th>#}
+            {#<th>{{ 'sylius.order.total'|trans }}</th>#}
         </tr>
     </thead>
     <tbody>
@@ -88,18 +84,12 @@
                 <strong>#{{ order.number }}</strong>
                 </a>
             </td>
-            <td>
-                {% include 'SyliusWebBundle:Backend/Order:_paymentState.html.twig' %}
-            </td>
-            <td>
-                {% include 'SyliusWebBundle:Backend/Order:_shippingState.html.twig' %}
-            </td>
-            <td style="width: 20%">
-                {{ order.user.fullname }}<br>
-                <a href="{{ path('sylius_backend_user_show', {'id': order.user.id}) }}">
-                    {{ order.user.email }}
-                </a>
-            </td>
+            {#<td>#}
+                {#{% include 'SyliusWebBundle:Backend/Order:_paymentState.html.twig' %}#}
+            {#</td>#}
+            {#<td>#}
+                {#{% include 'SyliusWebBundle:Backend/Order:_shippingState.html.twig' %}#}
+            {#</td>#}
             <td>{{ order.total|sylius_price('RUB') }}</td>
         </tr>
         {% endfor %}

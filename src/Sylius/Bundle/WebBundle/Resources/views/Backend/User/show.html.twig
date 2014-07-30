@@ -72,24 +72,24 @@
     </tbody>
 </table>
 
-<div class="row">
-    {% if user.shippingAddress %}
-        <div class="col-md-6">
-            <h4>{{ 'sylius.user.shipping_address'|trans }}</h4>
-            {% include 'SyliusWebBundle:Backend/Address:_show.html.twig' with {'address': user.shippingAddress } %}
-        </div>
-    {% endif %}
-    {% if user.billingAddress %}
-        <div class="col-md-6">
-            <h4>{{ 'sylius.user.billing_address'|trans }}</h4>
-            {% include 'SyliusWebBundle:Backend/Address:_show.html.twig' with {'address': user.billingAddress } %}
-        </div>
-    {% endif %}
-</div>
-<div class="row">
-    <div class="col-md-12">
-        {% render(url('sylius_backend_order_by_user', app.request.query.all|merge({id: user.id}) )) %}
-    </div>
-</div>
+{#<div class="row">#}
+    {#{% if user.shippingAddress %}#}
+        {#<div class="col-md-6">#}
+            {#<h4>{{ 'sylius.user.shipping_address'|trans }}</h4>#}
+            {#{% include 'SyliusWebBundle:Backend/Address:_show.html.twig' with {'address': user.shippingAddress } %}#}
+        {#</div>#}
+    {#{% endif %}#}
+    {#{% if user.billingAddress %}#}
+        {#<div class="col-md-6">#}
+            {#<h4>{{ 'sylius.user.billing_address'|trans }}</h4>#}
+            {#{% include 'SyliusWebBundle:Backend/Address:_show.html.twig' with {'address': user.billingAddress } %}#}
+        {#</div>#}
+    {#{% endif %}#}
+{#</div>#}
+{#<div class="row">#}
+    {#<div class="col-md-12">#}
+        {#{% render(url('sylius_backend_order_by_user', app.request.query.all|merge({id: user.id}) )) %}#}
+    {#</div>#}
+{#</div>#}
 
 {% endblock %}

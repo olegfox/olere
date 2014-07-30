@@ -11,6 +11,24 @@ sylius_backend_product_index:
             method: createFilterPaginator
             arguments: [$criteria, $sorting, $deleted]
 
+sylius_backend_product_children_active:
+    pattern: /children/active
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.product:childrenActiveAction
+
+sylius_backend_product_by_taxon:
+    pattern: /children/taxon/{taxon}/{parent}
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:productsTaxonAction
+
+sylius_backend_product_children:
+    pattern: /children/{parent}
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:childrenAction
+
 sylius_backend_product_create:
     pattern: /new
     methods: [GET, POST]

@@ -15,6 +15,7 @@ use Sylius\Bundle\CoreBundle\Checkout\SyliusCheckoutEvents;
 use Sylius\Bundle\CoreBundle\Model\OrderInterface;
 use Sylius\Bundle\FlowBundle\Process\Context\ProcessContextInterface;
 use Symfony\Component\Form\FormInterface;
+use Sylius\Bundle\OrderBundle\SyliusOrderEvents;
 
 /**
  * The addressing step of checkout.
@@ -57,6 +58,8 @@ class ContactsStep extends CheckoutStep
 
             $this->dispatchCheckoutEvent(SyliusCheckoutEvents::CONTACTS_COMPLETE, $order);
 
+            $this->completeOrder($order);
+
             return $this->complete();
         }
 
@@ -75,5 +78,23 @@ class ContactsStep extends CheckoutStep
     protected function createCheckoutContactsForm(OrderInterface $order)
     {
         return $this->createForm('sylius_checkout_contacts', $order);
+    }
+
+    /**
+     * Mark the order as completed.
+     *
+     * @param OrderInterface $order
+     */
+    protected function completeOrder(OrderInterface $order)
+    {
+        $this->dispatchCheckoutEvent(SyliusOrderEvents::PRE_CREATE, $order);
+        $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_PRE_COMPLETE, $order);
+
+        $manager = $this->get('sylius.manager.order');
+        $manager->persist($order);
+        $manager->flush();
+        $this->getCurrentCart();
+        $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_COMPLETE, $order);
+        $this->dispatchCheckoutEvent(SyliusOrderEvents::POST_CREATE, $order);
     }
 }
