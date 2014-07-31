@@ -5,7 +5,9 @@
         <fieldset>
             {{ form_row(form.email) }}
             {{ form_row(form.firstName) }}
+            <div class="hide">
             {{ form_row(form.lastName) }}
+            </div>
             {{ form_row(form.plainPassword) }}
             {{ form_row(form.enabled) }}
             <div class="hide">

@@ -1,9 +1,13 @@
 {% macro price(product, group) %}
     {% if group.showPrice == 0 %}
-        {{ sylius_calculate_price(product)|sylius_price }}
+        <div class="retail{% if group.showOptPrice != 0 %} one{% endif %}">
+        Розн. {{ sylius_calculate_price(product)|sylius_price }}
+        </div>
     {% endif %}
     {% if group.showOptPrice == 0 %}
-        {{ product.priceOpt|sylius_price }}
+        <div class="opt{% if group.showPrice != 0 %} one{% endif %}">
+        Опт. {{ product.priceOpt|sylius_price }}
+        </div>
     {% endif %}
 {% endmacro %}
 

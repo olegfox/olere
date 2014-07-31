@@ -405,6 +405,21 @@ a, a:hover, a:focus{
 .catalog .bottomBox .price{
     font-weight: normal;
     height: 36px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+.catalog .bottomBox .price .retail,
+.catalog .bottomBox .price .opt{
+    display: block;
+    height: 12px;
+    line-height: 12px;
+}
+.catalog .bottomBox .price .retail.one,
+.catalog .bottomBox .price .opt.one{
+    display: inline-block;
+}
+.catalog .bottomBox .price .retail{
+    margin-bottom: 5px;
 }
 
 .catalog .descriptionBox{

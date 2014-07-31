@@ -24,6 +24,12 @@
                     //set the form control to valid if both
                     //passwords are the same, else invalid
                     control.$setValidity("unique", n);
+                    $("input.ng-valid, select.ng-valid").each(function(){
+                        $(this).parent().find("span.valid").css("display", 'inline-block');
+                    });
+                    $("input.ng-invalid, select.ng-invalid").each(function(){
+                        $(this).parent().find("span.valid").css("display", 'none');
+                    });
                 });
             }
         };
@@ -37,8 +43,8 @@
             city: '',
             email: '',
             phone: '',
-            pass: '',
-            confirmPass: '',
+            password: '',
+            passwordConfirm: '',
             formCompany : '',
             profileCompany : '',
             countPoint : '',
@@ -113,7 +119,7 @@
             $("input.ng-valid, select.ng-valid").each(function(){
                 $(this).parent().find("span.valid").css("display", 'inline-block');
             });
-            $("input.ng-invalid, select.ng-valid").each(function(){
+            $("input.ng-invalid, select.ng-invalid").each(function(){
                 $(this).parent().find("span.valid").css("display", 'none');
             });
         }, true);

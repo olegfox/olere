@@ -19,6 +19,7 @@ use Sylius\Bundle\PaymentsBundle\Model\PaymentInterface;
 use Sylius\Bundle\PromotionsBundle\Model\CouponInterface;
 use Sylius\Bundle\PromotionsBundle\Model\PromotionInterface;
 use Sylius\Bundle\OrderBundle\Model\AdjustmentInterface;
+use Sylius\Bundle\CoreBundle\Model\User;
 
 /**
  * Order entity.
@@ -46,6 +47,8 @@ class Order extends Cart implements OrderInterface
     protected $timeEnd;
 
     protected $comment;
+
+    protected $user;
 
     /**
      * Order shipping address.
@@ -655,5 +658,17 @@ class Order extends Cart implements OrderInterface
     public function getComment()
     {
         return $this->comment;
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
     }
 }

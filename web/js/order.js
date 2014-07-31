@@ -30,7 +30,7 @@
             $("input.ng-valid, select.ng-valid").each(function(){
                 $(this).parent().find("span.valid").css("display", 'inline-block');
             });
-            $("input.ng-invalid, select.ng-valid").each(function(){
+            $("input.ng-invalid, select.ng-invalid").each(function(){
                 $(this).parent().find("span.valid").css("display", 'none');
             });
         }, true);
