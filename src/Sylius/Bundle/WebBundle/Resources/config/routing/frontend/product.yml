@@ -1,10 +1,16 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
 
+sylius_product_show:
+    pattern: /catalog/p/{slug}
+    defaults:
+        _controller: sylius.controller.product:showAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Product:show.html.twig
+            criteria: {slug: $slug}
+
 sylius_product_index_by_taxon:
     pattern: /catalog/{page}/{category}
-    requirements:
-         page:  \d+
     defaults:
         _controller: sylius.controller.product:indexByTaxonAction
         _sylius:
@@ -18,14 +24,6 @@ sylius_product_index_by_taxon_product:
         _controller: sylius.controller.product:indexByTaxonProductAction
         _sylius:
             template: SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig
-
-sylius_product_show:
-    pattern: /catalog/p/{slug}
-    defaults:
-        _controller: sylius.controller.product:showAction
-        _sylius:
-            template: SyliusWebBundle:Frontend/Product:show.html.twig
-            criteria: {slug: $slug}
 
 sylius_product_show_pushstate:
     pattern: /{slug}

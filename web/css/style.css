@@ -319,9 +319,25 @@ a, a:hover, a:focus{
 .catalog .nameBox .name{
     display: inline-block;
 }
-.catalog .nameBox .articul{
-    display: inline-block;
+.catalog .nameBox .price{
+    font-weight: normal;
+    height: 36px;
+    font-size: 16px;
     float: right;
+    display: inline-block;
+}
+.catalog .nameBox .price .retail,
+.catalog .nameBox .price .opt{
+    display: inline-block;
+    height: 12px;
+    line-height: 12px;
+}
+.catalog .nameBox .price .retail.one,
+.catalog .nameBox .price .opt.one{
+    display: inline-block;
+}
+.catalog .nameBox .price .retail{
+    margin-bottom: 5px;
 }
 .catalog .inner_box_click .composition{
     padding: 0px 20px;
@@ -401,25 +417,9 @@ a, a:hover, a:focus{
 .catalog .bottomBox button[type="submit"]{
     margin-left: 14px;
 }
-
-.catalog .bottomBox .price{
-    font-weight: normal;
-    height: 36px;
-    font-size: 12px;
-    padding-top: 5px;
-}
-.catalog .bottomBox .price .retail,
-.catalog .bottomBox .price .opt{
-    display: block;
-    height: 12px;
-    line-height: 12px;
-}
-.catalog .bottomBox .price .retail.one,
-.catalog .bottomBox .price .opt.one{
+.catalog .bottomBox .articul{
     display: inline-block;
-}
-.catalog .bottomBox .price .retail{
-    margin-bottom: 5px;
+    float: left;
 }
 
 .catalog .descriptionBox{
@@ -710,7 +710,7 @@ a, a:hover, a:focus{
 }
 /* end bottom menu cart */
 .pagination{
-    width: 100%;
+    width: auto;
 }
 
 /* Fixed menu */
@@ -871,6 +871,21 @@ h4, .container form{
     font-size: 18px;
     line-height: 32px;
     margin-left: 6px;
+}
+.catalogShow{
+    padding: 0 20px;
+}
+.catalogShow .btn-sm{
+    width: 254px;
+    height: 45px;
+    background: #fff!important;
+    border: solid 2px #bdbdbd;
+    border-radius: 0;
+    color: #868686;
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 32px;
+    margin-left: 0px;
 }
 .cartForm .btn-sm{
     margin-left: 6px;

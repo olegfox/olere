@@ -67,7 +67,7 @@
                 <div class="form-actions clearfix">
                     <div class="pull-left">
                         <a href="{{ path('sylius_checkout_start') }}" class="btn btn-sm btn-sm3">{{ 'sylius.cart.summary.checkout'|trans }}</a>
-                        <a href="{{ path('sylius_homepage') }}" class="btn btn-sm">{{ 'sylius.cart.summary.next'|trans }}</a>
+                        <a href="{{ path('sylius_catalog') }}" class="btn btn-sm">{{ 'sylius.cart.summary.next'|trans }}</a>
                         <a href="{{ path('sylius_cart_clear') }}" class="btn btn-sm">{{ 'sylius.cart.summary.clear'|trans }}</a>
                     </div>
                 </div>
@@ -75,6 +75,9 @@
         </form>
     {% else %}
         {{ alerts.info('sylius.cart.empty'|trans) }}
+        <div class="catalogShow">
+        <a href="{{ path('sylius_catalog') }}" class="btn btn-sm">{{ 'sylius.cart.summary.next'|trans }}</a>
+        </div>
     {% endif %}
 
 {% endblock %}

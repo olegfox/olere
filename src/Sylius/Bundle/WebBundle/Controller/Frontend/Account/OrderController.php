@@ -166,7 +166,9 @@ class OrderController extends Controller
         $sc->resetCurrentCartIdentifier();
 
         return $this->render(
-            'SyliusWebBundle:Frontend/Account:Order/complete.html.twig'
+            'SyliusWebBundle:Frontend/Account:Order/complete.html.twig', array(
+                'order' => $order
+            )
         );
     }
 

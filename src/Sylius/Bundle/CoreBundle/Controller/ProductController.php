@@ -365,18 +365,23 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }
 
-        $paginator = $this
-            ->getRepository()
-            ->createByTaxonPaginator($taxon, $sorting);
+        if($page != 'all'){
+            $paginator = $this
+                ->getRepository()
+                ->createByTaxonPaginator($taxon, $sorting);
 
-        $paginator->setMaxPerPage(30);
-        $paginator->setCurrentPage($request->query->get('page', $page));
+            $paginator->setMaxPerPage(30);
+            $paginator->setCurrentPage($request->query->get('page', $page));
+        }else{
+            $paginator = $taxon->getProducts();
+        }
 
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
             'taxon' => $taxon,
             'products' => $paginator,
             'permalink' => "/catalog/" . $page . "/" . $category,
-            'groups' => $groups
+            'groups' => $groups,
+            'page' => $page
         ));
     }
 

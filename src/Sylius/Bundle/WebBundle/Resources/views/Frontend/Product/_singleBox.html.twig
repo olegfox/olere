@@ -4,7 +4,10 @@
             <div class="topBox clickBox">
                 <div class="nameBox">
                     <div class="name">{{ product.name }}</div>
-                    <div class="articul">АРТ: {{ product.getSku() }}</div>
+                    <div class="price">
+                        {{ showPrice(product, groups) }}
+                    </div>
+
                 </div>
                 {#<div class="composition">#}
                 {#{{ product.properties[2].value }}#}
@@ -23,9 +26,7 @@
             {#</div>#}
             {#</div>#}
             <div class="bottomBox clickBox">
-                <div class="price">
-                    {{ showPrice(product, groups) }}
-                </div>
+                <div class="articul">АРТ: {{ product.getSku() }}</div>
                 {% set form = sylius_cart_form({'product': product}) %}
                 <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
                       class="clearfix form-horizontal">

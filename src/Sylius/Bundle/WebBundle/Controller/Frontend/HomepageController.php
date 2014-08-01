@@ -37,7 +37,7 @@ class HomepageController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Olere')
-                ->setFrom($email)
+                ->setFrom(array('1991oleg22@gmail.com' => "Olere"))
 //                ->setTo('info@olere.ru')
                 ->setTo('1991oleg@gmail.com')
                 ->setBody(
@@ -77,7 +77,7 @@ class HomepageController extends Controller
 //            )
 //        ));
 //        $page = $this->get('sylius.repository.page')->findPage("main");
-        if($request->getHost() == "sylius.olegfox.tk"){
+        if($request->getHost() == "olere-shop.ru"){
             return $this->main2Action();
         }
         $repository = $this->getDoctrine()

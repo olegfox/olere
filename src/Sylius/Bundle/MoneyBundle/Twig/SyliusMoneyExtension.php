@@ -60,9 +60,9 @@ class SyliusMoneyExtension extends \Twig_Extension
         $currency = $currency ?: $this->currencyContext->getDefaultCurrency();
         $result   = $this->formatter->formatCurrency($amount / 100, $currency);
         $result = $amount / 100;
-        if($amount % 100 == 0){
-            $result = $result . ".00";
-        }
+//        if($amount % 100 == 0){
+//            $result = $result . ".00";
+//        }
         $result = $result . " руб.";
         if (false === $result) {
             throw new \InvalidArgumentException(sprintf('The amount "%s" of type %s cannot be formatted to currency "%s".', $amount, gettype($amount), $currency));
