@@ -29,13 +29,13 @@ a, a:hover, a:focus{
     color: #000;
 }
 .wrap_top{
-    height: 50px;
+    height: 75px;
     background: #fff;
     border-bottom: solid 1px #dcdcdc;
 }
 .wrap_top .top{
-    height: 50px;
-    line-height: 50px;
+    height: 75px;
+    line-height: 75px;
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 20px;
@@ -53,30 +53,20 @@ a, a:hover, a:focus{
 }
 .wrap_top .top .topCallback .buttonCallback{
     border: 0px;
-    background: #fff;
     height: 24px;
     line-height: 24px;
     color: #000;
-    font-family: Open Sans;
+    font-family: "Calibri";
     font-size: 18px;
     text-align: center;
-    padding: 0px 7px;
+    padding: 5px 15px;
     cursor: pointer;
+    text-transform: uppercase;
+    background: #e8e8e8;
+    margin-right: 6px;
+    margin-left: 23px;
 }
-.wrap_top .top .topSearch .searchText{
-    background: #fff;
-    height: 30px;
-    width: 155px;
-    line-height: 24px;
-    color: #000;
-    font-family: Open Sans;
-    font-size: 17px;
-    text-align: left;
-    padding: 0px 7px;
-    border: solid 2px #e6e6e6;
-    top: -1px;
-    position: relative;
-}
+
 ::-webkit-input-placeholder {
     color: #000;
 }
@@ -113,11 +103,22 @@ a, a:hover, a:focus{
 .wrap_top .top .topTimes{
 
 }
-.wrap_top .top .topTrash{
-
-}
 .wrap_top .top .topMyAccount{
-
+    margin-right: 6px;
+}
+.wrap_top .top .topMyAccount a,
+.wrap_top .top .topTrash a{
+    border: 0px;
+    height: 24px;
+    line-height: 24px;
+    color: #000;
+    font-family: "Calibri";
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #e8e8e8;
 }
 .wrap_top .top .topSearch{
 
@@ -155,15 +156,54 @@ a, a:hover, a:focus{
     background: #000;
 }
 .menu{
-    height: 70px;
-    max-height: 70px;
+    height: 50px;
+    max-height: 50px;
     min-height: 38px;
-    line-height: 70px;
+    line-height: 50px;
     background: #000;
     padding: 0px 20px;
     overflow: hidden;
     max-width: 1200px;
     margin: 0px auto;
+}
+.menu .topSearch .searchText{
+    background: #000;
+    height: 30px;
+    width: 155px;
+    line-height: 24px;
+    color: #fff;
+    font-family: "Calibri";
+    font-size: 18px;
+    font-family: Open Sans;
+    text-align: left;
+    border: solid 1px #b0b0b0;
+    top: -1px;
+    position: relative;
+    text-transform: uppercase;
+    padding: 0 8px 0 30px;
+}
+.menu .topSearch .searchText::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+.menu .topSearch .searchText:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+    opacity:  1;
+}
+.menu .topSearch .searchText::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+    opacity:  1;
+}
+.menu .topSearch .searchText:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+.menu .topSearch .search-icon{
+    background: url(/images/search.jpg) no-repeat;
+    width: 17px;
+    height: 17px;
+    display: block;
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 5px;
 }
 .menu ul{
     text-align: justify;
@@ -171,26 +211,27 @@ a, a:hover, a:focus{
     -webkit-padding-start: 0px;
     -webkit-margin-after: 0px;
     -webkit-margin-before: 0px;
-    display: table-cell;
-    width: 100%;
+    float: left;
 }
 .menu ul li{
     list-style: none;
     display: inline-block;
+    margin-right: 46px;
 }
 .menu ul li a{
     color: #fff; /* text color */
-    font-family: "Open Sans";
-    font-size: 21px;
+    font-family: "Calibri";
+    font-size: 18px;
+    text-transform: uppercase;
 }
 .menu ul li a:hover{
-    color: #01c4ba;
+    color: #18c9bd; /* text color */
 }
 .menu ul li.current a{
-    color: #01c4ba;
+    color: #18c9bd; /* text color */
 }
 .menu ul li.last{
-    width: 100%;
+    margin-right: 0px;
 }
 .flexslider{
     margin-top: 0px!important;
@@ -271,7 +312,7 @@ a, a:hover, a:focus{
     border-bottom: solid 1px #dcdcdc;
 }
 .catalog .box{
-    width: 33.33%;
+    width: 25%;
     display: inline-block;
     margin-top: -1px;
     margin-bottom: -1px;
@@ -313,7 +354,7 @@ a, a:hover, a:focus{
     padding: 10px 10px 0px 10px;
     text-transform: uppercase;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
     width: 100%;
 }
 .catalog .nameBox .name{
@@ -322,7 +363,7 @@ a, a:hover, a:focus{
 .catalog .nameBox .price{
     font-weight: normal;
     height: 36px;
-    font-size: 16px;
+    font-size: 12px;
     float: right;
     display: inline-block;
 }
@@ -352,7 +393,7 @@ a, a:hover, a:focus{
     line-height: 36px;
     display: table;
     width: 100%;
-    font-size: 16px;
+    font-size: 12px;
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -395,20 +436,20 @@ a, a:hover, a:focus{
 .catalog .bottomBox button[type="submit"],
 .catalog .bottomBox input[type="number"]{
     border: solid 1px #000;
-    width: 89px;
+    width: 70px;
     height: 34px;
     background: none;
     font-weight: normal;
     border-radius: inherit;
     display: none;
-    font-size: 16px;
+    font-size: 12px;
 }
 .catalog .inner_box_click .bottomBox button[type="submit"],
 .catalog .inner_box_click .bottomBox input[type="number"]{
     display: inline-block;
 }
 .catalog .bottomBox input[type="number"]{
-    width: 79px;
+    width: 60px;
 }
 .catalog .bottomBox button[type="submit"]{
     line-height: 31px;
@@ -435,6 +476,7 @@ a, a:hover, a:focus{
     border-right: solid 1px #dcdcdc;
     border-left: solid 1px #dcdcdc;
     display: none;
+    font-size: 12px;
 }
 .catalog .inner_box_click .descriptionBox{
     display: block;
@@ -722,7 +764,7 @@ tr.tDnD_whileDrag{
     background: gray;
 }
 .topBolvan{
-    height: 50px;
+    height: 75px;
 }
 .product{
     padding: 0px 20px;

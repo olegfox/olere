@@ -52,44 +52,49 @@
 <!-- Topmenu -->
 <div class="wrap_top{% if app.request.attributes.get('_route') != 'sylius_homepage' %} f-nav0{% endif %}">
     <div class="top">
-        <div class="topPhone">
-            Тел 8 (499) 157-97-44
+        <div class="pull-left">
+            {#<!-- Logo -->#}
+            <div class="logoBox">
+                <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="{{ asset('images/logo.png') }}"></a>
+            </div>
         </div>
-        <div class="topTimes">
-            Время работы: с 9 до 19
-        </div>
-        <div class="topCallback">
-            <a href="{{ path('sylius_feedback') }}" class="buttonCallback">Заказать обратный звонок</a>
-        </div>
-        <div class="topSearch">
-            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
-        </div>
-        <div class="topMyAccount">
-            {% if is_granted('ROLE_USER') %}
-                {% if app.request.attributes.get('_route') == "fos_user_profile_edit" or app.request.attributes.get('_route') == "fos_user_profile_show" %}
-                    <a href="{{ path("fos_user_security_logout") }}">Выход</a>
+        <div class="pull-right">
+            <div class="topPhone">
+                8 499 157-97-44
+            </div>
+            {#<div class="topTimes">#}
+                {#Время работы: с 9 до 19#}
+            {#</div>#}
+            <div class="topCallback">
+                <a href="{{ path('sylius_feedback') }}" class="buttonCallback">Заказать обратный звонок</a>
+            </div>
+            <div class="topMyAccount">
+                {% if is_granted('ROLE_USER') %}
+                    {% if app.request.attributes.get('_route') == "fos_user_profile_edit" or app.request.attributes.get('_route') == "fos_user_profile_show" %}
+                        <a href="{{ path("fos_user_security_logout") }}">Выход</a>
+                    {% else %}
+                        <a href="{{ path("fos_user_profile_show") }}">Личный кабинет</a>
+                    {% endif %}
                 {% else %}
-                    <a href="{{ path("fos_user_profile_show") }}">Личный кабинет</a>
+                    <a href="{{ path("fos_user_security_login") }}">Вход</a>
                 {% endif %}
-            {% else %}
-                <a href="{{ path("fos_user_security_login") }}">Вход</a>
-            {% endif %}
+            </div>
+            <div class="topTrash">
+                <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
+            </div>
         </div>
-        <div class="topTrash">
-            <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
-        </div>
-        <div class="last"></div>
+        {#<div class="last"></div>#}
     </div>
 </div>
 
 <!-- Menu -->
 <div class="wrap_menu">
     <div class="menu">
-        {#<!-- Logo -->#}
-        <div class="logoBox">
-            <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo2.jpg') }}" alt="{{ asset('images/logo2.jpg') }}"></a>
+        {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}<div class="pull-right">
+            <div class="topSearch">
+                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+            </div>
         </div>
-        {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     </div>
 </div>
 

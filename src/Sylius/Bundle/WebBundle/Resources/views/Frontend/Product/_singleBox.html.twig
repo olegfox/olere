@@ -1,4 +1,4 @@
-{% if loop.index0%3 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%3 }}">
+{% if loop.index0%4 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%4 }}">
         {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
         <div class="inner_box">
             <div class="topBox clickBox">
@@ -48,4 +48,4 @@
                 </div>
             </div>
         </div>
-    </div>{% if loop.index0%3 == 2 or loop.index == count %}</div>{% endif %}
+    </div>{% if loop.index0%4 == 3 or loop.index == count %}</div>{% endif %}
