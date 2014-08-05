@@ -13,6 +13,9 @@
         <a href="#" class="btn btn-danger" data-collection-button="delete" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images"><i class="glyphicon glyphicon-trash"></i>&nbsp;{{ 'sylius.variant.delete_image'|trans }}</a>
     </div>
 </div>
+    <script type="text/javascript">
+        $(":file").filestyle({buttonBefore: true, buttonText: 'Выбрать'});
+    </script>
 {% endmacro %}
 
 <div class="tab-pane" id="images">
@@ -27,7 +30,7 @@
                 {% endif %}
             </div>
             <div class="col-md-9">
-                {{ form_widget(form.masterVariant.images[loop.index0].file) }}
+                {{ form_widget(form.masterVariant.images[loop.index0].file, {attr: {'class' : 'filestyle', 'data-buttonBefore' : 'true', 'data-buttonText' : 'Выбрать'} }) }}
             </div>
             <div class="col-md-2">
                 <a href="#" class="btn btn-danger" data-collection-button="delete" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images"><i class="glyphicon glyphicon-trash"></i>&nbsp;{{ 'sylius.variant.delete_image'|trans }}</a>
@@ -37,5 +40,5 @@
     </div>
 
     <hr>
-    {#<a href="#" class="btn btn-primary btn-block" data-collection-button="add" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images">{{ 'sylius.variant.add_image'|trans }}</a>#}
+    <a href="#" class="btn btn-primary btn-block" data-collection-button="add" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images">{{ 'sylius.variant.add_image'|trans }}</a>
 </div>

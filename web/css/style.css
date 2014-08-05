@@ -277,6 +277,9 @@ a, a:hover, a:focus{
     margin-bottom: 18px;
     background: #dcdcdc;
 }
+.catalogSearch .head{
+    margin-top: 18px;
+}
 .catalog .head a:hover,
 .product .head a:hover{
     color: #01c4ba;
@@ -333,6 +336,7 @@ a, a:hover, a:focus{
 }
 .catalog .box2 .inner_box{
     border-left: solid 1px #dcdcdc;
+    border-right: solid 1px #dcdcdc;
 }
 .catalog .inner_box{
     -o-transition:.5s;
@@ -602,6 +606,9 @@ a, a:hover, a:focus{
     font-family: Open Sans;
     font-size: 14px;
     vertical-align: top;
+}
+.wrap_footer .footer ul li.first{
+    float: left;
 }
 .form-group {
     margin-bottom: 22px;

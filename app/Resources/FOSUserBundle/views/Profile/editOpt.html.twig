@@ -79,6 +79,7 @@
             {#<div class="alert alert-danger" ng-show="user.firstName.$error.min">{{ 'registration.first_name.min'|trans }}</div>#}
             {#<div class="alert alert-danger" ng-show="user.firstName.$error.max">{{ 'registration.first_name.max'|trans }}</div>#}
         </fieldset>
+        {{ form_rest(form) }}
         {{ form_end(form) }}
     </form>
 {% endblock %}

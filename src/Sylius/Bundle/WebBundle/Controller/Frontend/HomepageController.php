@@ -26,6 +26,43 @@ use Sylius\Bundle\CoreBundle\Form\Type\FeedbackFormType;
  */
 class HomepageController extends Controller
 {
+    public function searchAction(Request $request){
+        $search = $request->get('text');
+        $em = $this->getDoctrine()->getManager();
+        $catalogs = $em->createQuery(
+            'SELECT t
+             FROM Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.name LIKE :search
+             AND t.parent = 8
+            ')->setParameters(array(
+                'search' => '%'.$search.'%'
+            ))->getResult();
+        $collections = $em->createQuery(
+            'SELECT t
+             FROM Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.name LIKE :search
+             AND t.parent = 18
+            ')->setParameters(array(
+                'search' => '%'.$search.'%'
+            ))->getResult();
+        $products = $em->createQuery(
+            'SELECT p
+             FROM Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.variants v
+             WHERE p.name LIKE :search
+             OR v.sku LIKE :search
+            ')->setParameters(array(
+                'search' => '%'.$search.'%'
+            ))->getResult();
+        $groups = $this->get('sylius.repository.group')->findAll();
+        return $this->render('SyliusWebBundle:Frontend/Homepage:search.html.twig', array(
+            'catalogs' => $catalogs,
+            'collections' => $collections,
+            'products' => $products,
+            'groups' => $groups
+        ));
+    }
+
     public function feedbackAction(Request $request){
         $feedback = new Feedback();
         $form = $this->createForm(new FeedbackFormType(), $feedback);

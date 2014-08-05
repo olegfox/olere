@@ -9,6 +9,15 @@ sylius_homepage2:
     pattern: /homepage
     defaults: { _controller: sylius.controller.frontend.homepage:main2Action }
 
+sylius_search:
+    pattern: /search
+    defaults: { _controller: sylius.controller.frontend.homepage:searchAction }
+
+sylius_scan_products:
+    pattern: /scan/products/
+    defaults:
+        _controller: sylius.controller.product:scanProductsAction
+
 sylius_cart:
     resource: @SyliusCartBundle/Resources/config/routing.yml
     prefix: /cart

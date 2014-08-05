@@ -5,6 +5,11 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('js/uploadify/uploadify.css') }}" rel="stylesheet"/>
+    <style type="text/css">
+        .file-overlay{
+            display: none;
+        }
+    </style>
 {% endblock %}
 
 {% block topbar %}

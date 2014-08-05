@@ -240,6 +240,55 @@ class ProductController extends ResourceController
 
     }
 
+    public function scanProductsAction(Request $request){
+        set_time_limit(0);
+        header('Content-Type: text/html; charset=UTF-8');
+        $repositoryProducts = $this->container->get('sylius.repository.product');
+        $products = $repositoryProducts->findAll();
+//        $em = $this->getDoctrine()->getManager();
+//        $products = $em->createQuery(
+//            'SELECT p FROM
+//             Sylius\Bundle\CoreBundle\Model\Product p
+//             WHERE p.taxons IS NULL
+//            '
+//        )->getResult();
+        $count = 0;
+        if(count($products) > 0){
+            $repositoryTaxon = $this->container->get('sylius.repository.taxon');
+            $manager = $this->container->get('sylius.manager.product');
+            foreach($products as $product){
+                $ctf = 0;
+                $cl = 0;
+                $taxons = new ArrayCollection();
+                foreach($product->getTaxons() as $taxon){
+                    if($taxon->getParent()->getId() == 8){
+                        $ctf = 1;
+                    }elseif($taxon->getParent()->getId() == 18){
+                        $cl = 1;
+                    }
+                }
+                if($ctf == 0){
+                    $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
+                    if($catalog){
+                        $taxons[] = $catalog;
+                    }
+                }
+                if($cl == 0){
+                    $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
+                    if($collection){
+                        $taxons[] = $collection;
+                    }
+                }
+                if(count($taxons) > 0){
+                    $product->setTaxons($taxons);
+                    $manager->flush();
+                    $count++;
+                }
+            }
+        }
+        return new Response("Обновлено $count продуктов.");
+    }
+
     public function importScanAction(Request $request)
     {
         set_time_limit(0);
@@ -488,7 +537,7 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function showAction(Request $request)
+    public function showFrontendAction(Request $request)
     {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));

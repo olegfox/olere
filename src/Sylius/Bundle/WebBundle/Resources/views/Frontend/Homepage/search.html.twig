@@ -1,0 +1,35 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+{% from 'SyliusWebBundle:Frontend/Taxon:macros.html.twig' import gridSub %}
+        {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
+
+{% block content %}
+    {% if catalogs|length > 0 %}
+        <div class="catalog catalogMain catalogSearch">
+            <div class="head">
+                Каталоги
+            </div>
+            {{ gridSub(catalogs) }}
+        </div>
+    {% endif %}
+    {% if collections|length > 0 %}
+        <div class="catalog catalogMain catalogSearch">
+            <div class="head">
+                Коллекции
+            </div>
+            {{ gridSub(collections) }}
+        </div>
+    {% endif %}
+    {% if products|length > 0 %}
+        <div class="catalog catalogMain catalogSearch">
+            <div class="head">
+                Товары
+            </div>
+            {{ grid(products, groups) }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>
+{% endblock %}
