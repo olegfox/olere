@@ -148,14 +148,14 @@ class OrderController extends Controller
         $mailer = $this->get('mailer');
             $message = \Swift_Message::newInstance()
                 ->setSubject('Olere')
-                ->setFrom(array('1991oleg22@gmail.com' => "Olere"))
-                ->setTo('1991oleg22@gmail.com')
-                ->setBody($this->renderView('SyliusWebBundle:Email:summary.html.twig', array('cart' => $order)), 'text/html');
+                ->setFrom(array('info@olere.ru' => "Olere"))
+                ->setTo('info@olere.ru')
+                ->setBody($this->renderView('SyliusWebBundle:Email:summary2.html.twig', array('cart' => $order)), 'text/html');
             $mailer->send($message);
         if ($order->getEmail() != "") {
             $message = \Swift_Message::newInstance()
                 ->setSubject('Olere')
-                ->setFrom(array('1991oleg22@gmail.com' => "Olere"))
+                ->setFrom(array('info@olere.ru' => "Olere"))
                 ->setTo($order->getEmail())
                 ->setBody($this->renderView('SyliusWebBundle:Email:summary.html.twig', array('cart' => $order)), 'text/html');
             $mailer->send($message);

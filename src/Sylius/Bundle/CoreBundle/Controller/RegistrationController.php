@@ -60,6 +60,8 @@ class RegistrationController extends BaseController
 
                 $userManager->updateUser($user);
 
+                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
+
                 if (null === $response = $event->getResponse()) {
                     $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
@@ -108,6 +110,8 @@ class RegistrationController extends BaseController
 
                 $userManager->updateUser($user);
 
+                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
+
                 if (null === $response = $event->getResponse()) {
                     $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
@@ -122,5 +126,15 @@ class RegistrationController extends BaseController
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:registerOpt.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
         ));
+    }
+
+    public function registerMessage($email, $password){
+        $mailer = $this->container->get('mailer');
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Olere')
+            ->setFrom(array('info@olere.ru' => "Olere"))
+            ->setTo($email)
+            ->setBody($this->container->get('templating')->render('SyliusWebBundle:Email:register.html.twig', array('email' => $email, 'password' => $password)), 'text/html');
+        $mailer->send($message);
     }
 }

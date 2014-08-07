@@ -615,4 +615,14 @@ class User extends BaseUser implements UserInterface
     {
         return $this->address;
     }
+
+    public function isOpt(){
+        $check = false;
+        foreach($this->getRoles() as $role){
+            if($role == 'ROLE_USER_OPT'){
+                $check = true;
+            }
+        }
+        return $check;
+    }
 }

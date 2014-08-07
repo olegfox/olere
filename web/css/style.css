@@ -217,6 +217,27 @@ a, a:hover, a:focus{
     list-style: none;
     display: inline-block;
     margin-right: 46px;
+    vertical-align: top;
+}
+.menu ul li ul{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0px auto;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+}
+.menu ul li ul li a{
+    color: #000!important;
+}
+.menu ul li ul li a:hover{
+    color: #18c9bd!important; /* text color */
+}
+.menu ul li ul li.current a{
+    color: #18c9bd!important; /* text color */
 }
 .menu ul li a{
     color: #fff; /* text color */
@@ -259,6 +280,9 @@ a, a:hover, a:focus{
     margin: 20px;
     margin: 20px 0px\0/;
     border: solid 1px #dcdcdc;
+}
+.content.content-sub{
+    margin-top: 80px;
 }
 .catalog{
     padding: 0px 20px;
@@ -752,6 +776,9 @@ a, a:hover, a:focus{
     color: #fff;
     text-decoration: none;
     background: none;
+}
+.wrap_trash .trash a.showTrash{
+    right: 165px;
 }
 .wrap_trash .trash a.last:hover{
     background: none;

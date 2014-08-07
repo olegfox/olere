@@ -13,6 +13,11 @@ sylius_search:
     pattern: /search
     defaults: { _controller: sylius.controller.frontend.homepage:searchAction }
 
+sylius_backend_import_scan:
+    pattern: /scan/
+    defaults:
+        _controller: sylius.controller.product:importScanAction
+
 sylius_scan_products:
     pattern: /scan/products/
     defaults:

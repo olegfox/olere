@@ -74,9 +74,9 @@ class HomepageController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Olere')
-                ->setFrom(array('1991oleg22@gmail.com' => "Olere"))
+                ->setFrom(array('info@olere.ru' => "Olere"))
 //                ->setTo('info@olere.ru')
-                ->setTo('1991oleg@gmail.com')
+                ->setTo('info@olere.ru')
                 ->setBody(
                     $this->renderView(
                         'SyliusWebBundle:Email:feedback.html.twig',
@@ -86,6 +86,7 @@ class HomepageController extends Controller
                             'email' => $email
                         )
                     )
+                    , 'text/html'
                 )
             ;
             $this->get('mailer')->send($message);

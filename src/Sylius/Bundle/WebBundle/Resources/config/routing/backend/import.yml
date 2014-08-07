@@ -6,11 +6,6 @@ sylius_backend_import_index:
     defaults:
         _controller: sylius.controller.product:importIndexAction
 
-sylius_backend_import_scan:
-    pattern: /scan/
-    defaults:
-        _controller: sylius.controller.product:importScanAction
-
 #sylius_backend_taxonomy_create:
 #    pattern: /new
 #    methods: [GET, POST]

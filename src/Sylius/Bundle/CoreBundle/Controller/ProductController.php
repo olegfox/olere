@@ -145,7 +145,7 @@ class ProductController extends ResourceController
                             }
                         }
                         $product = $repository->createNew();
-                        $product->setCatalog($name);
+                        $product->setCatalog($catalog);
                         $product->setCollection($collection);
                         $product->setName($name);
                         $product->setDescription($description);
@@ -221,7 +221,7 @@ class ProductController extends ResourceController
                     }
                 }
                 $manager->flush();
-                $this->importScanAction($request);
+//                $this->importScanAction($request);
                 return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
                     'form' => $form->createView(),
                     'data' => $data
@@ -260,28 +260,43 @@ class ProductController extends ResourceController
                 $ctf = 0;
                 $cl = 0;
                 $taxons = new ArrayCollection();
+                $ar = array();
+                $ar['ctf'] = $ctf;
+                $ar['cl'] = $cl;
                 foreach($product->getTaxons() as $taxon){
                     if($taxon->getParent()->getId() == 8){
                         $ctf = 1;
-                    }elseif($taxon->getParent()->getId() == 18){
+                        $ar['ctf'] = $ctf;
+                        $ar['catalogParent'] = $taxon->getParent()->getId();
+                    }
+                    if($taxon->getParent()->getId() == 18){
                         $cl = 1;
+                        $ar['cl'] = $cl;
+                        $ar['collectionParent'] = $taxon->getParent()->getId();
                     }
                 }
                 if($ctf == 0){
+                    $ar['catalog'] = $product->getCatalog();
                     $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
                     if($catalog){
                         $taxons[] = $catalog;
                     }
                 }
                 if($cl == 0){
+                    $ar['collection'] = $product->getCollection();
                     $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
+
                     if($collection){
                         $taxons[] = $collection;
                     }
                 }
                 if(count($taxons) > 0){
+                    print $product->getName();
+                    $ar['product'] = $product->getId();
+
                     $product->setTaxons($taxons);
                     $manager->flush();
+                    print json_encode($ar);
                     $count++;
                 }
             }
@@ -349,7 +364,7 @@ class ProductController extends ResourceController
                     natcasesort($images);
                     $images = array_reverse($images);
                     foreach ($images as $i) {
-//                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
+                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
                         $variantImage = new VariantImage();
                         $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
                         $variantImage->setFile($fileinfo);
@@ -358,14 +373,14 @@ class ProductController extends ResourceController
                         $p->getMasterVariant()->addImage($variantImage);
                         $manager->flush();
                         $count++;
-//                        }else{
-//                            print("Не удалось скачать файл ".$i."\n");
-//                        }
+                        }else{
+                            print("Не удалось скачать файл ".$i."\n");
+                        }
                     }
                 }
             }
             ftp_quit($connect);
-            return new Response("Обновление картинок завершено. Обновлено " . $count . " картинок.");
+            return new Response("Необходимо обновить ".count($images).".Обновление картинок завершено. Обновлено " . $count . " картинок.");
         }
 //        }
 

@@ -116,17 +116,71 @@ class FrontendMenuBuilder extends MenuBuilder
             "customers" => array(
                 "name" => "Оптовым клиентам",
                 "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "customers")
+                "routeParameters" => array("id" => "customers"),
+                "subChild" => array(
+                    "how_to_order" => array(
+                        "name" => "Как сделать заказ",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "how_to_order", "sub" => "customers")
+                    ),
+                    "how_to_pay_for_the_order" => array(
+                        "name" => "Как оплатить заказ",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "how_to_pay_for_the_order", "sub" => "customers")
+                    ),
+                    "shipping_customers" => array(
+                        "name" => "Доставка",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "shipping_customers", "sub" => "customers")
+                    ),
+                    "download_the_contract" => array(
+                        "name" => "Скачать договор",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "download_the_contract", "sub" => "customers")
+                    ),
+                    "details" => array(
+                        "name" => "Реквизиты",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "details", "sub" => "customers")
+                    )
+                )
             ),
-            /*"delivery" => array(
+            "shipping" => array(
                 "name" => "Доставка",
                 "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "delivery")
-            ),*/
+                "routeParameters" => array("id" => "shipping")
+            ),
             "about" => array(
                 "name" => "О нас",
                 "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "about")
+                "routeParameters" => array("id" => "about"),
+                "subChild" => array(
+                    "history" => array(
+                        "name" => "История",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "history", "sub" => "about")
+                    ),
+                    "jobs" => array(
+                        "name" => "Вакансии",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "jobs", "sub" => "about")
+                    ),
+                    "news" => array(
+                        "name" => "Новости",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "news", "sub" => "about")
+                    ),
+                    "certificates" => array(
+                        "name" => "Сертификаты",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "certificates", "sub" => "about")
+                    ),
+                    "partners" => array(
+                        "name" => "Партнеры",
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => "partners", "sub" => "about")
+                    )
+                )
             ),
             "contacts" => array(
                 "name" => "Контакты",
@@ -134,13 +188,29 @@ class FrontendMenuBuilder extends MenuBuilder
                 "routeParameters" => array("id" => "contacts")
             )
         );
+        if ($this->request->getHost() == 'olere.ru') {
+            $pagemenu['shipping'] = '';
+        } else {
+            $pagemenu['customers'] = '';
+        }
         $menu->setCurrentUri($this->request->getRequestUri());
         foreach ($pagemenu as $key => $p) {
-            $menu->addChild($key, array(
-                'route' => $p["route"],
-                'routeParameters' => $p["routeParameters"],
-                'linkAttributes' => array(),
-            ))->setLabel($p["name"]);
+            if (isset($p["route"])) {
+                $m = $menu->addChild($key, array(
+                    'route' => $p["route"],
+                    'routeParameters' => $p["routeParameters"],
+                    'linkAttributes' => array(),
+                ))->setLabel($p["name"]);
+                if(isset($p["subChild"])){
+                    foreach($p["subChild"] as $key => $s){
+                        $m->addChild($key, array(
+                            'route' => $s["route"],
+                            'routeParameters' => $s["routeParameters"],
+                            'linkAttributes' => array(),
+                        ))->setLabel($s["name"]);
+                    }
+                }
+            }
         }
 
 //        if ($this->cartProvider->hasCart()) {
@@ -214,11 +284,11 @@ class FrontendMenuBuilder extends MenuBuilder
             )
         );
         $menu->setCurrentUri($this->request->getRequestUri());
-        if($this->request->getHost() == 'olere.ru'){
+        if ($this->request->getHost() == 'olere.ru') {
             $menu->addChild('buy_retail', array(
                 'uri' => 'http://olere-shop.ru/'
             ))->setLabel("Купить в розницу");
-        }else{
+        } else {
             $menu->addChild('buy_retail', array(
                 'uri' => 'http://olere.ru/'
             ))->setLabel("Купить оптом");

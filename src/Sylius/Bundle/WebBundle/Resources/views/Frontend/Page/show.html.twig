@@ -4,16 +4,61 @@
 {% block metaDescription %}{{ page.metaDescription }}{% endblock %}
 {% block metaKeywords %}{{ page.metaKeywords }}{% endblock %}
 
-{% block content %}
-<div class="content">
-{#<div class="page-header">#}
-    {#<h1>{{ page.title }}</h1>#}
-{#</div>#}
-    {% if page.id == '/contacts' %}
-        <div style="height: 450px;">
-            <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=LydqtCSXJEan_mSpQQRcOzZxe4DWvhNd&width=100%&height=450"></script>
-        </div>
+{% block border %}
+    {% if page.id == '/customers' or page.id == '/about' or app.request.attributes.get('_route') == 'sylius_page_sub_show' %}
+        <div class="borderHead"></div>
     {% endif %}
-{{ page.body|raw }}
-</div>
+{% endblock %}
+
+{% block content %}
+    <div class="content{% if page.id == '/customers' or page.id == '/about' or app.request.attributes.get('_route') == 'sylius_page_sub_show' %} content-sub{% endif %}">
+        {#<div class="page-header">#}
+        {#<h1>{{ page.title }}</h1>#}
+        {#</div>#}
+        {% if page.id == '/contacts' %}
+            <div style="height: 450px;">
+                <script type="text/javascript" charset="utf-8"
+                        src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=LydqtCSXJEan_mSpQQRcOzZxe4DWvhNd&width=100%&height=450"></script>
+            </div>
+        {% endif %}
+        {{ page.body|raw }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function () {
+            {% if page.id == '/customers' %}
+            $("a[href='/content/customers']").parent().find("ul").show();
+            $("a[href='/app_dev.php/content/customers']").parent().find("ul").show();
+            $("a[href='/content/customers']").parent().addClass("current");
+            $("a[href='/app_dev.php/content/customers']").parent().addClass("current");
+            {% endif %}
+
+            {% if page.id == '/about' %}
+            $("a[href='/content/about']").parent().find("ul").show();
+            $("a[href='/app_dev.php/content/about']").parent().find("ul").show();
+            $("a[href='/content/about']").parent().addClass("current");
+            $("a[href='/app_dev.php/content/about']").parent().addClass("current");
+            {% endif %}
+
+            {% if app.request.attributes.get('_route') == 'sylius_page_sub_show' %}
+
+                {% if app.request.attributes.get('_route_params')['sub'] == 'customers' %}
+
+                $("a[href='/content/customers']").parent().find("ul").show();
+                $("a[href='/app_dev.php/content/customers']").parent().find("ul").show();
+                $("a[href='/content/customers']").parent().addClass("current");
+                $("a[href='/app_dev.php/content/customers']").parent().addClass("current");
+                {% endif %}
+                {% if app.request.attributes.get('_route_params')['sub'] == 'about' %}
+                $("a[href='/content/about']").parent().find("ul").show();
+                $("a[href='/app_dev.php/content/about']").parent().find("ul").show();
+                $("a[href='/content/about']").parent().addClass("current");
+                $("a[href='/app_dev.php/content/about']").parent().addClass("current");
+                {% endif %}
+            {% endif %}
+        });
+    </script>
 {% endblock %}

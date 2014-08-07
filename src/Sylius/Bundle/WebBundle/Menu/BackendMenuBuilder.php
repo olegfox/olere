@@ -218,10 +218,10 @@ class BackendMenuBuilder extends MenuBuilder
             'route' => 'sylius_backend_order_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.orders', $section)));
-        $child->addChild('shipments', array(
-            'route' => 'sylius_backend_shipment_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipments', $section)));
+//        $child->addChild('shipments', array(
+//            'route' => 'sylius_backend_shipment_index',
+//            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),
+//        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipments', $section)));
 
         /*$child->addChild('new_order', array(
             'route' => 'sylius_backend_order_create',

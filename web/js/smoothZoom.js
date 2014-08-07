@@ -14,7 +14,7 @@ function smoothZoom(){
             responsive_maintain_ratio: true,
             max_WIDTH: '',
             max_HEIGHT: '',
-            zoom_MAX: 100,
+            zoom_MAX: 150,
             animation_SPEED_ZOOM: 1,
             animation_SMOOTHNESS: 10
         });
