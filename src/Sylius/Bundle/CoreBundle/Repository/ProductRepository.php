@@ -30,8 +30,11 @@ class ProductRepository extends VariableProductRepository
      *
      * @return PagerfantaInterface
      */
-    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null)
+    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $price = 'any')
     {
+        if($price == 'any'){
+            $price = 10000000;
+        }
         $queryBuilder = $this->getCollectionQueryBuilder();
         if (isset($sorting["position"])) {
             $taxonomyId = $taxon->getTaxonomy()->getId();
@@ -39,15 +42,25 @@ class ProductRepository extends VariableProductRepository
             if($taxonomyId == 8){
                 $queryBuilder
                     ->innerJoin('product.taxons', 'taxon')
+                    ->leftJoin('product.variants', 'variant')
                     ->andWhere('taxon = :taxon')
+                    ->andWhere('variant.price < :price')
                     ->orderBy("product.position", $sorting["position"])
-                    ->setParameter('taxon', $taxon);
+                    ->setParameters(array(
+                        'taxon' => $taxon,
+                        'price' => $price*100
+                    ));
             }else{
                 $queryBuilder
                     ->innerJoin('product.taxons', 'taxon')
+                    ->leftJoin('product.variants', 'variant')
                     ->andWhere('taxon = :taxon')
+                    ->andWhere('variant.price < :price')
                     ->orderBy("product.position2", $sorting["position"])
-                    ->setParameter('taxon', $taxon);
+                    ->setParameters(array(
+                        'taxon' => $taxon,
+                        'price' => $price*100
+                    ));
             }
         }elseif (isset($sorting["name"])) {
             $queryBuilder

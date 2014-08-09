@@ -38,3 +38,9 @@ function preview(original, image, name){
     $(".product .pictureProduct").html("<img src='"+image+"' alt='"+name+"' width='500px'>");
     smoothZoom();
 }
+
+function filter(category){
+    var cat = $(".filter #type").val();
+    var price = $(".filter #price").val();
+    window.location.href = "/"+category+"/1/"+cat+"?price="+price;
+}

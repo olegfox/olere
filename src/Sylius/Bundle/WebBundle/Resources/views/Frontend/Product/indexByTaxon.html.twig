@@ -10,17 +10,37 @@
 {% endblock %}
 
 {% block border %}
-    <div class="borderHead"></div>
+    <div class="borderHead filter"></div>
 {% endblock %}
 
 {% block content %}
     <div class="catalog">
-        <div class="head">
-            {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
-                <a href="{{ path("sylius_collections") }}">Коллекции</a> / {{ taxon.name }}
-            {% else %}
-                <a href="{{ path("sylius_catalog") }}">Каталог</a> / {{ taxon.name }}
-            {% endif %}
+        <div class="head filter">
+            <div class="type">
+                <span>
+                    {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
+                    {% set category = 'catalog' %}
+                    тип украшения:
+                    {% else %}
+                    {% set category = 'collections' %}
+                    коллекция:
+                    {% endif %}
+                </span>
+                <select name="" id="type" onchange="filter('{{ category }}');">
+                    {% for t in taxons %}
+                        <option value="{{ t.slug }}" {% if taxon.id == t.id %}selected="selected"{% endif %}>{{ t.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="price">
+                <span>цена:</span>
+                <select name="" id="price" onchange="filter('{{ category }}');">
+                    <option value="any" {% if price == "any" %}selected="selected"{% endif %}>любая</option>
+                    <option value="1500" {% if price == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>
+                    <option value="3000" {% if price == 3000 %}selected="selected"{% endif %}>до 3000 руб</option>
+                    <option value="5000" {% if price == 5000 %}selected="selected"{% endif %}>до 5000 руб</option>
+                </select>
+            </div>
         </div>
         {{ grid(products, groups) }}
         {% if page != 'all' and products|length > 30 %}

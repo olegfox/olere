@@ -399,6 +399,30 @@ class ProductController extends ResourceController
      */
     public function indexByTaxonAction(Request $request, $page, $category)
     {
+        $routeName = $request->get('_route');
+        $price = "any";
+        if($request->get('price') != null){
+            $price = $request->get('price');
+        }
+        $em = $this->getDoctrine()->getManager();
+        if($routeName == 'sylius_product_index_by_taxon'){
+
+            $taxons = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
+            '
+        )->setParameter('taxonomy', 8)->getResult();
+        }else{
+            $taxons = $em->createQuery(
+                'SELECT t FROM
+                 Sylius\Bundle\CoreBundle\Model\Taxon t
+                 WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
+                '
+            )->setParameter('taxonomy', 9)->getResult();
+        }
+
+
         $sorting = array(
             "position" => 'ASC'
         );
@@ -412,7 +436,7 @@ class ProductController extends ResourceController
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting);
+                ->createByTaxonPaginator($taxon, $sorting, $price);
 
             $paginator->setMaxPerPage(30);
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -421,7 +445,9 @@ class ProductController extends ResourceController
                 'collections' => $collections,
                 'taxon' => $taxon,
                 'products' => $paginator,
-                'groups' => $groups
+                'groups' => $groups,
+                'price' => $price,
+                'taxons' => $taxons
             ));
         }
 
@@ -432,7 +458,7 @@ class ProductController extends ResourceController
         if($page != 'all'){
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting);
+                ->createByTaxonPaginator($taxon, $sorting, $price);
 
             $paginator->setMaxPerPage(30);
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -445,7 +471,9 @@ class ProductController extends ResourceController
             'products' => $paginator,
             'permalink' => "/catalog/" . $page . "/" . $category,
             'groups' => $groups,
-            'page' => $page
+            'page' => $page,
+            'taxons' => $taxons,
+            'price' => $price
         ));
     }
 

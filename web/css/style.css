@@ -301,6 +301,27 @@ a, a:hover, a:focus{
     margin-bottom: 18px;
     background: #dcdcdc;
 }
+.catalog .head.filter{
+    font-family: "Calibri";
+    font-size: 18px;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+}
+.catalog .head.filter select{
+    font-family: "Calibri"!important;
+    font-size: 18px!important;
+    text-transform: uppercase!important;
+    border: solid 1px #aeaeae;
+    height: 26px;
+    line-height: 22px;
+    background: url(/images/arrow.jpg) no-repeat center right #dcdcdc;
+    margin-left: 7px;
+    padding-right: 20px;
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+}
 .catalogSearch .head{
     margin-top: 18px;
 }
@@ -317,6 +338,9 @@ a, a:hover, a:focus{
     height: 50px;
     background: #dcdcdc;
     z-index: 0;
+}
+.borderHead.filter{
+    height: 40px;
 }
 .borderHead2{
     position: absolute;
@@ -1115,3 +1139,12 @@ a.btn-lg:hover{
 .col-md-12 .alert-success{
     margin: 25px -15px;
 }
+
+/* filter */
+.filter.head div{
+    display: inline-block;
+}
+.filter.head div.type{
+    margin-right: 30px;
+}
+/* end filter */
