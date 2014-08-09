@@ -5,6 +5,10 @@ sylius_homepage:
     pattern: /
     defaults: { _controller: sylius.controller.frontend.homepage:mainAction }
 
+sylius_remove_double:
+    pattern: /remove_double/
+    defaults: { _controller: sylius.controller.product:removeDoubleAction }
+
 sylius_homepage2:
     pattern: /homepage
     defaults: { _controller: sylius.controller.frontend.homepage:main2Action }

@@ -240,7 +240,8 @@ class ProductController extends ResourceController
 
     }
 
-    public function scanProductsAction(Request $request){
+    public function scanProductsAction(Request $request)
+    {
         set_time_limit(0);
         header('Content-Type: text/html; charset=UTF-8');
         $repositoryProducts = $this->container->get('sylius.repository.product');
@@ -253,44 +254,44 @@ class ProductController extends ResourceController
 //            '
 //        )->getResult();
         $count = 0;
-        if(count($products) > 0){
+        if (count($products) > 0) {
             $repositoryTaxon = $this->container->get('sylius.repository.taxon');
             $manager = $this->container->get('sylius.manager.product');
-            foreach($products as $product){
+            foreach ($products as $product) {
                 $ctf = 0;
                 $cl = 0;
                 $taxons = new ArrayCollection();
                 $ar = array();
                 $ar['ctf'] = $ctf;
                 $ar['cl'] = $cl;
-                foreach($product->getTaxons() as $taxon){
-                    if($taxon->getParent()->getId() == 8){
+                foreach ($product->getTaxons() as $taxon) {
+                    if ($taxon->getParent()->getId() == 8) {
                         $ctf = 1;
                         $ar['ctf'] = $ctf;
                         $ar['catalogParent'] = $taxon->getParent()->getId();
                     }
-                    if($taxon->getParent()->getId() == 18){
+                    if ($taxon->getParent()->getId() == 18) {
                         $cl = 1;
                         $ar['cl'] = $cl;
                         $ar['collectionParent'] = $taxon->getParent()->getId();
                     }
                 }
-                if($ctf == 0){
+                if ($ctf == 0) {
                     $ar['catalog'] = $product->getCatalog();
                     $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
-                    if($catalog){
+                    if ($catalog) {
                         $taxons[] = $catalog;
                     }
                 }
-                if($cl == 0){
+                if ($cl == 0) {
                     $ar['collection'] = $product->getCollection();
                     $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
 
-                    if($collection){
+                    if ($collection) {
                         $taxons[] = $collection;
                     }
                 }
-                if(count($taxons) > 0){
+                if (count($taxons) > 0) {
                     print $product->getName();
                     $ar['product'] = $product->getId();
 
@@ -365,26 +366,59 @@ class ProductController extends ResourceController
                     $images = array_reverse($images);
                     foreach ($images as $i) {
                         if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
-                        $variantImage = new VariantImage();
-                        $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
-                        $variantImage->setFile($fileinfo);
-                        $imageUploader->upload($variantImage);
-                        $variantImage->setOriginal($i);
-                        $p->getMasterVariant()->addImage($variantImage);
-                        $manager->flush();
-                        $count++;
-                        }else{
-                            print("Не удалось скачать файл ".$i."\n");
+                            $variantImage = new VariantImage();
+                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
+                            $variantImage->setFile($fileinfo);
+                            $imageUploader->upload($variantImage);
+                            $variantImage->setOriginal($i);
+                            $p->getMasterVariant()->addImage($variantImage);
+                            $manager->flush();
+                            $count++;
+                        } else {
+                            print("Не удалось скачать файл " . $i . "\n");
                         }
                     }
                 }
             }
             ftp_quit($connect);
-            return new Response("Необходимо обновить ".count($images).".Обновление картинок завершено. Обновлено " . $count . " картинок.");
+            return new Response("Необходимо обновить " . count($images) . ".Обновление картинок завершено. Обновлено " . $count . " картинок.");
         }
 //        }
 
         return new Response("fail");
+    }
+
+    public function removeDoubleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $variant = $em->createQuery(
+            'SELECT v FROM
+             Sylius\Bundle\CoreBundle\Model\Variant v
+            '
+        )->getResult();
+        $deleted = array();
+        $deletedProduct = array();
+        foreach ($variant as $v) {
+            $fl = 0;
+            foreach ($deleted as $del) {
+                if ($del == $v->getId()) {
+                    $fl = 1;
+                    break;
+                }
+            }
+            if ($fl == 0) {
+                foreach ($variant as $d) {
+                    if ($v->getSku() == $d->getSku() && $v->getProduct()->getId() != $d->getProduct()->getId()) {
+                        $deleted[] = $d->getId();
+                        $deletedProduct[] = $d->getProduct()->getId();
+                        $em->remove($d);
+                    }
+                }
+            }
+        }
+        $em->flush();
+        return new Response(json_encode($deletedProduct));
     }
 
     /**
@@ -397,23 +431,24 @@ class ProductController extends ResourceController
      *
      * @throws NotFoundHttpException
      */
-    public function indexByTaxonAction(Request $request, $page, $category)
+    public
+    function indexByTaxonAction(Request $request, $page, $category)
     {
         $routeName = $request->get('_route');
         $price = "any";
-        if($request->get('price') != null){
+        if ($request->get('price') != null) {
             $price = $request->get('price');
         }
         $em = $this->getDoctrine()->getManager();
-        if($routeName == 'sylius_product_index_by_taxon'){
+        if ($routeName == 'sylius_product_index_by_taxon') {
 
             $taxons = $em->createQuery(
-            'SELECT t FROM
-             Sylius\Bundle\CoreBundle\Model\Taxon t
-             WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
-            '
-        )->setParameter('taxonomy', 8)->getResult();
-        }else{
+                'SELECT t FROM
+                 Sylius\Bundle\CoreBundle\Model\Taxon t
+                 WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
+                '
+            )->setParameter('taxonomy', 8)->getResult();
+        } else {
             $taxons = $em->createQuery(
                 'SELECT t FROM
                  Sylius\Bundle\CoreBundle\Model\Taxon t
@@ -455,14 +490,14 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }
 
-        if($page != 'all'){
+        if ($page != 'all') {
             $paginator = $this
                 ->getRepository()
                 ->createByTaxonPaginator($taxon, $sorting, $price);
 
             $paginator->setMaxPerPage(30);
             $paginator->setCurrentPage($request->query->get('page', $page));
-        }else{
+        } else {
             $paginator = $taxon->getProducts();
         }
 
@@ -477,7 +512,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function indexByTaxonProductAction(Request $request, $page, $category, $subcategory, $slug)
+    public
+    function indexByTaxonProductAction(Request $request, $page, $category, $subcategory, $slug)
     {
         $taxon = $this->get('sylius.repository.taxon')
             ->findOneByPermalink($category . "/" . $subcategory);
@@ -517,7 +553,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function indexByTaxonIdAction(Request $request, $id)
+    public
+    function indexByTaxonIdAction(Request $request, $id)
     {
         $taxon = $this->get('sylius.repository.taxon')->find($id);
 
@@ -551,7 +588,8 @@ class ProductController extends ResourceController
      *
      * @throws NotFoundHttpException
      */
-    public function historyAction(Request $request)
+    public
+    function historyAction(Request $request)
     {
         $product = $this->findOr404($request);
 
@@ -573,14 +611,16 @@ class ProductController extends ResourceController
      *
      * @param Request $request
      */
-    public function filterFormAction(Request $request)
+    public
+    function filterFormAction(Request $request)
     {
         return $this->render('SyliusWebBundle:Backend/Product:filterForm.html.twig', array(
             'form' => $this->get('form.factory')->createNamed('criteria', 'sylius_product_filter', $request->query->get('criteria'))->createView()
         ));
     }
 
-    public function showFrontendAction(Request $request)
+    public
+    function showFrontendAction(Request $request)
     {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
@@ -590,7 +630,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function childrenActiveAction(Request $request)
+    public
+    function childrenActiveAction(Request $request)
     {
         $idParent = $request->get("parent");
         $idChild = $request->get("child");
@@ -611,7 +652,8 @@ class ProductController extends ResourceController
         return new Response("no");
     }
 
-    public function childrenAction(Request $request, $parent)
+    public
+    function childrenAction(Request $request, $parent)
     {
         $product = $this->get('sylius.repository.product')->findOneById($parent);
         $taxons = $this->get('sylius.repository.taxon')->findAll();
@@ -622,7 +664,9 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function productsTaxonAction(Request $request, $taxon, $parent){
+    public
+    function productsTaxonAction(Request $request, $taxon, $parent)
+    {
         $taxon = $this->get('sylius.repository.taxon')->findOneById($taxon);
         return $this->render('SyliusWebBundle:Backend/Product:productsTaxon.html.twig', array(
             'products' => $taxon->getProducts(),
@@ -630,7 +674,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function deleteAllAction(Request $request)
+    public
+    function deleteAllAction(Request $request)
     {
         $idx = $request->get('idx_all');
         $repository = $this->container->get('sylius.repository.product');
@@ -648,7 +693,8 @@ class ProductController extends ResourceController
         return $this->redirectHandler->redirectToReferer();
     }
 
-    public function editGroupAction(Request $request)
+    public
+    function editGroupAction(Request $request)
     {
         $id = $request->get('id');
         if ($id) {
