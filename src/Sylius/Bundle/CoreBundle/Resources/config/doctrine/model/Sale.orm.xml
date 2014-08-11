@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+>
+
+    <mapped-superclass name="Sylius\Bundle\CoreBundle\Model\Sale" table="sylius_sales">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="date_begin" column="date_begin" type="date" nullable="true" />
+
+        <field name="date_end" column="date_end" type="date" nullable="true" />
+
+        <field name="percent" column="percent" type="integer" />
+
+        <field name="type_price" column="integer" type="integer" />
+
+        <one-to-many field="taxons" target-entity="Sylius\Bundle\OrderBundle\Model\Taxon" mapped-by="sale">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
+    </mapped-superclass>
+
+</doctrine-mapping>

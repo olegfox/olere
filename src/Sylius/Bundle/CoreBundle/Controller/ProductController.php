@@ -332,50 +332,52 @@ class ProductController extends ResourceController
 //            ftp_chdir($connect, '/');
             $files = ftp_nlist($connect, ".");
             foreach ($products as $p) {
-                $sku = $p->getSku();
+                if (is_object($p)) {
+                    $sku = $p->getSku();
 //                Scan ftp for sku
-                $images = array();
+                    $images = array();
 //                print "sku = ".$sku;
-                foreach ($files as $file) {
-                    $fileName = str_replace('./', '', $file);
-                    if (@stristr($fileName, $sku) === false) {
+                    foreach ($files as $file) {
+                        $fileName = str_replace('./', '', $file);
+                        if (@stristr($fileName, $sku) === false) {
 
-                    } else {
-                        $fl = 0;
-                        foreach ($images as $i) {
-                            if ($i == $fileName) {
-                                $fl = 1;
+                        } else {
+                            $fl = 0;
+                            foreach ($images as $i) {
+                                if ($i == $fileName) {
+                                    $fl = 1;
+                                }
                             }
-                        }
-                        foreach ($p->getMasterVariant()->getImages() as $image) {
-                            $path = $image->getOriginal();
+                            foreach ($p->getMasterVariant()->getImages() as $image) {
+                                $path = $image->getOriginal();
 //                            $path_parts = explode(".", $path);
-                            if ($path == $fileName) {
-                                $fl = 1;
+                                if ($path == $fileName) {
+                                    $fl = 1;
+                                }
                             }
-                        }
 //                        print "fl = ".$fl;
-                        if ($fl == 0) {
-                            $images[] = $fileName;
+                            if ($fl == 0) {
+                                $images[] = $fileName;
+                            }
                         }
                     }
-                }
 //                print var_dump($files);
-                if (count($images) > 0) {
-                    natcasesort($images);
-                    $images = array_reverse($images);
-                    foreach ($images as $i) {
-                        if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
-                            $variantImage = new VariantImage();
-                            $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
-                            $variantImage->setFile($fileinfo);
-                            $imageUploader->upload($variantImage);
-                            $variantImage->setOriginal($i);
-                            $p->getMasterVariant()->addImage($variantImage);
-                            $manager->flush();
-                            $count++;
-                        } else {
-                            print("Не удалось скачать файл " . $i . "\n");
+                    if (count($images) > 0) {
+                        natcasesort($images);
+                        $images = array_reverse($images);
+                        foreach ($images as $i) {
+                            if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
+                                $variantImage = new VariantImage();
+                                $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
+                                $variantImage->setFile($fileinfo);
+                                $imageUploader->upload($variantImage);
+                                $variantImage->setOriginal($i);
+                                $p->getMasterVariant()->addImage($variantImage);
+                                $manager->flush();
+                                $count++;
+                            } else {
+                                print("Не удалось скачать файл " . $i . "\n");
+                            }
                         }
                     }
                 }
@@ -436,6 +438,10 @@ class ProductController extends ResourceController
     {
         $routeName = $request->get('_route');
         $price = "any";
+        $type = 0;
+        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
+            $type = 1;
+        }
         if ($request->get('price') != null) {
             $price = $request->get('price');
         }
@@ -471,7 +477,7 @@ class ProductController extends ResourceController
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $price);
+                ->createByTaxonPaginator($taxon, $sorting, $price, $type);
 
             $paginator->setMaxPerPage(30);
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -493,7 +499,7 @@ class ProductController extends ResourceController
         if ($page != 'all') {
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $price);
+                ->createByTaxonPaginator($taxon, $sorting, $price, $type);
 
             $paginator->setMaxPerPage(30);
             $paginator->setCurrentPage($request->query->get('page', $page));

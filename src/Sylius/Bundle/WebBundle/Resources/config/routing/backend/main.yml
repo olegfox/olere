@@ -147,3 +147,8 @@ sylius_backend_slider:
 image_upload:
     pattern:  /admin/image_upload/
     defaults: { _controller: SyliusWebBundle:Backend/ImageRedactor:upload }
+
+# Files uploading
+file_upload:
+    pattern:  /admin/file_upload/
+    defaults: { _controller: SyliusWebBundle:Backend/ImageRedactor:fileUpload }

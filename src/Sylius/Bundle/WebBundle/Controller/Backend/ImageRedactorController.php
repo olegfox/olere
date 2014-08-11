@@ -52,4 +52,17 @@ class ImageRedactorController extends Controller {
         return new Response("");
     }
 
+    public function fileUploadAction(){
+        $web_dir_path = $this->container->getParameter('web_dir_path');
+        $dir = 'uploads/files/';
+        move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
+
+        $array = array(
+            'filelink' => $web_dir_path . $dir .$_FILES['file']['name'],
+            'filename' => $_FILES['file']['name']
+        );
+
+        return new Response(stripslashes(json_encode($array)));
+    }
+
 }

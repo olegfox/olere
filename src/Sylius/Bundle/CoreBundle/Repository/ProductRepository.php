@@ -30,7 +30,7 @@ class ProductRepository extends VariableProductRepository
      *
      * @return PagerfantaInterface
      */
-    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $price = 'any')
+    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $price = 'any', $type = 0)
     {
         if($price == 'any'){
             $price = 10000000;
@@ -40,27 +40,53 @@ class ProductRepository extends VariableProductRepository
             $taxonomyId = $taxon->getTaxonomy()->getId();
 
             if($taxonomyId == 8){
-                $queryBuilder
-                    ->innerJoin('product.taxons', 'taxon')
-                    ->leftJoin('product.variants', 'variant')
-                    ->andWhere('taxon = :taxon')
-                    ->andWhere('variant.price < :price')
-                    ->orderBy("product.position", $sorting["position"])
-                    ->setParameters(array(
-                        'taxon' => $taxon,
-                        'price' => $price*100
-                    ));
+                if($type == 0){
+                    $queryBuilder
+                        ->innerJoin('product.taxons', 'taxon')
+                        ->leftJoin('product.variants', 'variant')
+                        ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.price < :price')
+                        ->orderBy("product.position", $sorting["position"])
+                        ->setParameters(array(
+                            'taxon' => $taxon,
+                            'price' => $price*100
+                        ));
+                }else{
+                    $queryBuilder
+                        ->innerJoin('product.taxons', 'taxon')
+                        ->leftJoin('product.variants', 'variant')
+                        ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.priceOpt < :price')
+                        ->orderBy("product.position", $sorting["position"])
+                        ->setParameters(array(
+                            'taxon' => $taxon,
+                            'price' => $price*100
+                        ));
+                }
             }else{
-                $queryBuilder
-                    ->innerJoin('product.taxons', 'taxon')
-                    ->leftJoin('product.variants', 'variant')
-                    ->andWhere('taxon = :taxon')
-                    ->andWhere('variant.price < :price')
-                    ->orderBy("product.position2", $sorting["position"])
-                    ->setParameters(array(
-                        'taxon' => $taxon,
-                        'price' => $price*100
-                    ));
+                if($type == 0){
+                    $queryBuilder
+                        ->innerJoin('product.taxons', 'taxon')
+                        ->leftJoin('product.variants', 'variant')
+                        ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.price < :price')
+                        ->orderBy("product.position2", $sorting["position"])
+                        ->setParameters(array(
+                            'taxon' => $taxon,
+                            'price' => $price*100
+                        ));
+                }else{
+                    $queryBuilder
+                        ->innerJoin('product.taxons', 'taxon')
+                        ->leftJoin('product.variants', 'variant')
+                        ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.priceOpt < :price')
+                        ->orderBy("product.position2", $sorting["position"])
+                        ->setParameters(array(
+                            'taxon' => $taxon,
+                            'price' => $price*100
+                        ));
+                }
             }
         }elseif (isset($sorting["name"])) {
             $queryBuilder

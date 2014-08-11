@@ -106,6 +106,10 @@ class Product extends BaseProduct implements ProductInterface
      */
     public function getSku()
     {
+        if(!is_object($this->getMasterVariant())){
+            return 0;
+        }
+
         return $this->getMasterVariant()->getSku();
     }
 

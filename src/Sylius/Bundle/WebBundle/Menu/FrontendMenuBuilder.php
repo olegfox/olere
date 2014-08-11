@@ -284,15 +284,15 @@ class FrontendMenuBuilder extends MenuBuilder
             )
         );
         $menu->setCurrentUri($this->request->getRequestUri());
-        if ($this->request->getHost() == 'olere.ru') {
-            $menu->addChild('buy_retail', array(
-                'uri' => 'http://olere-shop.ru/'
-            ))->setLabel("Купить в розницу");
-        } else {
-            $menu->addChild('buy_retail', array(
-                'uri' => 'http://olere.ru/'
-            ))->setLabel("Купить оптом");
-        }
+//        if ($this->request->getHost() == 'olere.ru') {
+//            $menu->addChild('buy_retail', array(
+//                'uri' => 'http://olere-shop.ru/'
+//            ))->setLabel("Купить в розницу");
+//        } else {
+//            $menu->addChild('buy_retail', array(
+//                'uri' => 'http://olere.ru/'
+//            ))->setLabel("Купить оптом");
+//        }
         foreach ($bottom_menu as $key => $p) {
             $menu->addChild($key, array(
                 'route' => $p["route"],

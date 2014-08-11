@@ -4,6 +4,7 @@
 $(function(){
     redactor = $('.redactor').redactor({
         imageUpload: '/administration/admin/image_upload/',
+        fileUpload: '/administration/admin/file_upload/',
         //toolbar: 'custom',
         //css: ['custom.css?1'],
         allowedTags: ["a", "p", "img"],

@@ -116,7 +116,7 @@
 
         imageUpload: true, // url
         imageUploadParam: 'file', // input name
-        fileUpload: false, // url
+        fileUpload: true, // url
         fileUploadParam: 'file', // input name
         clipboardUpload: true, // or false
         clipboardUploadUrl: true, // url
