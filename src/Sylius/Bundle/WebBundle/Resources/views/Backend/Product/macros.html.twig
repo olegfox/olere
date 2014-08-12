@@ -10,7 +10,7 @@
                 <th><input class="iCheck-helper" id="allRemove" type="checkbox" onchange="allRemove(this);"/></th>
                 <th class="id">{{ sylius_resource_sort('id', '#id') }}</th>
                 <th class="info">{{ sylius_resource_sort('name', 'sylius.product.name'|trans) }}</th>
-                <th class="stock">{{ 'sylius.product.stock'|trans }}</th>
+                {#<th class="stock">{{ 'sylius.product.stock'|trans }}</th>#}
                 <th class="retail-price">{{ sylius_resource_sort('variant.price', 'sylius.product.price'|trans) }}</th>
                 <th class="retail-price">{{ sylius_resource_sort('variant.priceOpt', 'sylius.product.priceOpt'|trans) }}</th>
                 <th class="updated-at">{{ sylius_resource_sort('updatedAt', 'Updated At') }}</th>
@@ -26,8 +26,8 @@
                     <td class="id">
                         {{ product.id }}
                     </td>
-                    <td class="info">
-                        <div class="media">
+                    <td class="info" style="min-width: 330px;">
+                        <div class="media" style="min-width: 250px;">
                             <a href="{{ path('sylius_backend_product_show', {'id': product.id}) }}" class="pull-left"
                                title="{{ 'sylius.product.view_details'|trans({'%product%': product.name})|escape('html_attr') }}">
                                 <img src="{{ product.image ? image('media/image/'~product.image.path).zoomCrop(120, 90) : 'http://placehold.it/50x40' }}"
@@ -59,21 +59,21 @@
                             </div>
                         </div>
                     </td>
-                    {% if product.hasOptions %}
-                        <td class="stock contain-variants text-muted">
-                            <em>{{ 'sylius.product.contain_variants'|trans }}</em>
-                        </td>
-                    {% else %}
-                        {% if product.masterVariant.onHand > 0 and product.masterVariant.isAvailable %}
-                            <td class="stock in-stock">
-                                {{ product.masterVariant.onHand }}
-                            </td>
-                        {% else %}
-                            <td class="stock out-of-stock text-muted">
-                                <em>{{ 'sylius.out_of_stock'|trans }}</em>
-                            </td>
-                        {% endif %}
-                    {% endif %}
+                    {#{% if product.hasOptions %}#}
+                        {#<td class="stock contain-variants text-muted">#}
+                            {#<em>{{ 'sylius.product.contain_variants'|trans }}</em>#}
+                        {#</td>#}
+                    {#{% else %}#}
+                        {#{% if product.masterVariant.onHand > 0 and product.masterVariant.isAvailable %}#}
+                            {#<td class="stock in-stock">#}
+                                {#{{ product.masterVariant.onHand }}#}
+                            {#</td>#}
+                        {#{% else %}#}
+                            {#<td class="stock out-of-stock text-muted">#}
+                                {#<em>{{ 'sylius.out_of_stock'|trans }}</em>#}
+                            {#</td>#}
+                        {#{% endif %}#}
+                    {#{% endif %}#}
 
 
                     {# Retail Price #}

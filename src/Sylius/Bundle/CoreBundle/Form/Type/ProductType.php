@@ -34,6 +34,14 @@ class ProductType extends BaseProductType
                 'required' => false,
                 'label'    => 'sylius.form.product.short_description'
             ))
+            ->add('enabled', 'choice', array(
+                'required' => true,
+                'choices' => array(
+                    false => 'Нет',
+                    true => 'Да'
+                ),
+                'label'    => 'Скрыть?'
+            ))
             ->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',

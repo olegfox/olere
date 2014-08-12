@@ -439,9 +439,9 @@ class ProductController extends ResourceController
         $routeName = $request->get('_route');
         $price = "any";
         $type = 0;
-        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
+//        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
             $type = 1;
-        }
+//        }
         if ($request->get('price') != null) {
             $price = $request->get('price');
         }
@@ -479,7 +479,7 @@ class ProductController extends ResourceController
                 ->getRepository()
                 ->createByTaxonPaginator($taxon, $sorting, $price, $type);
 
-            $paginator->setMaxPerPage(30);
+            $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
 
             return $this->render('SyliusWebBundle:Frontend/Taxon:sub_collection.html.twig', array(
@@ -501,7 +501,7 @@ class ProductController extends ResourceController
                 ->getRepository()
                 ->createByTaxonPaginator($taxon, $sorting, $price, $type);
 
-            $paginator->setMaxPerPage(30);
+            $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
         } else {
             $paginator = $taxon->getProducts();
@@ -536,7 +536,7 @@ class ProductController extends ResourceController
             ->getRepository()
             ->createByTaxonPaginator($taxon, $sorting);
 
-        $paginator->setMaxPerPage(30);
+        $paginator->setMaxPerPage(40);
         $paginator->setCurrentPage($request->query->get('page', $page));
 
         if ($slug != '') {

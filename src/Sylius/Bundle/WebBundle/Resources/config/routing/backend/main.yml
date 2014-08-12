@@ -132,6 +132,10 @@ sylius_backend_page:
     resource: @SyliusWebBundle/Resources/config/routing/backend/page.yml
     prefix: /pages
 
+sylius_backend_sale:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/sale.yml
+    prefix: /sales
+
 sylius_backend_settings:
     resource: @SyliusWebBundle/Resources/config/routing/backend/settings.yml
     prefix: /settings

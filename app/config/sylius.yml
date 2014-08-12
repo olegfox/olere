@@ -129,3 +129,8 @@ sylius_resource:
             classes:
                 model: Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent
                 repository: Sylius\Bundle\CoreBundle\Repository\PageRepository
+        sylius.sale:
+            driver: doctrine/orm
+            classes:
+                model: Sylius\Bundle\CoreBundle\Model\Sale
+                controller: Sylius\Bundle\CoreBundle\Controller\SaleController

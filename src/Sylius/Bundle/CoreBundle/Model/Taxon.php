@@ -36,6 +36,8 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
      */
     protected $updatedAt;
 
+    protected $sale;
+
     /**
      * @var ArrayCollection
      */
@@ -175,5 +177,23 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSale()
+    {
+        return $this->sale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSale($sale = null)
+    {
+        $this->sale = $sale;
+
+        return $this;
     }
 }

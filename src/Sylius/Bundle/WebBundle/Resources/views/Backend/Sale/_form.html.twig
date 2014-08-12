@@ -1,0 +1,13 @@
+{% form_theme form 'SyliusWebBundle::forms.html.twig' %}
+
+<fieldset>
+    {{ form_row(form.id, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.date_begin, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.date_end, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.percent, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.type_price, {'attr': {'class': 'input-lg'}}) }}
+    {% for taxonomyForm in form.taxons %}
+        {{ form_row(taxonomyForm) }}
+    {% endfor %}
+</fieldset>
+{{ form_widget(form._token) }}

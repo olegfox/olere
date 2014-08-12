@@ -15,7 +15,7 @@
 
         <field name="percent" column="percent" type="integer" />
 
-        <field name="type_price" column="integer" type="integer" />
+        <field name="type_price" column="type_price" type="integer" />
 
         <one-to-many field="taxons" target-entity="Sylius\Bundle\OrderBundle\Model\Taxon" mapped-by="sale">
             <cascade>

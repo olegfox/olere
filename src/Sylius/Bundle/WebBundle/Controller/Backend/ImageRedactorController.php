@@ -62,7 +62,7 @@ class ImageRedactorController extends Controller {
             'filename' => $_FILES['file']['name']
         );
 
-        return new Response(stripslashes(json_encode($array)));
+        return new Response(json_encode($array));
     }
 
 }

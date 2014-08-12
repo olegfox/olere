@@ -34,7 +34,7 @@ class VariantType extends BaseVariantType
                 'label' => 'sylius.form.variant.sku'
             ))
             ->add('skuCode', 'text', array(
-                'label' => 'sylius.form.variant.skuCode'
+                'label' => 'Код артикула'
             ))
             ->add('price', 'sylius_money', array(
                 'label' => 'sylius.form.variant.price'

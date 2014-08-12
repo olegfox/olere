@@ -2,6 +2,8 @@
 
 namespace Sylius\Bundle\CoreBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Sale
 {
     protected $id;
@@ -16,6 +18,18 @@ class Sale
 
     protected $type_price;
 
+
+    public function __construct()
+    {
+        $this->taxons = new ArrayCollection();
+
+    }
+
+    public function setId()
+    {
+
+        return $this;
+    }
 
     /**
      * Set date_begin
@@ -33,7 +47,7 @@ class Sale
     /**
      * Get date_begin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateBegin()
     {
@@ -56,7 +70,7 @@ class Sale
     /**
      * Get date_end
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateEnd()
     {
@@ -79,7 +93,7 @@ class Sale
     /**
      * Get percent
      *
-     * @return integer 
+     * @return integer
      */
     public function getPercent()
     {
@@ -102,20 +116,52 @@ class Sale
     /**
      * Get type_price
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypePrice()
     {
         return $this->type_price;
     }
 
+    public function getTypePriceName()
+    {
+        switch($this->type_price){
+            case 0: return "Все цены";break;
+            case 1: return "Только оптовые";break;
+            case 2: return "Только розничные";break;
+            default: return "Все цены";
+        }
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTaxons()
+    {
+        return $this->taxons;
+    }
+
+
+    public function addTaxon(\Sylius\Bundle\CoreBundle\Model\Taxon $taxon)
+    {
+        $this->taxons[] = $taxon;
+
+        return $this;
+    }
+
+
+    public function removeTaxon(\Sylius\Bundle\CoreBundle\Model\Taxon $taxon)
+    {
+        $this->taxons->removeElement($taxon);
     }
 }

@@ -1,0 +1,24 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('sylius_backend_sale_index') }}">Скидки</a></li>
+    <li>Редактирование скидки</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-pencil"></i> Редактирование</h1>
+</div>
+
+{{ form_errors(form) }}
+
+<form action="{{ path('sylius_backend_sale_update', {'id': sale.id}) }}" method="post" class="form-horizontal" novalidate>
+    {% include 'SyliusWebBundle:Backend/Sale:_form.html.twig' %}
+    {{ update() }}
+</form>
+{% endblock %}

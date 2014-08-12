@@ -1,0 +1,27 @@
+sylius_backend_sale_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.sale:indexAction
+
+sylius_backend_sale_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.sale:createAction
+
+sylius_backend_sale_update:
+    pattern: /{id}/edit
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.sale:updateAction
+    requirements:
+        id: ".+"
+
+sylius_backend_sale_delete:
+    pattern: /{id}/delete
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.sale:deleteAction
+    requirements:
+        id: ".+"

@@ -1,0 +1,41 @@
+{% macro list(sales) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+{% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
+
+{% if sales|length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+                <th>Процент скидки (%)</th>
+                <th>Тип цены</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sale in sales %}
+            <tr id="{{ sale.id }}">
+                <td><i>{{ sale.id }}</i></td>
+                <td>{{ sale.dateBegin|date('d.m.y') }}</td>
+                <td>{{ sale.dateEnd|date('d.m.y') }}</td>
+                <td>{{ sale.percent }}</td>
+                <td>{{ sale.typePriceName }}</td>
+                <td>
+                    <div class="pull-right">
+                    {{ buttons.edit(path('sylius_backend_sale_update', {'id': sale.id})) }}
+                    {{ buttons.delete(path('sylius_backend_sale_delete', {'id': sale.id})) }}
+                   </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+Нет скидок
+{% endif %}
+
+{% endmacro %}

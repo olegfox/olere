@@ -707,6 +707,7 @@ sylius:
     options: Опции
     price: Цена
     sku: Артикул
+    skuCode: Код артикула
     stock: Наличие
     update_header: Редактирование вариантов
   "yes": да

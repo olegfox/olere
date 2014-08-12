@@ -89,6 +89,8 @@ class Product extends BaseProduct implements ProductInterface
 
     private $children;
 
+    private $enabled;
+
     /**
      * Constructor.
      */
@@ -442,6 +444,24 @@ class Product extends BaseProduct implements ProductInterface
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
     }
 
 }
