@@ -42,6 +42,55 @@ class ProductFilterType extends AbstractType
                     'placeholder' => 'sylius.form.product_filter.sku'
                 )
             ))
+            ->add('priceBegin', 'integer', array(
+                'required' => false,
+                'label'    => 'Цена Розн.',
+                'attr'     => array(
+                    'placeholder' => 'Цена Розн. от'
+                )
+            ))
+            ->add('priceEnd', 'integer', array(
+                'required' => false,
+                'label'    => false,
+                'attr'     => array(
+                    'placeholder' => 'Цена Розн. до'
+                )
+            ))
+            ->add('priceOptBegin', 'integer', array(
+                'required' => false,
+                'label'    => 'Цена Опт.',
+                'attr'     => array(
+                    'placeholder' => 'Цена Опт. от'
+                )
+            ))
+            ->add('priceOptEnd', 'integer', array(
+                'required' => false,
+                'label'    => false,
+                'attr'     => array(
+                    'placeholder' => 'Цена Опт. до'
+                )
+            ))
+            ->add('skuCode', 'choice', array(
+                'required' => false,
+                'label'    => 'Код артикула',
+                'empty_value' => 'Код артикула',
+                'empty_data'  => null,
+                'choices' => array(
+                    2 => '2',
+                    4 => '4'
+                )
+            ))
+            ->add('enabled', 'choice', array(
+                'required' => false,
+                'label'    => 'Скрыто?',
+                'empty_value' => 'Скрыто?',
+                'empty_data'  => null,
+                'choices' => array(
+                    0 => 'Нет',
+                    1 => 'Да'
+                )
+            ))
+            ->add('taxons', 'sylius_taxon_selection')
         ;
     }
 

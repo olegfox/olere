@@ -130,8 +130,9 @@ class ProductRepository extends VariableProductRepository
     public function createFilterPaginator($criteria = array(), $sorting = array(), $deleted = false)
     {
         $queryBuilder = parent::getCollectionQueryBuilder()
-            ->select('product, variant')
-            ->leftJoin('product.variants', 'variant');
+            ->select('product, variant, taxon')
+            ->leftJoin('product.variants', 'variant')
+            ->join('product.taxons', 'taxon');
 
         if (!empty($criteria['name'])) {
             $queryBuilder
@@ -142,6 +143,57 @@ class ProductRepository extends VariableProductRepository
             $queryBuilder
                 ->andWhere('variant.sku = :sku')
                 ->setParameter('sku', $criteria['sku']);
+        }
+        if (!empty($criteria['priceBegin'])) {
+            $queryBuilder
+                ->andWhere('variant.price >= :priceBegin')
+                ->setParameter('priceBegin', $criteria['priceBegin']*100);
+        }
+        if (!empty($criteria['priceEnd'])) {
+            $queryBuilder
+                ->andWhere('variant.price < :priceEnd')
+                ->setParameter('priceEnd', $criteria['priceEnd']*100);
+        }
+        if (!empty($criteria['priceOptBegin'])) {
+            $queryBuilder
+                ->andWhere('variant.priceOpt >= :priceOptBegin')
+                ->setParameter('priceOptBegin', $criteria['priceOptBegin']*100);
+        }
+        if (!empty($criteria['priceOptEnd'])) {
+            $queryBuilder
+                ->andWhere('variant.priceOpt < :priceOptEnd')
+                ->setParameter('priceOptEnd', $criteria['priceOptEnd']*100);
+        }
+        if (!empty($criteria['skuCode'])) {
+            $queryBuilder
+                ->andWhere('variant.skuCode = :skuCode')
+                ->setParameter('skuCode', $criteria['skuCode']);
+        }
+        if (!empty($criteria['enabled'])) {
+            $queryBuilder
+                ->andWhere('product.enabled = :enabled')
+                ->setParameter('enabled', $criteria['enabled']);
+        }
+        if (!empty($criteria['taxons'])) {
+            $id = array();
+            foreach($criteria['taxons'] as $k => $t){
+                print $k;
+                $taxons = $this->_em->createQueryBuilder()
+                    ->select('t')
+                    ->from('Sylius\Bundle\CoreBundle\Model\Taxon', 't')
+                    ->where('t.taxonomy = :id')
+                    ->andWhere('t.parent IS NOT NULL')
+                    ->orderBy("t.id", 'ASC')
+                    ->setParameter('id', $k)
+                    ->getQuery()
+                    ->getResult();
+                foreach($t as $val){
+                    $id[] = $taxons[intval($val)]->getId();
+                }
+            }
+            $queryBuilder
+                ->andWhere('taxon.id IN (:taxons)')
+                ->setParameter('taxons', $id);
         }
 
         if (empty($sorting)) {

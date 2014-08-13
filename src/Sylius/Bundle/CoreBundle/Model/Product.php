@@ -89,7 +89,7 @@ class Product extends BaseProduct implements ProductInterface
 
     private $children;
 
-    private $enabled;
+    private $enabled = 0;
 
     /**
      * Constructor.
@@ -130,6 +130,9 @@ class Product extends BaseProduct implements ProductInterface
      */
     public function getSkuCode()
     {
+        if(!is_object($this->getMasterVariant())){
+            return 0;
+        }
         return $this->getMasterVariant()->getSkuCode();
     }
 
@@ -199,6 +202,19 @@ class Product extends BaseProduct implements ProductInterface
         $this->taxons = $taxons;
 
         return $this;
+    }
+
+
+    public function addTaxon($taxons)
+    {
+        $this->taxons[] = $taxons;
+
+        return $this;
+    }
+
+    public function removeTaxon($taxons)
+    {
+        $this->taxons->removeElement($taxons);
     }
 
     /**

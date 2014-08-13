@@ -1148,3 +1148,9 @@ a.btn-lg:hover{
     margin-right: 30px;
 }
 /* end filter */
+div.form-horizontal{
+    padding: 0 20px;
+}
+.btn-change-password{
+    width: 180px;
+}

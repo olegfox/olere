@@ -71,6 +71,7 @@ class TaxonSelectionType extends AbstractType
             $builder->add($taxonomy->getId(), 'choice', array(
                 'choice_list' => new ObjectChoiceList($this->taxonRepository->getTaxonsAsList($taxonomy)),
                 'multiple'    => $options['multiple'],
+                'required' => false,
                 'label'       => /** @Ignore */ $taxonomy->getName()
             ));
         }

@@ -3,5 +3,12 @@
 <form method="get" action="" class="form-inline form-filter">
 {{ form_row(form.name) }}
 {{ form_row(form.sku) }}
+{{ form_row(form.priceBegin) }}
+{{ form_row(form.priceEnd) }}
+{{ form_row(form.priceOptBegin) }}
+{{ form_row(form.priceOptEnd) }}
+{{ form_row(form.skuCode) }}
+{{ form_row(form.enabled) }}
+{{ form_row(form.taxons) }}
 <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> {{ 'sylius.filter'|trans }}</button>
 </form>

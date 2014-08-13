@@ -234,10 +234,24 @@ class ProductController extends ResourceController
         ));
     }
 
-    private function uploadFTP($name, $NewName, $login, $pass, $host, $path)
-    {
-
-
+    public function scanCodeArticulAction(){
+        set_time_limit(0);
+        header('Content-Type: text/html; charset=UTF-8');
+        $manager = $this->container->get('sylius.manager.product');
+        $repositoryProducts = $this->container->get('sylius.repository.product');
+        $products = $repositoryProducts->findAll();
+        $count = 0;
+        foreach($products as $p){
+            if($p->getSkuCode() == 2){
+//                print ($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2)." = ".time();
+                if($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2 < time()){
+                    $manager->remove($p);
+                    $count++;
+                }
+            }
+        }
+        $manager->flush();
+        return new Response("Удалено $count продуктов.");
     }
 
     public function scanProductsAction(Request $request)
@@ -264,22 +278,23 @@ class ProductController extends ResourceController
                 $ar = array();
                 $ar['ctf'] = $ctf;
                 $ar['cl'] = $cl;
-                foreach ($product->getTaxons() as $taxon) {
-                    if ($taxon->getParent()->getId() == 8) {
+                foreach ($product->getTaxons() as $i => $taxon) {
+                    $ar['taxon_id'.$i] = $taxon->getId();
+                    if ($taxon->getTaxonomy()->getId() == 8) {
                         $ctf = 1;
                         $ar['ctf'] = $ctf;
-                        $ar['catalogParent'] = $taxon->getParent()->getId();
+                        $ar['catalogParent'] = $taxon->getTaxonomy()->getId();
                     }
-                    if ($taxon->getParent()->getId() == 18) {
+                    if ($taxon->getTaxonomy()->getId() == 9) {
                         $cl = 1;
                         $ar['cl'] = $cl;
-                        $ar['collectionParent'] = $taxon->getParent()->getId();
+                        $ar['collectionParent'] = $taxon->getTaxonomy()->getId();
                     }
                 }
                 if ($ctf == 0) {
                     $ar['catalog'] = $product->getCatalog();
                     $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
-                    if ($catalog) {
+                    if (is_object($catalog)) {
                         $taxons[] = $catalog;
                     }
                 }
@@ -287,15 +302,24 @@ class ProductController extends ResourceController
                     $ar['collection'] = $product->getCollection();
                     $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
 
-                    if ($collection) {
+                    if (is_object($collection)) {
                         $taxons[] = $collection;
                     }
                 }
                 if (count($taxons) > 0) {
                     print $product->getName();
                     $ar['product'] = $product->getId();
-
-                    $product->setTaxons($taxons);
+                    foreach($taxons as $t){
+                        $fl = 0;
+                        foreach($product->getTaxons() as $tt){
+                            if($tt->getId() == $t->getId()){
+                                $fl = 1;
+                            }
+                        }
+                        if($fl == 0){
+                            $product->addTaxon($t);
+                        }
+                    }
                     $manager->flush();
                     print json_encode($ar);
                     $count++;
