@@ -177,7 +177,6 @@ class ProductRepository extends VariableProductRepository
         if (!empty($criteria['taxons'])) {
             $id = array();
             foreach($criteria['taxons'] as $k => $t){
-                print $k;
                 $taxons = $this->_em->createQueryBuilder()
                     ->select('t')
                     ->from('Sylius\Bundle\CoreBundle\Model\Taxon', 't')
@@ -208,6 +207,11 @@ class ProductRepository extends VariableProductRepository
         if ($deleted) {
             $this->_em->getFilters()->disable('softdeleteable');
         }
+//$products = $queryBuilder->getQuery()
+//    ->getResult();
+//        foreach($products as $p){
+//            print $p->getId()." ";
+//        }
 
         return $this->getPaginator($queryBuilder);
     }

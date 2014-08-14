@@ -242,7 +242,7 @@ class ProductController extends ResourceController
         $products = $repositoryProducts->findAll();
         $count = 0;
         foreach($products as $p){
-            if($p->getSkuCode() == 2){
+            if($p->getSkuCode() == 4){
 //                print ($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2)." = ".time();
                 if($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2 < time()){
                     $manager->remove($p);
@@ -332,6 +332,8 @@ class ProductController extends ResourceController
     public function importScanAction(Request $request)
     {
         set_time_limit(0);
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', TRUE);
         header('Content-Type: text/html; charset=UTF-8');
         $repository = $this->container->get('sylius.repository.product');
         $manager = $this->container->get('sylius.manager.product');
@@ -353,6 +355,7 @@ class ProductController extends ResourceController
         ftp_pasv($connect, true);
         if ($result) {
             $count = 0;
+            $total = 0;
 //            ftp_chdir($connect, '/');
             $files = ftp_nlist($connect, ".");
             foreach ($products as $p) {
@@ -402,12 +405,13 @@ class ProductController extends ResourceController
                             } else {
                                 print("Не удалось скачать файл " . $i . "\n");
                             }
+                            $total++;
                         }
                     }
                 }
             }
             ftp_quit($connect);
-            return new Response("Необходимо обновить " . count($images) . ".Обновление картинок завершено. Обновлено " . $count . " картинок.");
+            return new Response("Необходимо обновить " . $total . ".Обновление картинок завершено. Обновлено " . $count . " картинок.");
         }
 //        }
 
@@ -418,6 +422,20 @@ class ProductController extends ResourceController
     {
         $em = $this->getDoctrine()->getManager();
 
+//        $products = $em->createQuery(
+//            'SELECT v FROM
+//             Sylius\Bundle\CoreBundle\Model\Product v
+//            '
+//        )->getResult();
+//        $count = 0;
+//        foreach($products as $p){
+//            if(!is_object($p->getMasterVariant())){
+//                $em->remove($p);
+//                $count++;
+//            }
+//        }
+//        $em->flush();
+//        return new Response($count);
         $variant = $em->createQuery(
             'SELECT v FROM
              Sylius\Bundle\CoreBundle\Model\Variant v
@@ -438,6 +456,7 @@ class ProductController extends ResourceController
                     if ($v->getSku() == $d->getSku() && $v->getProduct()->getId() != $d->getProduct()->getId()) {
                         $deleted[] = $d->getId();
                         $deletedProduct[] = $d->getProduct()->getId();
+                        $em->remove($d->getProduct());
                         $em->remove($d);
                     }
                 }
