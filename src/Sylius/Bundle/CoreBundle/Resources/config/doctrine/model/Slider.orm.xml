@@ -11,6 +11,9 @@
 
         <field name="image" column="image" type="text">
         </field>
+
+        <field name="type" column="type" type="integer">
+        </field>
     </mapped-superclass>
 
 </doctrine-mapping>

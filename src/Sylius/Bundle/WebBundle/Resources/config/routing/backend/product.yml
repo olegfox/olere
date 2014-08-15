@@ -59,6 +59,12 @@ sylius_backend_product_edit_group:
     defaults:
         _controller: sylius.controller.product:editGroupAction
 
+sylius_backend_product_edit_products:
+    pattern: /edit/products
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:editProductsAction
+
 sylius_backend_product_delete:
     pattern: /{id}
     methods: [DELETE]
@@ -97,3 +103,4 @@ sylius_backend_product_reset_position:
     pattern: /reset_position/products/
     defaults:
         _controller: sylius.controller.backend.dashboard:productPositionResetAction
+

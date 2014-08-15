@@ -121,7 +121,11 @@ class HomepageController extends Controller
         }
         $repository = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Slider');
-        $sliders = $repository->findAll();
+        if($request->getHost() == "olere.ru"){
+            $sliders = $repository->findBy(array('type' => 1));
+        }else{
+            $sliders = $repository->findBy(array('type' => 0));
+        }
         return $this->render('SyliusWebBundle:Frontend/Homepage:main.html.twig', array(
 //            "page" => $page,
             "sliders" => $sliders

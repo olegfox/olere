@@ -120,6 +120,7 @@
             <argument type="service" id="sylius.cart_provider" />
             <argument type="service" id="sylius.price_calculator.default" />
             <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.repository.sale" />
             <argument type="service" id="form.factory" />
             <argument type="service" id="sylius.availability_checker" />
             <argument type="service" id="sylius.checker.restricted_zone" />

@@ -17,6 +17,7 @@ use Sylius\Bundle\CoreBundle\Model\Slider;
 use Sylius\Bundle\CoreBundle\Form\Type\SliderType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Backend dashboard controller.
@@ -43,13 +44,13 @@ class DashboardController extends Controller
         ));
     }
 
-    public function sliderAction(Request $request)
+    public function sliderAction(Request $request, $type)
     {
         $slider = new Slider();
         $form = $this->createForm(new SliderType(), $slider);
         $repository = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Slider');
-        $sliders = $repository->findAll();
+        $sliders = $repository->findBy(array('type' => $type));
         $manager = $this->getDoctrine()->getManager();
         if ($request->isMethod('POST')) {
             $form->bind($request);
@@ -63,13 +64,14 @@ class DashboardController extends Controller
                     if ($data[$i]["image"] != "") {
                         $slider = new Slider();
                         $slider->setImage($data[$i]["image"]);
+                        $slider->setType($type);
                         $manager->persist($slider);
                     }
                     $i++;
                 }
             }
             $manager->flush();
-            $sliders = $repository->findAll();
+            $sliders = $repository->findBy(array('type' => $type));
             return $this->render('SyliusWebBundle:Backend/Slider:index.html.twig', array(
                 'form' => $form->createView(),
                 'sliders' => $sliders
@@ -81,7 +83,7 @@ class DashboardController extends Controller
         ));
     }
 
-    public function deleteSliderAction($id)
+    public function deleteSliderAction(Request $request, $id)
     {
         $repository = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Slider');
@@ -96,7 +98,8 @@ class DashboardController extends Controller
             $manager->flush();
         }
 
-        return $this->redirect($this->generateUrl('sylius_backend_slider_index'));
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
     }
 
     public function taxonOrderChangeAction($drag, $drop){

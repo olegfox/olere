@@ -222,6 +222,7 @@ class Product extends BaseProduct implements ProductInterface
      */
     public function getPrice()
     {
+
         return $this->getMasterVariant()->getPrice();
     }
 

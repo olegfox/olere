@@ -1,0 +1,6 @@
+{% if priceOld != price %}
+<div class="underline">
+    {{ priceOld|sylius_price }}
+</div>
+{% endif %}
+{{ price|sylius_price }}

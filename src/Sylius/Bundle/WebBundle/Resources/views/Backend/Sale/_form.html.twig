@@ -2,12 +2,12 @@
 
 <fieldset>
     {{ form_row(form.id, {'attr': {'class': 'input-lg'}}) }}
-    {{ form_row(form.date_begin, {'attr': {'class': 'input-lg'}}) }}
-    {{ form_row(form.date_end, {'attr': {'class': 'input-lg'}}) }}
+    <div class="hide">
+        {{ form_row(form.date_begin, {'attr': {'class': 'input-lg'}}) }}
+        {{ form_row(form.date_end, {'attr': {'class': 'input-lg'}}) }}
+    </div>
     {{ form_row(form.percent, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.type_price, {'attr': {'class': 'input-lg'}}) }}
-    {% for taxonomyForm in form.taxons %}
-        {{ form_row(taxonomyForm) }}
-    {% endfor %}
+    {{ form_row(form.taxon) }}
 </fieldset>
 {{ form_widget(form._token) }}

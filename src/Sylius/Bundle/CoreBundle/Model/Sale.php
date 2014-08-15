@@ -6,24 +6,45 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class Sale
 {
+    /**
+     * Sale id.
+     *
+     * @var mixed
+     */
     protected $id;
 
+    /**
+     * Sale dateBegin.
+     *
+     * @var \DateTime
+     */
     protected $date_begin;
 
+    /**
+     * Sale dateEnd.
+     *
+     * @var \DateTime
+     */
     protected $date_end;
 
+    /**
+     * Sale percent.
+     *
+     * @var integer
+     */
     protected $percent;
 
-    protected $taxons;
+    protected $taxon;
 
+    protected $taxonId;
+
+    /**
+     * Sale typePrice.
+     *
+     * @var integer
+     */
     protected $type_price;
 
-
-    public function __construct()
-    {
-        $this->taxons = new ArrayCollection();
-
-    }
 
     public function setId()
     {
@@ -146,22 +167,38 @@ class Sale
     /**
      * {@inheritdoc}
      */
-    public function getTaxons()
+    public function getTaxon()
     {
-        return $this->taxons;
+        return $this->taxon;
     }
 
-
-    public function addTaxon(\Sylius\Bundle\CoreBundle\Model\Taxon $taxon)
+    /**
+     * {@inheritdoc}
+     */
+    public function setTaxon($taxon)
     {
-        $this->taxons[] = $taxon;
+        $this->taxon = $taxon;
 
         return $this;
     }
 
 
-    public function removeTaxon(\Sylius\Bundle\CoreBundle\Model\Taxon $taxon)
+    /**
+     * {@inheritdoc}
+     */
+    public function getTaxonId()
     {
-        $this->taxons->removeElement($taxon);
+        return $this->taxonId;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTaxonId($taxonId)
+    {
+        $this->taxonId = $taxonId;
+
+        return $this;
+    }
+
 }

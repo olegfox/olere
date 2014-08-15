@@ -42,7 +42,7 @@
                 </select>
             </div>
         </div>
-        {{ grid(products, groups) }}
+        {{ grid(products, groups, taxon) }}
         {% if page != 'all' and products|length > 40 %}
             {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{{ path('sylius_product_index_by_taxon', {page: 'all', category: taxon.slug}) }}">Показать всё</a></li></ul>
         {% endif %}

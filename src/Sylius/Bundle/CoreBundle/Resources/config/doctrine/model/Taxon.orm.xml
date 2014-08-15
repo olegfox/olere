@@ -24,14 +24,8 @@
             <gedmo:sortable-position/>
         </field>
 
-        <many-to-one field="sale" target-entity="Sylius\Bundle\CoreBundle\Model\Sale">
-            <cascade>
-                <cascade-all/>
-            </cascade>
-            <join-column name="sale_id" referenced-column-name="id" nullable="true" />
-        </many-to-one>
-
-       <many-to-many field="products" mapped-by="taxons" target-entity="Sylius\Bundle\ProductBundle\Model\ProductInterface"/>
+        <one-to-one field="sale" target-entity="Sylius\Bundle\CoreBundle\Model\Sale">
+        </one-to-one>
 
     </mapped-superclass>
 

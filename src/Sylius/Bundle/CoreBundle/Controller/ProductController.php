@@ -62,6 +62,9 @@ class ProductController extends ResourceController
 
     public function importIndexAction(Request $request)
     {
+        set_time_limit(0);
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', TRUE);
         header('Content-Type: text/html; charset=UTF-8');
         $import = new Import();
 
@@ -72,7 +75,9 @@ class ProductController extends ResourceController
             $form->bind($request);
             $xls = $form['file']->getData();
             if ($xls != "") {
-                $newFileName = uniqid() . '.' . 'xlsx';
+//                $newFileName = uniqid() . '.' . 'xlsx';
+                $newFileName = $xls->getClientOriginalName();
+                $newFileName = iconv("utf-8", "cp1251", $newFileName);
                 $xls->move('import/xls/', $newFileName);
                 $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
                 $objWorksheet = $objPHPExcel->getActiveSheet();
@@ -234,17 +239,20 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function scanCodeArticulAction(){
+    public function scanCodeArticulAction()
+    {
         set_time_limit(0);
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', TRUE);
         header('Content-Type: text/html; charset=UTF-8');
         $manager = $this->container->get('sylius.manager.product');
         $repositoryProducts = $this->container->get('sylius.repository.product');
         $products = $repositoryProducts->findAll();
         $count = 0;
-        foreach($products as $p){
-            if($p->getSkuCode() == 4){
+        foreach ($products as $p) {
+            if ($p->getSkuCode() == 4) {
 //                print ($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2)." = ".time();
-                if($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2 < time()){
+                if ($p->getCreatedAt()->getTimestamp() + 60 * 60 * 24 * 7 * 2 < time()) {
                     $manager->remove($p);
                     $count++;
                 }
@@ -257,6 +265,8 @@ class ProductController extends ResourceController
     public function scanProductsAction(Request $request)
     {
         set_time_limit(0);
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', TRUE);
         header('Content-Type: text/html; charset=UTF-8');
         $repositoryProducts = $this->container->get('sylius.repository.product');
         $products = $repositoryProducts->findAll();
@@ -279,7 +289,7 @@ class ProductController extends ResourceController
                 $ar['ctf'] = $ctf;
                 $ar['cl'] = $cl;
                 foreach ($product->getTaxons() as $i => $taxon) {
-                    $ar['taxon_id'.$i] = $taxon->getId();
+                    $ar['taxon_id' . $i] = $taxon->getId();
                     if ($taxon->getTaxonomy()->getId() == 8) {
                         $ctf = 1;
                         $ar['ctf'] = $ctf;
@@ -309,14 +319,14 @@ class ProductController extends ResourceController
                 if (count($taxons) > 0) {
                     print $product->getName();
                     $ar['product'] = $product->getId();
-                    foreach($taxons as $t){
+                    foreach ($taxons as $t) {
                         $fl = 0;
-                        foreach($product->getTaxons() as $tt){
-                            if($tt->getId() == $t->getId()){
+                        foreach ($product->getTaxons() as $tt) {
+                            if ($tt->getId() == $t->getId()) {
                                 $fl = 1;
                             }
                         }
-                        if($fl == 0){
+                        if ($fl == 0) {
                             $product->addTaxon($t);
                         }
                     }
@@ -366,7 +376,7 @@ class ProductController extends ResourceController
 //                print "sku = ".$sku;
                     foreach ($files as $file) {
                         $fileName = str_replace('./', '', $file);
-                        if (@stristr($fileName, $sku) === false) {
+                        if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
 
                         } else {
                             $fl = 0;
@@ -483,7 +493,7 @@ class ProductController extends ResourceController
         $price = "any";
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
-            $type = 1;
+        $type = 1;
 //        }
         if ($request->get('price') != null) {
             $price = $request->get('price');
@@ -669,13 +679,15 @@ class ProductController extends ResourceController
     }
 
     public
-    function showFrontendAction(Request $request)
+    function showFrontendAction(Request $request, $taxon)
     {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
+        $taxon = $this->get('sylius.repository.taxon')->findOneBy(array("id" => $taxon));
         return $this->render($this->config->getTemplate('show.html.twig'), array(
             'product' => $product,
-            'groups' => $groups
+            'groups' => $groups,
+            'taxon' => $taxon
         ));
     }
 
@@ -780,6 +792,67 @@ class ProductController extends ResourceController
         return new Response("no");
     }
 
+    public
+    function editProductsAction(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $ids = $request->get('ids');
+            $ids = json_decode($ids);
+            $manager = $this->container->get('sylius.manager.product');
+            if (count($ids) > 0) {
+                $skuCode = $request->get('skuCode');
+                $enabled = $request->get('enabled');
+                $taxons = $request->get('taxons');
+
+                $products = $manager->createQuery(
+                    'SELECT p FROM
+                     Sylius\Bundle\CoreBundle\Model\Product p
+                     WHERE p.id IN (:ids)
+                    '
+                )->setParameter('ids', $ids)->getResult();
+
+                if (count($products) > 0) {
+                    foreach ($products as $p) {
+                        if ($skuCode != null) {
+                            $p->setSkuCode($skuCode);
+                        }
+                        if ($enabled != null) {
+                            $p->setEnabled($enabled);
+                        }
+                        if (count($taxons) > 0) {
+                            $taxs = $manager->createQuery(
+                                'SELECT t FROM
+                                 Sylius\Bundle\CoreBundle\Model\Taxon t
+                                 WHERE t.id IN (:ids)
+                                '
+                            )->setParameter('ids', $taxons)->getResult();
+
+                            if (count($taxs) > 0) {
+                                $txs = new ArrayCollection();
+                                foreach ($taxs as $t) {
+                                    $txs[] = $t;
+                                }
+                                $p->setTaxons($txs);
+                            }
+                        }
+
+                    }
+
+
+                    $manager->flush();
+                    return new Response("ok");
+                }
+            }
+
+            return new Response("no");
+        }
+        $repository = $this->container->get('sylius.repository.taxon');
+        $taxons = $repository->findAll();
+        return $this->render('SyliusWebBundle:Backend/Product:groupForm.html.twig', array(
+            'taxons' => $taxons
+        ));
+    }
+
 //    public function deleteAction(Request $request){
 //        $repository = $this->container->get('sylius.repository.product');
 //        $manager = $this->container->get('sylius.manager.product');
@@ -787,4 +860,30 @@ class ProductController extends ResourceController
 //        $manager->remove($product);
 //        $manager->flush();
 //    }
+
+    public function getPriceAction($id, $type, $taxon){
+        $repositoryProduct = $this->container->get('sylius.repository.product');
+        $repositorySale = $this->getDoctrine()
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\Sale');
+        $product = $repositoryProduct->find($id);
+        $price = 0;
+        $priceOld = 0;
+        if($type == 0){
+            $price = $product->getPrice();
+            $priceOld = $price;
+        }else{
+            $price = $product->getPriceOpt();
+            $priceOld = $price;
+        }
+        $sale = $repositorySale->findOneBy(array('taxonId' => $taxon));
+        if($sale){
+            if($type == $sale->getTypePrice()){
+                $price = $price - $price*$sale->getPercent()/100;
+            }
+        }
+        return $this->render('SyliusWebBundle:Frontend/Product:getPrice.html.twig', array(
+            'price' => $price,
+            'priceOld' => $priceOld
+        ));
+    }
 }

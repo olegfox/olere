@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Дата начала</th>
-                <th>Дата окончания</th>
+                {#<th>Дата начала</th>#}
+                {#<th>Дата окончания</th>#}
                 <th>Процент скидки (%)</th>
                 <th>Тип цены</th>
                 <th></th>
@@ -20,8 +20,8 @@
         {% for sale in sales %}
             <tr id="{{ sale.id }}">
                 <td><i>{{ sale.id }}</i></td>
-                <td>{{ sale.dateBegin|date('d.m.y') }}</td>
-                <td>{{ sale.dateEnd|date('d.m.y') }}</td>
+                {#<td>{{ sale.dateBegin|date('d.m.y') }}</td>#}
+                {#<td>{{ sale.dateEnd|date('d.m.y') }}</td>#}
                 <td>{{ sale.percent }}</td>
                 <td>{{ sale.typePriceName }}</td>
                 <td>

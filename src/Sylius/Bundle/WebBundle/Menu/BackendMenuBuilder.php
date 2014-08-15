@@ -172,8 +172,15 @@ class BackendMenuBuilder extends MenuBuilder
 
         $child->addChild('slider', array(
             'route' => 'sylius_backend_slider_index',
+            "routeParameters" => array("type" => 0),
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.slider', $section)));
+        ))->setLabel('Слайдер на главной Розн.');
+
+        $child->addChild('sliderOpt', array(
+            'route' => 'sylius_backend_slider_index',
+            "routeParameters" => array("type" => 1),
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
+        ))->setLabel('Слайдер на главной Опт.');
     }
 
     /**

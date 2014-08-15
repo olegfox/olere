@@ -1,5 +1,32 @@
 function allRemove(object){
     $(".idx").prop('checked', $(object).prop('checked'));
+    removeClick();
+}
+
+function removeClick(){
+    if($('[name="idx[]"]:checked').length > 0){
+        $(".groupEdit").show();
+        var ids = [], j =0;
+        $('[name="idx[]"]:checked').each(function(i, e){
+            ids[j] = $(e).val();
+            $(".groupEdit #ids").val(JSON.stringify(ids));
+            j++;
+        });
+    }else{
+        $(".groupEdit").css('display', 'none');
+    }
+}
+
+function editProductsSubmit(){
+    var form = $(".groupEdit form");
+    $.post(form.attr('action'), form.serializeArray(), function(data){
+       if(data == "ok"){
+           alert("Изменения сохранены!");
+       }else{
+           alert("Ошибка!");
+       }
+    });
+    return false;
 }
 
 function deleteAll(object){

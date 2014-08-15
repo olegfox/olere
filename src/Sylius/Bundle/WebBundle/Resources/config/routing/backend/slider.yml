@@ -1,8 +1,9 @@
-sylius_backend_slider_index:
-    pattern: /
-    defaults:
-        _controller: sylius.controller.backend.dashboard:sliderAction
 sylius_backend_slider_delete:
-    pattern: /{id}
+    pattern: /delete/{id}
     defaults:
         _controller: sylius.controller.backend.dashboard:deleteSliderAction
+
+sylius_backend_slider_index:
+    pattern: /{type}
+    defaults:
+        _controller: sylius.controller.backend.dashboard:sliderAction

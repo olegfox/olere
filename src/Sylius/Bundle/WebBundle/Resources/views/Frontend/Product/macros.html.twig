@@ -1,24 +1,24 @@
-{% macro price(product, group) %}
+{% macro price(product, group, taxon) %}
     {% if group.showPrice == 0 %}
         <div class="retail{% if group.showOptPrice != 0 %} one{% endif %}">
-            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{{ sylius_calculate_price(product)|sylius_price }}
+            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : taxon.id})) }}
         </div>
     {% endif %}
     {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
         <div class="opt{% if group.showPrice != 0 %} one{% endif %}">
-        Опт. {{ product.priceOpt|sylius_price }}
+        Опт. {{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : taxon.id})) }}
         </div>
     {% endif %}
 {% endmacro %}
 
-{% macro showPrice(product, groups) %}
+{% macro showPrice(product, groups, taxon) %}
     {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import price %}
     {% if is_granted('ROLE_USER_OPT') %}
-        {{ price(product, groups[0]) }}
-    {% elseif is_granted('ROLE_USER') %}
-        {{ price(product, groups[1]) }}
+        {{ price(product, groups[0], taxon) }}
+    {% elseif is_granted('ROLE_USER', taxon) %}
+        {{ price(product, groups[1], taxon) }}
     {% else %}
-        {{ price(product, groups[2]) }}
+        {{ price(product, groups[2], taxon) }}
     {% endif %}
 {% endmacro %}
 
@@ -61,4 +61,4 @@
     {% endif %}
 {% endmacro %}
 
-{% macro grid(productss, groups) %}{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% if productss|length > 0 %}<div class="boxes">{% endif %}{% set count = 0 %}{% for p in productss %}{% set count = count + 1 %}{% endfor %}{% for product in productss %}{% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}{% else %}<div class="col-md-12">{{ alerts.info('sylius.product.no_results'|trans) }}</div>{% endfor %}{% if productss|length > 0 %}</div>{% endif %}{% endmacro %}
+{% macro grid(productss, groups, taxon) %}{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% if productss|length > 0 %}<div class="boxes">{% endif %}{% set count = 0 %}{% for p in productss %}{% set count = count + 1 %}{% endfor %}{% for product in productss %}{% include 'SyliusWebBundle:Frontend/Product:_singleBox.html.twig' %}{% else %}<div class="col-md-12">{{ alerts.info('sylius.product.no_results'|trans) }}</div>{% endfor %}{% if productss|length > 0 %}</div>{% endif %}{% endmacro %}

@@ -9,30 +9,60 @@
 
 {% block slider %}
     <div class="flexslider">
+        {#<ul class="slides">#}
+            {#<li>#}
+                {#<img src="{{ asset('images/slider.png') }}"#}
+                     {#alt="{{ asset('images/slider.png') }}"/>#}
+                {#<div class="text">#}
+                    {#<div class="header">#}
+                        {#Бижутерия и украшения из серебра оптом и в розницу#}
+                    {#</div>#}
+                    {#<p>#}
+                        {#- Большой ассоритмент продукции#}
+                    {#</p>#}
+                    {#<p>#}
+                        {#- Оригинальняые модели#}
+                    {#</p>#}
+                    {#<p>#}
+                        {#- Хорошее качество изделий#}
+                    {#</p>#}
+                    {#<p>#}
+                        {#- Низкие цены#}
+                    {#</p>#}
+                    {#<a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация</a>#}
+                {#</div>#}
+            {#</li>#}
+        {#</ul>#}
         <ul class="slides">
-            <li>
-                <img src="{{ asset('images/slider.png') }}"
-                     alt="{{ asset('images/slider.png') }}"/>
-                <div class="text">
-                    <div class="header">
-                        Бижутерия и украшения из серебра оптом и в розницу
-                    </div>
-                    <p>
-                        - Большой ассоритмент продукции
-                    </p>
-                    <p>
-                        - Оригинальняые модели
-                    </p>
-                    <p>
-                        - Хорошее качество изделий
-                    </p>
-                    <p>
-                        - Низкие цены
-                    </p>
-                    <a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация</a>
-                </div>
-            </li>
+            {% if sliders is defined %}
+                {% for slider in sliders %}
+                    <li>
+                        <img src="{{ asset('images/slider/'~slider.image) }}"
+                             alt="{{ asset('images/slider/'~slider.image) }}"/>
+                    </li>
+                {% endfor %}
+            {% endif %}
         </ul>
+        <div class="wrapText">
+            <div class="text">
+                <div class="header">
+                    Бижутерия и украшения из серебра оптом и в розницу
+                </div>
+                <p>
+                    - Большой ассоритмент продукции
+                </p>
+                <p>
+                    - Оригинальняые модели
+                </p>
+                <p>
+                    - Хорошее качество изделий
+                </p>
+                <p>
+                    - Низкие цены
+                </p>
+                <a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация</a>
+            </div>
+        </div>
     </div>
     <div class="borderSlider"></div>
 {% endblock %}

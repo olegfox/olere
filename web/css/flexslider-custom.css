@@ -2,8 +2,6 @@
     width: 100%;
     margin: 0px auto 0px auto;
     max-width: 100%;
-    background: url(/images/sliderBg.jpg) no-repeat;
-    background-size: cover;
     height: 400px\0/;
     overflow: hidden!important;
 }
@@ -27,6 +25,18 @@
 .flexslider .slides > li img {
     height: auto;
     width: 100%;
+}
+.flexslider .wrapText{
+    position: absolute;
+    margin: 0px auto;
+    padding: 15px 20px 0px 20px;
+    max-width: 1200px;
+    height: 424px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 }
 .flexslider .text{
     position: absolute;

@@ -21,7 +21,7 @@
             {% for product in products %}
                 <tr id="{{ product.id }}">
                     <td class="hidden" id="td{{ loop.index }}">{{ loop.index }}</td>
-                    <td class="remove"><input name="idx[]" class="iCheck-helper idx" type="checkbox"
+                    <td class="remove"><input name="idx[]" onclick="removeClick();" class="iCheck-helper idx" type="checkbox"
                                               value="{{ product.id }}"/></td>
                     <td class="id">
                         {{ product.id }}

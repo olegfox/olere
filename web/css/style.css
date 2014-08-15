@@ -262,8 +262,8 @@ a, a:hover, a:focus{
     -webkit-margin-after: 0px;
     -webkit-margin-before: 0px;
     margin: 0px auto;
-    padding: 15px 20px 0px 20px;
-    max-width: 1200px;
+    padding: 0;
+    max-width: 100%;
 }
 .flexslider ul.slides li{
     list-style: none;
@@ -1153,4 +1153,8 @@ div.form-horizontal{
 }
 .btn-change-password{
     width: 180px;
+}
+
+.underline{
+    text-decoration: line-through;
 }

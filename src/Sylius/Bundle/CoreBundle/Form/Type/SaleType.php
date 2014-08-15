@@ -11,6 +11,7 @@
 
 namespace Sylius\Bundle\CoreBundle\Form\Type;
 
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -32,7 +33,11 @@ class SaleType extends AbstractType
                 1 => "Только оптовые",
                 2 => "Только розничные"
             )))
-            ->add('taxons', 'sylius_taxon_selection')
+            ->add('taxon', 'entity', array(
+                'label' => 'Каталоги',
+                'class' => 'Sylius\Bundle\CoreBundle\Model\Taxon',
+                'property' => 'name'
+            ))
         ;
     }
 

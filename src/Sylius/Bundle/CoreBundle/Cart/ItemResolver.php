@@ -56,6 +56,13 @@ class ItemResolver implements ItemResolverInterface
     protected $productRepository;
 
     /**
+     * Sale repository.
+     *
+     * @var RepositoryInterface
+     */
+    protected $saleRepository;
+
+    /**
      * Form factory.
      *
      * @var FormFactoryInterface
@@ -84,6 +91,7 @@ class ItemResolver implements ItemResolverInterface
      * @param CartProviderInterface          $cartProvider
      * @param PriceCalculatorInterface       $priceCalculator
      * @param RepositoryInterface            $productRepository
+     * @param RepositoryInterface            $saleRepository
      * @param FormFactoryInterface           $formFactory
      * @param AvailabilityCheckerInterface   $availabilityChecker
      * @param RestrictedZoneCheckerInterface $restrictedZoneChecker
@@ -93,6 +101,7 @@ class ItemResolver implements ItemResolverInterface
         CartProviderInterface          $cartProvider,
         PriceCalculatorInterface       $priceCalculator,
         RepositoryInterface            $productRepository,
+        RepositoryInterface            $saleRepository,
         FormFactoryInterface           $formFactory,
         AvailabilityCheckerInterface   $availabilityChecker,
         RestrictedZoneCheckerInterface $restrictedZoneChecker,
@@ -102,6 +111,7 @@ class ItemResolver implements ItemResolverInterface
         $this->cartProvider = $cartProvider;
         $this->priceCalculator = $priceCalculator;
         $this->productRepository = $productRepository;
+        $this->saleRepository = $saleRepository;
         $this->formFactory = $formFactory;
         $this->availabilityChecker = $availabilityChecker;
         $this->restrictedZoneChecker = $restrictedZoneChecker;
@@ -114,6 +124,7 @@ class ItemResolver implements ItemResolverInterface
     public function resolve(CartItemInterface $item, $data)
     {
         $id = $this->resolveItemIdentifier($data);
+        $taxonId = $data->get('taxon');
 
         /* @var $product Product */
         if (!$product = $this->productRepository->find($id)) {
@@ -139,15 +150,26 @@ class ItemResolver implements ItemResolverInterface
             throw new ItemResolvingException('Submitted form is invalid.');
         }
 
-        if($this->securityContext->isGranted('ROLE_USER_OPT')){
-            $item->setUnitPrice(
-                $variant->getPriceOpt()
-            );
-        }else{
-            $item->setUnitPrice(
-                $variant->getPrice()
-            );
+
+        $price = $variant->getPriceOpt();
+        $sale = $this->saleRepository->findOneBy(array('taxonId' => $taxonId));
+        if($sale){
+            if(1 == $sale->getTypePrice()){
+                $price = $price - $price*$sale->getPercent()/100;
+            }
         }
+
+
+
+//        if($this->securityContext->isGranted('ROLE_USER_OPT')){
+            $item->setUnitPrice(
+                $price
+            );
+//        }else{
+//            $item->setUnitPrice(
+//                $variant->getPrice()
+//            );
+//        }
 
         $quantity = $item->getQuantity();
         foreach ($this->cartProvider->getCart()->getItems() as $cartItem) {
