@@ -886,4 +886,34 @@ class ProductController extends ResourceController
             'priceOld' => $priceOld
         ));
     }
+
+    public function slugRegenerateAction(){
+        set_time_limit(0);
+        ini_set('error_reporting', E_ALL);
+        ini_set('display_errors', TRUE);
+        header('Content-Type: text/html; charset=UTF-8');
+        $repositoryTaxon = $this->container->get('sylius.repository.taxon');
+        $taxons = $repositoryTaxon->findAll();
+        $manager = $this->container->get('sylius.manager.taxon');
+        $name = '';
+        foreach($taxons as $t){
+            $name = $t->getName();
+            $t->setName($name+uniqid());
+            $manager->flush();
+            $t->setName($name);
+            $manager->flush();
+        }
+        $repositoryProduct = $this->container->get('sylius.repository.product');
+        $products = $repositoryProduct->findAll();
+        $manager = $this->container->get('sylius.manager.product');
+        $name = '';
+        foreach($products as $p){
+            $name = $p->getName();
+            $p->setName($name+uniqid());
+            $manager->flush();
+            $p->setName($name);
+            $manager->flush();
+        }
+        return new Response("ok");
+    }
 }

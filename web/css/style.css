@@ -669,11 +669,11 @@ a, a:hover, a:focus{
 }
 .form-group span.valid{
     height: 40px;
-    width: 27px;
+    width: 39px;
     line-height: 40px;
     display: inline-block;
     position: absolute;
-    margin-left: -35px;
+    margin-left: -39px;
     background: url(/images/ok.png) left center no-repeat;
     display: none;
 }

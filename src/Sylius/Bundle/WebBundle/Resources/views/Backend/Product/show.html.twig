@@ -20,10 +20,10 @@
     {% if not product.deleted %}
     {{ buttons.edit(path('sylius_backend_product_update', {'id': product.id})) }}
     {{ buttons.delete(path('sylius_backend_product_delete', {'id': product.id}), null, false, false) }}
-    <a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="btn btn-info">
-       <i class="glyphicon glyphicon-shopping-cart"></i>
-        {{ 'sylius.product.show_in_store'|trans }}
-    </a>
+    {#<a href="{{ path('sylius_product_show', {'slug': product.slug}) }}" class="btn btn-info">#}
+       {#<i class="glyphicon glyphicon-shopping-cart"></i>#}
+        {#{{ 'sylius.product.show_in_store'|trans }}#}
+    {#</a>#}
     {% endif %}
     <a href="{{ path('sylius_backend_product_history', {'id': product.id}) }}" class="btn btn-info">
        <i class="glyphicon glyphicon-calendar"></i>

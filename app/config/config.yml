@@ -70,6 +70,8 @@ doctrine_phpcr:
         auto_mapping: true
 
 stof_doctrine_extensions:
+    class:
+        sluggable: Sylius\Bundle\CoreBundle\Misc\SluggableListener
     default_locale: %sylius.locale%
     orm:
         default:

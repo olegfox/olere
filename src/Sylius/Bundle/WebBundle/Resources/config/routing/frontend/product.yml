@@ -32,3 +32,8 @@ sylius_product_get_price:
     pattern: /product/get_price/{id}/{type}/{taxon}
     defaults:
         _controller: sylius.controller.product:getPriceAction
+
+sylius_product_slug_regenerate:
+    pattern: /product/slug/regenerate/
+    defaults:
+        _controller: sylius.controller.product:slugRegenerateAction
