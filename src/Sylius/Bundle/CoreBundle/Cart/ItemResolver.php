@@ -154,7 +154,7 @@ class ItemResolver implements ItemResolverInterface
         $price = $variant->getPriceOpt();
         $sale = $this->saleRepository->findOneBy(array('taxonId' => $taxonId));
         if($sale){
-            if(1 == $sale->getTypePrice()){
+            if(1 == $sale->getTypePrice() || 0 == $sale->getTypePrice()){
                 $price = $price - $price*$sale->getPercent()/100;
             }
         }

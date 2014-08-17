@@ -86,6 +86,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: %sylius.model.user.class%
+    from_email:
+        address:        info@olere.ru
+        sender_name:    Украшения Olere
     group:
         group_class: Sylius\Bundle\CoreBundle\Model\Group
     profile:

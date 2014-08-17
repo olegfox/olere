@@ -877,7 +877,7 @@ class ProductController extends ResourceController
         }
         $sale = $repositorySale->findOneBy(array('taxonId' => $taxon));
         if($sale){
-            if($type == $sale->getTypePrice()){
+            if(($type == 1 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 1)) || ($type == 0 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 2))){
                 $price = $price - $price*$sale->getPercent()/100;
             }
         }

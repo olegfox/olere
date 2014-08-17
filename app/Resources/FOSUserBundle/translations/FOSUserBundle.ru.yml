@@ -58,7 +58,7 @@ resetting:
     flash:
         success: Пароль успешно сброшен
     email:
-        subject: Сброс пароля
+        subject: Обновление пароля
         message: |
             Приветствуем, %username%!
 

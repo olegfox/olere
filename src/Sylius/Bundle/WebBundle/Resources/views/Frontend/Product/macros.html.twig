@@ -1,12 +1,12 @@
 {% macro price(product, group, taxon) %}
     {% if group.showPrice == 0 %}
         <div class="retail{% if group.showOptPrice != 0 %} one{% endif %}">
-            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : taxon.id})) }}
+            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{% if taxon.id is not defined %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : product.taxons[0].id})) }}{% else %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : taxon.id})) }}{% endif %}
         </div>
     {% endif %}
     {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
         <div class="opt{% if group.showPrice != 0 %} one{% endif %}">
-        Опт. {{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : taxon.id})) }}
+        Опт. {% if taxon.id is not defined %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : product.taxons[0].id})) }}{% else %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : taxon.id})) }}{% endif %}
         </div>
     {% endif %}
 {% endmacro %}
