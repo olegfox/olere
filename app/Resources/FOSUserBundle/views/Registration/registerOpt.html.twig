@@ -64,6 +64,9 @@
             <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
         </div>
         {{ form_errors(form) }}
+        {% if not form.vars.valid %}
+        <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-info btn-sm btn-sm2">{{ 'form.forgot_password'|trans }}</a>
+        {% endif %}
         {#<div class="alert alert-danger" ng-show="user.firstName.$error.required">{{ 'registration.first_name.not_blank'|trans }}</div>#}
         {#<div class="alert alert-danger" ng-show="user.firstName.$error.min">{{ 'registration.first_name.min'|trans }}</div>#}
         {#<div class="alert alert-danger" ng-show="user.firstName.$error.max">{{ 'registration.first_name.max'|trans }}</div>#}

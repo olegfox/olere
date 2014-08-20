@@ -71,6 +71,7 @@ class ProductController extends ResourceController
         $form = $this->createForm(new ImportType(), $import);
         $repository = $this->container->get('sylius.repository.product');
         $manager = $this->container->get('sylius.manager.product');
+        $em = $this->getDoctrine()->getManager();
         if ($request->isMethod('POST')) {
             $form->bind($request);
             $xls = $form['file']->getData();
@@ -149,7 +150,23 @@ class ProductController extends ResourceController
                                 $taxs[] = $col;
                             }
                         }
-                        $product = $repository->createNew();
+
+                        $product = $em->createQuery(
+                            'SELECT p FROM
+                             Sylius\Bundle\CoreBundle\Model\Product p
+                             WHERE p IN (
+                             SELECT IDENTITY(v.product) FROM
+                             Sylius\Bundle\CoreBundle\Model\Variant v
+                             WHERE v.sku LIKE :sku
+                             )
+                            '
+                        )->setParameter('sku', $articul)->getResult();
+                        if(count($product) <= 0){
+                            $product = $repository->createNew();
+                        }else{
+                            continue;
+                        }
+
                         $product->setCatalog($catalog);
                         $product->setCollection($collection);
                         $product->setName($name);

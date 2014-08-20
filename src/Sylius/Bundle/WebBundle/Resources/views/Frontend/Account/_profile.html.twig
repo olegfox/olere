@@ -113,6 +113,7 @@
         {% endif %}
         <div class="form-actions clearfix">
             <a href="{{ path("fos_user_profile_edit") }}" class="btn btn-success btn-lg">Изменить</a>
+            <a href="{{ path("sylius_account_order_index") }}" class="btn btn-success btn-lg">История заказов</a>
             <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" style="display: inline-block;">
                 <input type="hidden" id="username" name="username" required="required" value="{{ app.user.email }}"/>
                 <input type="submit" class="btn btn-success btn-lg btn-change-password" value="Cменить пароль"/>

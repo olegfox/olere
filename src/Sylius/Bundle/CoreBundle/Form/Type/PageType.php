@@ -35,6 +35,36 @@ class PageType extends AbstractType
             ->add('id', 'text', array(
                 'label' => 'sylius.form.page.id'
             ))
+            ->add('enable', 'choice', array(
+                'label' => 'Скрыть',
+                'choices' => array(
+                    0 => 'Нет',
+                    1 => 'Да'
+                ),
+                'required' => true
+            ))
+            ->add('typeContent', 'choice', array(
+                'label' => 'Тип страницы',
+                'choices' => array(
+                    0 => 'Страница',
+                    1 => 'Блок'
+                ),
+                'required' => true
+            ))
+            ->add('typeMenu', 'choice', array(
+                'label' => 'Тип меню',
+                'choices' => array(
+                    0 => 'Верхнее',
+                    1 => 'Нижнее'
+                ),
+                'required' => true
+            ))
+            ->add('sub', 'text', array(
+                'label' => 'Родитель'
+            ))
+            ->add('position', 'integer', array(
+                'label' => 'Позиция'
+            ))
             ->add('title', 'text', array(
                 'label' => 'sylius.form.page.title'
             ))

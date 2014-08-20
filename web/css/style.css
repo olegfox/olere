@@ -7,9 +7,6 @@ html, body{
     padding: 0px;
     height: 100%;
 }
-b, strong{
-    font-weight: normal;
-}
 th{
     font-weight: normal;
 }
@@ -275,11 +272,14 @@ a, a:hover, a:focus{
     padding: 20px;
     min-height: 270px;
     font-family: Open Sans;
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
     margin: 20px;
     margin: 20px 0px\0/;
     border: solid 1px #dcdcdc;
+}
+.content a{
+    color: #18c9bd!important;
 }
 .content.content-sub{
     margin-top: 80px;
@@ -912,6 +912,9 @@ h4, .container form{
 .registerForm{
     margin-top: 25px;
 }
+.profileShow form{
+    padding: 0;
+}
 .registerForm label{
     display: none;
 }
@@ -960,7 +963,8 @@ h4, .container form{
     margin: 35px 0 0 0;
 }
 .loginForm .btn-sm,
-.cartForm .btn-sm{
+.cartForm .btn-sm,
+.registerForm .btn-sm{
     width: 254px;
     height: 45px;
     background: #fff!important;
@@ -997,7 +1001,8 @@ h4, .container form{
 .btn-black{
     background: #000!important;
 }
-.loginForm .btn-sm2{
+.loginForm .btn-sm2,
+.registerForm .btn-sm2{
     background: #fff!important;
     color: #7b7b7b;
     line-height: 32px;
@@ -1067,7 +1072,8 @@ h4, .container form{
 ::-moz-placeholder          {color:#000!important;}/* Firefox 19+ */
 :-moz-placeholder           {color:#000!important;}/* Firefox 18- */
 :-ms-input-placeholder      {color:#000!important;}
-.profileShow .form-control{
+.profileShow .form-control,
+.orderShow .form-control{
     border: 0;
     height: auto;
     box-shadow: none;
@@ -1089,10 +1095,10 @@ h4, .container form{
     font-family: "Calibri";
     font-size: 21px;
     border-radius: 0;
-    padding: 0;
+    padding: 0 20px;
     background: #01c4ba;
     border: 0;
-    width: 150px;
+    min-width: 130px;
     height: 45px;
     line-height: 45px;
 }
@@ -1157,4 +1163,8 @@ div.form-horizontal{
 
 .underline{
     text-decoration: line-through;
+}
+.text-success,
+.text-success:hover{
+    color: #18c9bd;
 }

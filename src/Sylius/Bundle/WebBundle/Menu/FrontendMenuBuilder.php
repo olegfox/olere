@@ -45,6 +45,13 @@ class FrontendMenuBuilder extends MenuBuilder
     protected $taxonomyRepository;
 
     /**
+     * Page repository.
+     *
+     * @var RepositoryInterface
+     */
+    protected $pageRepository;
+
+    /**
      * Cart provider.
      *
      * @var CartProviderInterface
@@ -67,6 +74,7 @@ class FrontendMenuBuilder extends MenuBuilder
      * @param EventDispatcherInterface $eventDispatcher
      * @param RepositoryInterface $exchangeRateRepository
      * @param RepositoryInterface $taxonomyRepository
+     * @param RepositoryInterface $pageRepository
      * @param CartProviderInterface $cartProvider
      * @param SyliusMoneyExtension $moneyExtension
      */
@@ -77,6 +85,7 @@ class FrontendMenuBuilder extends MenuBuilder
         EventDispatcherInterface $eventDispatcher,
         RepositoryInterface $exchangeRateRepository,
         RepositoryInterface $taxonomyRepository,
+        RepositoryInterface $pageRepository,
         CartProviderInterface $cartProvider,
         SyliusMoneyExtension $moneyExtension
     )
@@ -85,6 +94,7 @@ class FrontendMenuBuilder extends MenuBuilder
 
         $this->exchangeRateRepository = $exchangeRateRepository;
         $this->taxonomyRepository = $taxonomyRepository;
+        $this->pageRepository = $pageRepository;
         $this->cartProvider = $cartProvider;
         $this->moneyExtension = $moneyExtension;
     }
@@ -97,102 +107,143 @@ class FrontendMenuBuilder extends MenuBuilder
     public function createPageMenu()
     {
         $menu = $this->factory->createItem('root');
-        $pagemenu = array(
-//            "home" => array(
-//                "name" => "OLERE.RU",
-//                "route" => "sylius_homepage",
+        $pages = $this->pageRepository->findBy(array('typeMenu' => 0, 'typeContent' => 0, 'enable' => 0), array('position' => 'asc'));
+        $pagemenu = array();
+        foreach ($pages as $page) {
+            $id = str_replace("/", "", $page->getId());
+            if ($id == 'catalog') {
+                $pagemenu[$id] = array(
+                    "name" => "Каталог",
+                    "route" => "sylius_catalog",
+                    "routeParameters" => array()
+                );
+            } elseif ($id == 'collections') {
+                $pagemenu[$id] = array(
+                    "name" => "Коллекции",
+                    "route" => "sylius_collections",
+                    "routeParameters" => array()
+                );
+            } else {
+                if ($page->getSub() == '') {
+                    $pagemenu[$id] = array(
+                        "name" => $page->getTitle(),
+                        "route" => "sylius_page_show",
+                        "routeParameters" => array("id" => $id)
+                    );
+                }
+            }
+        }
+
+        foreach ($pages as $page) {
+            $id = str_replace("/", "", $page->getId());
+
+            if ($page->getSub() != '') {
+                $sub = str_replace("/", "", $page->getSub());
+                $pagemenu[$sub]['subChild'][] =
+                    array(
+                        "name" => $page->getTitle(),
+                        "route" => "sylius_page_sub_show",
+                        "routeParameters" => array("id" => $id, "sub" => $sub)
+                    );
+            }
+        }
+
+//        $pagemenu = array(
+////            "home" => array(
+////                "name" => "OLERE.RU",
+////                "route" => "sylius_homepage",
+////                "routeParameters" => array()
+////            ),
+//            "catalog" => array(
+//                "name" => "Каталог",
+//                "route" => "sylius_catalog",
 //                "routeParameters" => array()
 //            ),
-            "catalog" => array(
-                "name" => "Каталог",
-                "route" => "sylius_catalog",
-                "routeParameters" => array()
-            ),
-            "collection" => array(
-                "name" => "Коллекции",
-                "route" => "sylius_collections",
-                "routeParameters" => array()
-            ),
-            "customers" => array(
-                "name" => "Оптовым клиентам",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "customers"),
-                "subChild" => array(
-                    "how_to_order" => array(
-                        "name" => "Как сделать заказ",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "how_to_order", "sub" => "customers")
-                    ),
-                    "how_to_pay_for_the_order" => array(
-                        "name" => "Как оплатить заказ",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "how_to_pay_for_the_order", "sub" => "customers")
-                    ),
-                    "shipping_customers" => array(
-                        "name" => "Доставка",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "shipping_customers", "sub" => "customers")
-                    ),
-                    "download_the_contract" => array(
-                        "name" => "Скачать договор",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "download_the_contract", "sub" => "customers")
-                    ),
-                    "details" => array(
-                        "name" => "Реквизиты",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "details", "sub" => "customers")
-                    )
-                )
-            ),
-            "shipping" => array(
-                "name" => "Доставка",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "shipping")
-            ),
-            "about" => array(
-                "name" => "О нас",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "about"),
-                "subChild" => array(
-                    "history" => array(
-                        "name" => "История",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "history", "sub" => "about")
-                    ),
-                    "jobs" => array(
-                        "name" => "Вакансии",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "jobs", "sub" => "about")
-                    ),
-                    "news" => array(
-                        "name" => "Новости",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "news", "sub" => "about")
-                    ),
-                    "certificates" => array(
-                        "name" => "Сертификаты",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "certificates", "sub" => "about")
-                    ),
-                    "partners" => array(
-                        "name" => "Партнеры",
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => "partners", "sub" => "about")
-                    )
-                )
-            ),
-            "contacts" => array(
-                "name" => "Контакты",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "contacts")
-            )
-        );
-        if ($this->request->getHost() == 'olere.ru') {
-            $pagemenu['shipping'] = '';
-        } else {
-            $pagemenu['customers'] = '';
-        }
+//            "collection" => array(
+//                "name" => "Коллекции",
+//                "route" => "sylius_collections",
+//                "routeParameters" => array()
+//            ),
+//            "customers" => array(
+//                "name" => "Оптовым клиентам",
+//                "route" => "sylius_page_show",
+//                "routeParameters" => array("id" => "customers"),
+//                "subChild" => array(
+//                    "how_to_order" => array(
+//                        "name" => "Как сделать заказ",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "how_to_order", "sub" => "customers")
+//                    ),
+//                    "how_to_pay_for_the_order" => array(
+//                        "name" => "Как оплатить заказ",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "how_to_pay_for_the_order", "sub" => "customers")
+//                    ),
+//                    "shipping_customers" => array(
+//                        "name" => "Доставка",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "shipping_customers", "sub" => "customers")
+//                    ),
+//                    "download_the_contract" => array(
+//                        "name" => "Скачать договор",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "download_the_contract", "sub" => "customers")
+//                    ),
+//                    "details" => array(
+//                        "name" => "Реквизиты",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "details", "sub" => "customers")
+//                    )
+//                )
+//            ),
+//            "shipping" => array(
+//                "name" => "Доставка",
+//                "route" => "sylius_page_show",
+//                "routeParameters" => array("id" => "shipping")
+//            ),
+//            "about" => array(
+//                "name" => "О нас",
+//                "route" => "sylius_page_show",
+//                "routeParameters" => array("id" => "about"),
+//                "subChild" => array(
+//                    "history" => array(
+//                        "name" => "История",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "history", "sub" => "about")
+//                    ),
+//                    "jobs" => array(
+//                        "name" => "Вакансии",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "jobs", "sub" => "about")
+//                    ),
+//                    "news" => array(
+//                        "name" => "Новости",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "news", "sub" => "about")
+//                    ),
+//                    "certificates" => array(
+//                        "name" => "Сертификаты",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "certificates", "sub" => "about")
+//                    ),
+//                    "partners" => array(
+//                        "name" => "Партнеры",
+//                        "route" => "sylius_page_sub_show",
+//                        "routeParameters" => array("id" => "partners", "sub" => "about")
+//                    )
+//                )
+//            ),
+//            "contacts" => array(
+//                "name" => "Контакты",
+//                "route" => "sylius_page_show",
+//                "routeParameters" => array("id" => "contacts")
+//            )
+//        );
+//        if ($this->request->getHost() == 'olere.ru') {
+//            $pagemenu['shipping'] = '';
+//        } else {
+//            $pagemenu['customers'] = '';
+//        }
         $menu->setCurrentUri($this->request->getRequestUri());
         foreach ($pagemenu as $key => $p) {
             if (isset($p["route"])) {
@@ -201,8 +252,8 @@ class FrontendMenuBuilder extends MenuBuilder
                     'routeParameters' => $p["routeParameters"],
                     'linkAttributes' => array(),
                 ))->setLabel($p["name"]);
-                if(isset($p["subChild"])){
-                    foreach($p["subChild"] as $key => $s){
+                if (isset($p["subChild"])) {
+                    foreach ($p["subChild"] as $key => $s) {
                         $m->addChild($key, array(
                             'route' => $s["route"],
                             'routeParameters' => $s["routeParameters"],
@@ -246,43 +297,16 @@ class FrontendMenuBuilder extends MenuBuilder
     public function createBottomMenu()
     {
         $menu = $this->factory->createItem('root');
-        $bottom_menu = array(
-//            "buy_retail" => array(
-//                "name" => "Купить в розницу",
-//                "route" => "sylius_page_show",
-//                "routeParameters" => array("id" => "buy_retail")
-//            ),
-            /*"delivery" => array(
-                "name" => "Доставка",
+        $pages = $this->pageRepository->findBy(array('typeMenu' => 1, 'typeContent' => 0, 'enable' => 0), array('position' => 'asc'));
+        $bottom_menu = array();
+        foreach ($pages as $page) {
+            $id = str_replace("/", "", $page->getId());
+            $bottom_menu[$id] = array(
+                "name" => $page->getTitle(),
                 "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "delivery")
-            ),*/
-            "about" => array(
-                "name" => "О компании",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "about")
-            ),
-            "certificates_and_documents" => array(
-                "name" => "Сертификаты и документы",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "certificates_and_documents")
-            ),
-            "partners" => array(
-                "name" => "Партнеры",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "partners")
-            ),
-            "promotions" => array(
-                "name" => "Акции и скидки",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "promotions")
-            ),
-            "questions_and_answers" => array(
-                "name" => "Вопросы и ответы",
-                "route" => "sylius_page_show",
-                "routeParameters" => array("id" => "questions_and_answers")
-            )
-        );
+                "routeParameters" => array("id" => $id)
+            );
+        }
         $menu->setCurrentUri($this->request->getRequestUri());
 //        if ($this->request->getHost() == 'olere.ru') {
 //            $menu->addChild('buy_retail', array(

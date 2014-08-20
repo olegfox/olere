@@ -2,16 +2,128 @@
 {% extends 'SyliusWebBundle:Frontend/Account:layout.html.twig' %}
 
 {% block content %}
-    <h4>{{ 'sylius.account.order.details'|trans }}</h4>
+    {#{% if order.isInvoiceAvailable %}#}
+    {#{{ buttons.btn(#}
+    {#path('sylius_account_order_invoice', {'number': order.number}),#}
+    {#'sylius.account.order.download_invoice',#}
+    {#'order-' ~ order.number ~ '-invoice',#}
+    {#'file'#}
+    {#) }}#}
+    {#{% endif %}#}
 
-    {% include "SyliusWebBundle:Frontend/Account:Order/_detail.html.twig" %}
-
-    {% if order.isInvoiceAvailable %}
-    {{ buttons.btn(
-        path('sylius_account_order_invoice', {'number': order.number}),
-        'sylius.account.order.download_invoice',
-        'order-' ~ order.number ~ '-invoice',
-        'file'
-    ) }}
-    {% endif %}
+    <div class="form-horizontal registerForm orderShow">
+        <fieldset class="well">
+            <h1>Детали заказа {{ order.number }}</h1>
+            <hr>
+            <div class="left">
+                <div class="form-group">
+                    <div class="form-control">
+                        Email: {{ order.email }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Имя: {{ order.username }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Телефон: {{ order.phone }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Город: {{ order.city }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Способ доставки: {% if order.delivery == 0 %}курьер{% endif %}{% if order.delivery == 1 %}самовывоз{% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Адрес: {{ order.address }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Транспортная компания: {% if order.transport != '' %}{% if order.transport == 0 %}Деловые линии{% endif %}{% if order.transport == 1 %}Байкал сервис{% endif %}{% if order.transport == 2 %}Пони экспресс{% endif %}{% if order.transport == 3 %}Почта России{% endif %}{% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Время доставки: {% if order.timeBegin != '' %}{{ order.timeBegin|date('H:i') }}{% if order.timeEnd != '' %} - {{ order.timeEnd|date('H:i') }}{% endif %}{% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Комментарий:
+                        <br/>
+                        {{ order.comment }}
+                    </div>
+                </div>
+            </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="picture"></th>
+                        <th class="info">{{ 'sylius.order_item.product'|trans }}</th>
+                        <th class="quantity text-center">{{ 'sylius.order_item.quantity'|trans }}</th>
+                        <th class="unit-price text-center">{{ 'sylius.order_item.unit_price'|trans }}</th>
+                        <th class="total text-right">{{ 'sylius.order_item.total'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in order.items %}
+                        {% set variant = item.variant %}
+                        {% set product = variant.product %}
+                        <tr>
+                            <td class="picture text-center">
+                                <a href="{{ path('sylius_product_show', {'slug': product.slug, 'taxon': product.taxons[0].id}) }}"
+                                   title="View {{ product.name|escape('html_attr') }} details.">
+                                    <img src="{{ product.image ? product.image.path|imagine_filter('sylius_small') : 'http://placehold.it/90x60' }}" alt="" class="imgmedia-object" />
+                                </a>
+                            </td>
+                            <td class="info">
+                                <a href="{{ path('sylius_product_show', {'slug': product.slug, 'taxon': product.taxons[0].id}) }}">
+                                    <h4 class="name">{{ product.name }}</h4>
+                                </a>
+                                {% if product.hasOptions %}
+                                    <ul class="list-unstyled">
+                                        <li class="sku"><strong>{{ 'sylius.product.sku'|trans }}</strong>: <code>{{ variant.sku|default('SKU') }}</code></li>
+                                        {% for option in variant.options %}
+                                            <li><strong>{{ option.presentation }}</strong>: {{ option.value  }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </td>
+                            <td class="quantity text-center">{{ item.quantity }}</td>
+                            <td class="unit-price text-center">
+                                {{ item.unitPrice|sylius_price('RUB') }}
+                            </td>
+                            <td class="total text-right">
+                                {{ item.total|sylius_price('RUB') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">
+                                <hr />
+                                <div class="alert alert-info">{{ 'sylius.order.no_items'|trans }}</div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td class="text-right active text-success lead" colspan="6">
+                            <strong>{{ 'sylius.order.total'|trans }}</strong>:
+                            <span class="amount">{{ order.total|sylius_price('RUB') }}</span>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+        </fieldset>
+    </div>
 {% endblock %}

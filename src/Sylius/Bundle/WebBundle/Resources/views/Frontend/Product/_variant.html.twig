@@ -5,9 +5,9 @@
 </a>
 <div>
     {#<a href="{{ path('sylius_product_show', {'slug': product.slug}) }}"><strong>{{ product.name }}</strong></a>#}
-    <a href="#" onclick="return false;"><strong>{{ product.name }}</strong></a>
+    <a href="#" onclick="return false;">{{ product.name }}</a>
     {% if variant.presentation is not empty %}
-        <strong>{{ variant.presentation }}</strong>
+        {{ variant.presentation }}
     {% elseif product.hasOptions %}
         <ul class="list-unstyled">
             {% for option in variant.options %}

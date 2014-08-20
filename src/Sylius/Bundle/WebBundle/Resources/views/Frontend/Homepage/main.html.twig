@@ -45,21 +45,9 @@
         </ul>
         <div class="wrapText">
             <div class="text">
-                <div class="header">
-                    Бижутерия и украшения из серебра оптом и в розницу
-                </div>
-                <p>
-                    - Большой ассоритмент продукции
-                </p>
-                <p>
-                    - Оригинальняые модели
-                </p>
-                <p>
-                    - Хорошее качество изделий
-                </p>
-                <p>
-                    - Низкие цены
-                </p>
+                {% if sliderText is defined %}
+                    {{ sliderText.text|raw }}
+                {% endif %}
                 <a class="btn" href="{{ path('fos_user_opt_register') }}">Регистрация</a>
             </div>
         </div>
@@ -67,9 +55,13 @@
     <div class="borderSlider"></div>
 {% endblock %}
 {% block content %}
-    <div class="content">
-        {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
-    </div>
+    {% if page1.enable is defined %}
+        {% if page1.enable == 0 %}
+            <div class="content">
+                {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
+            </div>
+        {% endif %}
+    {% endif %}
 
     <!-- Catalog -->
     <div class="catalog catalogMain">
@@ -80,7 +72,11 @@
     </div>
 
     <!-- Content -->
-    {#<div class="content">#}
-        {#{{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}#}
-    {#</div>#}
+    {% if page2.enable is defined %}
+        {% if page2.enable == 0 %}
+        <div class="content">
+            {{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}
+        </div>
+        {% endif %}
+    {% endif %}
 {% endblock %}

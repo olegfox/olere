@@ -3,6 +3,11 @@ sylius_backend_slider_delete:
     defaults:
         _controller: sylius.controller.backend.dashboard:deleteSliderAction
 
+sylius_backend_slider_text_index:
+    pattern: /text
+    defaults:
+        _controller: sylius.controller.backend.dashboard:sliderTextAction
+
 sylius_backend_slider_index:
     pattern: /{type}
     defaults:

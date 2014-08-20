@@ -57,7 +57,7 @@ doctrine:
                 filters:
                     softdeleteable:
                         class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
-                        enabled: true
+                        enabled: false
 
 doctrine_phpcr:
     session:
@@ -78,7 +78,7 @@ stof_doctrine_extensions:
             tree: true
             sluggable: true
             timestampable: true
-            softdeleteable: true
+            softdeleteable: false
             loggable: true
             sortable: true
 

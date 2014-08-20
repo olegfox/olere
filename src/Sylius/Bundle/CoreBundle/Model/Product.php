@@ -481,4 +481,35 @@ class Product extends BaseProduct implements ProductInterface
         return $this;
     }
 
+    private function getTaxon($id, $type = 0){
+        $taxons = $this->getTaxons();
+        foreach($taxons as $t){
+            if(is_object($t->getTaxonomy())){
+                if($t->getTaxonomy()->getId() == $id){
+                    if($type == 0){
+                        return $t->getSlug();
+                    }
+                    return $t->getName();
+                }
+            }
+        }
+        return '';
+    }
+
+    public function getCatalogSlug(){
+        return $this->getTaxon(8);
+    }
+
+    public function getCollectionSlug(){
+        return $this->getTaxon(9);
+    }
+
+    public function getCatalogName(){
+        return $this->getTaxon(8, 1);
+    }
+
+    public function getCollectionName(){
+        return $this->getTaxon(9, 1);
+    }
+
 }

@@ -90,11 +90,29 @@ class ContactsStep extends CheckoutStep
         $this->dispatchCheckoutEvent(SyliusOrderEvents::PRE_CREATE, $order);
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_PRE_COMPLETE, $order);
 
+        if ($this->isUserLoggedIn()) {
+            $order->setUser($this->getUser());
+        }
+
         $manager = $this->get('sylius.manager.order');
         $manager->persist($order);
         $manager->flush();
         $this->getCurrentCart();
         $this->dispatchCheckoutEvent(SyliusCheckoutEvents::FINALIZE_COMPLETE, $order);
         $this->dispatchCheckoutEvent(SyliusOrderEvents::POST_CREATE, $order);
+    }
+
+        /**
+         * Is user logged in?
+         *
+         * @return Boolean
+         */
+        protected function isUserLoggedIn()
+    {
+        try {
+            return $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED');
+        } catch (AuthenticationCredentialsNotFoundException $e) {
+            return false;
+        }
     }
 }

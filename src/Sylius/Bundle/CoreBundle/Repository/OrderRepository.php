@@ -56,7 +56,7 @@ class OrderRepository extends CartRepository
      */
     public function findForDetailsPage($id)
     {
-        $this->_em->getFilters()->disable('softdeleteable');
+//        $this->_em->getFilters()->disable('softdeleteable');
 
         $queryBuilder = $this->getQueryBuilder();
         $queryBuilder
@@ -115,7 +115,7 @@ class OrderRepository extends CartRepository
         $queryBuilder->andWhere($queryBuilder->expr()->isNotNull('o.completedAt'));
 
         if ($deleted) {
-            $this->_em->getFilters()->disable('softdeleteable');
+//            $this->_em->getFilters()->disable('softdeleteable');
         }
 
         if (!empty($criteria['number'])) {

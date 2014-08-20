@@ -14,7 +14,9 @@ namespace Sylius\Bundle\WebBundle\Controller\Backend;
 use Sylius\Bundle\OrderBundle\Model\OrderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sylius\Bundle\CoreBundle\Model\Slider;
+use Sylius\Bundle\CoreBundle\Model\SliderText;
 use Sylius\Bundle\CoreBundle\Form\Type\SliderType;
+use Sylius\Bundle\CoreBundle\Form\Type\SliderTextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -80,6 +82,25 @@ class DashboardController extends Controller
         return $this->render('SyliusWebBundle:Backend/Slider:index.html.twig', array(
             'form' => $form->createView(),
             'sliders' => $sliders
+        ));
+    }
+
+    public function sliderTextAction(Request $request)
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\SliderText');
+        $sliderText = $repository->findAll();
+        $form = $this->createForm(new SliderTextType(), $sliderText[0]);
+        $manager = $this->getDoctrine()->getManager();
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+            $manager->flush();
+            return $this->render('SyliusWebBundle:Backend/Slider:text.html.twig', array(
+                'form' => $form->createView()
+            ));
+        }
+        return $this->render('SyliusWebBundle:Backend/Slider:text.html.twig', array(
+            'form' => $form->createView()
         ));
     }
 

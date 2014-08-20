@@ -56,6 +56,7 @@
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="sylius.repository.exchange_rate" />
             <argument type="service" id="sylius.repository.taxonomy" />
+            <argument type="service" id="sylius.repository.page" />
             <argument type="service" id="sylius.cart_provider" />
             <argument type="service" id="sylius.twig.money" />
             <call method="setRequest">

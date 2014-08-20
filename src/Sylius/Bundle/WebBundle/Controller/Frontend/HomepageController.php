@@ -121,14 +121,25 @@ class HomepageController extends Controller
         }
         $repository = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Slider');
+        $repositorySliderText = $this->getDoctrine()
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\SliderText');
+        $repositoryPage = $this->get('sylius.repository.page');
+
+        $page1 = $repositoryPage->findPage('main1');
+        $page2 = $repositoryPage->findPage('main2');
+
         if($request->getHost() == "olere.ru"){
             $sliders = $repository->findBy(array('type' => 1));
         }else{
             $sliders = $repository->findBy(array('type' => 0));
         }
+        $sliderText = $repositorySliderText->findAll();
         return $this->render('SyliusWebBundle:Frontend/Homepage:main.html.twig', array(
 //            "page" => $page,
-            "sliders" => $sliders
+            "sliders" => $sliders,
+            "sliderText" => $sliderText[0],
+            "page1" => $page1,
+            "page2" => $page2
         ));
     }
 
@@ -150,11 +161,21 @@ class HomepageController extends Controller
     }
 
     public function catalogAction(Request $request){
-        return $this->render('SyliusWebBundle:Frontend/Homepage:catalog.html.twig');
+        $repositoryPage = $this->get('sylius.repository.page');
+
+        $page = $repositoryPage->findPage('catalogBlock');
+        return $this->render('SyliusWebBundle:Frontend/Homepage:catalog.html.twig', array(
+            'page' => $page
+        ));
     }
 
     public function collectionsAction(Request $request){
-        return $this->render('SyliusWebBundle:Frontend/Homepage:collections.html.twig');
+        $repositoryPage = $this->get('sylius.repository.page');
+
+        $page = $repositoryPage->findPage('collectionsBlock');
+        return $this->render('SyliusWebBundle:Frontend/Homepage:collections.html.twig', array(
+            'page' => $page
+        ));
     }
 
     /**
