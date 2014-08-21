@@ -35,6 +35,9 @@ class SliderType extends AbstractType
                     "multiple" => "multiple",
                 )
             ))
+            ->add('link', 'text', array(
+                'label' => 'Ссылка'
+            ))
         ;
     }
 

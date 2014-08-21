@@ -97,9 +97,9 @@ class ContactsStepType extends AbstractType
                     'placeholder' => 'Номер телефона'
                 )
             ))
-            ->add('date', 'choice', array(
-                'required' => '',
-                'empty_value' => ''
+            ->add('date', 'date', array(
+                'widget' => 'choice',
+                'years' => range(Date('Y'), 2014)
             ))
             ->add('time', 'choice', array(
                 'required' => '',

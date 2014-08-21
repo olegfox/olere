@@ -10,6 +10,8 @@ class Slider
 
     protected $type;
 
+    protected $link;
+
     public function getId()
     {
         return $this->id;
@@ -35,6 +37,18 @@ class Slider
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    public function setLink($link)
+    {
+        $this->link = $link;
 
         return $this;
     }
