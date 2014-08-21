@@ -42,9 +42,9 @@ class Order extends Cart implements OrderInterface
 
     protected $transport;
 
-    protected $timeBegin;
+    protected $time;
 
-    protected $timeEnd;
+    protected $date;
 
     protected $comment;
 
@@ -624,28 +624,28 @@ class Order extends Cart implements OrderInterface
         return $this->transport;
     }
 
-    public function setTimeBegin($timeBegin)
+    public function setDate($date)
     {
-        $this->timeBegin = $timeBegin;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getTimeBegin()
+    public function getDate()
     {
-        return $this->timeBegin;
+        return $this->date;
     }
 
-    public function setTimeEnd($timeEnd)
+    public function setTime($time)
     {
-        $this->timeEnd = $timeEnd;
+        $this->time = $time;
 
         return $this;
     }
 
-    public function getTimeEnd()
+    public function getTime()
     {
-        return $this->timeEnd;
+        return $this->time;
     }
 
     public function setComment($comment)

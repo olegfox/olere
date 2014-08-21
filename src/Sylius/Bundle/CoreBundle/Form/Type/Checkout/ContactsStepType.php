@@ -77,7 +77,7 @@ class ContactsStepType extends AbstractType
                 )
             ))
             ->add('username', 'text', array(
-                'required' => 'required',
+                'required' => false,
                 "attr" => array(
                     'ng-model' => 'ord.username',
                     'placeholder' => 'Имя'
@@ -97,15 +97,17 @@ class ContactsStepType extends AbstractType
                     'placeholder' => 'Номер телефона'
                 )
             ))
-            ->add('timeBegin', 'time', array(
+            ->add('date', 'choice', array(
                 'required' => '',
-                'input'  => 'datetime',
-                'widget' => 'choice'
+                'empty_value' => ''
             ))
-            ->add('timeEnd', 'time', array(
+            ->add('time', 'choice', array(
                 'required' => '',
-                'input'  => 'datetime',
-                'widget' => 'choice'
+                'choices' => array(
+                    'с 09:00 до 12:00' => 'с 09:00 до 12:00',
+                    'с 12:00 до 15:00' => 'с 12:00 до 15:00',
+                    'с 15:00 до 18:00' => 'с 15:00 до 18:00'
+                )
             ))
             ->add('comment', 'textarea', array(
                 'required' => '',

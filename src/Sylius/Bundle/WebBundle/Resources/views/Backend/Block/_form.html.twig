@@ -3,6 +3,7 @@
 <fieldset>
     {{ form_row(form.id, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.sub, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.link, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.enable, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.typeMenu, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.typeContent, {'attr': {'class': 'input-lg'}}) }}
@@ -11,6 +12,6 @@
     {{ form_row(form.metaTitle, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.metaKeywords, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.metaDescription, {'attr': {'class': 'input-lg'}}) }}
-    {{ form_row(form.body, {'attr': {'class': 'redactor'}}) }}
+    {{ form_row(form.body, {'attr': {'class': 'ckeditor'}}) }}
 </fieldset>
 {{ form_widget(form._token) }}

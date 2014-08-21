@@ -52,6 +52,7 @@
             <th>Способ доставки</th>
             <th>Адрес</th>
             <th>Транспортная компания</th>
+            <th>Дата доставки</th>
             <th>Время доставки</th>
             <th>Комментарий</th>
         </tr>
@@ -90,7 +91,10 @@
                 {% endif %}
             </td>
             <td>
-                {% if order.timeBegin != '' %}{{ order.timeBegin|date('H:i') }}{% if order.timeEnd != '' %} - {{ order.timeEnd|date('H:i') }}{% endif %}{% endif %}
+                {{ order.date|date('d.m.y') }}
+            </td>
+            <td>
+                {{ order.time }}
             </td>
             <td>
                 {{ order.comment }}

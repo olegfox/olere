@@ -58,21 +58,28 @@
                     <div class="form-group" ng-if="ord.city != 'Москва' && ord.city != null">
                         <span class="valid"></span>{{ form_widget(form.transport) }}<span>*</span>
                     </div>
-                    <div class="form-group">
-                        <span class="valid"></span>{{ form_widget(form.email) }}<span>*</span>
-                    </div>
-                    <div class="form-group">
+                    <div class="form-group hide">
                         <span class="valid"></span>{{ form_widget(form.username) }}<span>*</span>
                     </div>
-                    <div class="form-group">
-                        <span class="valid"></span>{{ form_widget(form.phone) }}<span>*</span>
+                    <div class="form-group date">
+                        <div class="form-control border-null">
+                            Дата доставки
+                        </div>
+                        <br>
+                        <span class="valid"></span>{{ form_widget(form.date) }}
                     </div>
                     <div class="form-group time">
                         <div class="form-control border-null">
                             Время доставки
                         </div>
                         <br>
-                        <span class="valid"></span>{{ form_widget(form.timeBegin) }} - {{ form_widget(form.timeEnd) }}
+                        <span class="valid"></span>{{ form_widget(form.time) }}
+                    </div>
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.phone) }}<span>*</span>
+                    </div>
+                    <div class="form-group">
+                        <span class="valid"></span>{{ form_widget(form.email) }}<span>*</span>
                     </div>
                     <div class="form-group">
                         {{ form_widget(form.comment) }}

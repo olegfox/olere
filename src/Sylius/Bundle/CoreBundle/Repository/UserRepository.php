@@ -33,7 +33,7 @@ class UserRepository extends EntityRepository
         $queryBuilder = parent::getCollectionQueryBuilder();
 
         if ($deleted) {
-            $this->_em->getFilters()->disable('softdeleteable');
+//            $this->_em->getFilters()->disable('softdeleteable');
         }
 
         if (isset($criteria['query'])) {
@@ -73,7 +73,7 @@ class UserRepository extends EntityRepository
     {
         $queryBuilder = $this->getQueryBuilder();
 
-        $this->_em->getFilters()->disable('softdeleteable');
+//        $this->_em->getFilters()->disable('softdeleteable');
 
         $queryBuilder
             ->andWhere($queryBuilder->expr()->eq('o.id', ':id'))

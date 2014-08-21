@@ -13,8 +13,7 @@
             username : '',
             email : '',
             phone : '',
-            timeBegin : '',
-            timeEnd : '',
+            time : '',
             comment: ''
         };
         if(window.ord){

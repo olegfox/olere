@@ -53,7 +53,12 @@
                 </div>
                 <div class="form-group">
                     <div class="form-control">
-                        Время доставки: {% if order.timeBegin != '' %}{{ order.timeBegin|date('H:i') }}{% if order.timeEnd != '' %} - {{ order.timeEnd|date('H:i') }}{% endif %}{% endif %}
+                        Дата доставки: {{ order.date|date('d.m.y') }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        Время доставки: {{ order.time }}
                     </div>
                 </div>
                 <div class="form-group">

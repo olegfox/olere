@@ -19,9 +19,9 @@ use Sylius\Bundle\ResourceBundle\Model\RepositoryInterface;
 use Sylius\Bundle\TaxonomiesBundle\Model\TaxonInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Intl\Intl;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Intl\Intl;
 
 /**
  * Frontend menu builder.
@@ -125,26 +125,41 @@ class FrontendMenuBuilder extends MenuBuilder
                 );
             } else {
                 if ($page->getSub() == '') {
-                    $pagemenu[$id] = array(
-                        "name" => $page->getTitle(),
-                        "route" => "sylius_page_show",
-                        "routeParameters" => array("id" => $id)
-                    );
+                    if ($page->getLink() != "") {
+                        $pagemenu[$id] = array(
+                            "name" => $page->getTitle(),
+                            "uri" => $page->getLink(),
+                            "linkAttributes" => array('title' => $page->getTitle())
+                        );
+                    } else {
+                        $pagemenu[$id] = array(
+                            "name" => $page->getTitle(),
+                            "route" => "sylius_page_show",
+                            "routeParameters" => array("id" => $id)
+                        );
+                    }
                 }
             }
         }
-
         foreach ($pages as $page) {
             $id = str_replace("/", "", $page->getId());
 
             if ($page->getSub() != '') {
                 $sub = str_replace("/", "", $page->getSub());
-                $pagemenu[$sub]['subChild'][] =
-                    array(
+                if ($page->getLink() != "") {
+                    $pagemenu[$id] = array(
                         "name" => $page->getTitle(),
-                        "route" => "sylius_page_sub_show",
-                        "routeParameters" => array("id" => $id, "sub" => $sub)
+                        "uri" => $page->getLink(),
+                        "linkAttributes" => array('title' => $page->getTitle())
                     );
+                } else {
+                    $pagemenu[$sub]['subChild'][] =
+                        array(
+                            "name" => $page->getTitle(),
+                            "route" => "sylius_page_sub_show",
+                            "routeParameters" => array("id" => $id, "sub" => $sub)
+                        );
+                }
             }
         }
 
@@ -254,13 +269,26 @@ class FrontendMenuBuilder extends MenuBuilder
                 ))->setLabel($p["name"]);
                 if (isset($p["subChild"])) {
                     foreach ($p["subChild"] as $key => $s) {
-                        $m->addChild($key, array(
-                            'route' => $s["route"],
-                            'routeParameters' => $s["routeParameters"],
-                            'linkAttributes' => array(),
-                        ))->setLabel($s["name"]);
+                        if (isset($p["uri"])) {
+                            $m->addChild($key, array(
+                                'uri' => $s["uri"],
+                                'linkAttributes' => $s["linkAttributes"]
+                            ))->setLabel($p["name"]);
+                        } else {
+                            $m->addChild($key, array(
+                                'route' => $s["route"],
+                                'routeParameters' => $s["routeParameters"],
+                                'linkAttributes' => array(),
+                            ))->setLabel($s["name"]);
+                        }
                     }
                 }
+            } elseif (isset($p["uri"])) {
+
+                $m = $menu->addChild($key, array(
+                    'uri' => $p["uri"],
+                    'linkAttributes' => $p["linkAttributes"]
+                ))->setLabel($p["name"]);
             }
         }
 

@@ -205,7 +205,7 @@ class ProductRepository extends VariableProductRepository
         $this->applySorting($queryBuilder, $sorting);
 
         if ($deleted) {
-            $this->_em->getFilters()->disable('softdeleteable');
+//            $this->_em->getFilters()->disable('softdeleteable');
         }
 //$products = $queryBuilder->getQuery()
 //    ->getResult();
@@ -227,7 +227,7 @@ class ProductRepository extends VariableProductRepository
     {
         $queryBuilder = $this->getQueryBuilder();
 
-        $this->_em->getFilters()->disable('softdeleteable');
+//        $this->_em->getFilters()->disable('softdeleteable');
 
         $queryBuilder
             ->leftJoin('variant.images', 'image')

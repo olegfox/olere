@@ -81,9 +81,10 @@
                 'bundles/syliusweb/js/backend.js'
             %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
-            <script type="text/javascript" src="{{ asset('js/redactor/redactor.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/redactor/langs/ru.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/redactor/init_redactor.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+            {#<script type="text/javascript" src="{{ asset('js/redactor/redactor.js') }}"></script>#}
+            {#<script type="text/javascript" src="{{ asset('js/redactor/langs/ru.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('js/ckeditor/init.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/allRemove.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap-filestyle/bootstrap-filestyle.js') }}"></script>
             {% endjavascripts %}

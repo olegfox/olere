@@ -55,8 +55,8 @@
         <field type="string" name="delivery" column="delivery" nullable="true" />
         <field type="string" name="address" column="address" nullable="true" />
         <field type="string" name="transport" column="transport" nullable="true" />
-        <field type="datetime" name="timeBegin" column="timeBegin" nullable="true" />
-        <field type="datetime" name="timeEnd" column="timeEnd" nullable="true" />
+        <field type="text" name="time" column="time" nullable="true" />
+        <field type="date" name="date" column="date" nullable="true" />
         <field type="string" name="comment" column="comment" nullable="true" />
 
         <many-to-many field="promotions" target-entity="Sylius\Bundle\PromotionsBundle\Model\PromotionInterface">

@@ -59,6 +59,9 @@ class PageType extends AbstractType
                 ),
                 'required' => true
             ))
+            ->add('link', 'text', array(
+                'label' => 'Ссылка'
+            ))
             ->add('sub', 'text', array(
                 'label' => 'Родитель'
             ))

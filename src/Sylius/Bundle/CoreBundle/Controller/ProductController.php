@@ -107,21 +107,32 @@ class ProductController extends ResourceController
                     $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
                     $priceOpt = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
                     $price = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
-                    $data[$i] = array(
-                        "articul" => $articul,
-                        "name" => $name,
-                        "sost" => $sost,
-                        "color" => $color,
-                        "gb" => $gb,
-                        "price" => $price,
-                        "description" => $description,
-                        "collection" => $collection,
-                        "codeArticul" => $codeArticul,
-                        "priceOpt" => $priceOpt,
-                        "catalog" => $catalog,
-                        "image" => ""
-                    );
-                    if ($name != "") {
+                    $product = $em->createQuery(
+                        'SELECT p FROM
+                         Sylius\Bundle\CoreBundle\Model\Product p
+                         WHERE p IN (
+                         SELECT IDENTITY(v.product) FROM
+                         Sylius\Bundle\CoreBundle\Model\Variant v
+                         WHERE v.sku LIKE :sku
+                         )
+                        '
+                    )->setParameter('sku', $articul)->getResult();
+                    if(count($product) <= 0){
+                        $data[$i] = array(
+                            "articul" => $articul,
+                            "name" => $name,
+                            "sost" => $sost,
+                            "color" => $color,
+                            "gb" => $gb,
+                            "price" => $price,
+                            "description" => $description,
+                            "collection" => $collection,
+                            "codeArticul" => $codeArticul,
+                            "priceOpt" => $priceOpt,
+                            "catalog" => $catalog,
+                            "image" => ""
+                        );
+                        if ($name != "") {
 //                        if ($imagesJson != "") {
 //                            $images = json_decode($imagesJson);
 //                            foreach ($images as $image) {
@@ -133,94 +144,79 @@ class ProductController extends ResourceController
 //                                }
 //                            }
 //                        }
-                        $nameCat = $name;
-                        if (strlen($name) > 10) {
-                            $nameCat = mb_substr($name, 0, 10);
-                        }
+                            $nameCat = $name;
+                            if (strlen($name) > 10) {
+                                $nameCat = mb_substr($name, 0, 10);
+                            }
 //                        print 'Сокращённое название каталога: '.$nameCat;
-                        $cat = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $catalog));
+                            $cat = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $catalog));
 //                    Находим в базе коллекцию по названию из таблицы
-                        $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
-                        $taxs = new ArrayCollection();
-                        if ($col || $cat) {
-                            if ($cat) {
-                                $taxs[] = $cat;
+                            $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
+                            $taxs = new ArrayCollection();
+                            if ($col || $cat) {
+                                if ($cat) {
+                                    $taxs[] = $cat;
+                                }
+                                if ($col) {
+                                    $taxs[] = $col;
+                                }
                             }
-                            if ($col) {
-                                $taxs[] = $col;
-                            }
-                        }
 
-                        $product = $em->createQuery(
-                            'SELECT p FROM
-                             Sylius\Bundle\CoreBundle\Model\Product p
-                             WHERE p IN (
-                             SELECT IDENTITY(v.product) FROM
-                             Sylius\Bundle\CoreBundle\Model\Variant v
-                             WHERE v.sku LIKE :sku
-                             )
-                            '
-                        )->setParameter('sku', $articul)->getResult();
-                        if(count($product) <= 0){
                             $product = $repository->createNew();
-                        }else{
-                            continue;
-                        }
-
-                        $product->setCatalog($catalog);
-                        $product->setCollection($collection);
-                        $product->setName($name);
-                        $product->setDescription($description);
-                        $product->setPrice($price * 100);
-                        $product->setPriceOpt($priceOpt * 100);
-                        if (count($taxs) > 0) {
-                            $product->setTaxons($taxs);
-                        }
-                        $product->getMasterVariant()->setSku($articul);
-                        $product->getMasterVariant()->setSkuCode($codeArticul);
+                            $product->setCatalog($catalog);
+                            $product->setCollection($collection);
+                            $product->setName($name);
+                            $product->setDescription($description);
+                            $product->setPrice($price * 100);
+                            $product->setPriceOpt($priceOpt * 100);
+                            if (count($taxs) > 0) {
+                                $product->setTaxons($taxs);
+                            }
+                            $product->getMasterVariant()->setSku($articul);
+                            $product->getMasterVariant()->setSkuCode($codeArticul);
 
 
-                        /* Add product property */
-                        $propertyRepository = $this->container->get('sylius.repository.property');
-                        $productPropertyRepository = $this->container->get('sylius.repository.product_property');
+                            /* Add product property */
+                            $propertyRepository = $this->container->get('sylius.repository.property');
+                            $productPropertyRepository = $this->container->get('sylius.repository.product_property');
 
-                        /* Color property */
-                        $color_property = $propertyRepository->findOneBy(array('id' => 10));
-                        $productProperty = $productPropertyRepository->createNew();
+                            /* Color property */
+                            $color_property = $propertyRepository->findOneBy(array('id' => 10));
+                            $productProperty = $productPropertyRepository->createNew();
 
-                        $productProperty
-                            ->setProperty($color_property)
-                            ->setValue($color);
+                            $productProperty
+                                ->setProperty($color_property)
+                                ->setValue($color);
 
-                        $product->addProperty($productProperty);
+                            $product->addProperty($productProperty);
 
-                        /* end Color property */
+                            /* end Color property */
 
-                        /* Gb property */
-                        $gb_property = $propertyRepository->findOneBy(array('id' => 11));
-                        $productProperty = $productPropertyRepository->createNew();
+                            /* Gb property */
+                            $gb_property = $propertyRepository->findOneBy(array('id' => 11));
+                            $productProperty = $productPropertyRepository->createNew();
 
-                        $productProperty
-                            ->setProperty($gb_property)
-                            ->setValue($gb);
+                            $productProperty
+                                ->setProperty($gb_property)
+                                ->setValue($gb);
 
-                        $product->addProperty($productProperty);
+                            $product->addProperty($productProperty);
 
-                        /* end Gb property */
+                            /* end Gb property */
 
-                        /* Sost property */
-                        $sost_property = $propertyRepository->findOneBy(array('id' => 12));
-                        $productProperty = $productPropertyRepository->createNew();
+                            /* Sost property */
+                            $sost_property = $propertyRepository->findOneBy(array('id' => 12));
+                            $productProperty = $productPropertyRepository->createNew();
 
-                        $productProperty
-                            ->setProperty($sost_property)
-                            ->setValue($sost);
+                            $productProperty
+                                ->setProperty($sost_property)
+                                ->setValue($sost);
 
-                        $product->addProperty($productProperty);
+                            $product->addProperty($productProperty);
 
-                        /* end Gb property */
+                            /* end Gb property */
 
-                        /* end Add product property */
+                            /* end Add product property */
 
 
 //                        if (isset($data[$i]["image"][0])) {
@@ -234,13 +230,18 @@ class ProductController extends ResourceController
 //                                }
 //                            }
 //                        }
-                        $product->getMasterVariant()->setOnHand(1);
-                        $manager->persist($product);
-                        $manager->flush();
-                        $product->setPosition($product->getId());
-                        $product->setPosition2($product->getId());
-                        $i++;
+                            $product->getMasterVariant()->setOnHand(1);
+                            $manager->persist($product);
+                            $manager->flush();
+                            $product->setPosition($product->getId());
+                            $product->setPosition2($product->getId());
+                            $i++;
+                        }
+                    }else{
+
+                        continue;
                     }
+
                 }
                 $manager->flush();
 //                $this->importScanAction($request);
@@ -350,6 +351,9 @@ class ProductController extends ResourceController
                     $manager->flush();
                     print json_encode($ar);
                     $count++;
+//                    if($count > 1000){
+//                        return new Response("Обновлено $count продуктов.");
+//                    }
                 }
             }
         }
