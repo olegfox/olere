@@ -2,478 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="790bd95c-e439-4c66-bd8f-01bd92751966" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/bg_transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/bg_transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard-add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard-add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard-clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard-clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/denied.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/denied.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/download.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/download.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/folder-new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/folder-new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/folder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/folder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/kcf_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/kcf_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/maximize.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/maximize.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/move.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/move.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/rename.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/rename.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/ui-icons_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/ui-icons_blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_grey.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/ui-icons_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/view.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/view.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/000._jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/000.base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/001.transForm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/002._jqueryui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/006.jquery.transForm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/01.ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/01.ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/010.jquery.fixes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/02.transForm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/02.transForm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/020.jquery.rightClick.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/021.jquery.taphold.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/022.jquery.shDropUpload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/029.jquery.agent.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/03.misc.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/03.misc.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/030.jquery.helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/031.jquery.md5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/040.object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/041.dialogs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/050.init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/060.toolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/070.settings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/080.files.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/090.folders.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/091.menus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/091.viewImage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/100.clipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/110.dropUpload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/120.misc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/999.agent.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/BolmerCMS.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/Changelog.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/LICENSE.GPL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/LICENSE.LGPL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/af.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/autoload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/base.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/bg.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/bootstrap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/browse.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/browser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ca.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_fastImage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_gd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_gmagick.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_imagick.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_zipFolder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/cs.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/da.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/de.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/drupal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/el.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/en.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/es.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/et.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fa.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/he.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_dir.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_file.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_httpCache.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_path.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_phpGet.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_text.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/hu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/id.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/it.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ja.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/js.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/js.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js_localize.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/lt.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/lv.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/minifier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/nl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/no.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pt-br.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pt.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ro.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ru.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/sk.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/sv.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_dark.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_dark.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_browser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_javascript.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/tr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/types/type_img.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/types/type_mime.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/uk.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/upload.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/upload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/uploader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/vi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/zh-cn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/Checkout/ContactsStepType.php" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/Checkout/ContactsStepType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Slider.orm.xml" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Slider.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Slider.php" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Slider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/SliderType.php" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/SliderType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/_form.html.twig" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/_form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/ckeditor/config.js" afterPath="$PROJECT_DIR$/web/js/ckeditor/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dashboard/main.html.twig" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dashboard/main.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Migura.iws" />
@@ -497,95 +26,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/kcfinder/conf/config.php">
+      <file leaf-file-name="OrderType.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/OrderType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-22.0" vertical-offset="0" max-vertical-offset="2196">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SliderType.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/SliderType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="27" selection-start="612" selection-end="612" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="864">
+            <state line="27" column="27" selection-start="615" selection-end="615" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="630">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_form.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/_form.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/_form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="270">
+            <state line="15" column="18" selection-start="522" selection-end="522" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="468">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomepageController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Frontend/HomepageController.php">
+      <file leaf-file-name="Order.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="28" selection-start="6831" selection-end="6831" vertical-scroll-proportion="1.3333334" vertical-offset="3276" max-vertical-offset="4914">
-              <folding>
-                <marker date="1408513785791" expanded="true" signature="931:1065" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1408513785791" expanded="true" signature="1230:1365" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1408513785791" expanded="true" signature="1527:1732" placeholder="SELECT p FRO..Sylius..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DashboardController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Backend/DashboardController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="22" selection-start="2101" selection-end="2101" vertical-scroll-proportion="-5.1666665" vertical-offset="405" max-vertical-offset="2970">
+            <state line="681" column="41" selection-start="12942" selection-end="12942" vertical-scroll-proportion="-4.462963" vertical-offset="11747" max-vertical-offset="13320">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Slider.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Slider.php">
+      <file leaf-file-name="OrderInterface.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Model/OrderInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="29" selection-start="596" selection-end="596" vertical-scroll-proportion="0.75086504" vertical-offset="123" max-vertical-offset="1116">
+            <state line="26" column="10" selection-start="698" selection-end="698" vertical-scroll-proportion="-6.888889" vertical-offset="120" max-vertical-offset="3366">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Slider.orm.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Slider.orm.xml">
+      <file leaf-file-name="order.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/order.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="39" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504">
+            <state line="11" column="62" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.htaccess" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/kcfinder/conf/upload.htaccess">
+      <file leaf-file-name="OrderRepository.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/OrderRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+            <state line="108" column="111" selection-start="3475" selection-end="3475" vertical-scroll-proportion="-1.925926" vertical-offset="1730" max-vertical-offset="4212">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/kcfinder/upload.php">
+      <file leaf-file-name="main.html.twig" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dashboard/main.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="2" selection-start="596" selection-end="596" vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="270">
+            <state line="51" column="26" selection-start="2384" selection-end="2384" vertical-scroll-proportion="0.4888438" vertical-offset="677" max-vertical-offset="1170">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/kcfinder/index.php">
+      <file leaf-file-name="BackendMenuBuilder.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/BackendMenuBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="180">
+            <state line="234" column="51" selection-start="9447" selection-end="9447" vertical-scroll-proportion="-2.2037036" vertical-offset="3931" max-vertical-offset="6444">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filterForm.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/filterForm.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="75" selection-start="146" selection-end="146" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="252">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="31" selection-start="1381" selection-end="1381" vertical-scroll-proportion="-9.333333" vertical-offset="270" max-vertical-offset="936">
               <folding />
             </state>
           </provider>
@@ -604,45 +129,16 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Account/Order/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/macros.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Product.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/show.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/_singleBox.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Cart/summary.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/_variant.html.twig" />
-        <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/OrderRepository.php" />
-        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/registerOpt.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/SliderText.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/SliderText.orm.xml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/slider.yml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Backend/DashboardController.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/SliderTextType.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/text.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/services.xml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/main.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Frontend/HomepageController.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/catalog.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/collections.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ProductRepository.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ShipmentRepository.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Doctrine/ORM/OrderRepository.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/PageType.php" />
         <option value="$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContent.php" />
         <option value="$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Resources/config/doctrine-model/StaticContent.phpcr.xml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/BackendMenuBuilder.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/FrontendMenuBuilder.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/_form.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Block/_form.html.twig" />
         <option value="$PROJECT_DIR$/web/js/ckeditor/init.js" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Order.orm.xml" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Order.php" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Checkout/Step/contacts.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Account/Order/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/show.html.twig" />
@@ -655,14 +151,43 @@
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Slider.orm.xml" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/_form.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Slider.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Backend/DashboardController.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/main.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/macros.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/security.yml" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/User.orm.xml" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/User.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/UserType.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/Form/_main.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/VariantType.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Order.orm.xml" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Model/Order.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Checkout/Step/ContactsStep.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/macros.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/_form.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Order.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/macros.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/filterForm.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/order.yml" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/BackendMenuBuilder.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/OrderRepository.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dashboard/main.html.twig" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="24" />
-    <option name="width" value="1922" />
-    <option name="height" value="1057" />
+    <option name="width" value="1368" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -737,24 +262,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -769,15 +276,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kcfinder" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -791,19 +290,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="friendsofsymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kcfinder" />
+              <option name="myItemId" value="user-bundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -817,19 +320,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
+              <option name="myItemId" value="friendsofsymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -856,14 +351,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -898,140 +385,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Taxon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Checkout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Checkout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Step" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1111,91 +464,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Slider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Block" />
+              <option name="myItemId" value="Dashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1260,86 +529,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sylius" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1778,14 +967,6 @@
               <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Type" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Checkout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1813,7 +994,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
+              <option name="myItemId" value="Event" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1939,24 +1120,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Migura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1972,7 +1135,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maniadarte.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../opencart" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="275" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="293" />
@@ -2224,7 +1387,19 @@
       <created>1408620789966</created>
       <updated>1408620789966</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="final&#10;">
+      <created>1408623265506</created>
+      <updated>1408623265506</updated>
+    </task>
+    <task id="LOCAL-00045" summary="order manager&#10;">
+      <created>1408989632218</created>
+      <updated>1408989632218</updated>
+    </task>
+    <task id="LOCAL-00046" summary="order manager&#10;&#10;">
+      <created>1408990128481</created>
+      <updated>1408990128481</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2248,12 +1423,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1922" height="1057" extended-state="6" />
+    <frame x="0" y="24" width="1368" height="745" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873806" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30222693" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54082716" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30110934" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54041207" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2263,7 +1438,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24494143" sideWeight="0.49945945" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32250756" sideWeight="0.49945945" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2290,9 +1465,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.49945945" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2310,8 +1485,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="до изменения импорта с ftp" />
-    <MESSAGE value="после изменения импорта с ftp&#10;" />
     <MESSAGE value="после изменения импорта с ftp&#10;&#10;" />
     <MESSAGE value="new city input&#10;" />
     <MESSAGE value="new city input&#10;&#10;" />
@@ -2331,11 +1504,13 @@
     <MESSAGE value="filter admin&#10;" />
     <MESSAGE value="sale&#10;" />
     <MESSAGE value="новая таблица транслиетерации&#10;" />
-    <MESSAGE value="final&#10;" />
     <MESSAGE value="управление страницами" />
     <MESSAGE value="управление страницами&#10;&#10;" />
     <MESSAGE value="final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final" />
+    <MESSAGE value="final&#10;" />
+    <MESSAGE value="order manager&#10;" />
+    <MESSAGE value="order manager&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="order manager&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2343,335 +1518,331 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Checkout/Step/FinalizeStep.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="23" selection-start="775" selection-end="775" vertical-scroll-proportion="0.43598616" vertical-offset="0" max-vertical-offset="867" />
+        <state line="42" column="39" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="1458" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/update.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="871" selection-end="871" vertical-scroll-proportion="0.51903117" vertical-offset="0" max-vertical-offset="867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Page/showContent.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="20" selection-end="20" vertical-scroll-proportion="0.020761246" vertical-offset="0" max-vertical-offset="867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/collection.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="162" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/indexByTaxon.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="27" selection-start="942" selection-end="942" vertical-scroll-proportion="-5.6296296" vertical-offset="298" max-vertical-offset="1152" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/main.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2667" selection-end="2895" vertical-scroll-proportion="0.7367829" vertical-offset="677" max-vertical-offset="1566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/PageRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="28" selection-start="495" selection-end="503" vertical-scroll-proportion="0.31141868" vertical-offset="0" max-vertical-offset="867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/catalog.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="79" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="522" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/collections.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="83" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="594" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1818" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="42" selection-start="5179" selection-end="5179" vertical-scroll-proportion="0.0" vertical-offset="2358" max-vertical-offset="2628" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/main.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="2070" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ProductRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="0" selection-start="8539" selection-end="8539" vertical-scroll-proportion="0.0" vertical-offset="4140" max-vertical-offset="5238">
+        <state line="141" column="21" selection-start="4105" selection-end="4105" vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="3474">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ShipmentRepository.php">
+    <entry file="file://$PROJECT_DIR$/web/js/smoothZoom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="1584">
+        <state line="9" column="36" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/jquery.tablednd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5760" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/main2.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/jquery.smoothZoom.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="3" selection-start="39938" selection-end="39938" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/sylius.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2556" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/GroupableInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="10" selection-start="473" selection-end="473" vertical-scroll-proportion="-0.5891892" vertical-offset="525" max-vertical-offset="1080" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="18" selection-start="757" selection-end="757" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="504" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="29" selection-start="457" selection-end="457" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="684" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="216" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/macros.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1010" selection-end="1107" vertical-scroll-proportion="-18.666666" vertical-offset="0" max-vertical-offset="828" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Group/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="769" selection-end="769" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="594" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="529" column="42" selection-start="10488" selection-end="10488" vertical-scroll-proportion="-283.33334" vertical-offset="1728" max-vertical-offset="10548">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/UserRepository.php">
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Form/Type/RegistrationFormType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="2006" selection-end="2006" vertical-scroll-proportion="0.0" vertical-offset="1368" max-vertical-offset="2250">
+        <state line="26" column="30" selection-start="664" selection-end="664" vertical-scroll-proportion="0.36900368" vertical-offset="106" max-vertical-offset="972" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="77" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="1440" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/MenuBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="33" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.34954956" vertical-offset="868" max-vertical-offset="1764">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Doctrine/ORM/OrderRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/services.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="49" selection-start="716" selection-end="716" vertical-scroll-proportion="-8.444445" vertical-offset="132" max-vertical-offset="1044">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="366" column="0" selection-start="7427" selection-end="7427" vertical-scroll-proportion="-197.44444" vertical-offset="897" max-vertical-offset="6732" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Doctrine/Phpcr/StaticContent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="26" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1422">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Resources/config/doctrine-model/StaticContent.phpcr.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="74" selection-start="1419" selection-end="1419" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/BackendMenuBuilder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="51" selection-start="6629" selection-end="6629" vertical-scroll-proportion="0.0" vertical-offset="3114" max-vertical-offset="6066">
+        <state line="69" column="61" selection-start="4202" selection-end="4202" vertical-scroll-proportion="0.44680852" vertical-offset="990" max-vertical-offset="2466">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/FrontendMenuBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="44" selection-start="10561" selection-end="10561" vertical-scroll-proportion="0.0" vertical-offset="4914" max-vertical-offset="11664">
+        <state line="395" column="8" selection-start="15161" selection-end="15252" vertical-scroll-proportion="0.31843576" vertical-offset="6633" max-vertical-offset="11358" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Resources/config/doctrine/model/Order.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="29" selection-start="987" selection-end="987" vertical-scroll-proportion="-6.6666665" vertical-offset="288" max-vertical-offset="1134" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/User.orm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="35" selection-start="4781" selection-end="4781" vertical-scroll-proportion="0.0" vertical-offset="1375" max-vertical-offset="1944">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/redactor/init_redactor.js">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="75" selection-start="3765" selection-end="3765" vertical-scroll-proportion="-23.777779" vertical-offset="870" max-vertical-offset="1782">
+        <state line="75" column="41" selection-start="2208" selection-end="2208" vertical-scroll-proportion="-12.0" vertical-offset="810" max-vertical-offset="1944">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Page/show.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="19" selection-start="477" selection-end="477" vertical-scroll-proportion="0.37961337" vertical-offset="0" max-vertical-offset="1260">
+        <state line="11" column="65" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="396">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/ProductType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="285" column="40" selection-start="12932" selection-end="12932" vertical-scroll-proportion="-17.333334" vertical-offset="4338" max-vertical-offset="16704">
+        <state line="25" column="20" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1296">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Block/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/ProductBundle/Form/Type/ProductType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="56" selection-start="857" selection-end="857" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="414">
+        <state line="24" column="7" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1908">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/ckeditor/init.js">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/Form/_main.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+        <state line="20" column="18" selection-start="972" selection-end="972" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="756">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/CartType.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/VariantType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="611" selection-end="611" vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="648">
+        <state line="49" column="20" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Checkout/Step/PurchaseStep.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="37" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="1008" max-vertical-offset="2196">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Order.orm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="35" selection-start="2924" selection-end="2924" vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="1494">
+        <state line="51" column="32" selection-start="2443" selection-end="2443" vertical-scroll-proportion="0.0" vertical-offset="821" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/OrderType.php">
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="718" selection-end="718" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="630">
+        <state line="18" column="29" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/PageType.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Model/Order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="44" selection-start="2505" selection-end="2505" vertical-scroll-proportion="-14.666667" vertical-offset="954" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Page/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="40" selection-start="360" selection-end="360" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="414">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="639" column="5" selection-start="12267" selection-end="12267" vertical-scroll-proportion="-16.777779" vertical-offset="10779" max-vertical-offset="11970">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Checkout/Step/contacts.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="26" selection-start="3665" selection-end="3665" vertical-scroll-proportion="1.7777778" vertical-offset="1290" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Account/Order/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="64" selection-start="2438" selection-end="2438" vertical-scroll-proportion="-4.5555553" vertical-offset="867" max-vertical-offset="2520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="20" selection-start="1937" selection-end="1937" vertical-scroll-proportion="20.777779" vertical-offset="1533" max-vertical-offset="5598">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/order.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="30" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1127" column="0" selection-start="21959" selection-end="21959" vertical-scroll-proportion="0.0" vertical-offset="19607" max-vertical-offset="21132">
+        <state line="474" column="0" selection-start="8091" selection-end="8193" vertical-scroll-proportion="-6.4074073" vertical-offset="8215" max-vertical-offset="9306">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Checkout/Step/ContactsStep.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="33" selection-start="1012" selection-end="1012" vertical-scroll-proportion="27.222221" vertical-offset="1167" max-vertical-offset="2034">
+        <state line="102" column="9" selection-start="3184" selection-end="3184" vertical-scroll-proportion="-9.259259" vertical-offset="1388" max-vertical-offset="2142">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/Checkout/ContactsStepType.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="40" selection-start="3170" selection-end="3170" vertical-scroll-proportion="-7.3333335" vertical-offset="1386" max-vertical-offset="2466">
+        <state line="16" column="47" selection-start="580" selection-end="580" vertical-scroll-proportion="1.3333334" vertical-offset="324" max-vertical-offset="990">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/ckeditor/config.js">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
+        <state line="17" column="16" selection-start="667" selection-end="667" vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="1782">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/kcfinder/upload.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="2" selection-start="596" selection-end="596" vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="270">
+        <state line="74" column="16" selection-start="2384" selection-end="2570" vertical-scroll-proportion="-7.3333335" vertical-offset="1134" max-vertical-offset="5598">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/kcfinder/index.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="894">
+        <state line="641" column="30" selection-start="11101" selection-end="11101" vertical-scroll-proportion="20.205406" vertical-offset="162" max-vertical-offset="11916">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/kcfinder/conf/upload.htaccess">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/macros.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+        <state line="47" column="20" selection-start="2041" selection-end="2080" vertical-scroll-proportion="-9.333333" vertical-offset="594" max-vertical-offset="2052">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/kcfinder/conf/config.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-22.0" vertical-offset="0" max-vertical-offset="2196">
+        <state line="31" column="5" selection-start="855" selection-end="855" vertical-scroll-proportion="0.6309963" vertical-offset="0" max-vertical-offset="1242">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/doctrine/model/Slider.orm.xml">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/page.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="39" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/SliderType.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/macros.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="27" selection-start="612" selection-end="612" vertical-scroll-proportion="-12.0" vertical-offset="0" max-vertical-offset="864">
+        <state line="7" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="-4.0740743" vertical-offset="16" max-vertical-offset="2358">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Slider/_form.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/User/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="94" selection-end="94" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="270">
+        <state line="16" column="19" selection-start="0" selection-end="575" vertical-scroll-proportion="0.5403377" vertical-offset="0" max-vertical-offset="533">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Frontend/HomepageController.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="28" selection-start="6831" selection-end="6831" vertical-scroll-proportion="1.3333334" vertical-offset="3276" max-vertical-offset="4914">
-          <folding>
-            <marker date="1408513785791" expanded="true" signature="931:1065" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1408513785791" expanded="true" signature="1230:1365" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1408513785791" expanded="true" signature="1527:1732" placeholder="SELECT p FRO..Sylius..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Backend/DashboardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="22" selection-start="2101" selection-end="2101" vertical-scroll-proportion="-5.1666665" vertical-offset="405" max-vertical-offset="2970">
+        <state line="15" column="18" selection-start="522" selection-end="522" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="468">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Slider.php">
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/filterForm.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="29" selection-start="596" selection-end="596" vertical-scroll-proportion="0.75086504" vertical-offset="123" max-vertical-offset="1116">
+        <state line="2" column="75" selection-start="146" selection-end="146" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="252">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Order/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="31" selection-start="1381" selection-end="1381" vertical-scroll-proportion="-9.333333" vertical-offset="270" max-vertical-offset="936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/order.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="62" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/OrderType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="27" selection-start="615" selection-end="615" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="681" column="41" selection-start="12942" selection-end="12942" vertical-scroll-proportion="-4.462963" vertical-offset="11747" max-vertical-offset="13320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/OrderBundle/Model/OrderInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="10" selection-start="698" selection-end="698" vertical-scroll-proportion="-6.888889" vertical-offset="120" max-vertical-offset="3366">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Menu/BackendMenuBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="234" column="51" selection-start="9447" selection-end="9447" vertical-scroll-proportion="-2.2037036" vertical-offset="3931" max-vertical-offset="6444">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/OrderRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="111" selection-start="3475" selection-end="3475" vertical-scroll-proportion="-1.925926" vertical-offset="1730" max-vertical-offset="4212">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dashboard/main.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="26" selection-start="2384" selection-end="2384" vertical-scroll-proportion="0.4888438" vertical-offset="677" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>

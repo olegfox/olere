@@ -21,7 +21,20 @@
             {#<a href="{{ path('sylius_backend_order_index', {'deleted': true}) }}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> {{ 'sylius.show_deleted'|trans }}</a>#}
         {#{% endif %}#}
     </div>
-    <h1><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.order.index_header'|trans|raw }}</h1>
+    <h1><i class="glyphicon glyphicon-shopping-cart"></i>
+        {% set state = app.request.get('state') %}
+        {% if state == 1 %}
+            Ожидают подтверждения
+        {% elseif state == 9 %}
+            Ожидают оплаты
+        {% elseif state == 7 %}
+            Отмененные
+        {% elseif state == 5 %}
+            Ожидают отгрузки
+        {% elseif state == 4 %}
+            Выполненные заказы
+        {% endif %}
+    </h1>
 </div>
 
 {% render(controller('sylius.controller.backend.form:filterAction', {'type': 'sylius_order_filter', 'template': 'SyliusWebBundle:Backend/Order:filterForm.html.twig'})) %}

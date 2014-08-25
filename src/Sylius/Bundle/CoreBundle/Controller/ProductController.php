@@ -424,7 +424,11 @@ class ProductController extends ResourceController
                         natcasesort($images);
                         $images = array_reverse($images);
                         foreach ($images as $i) {
-                            if (ftp_get($connect, $_SERVER['DOCUMENT_ROOT'] . '/import/files/' . $i, $i, FTP_BINARY, 0)) {
+                            $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
+                            while ($ret == FTP_MOREDATA) {
+                                $ret = ftp_nb_continue($connect);
+                            }
+                            if ($ret == FTP_FINISHED) {
                                 $variantImage = new VariantImage();
                                 $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
                                 $variantImage->setFile($fileinfo);
@@ -434,7 +438,7 @@ class ProductController extends ResourceController
                                 $manager->flush();
                                 $count++;
                             } else {
-                                print("Не удалось скачать файл " . $i . "\n");
+                                print("Не удалось скачать файл " . $i . "\n". $ret);
                             }
                             $total++;
                         }

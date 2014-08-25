@@ -37,8 +37,8 @@
             {% if sliders is defined %}
                 {% for slider in sliders %}
                     <li>
-                        <img src="{{ asset('images/slider/'~slider.image) }}"
-                             alt="{{ asset('images/slider/'~slider.image) }}"/>
+                        <a href="{{ slider.link }}"><img src="{{ asset('images/slider/'~slider.image) }}"
+                             alt="{{ asset('images/slider/'~slider.image) }}"/></a>
                     </li>
                 {% endfor %}
             {% endif %}

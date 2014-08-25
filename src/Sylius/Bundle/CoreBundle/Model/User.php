@@ -49,6 +49,7 @@ class User extends BaseUser implements UserInterface
     protected $correspondentAccount;
     protected $bik;
     protected $address;
+    protected $status;
 
     public function __construct()
     {
@@ -614,6 +615,42 @@ class User extends BaseUser implements UserInterface
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function getStatusMessage()
+    {
+        switch($this->status){
+            case 1:{
+                return 'Реальный';
+            }break;
+            case 2:{
+                return 'В разработке';
+            }break;
+            case 3:{
+                return 'Бесперспективный';
+            }break;
+            case 4:{
+                return 'Розничный';
+            }break;
+        }
     }
 
     public function isOpt(){

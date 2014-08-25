@@ -142,18 +142,9 @@ liip_imagine:
         sylius_small:
             filters:
                 thumbnail: { size: [120, 90], mode: outbound }
-        sylius_medium:
-            filters:
-                thumbnail: { size: [240, 180], mode: outbound }
         sylius_large:
             filters:
                 thumbnail: { size: [640, 480], mode: outbound }
-        sylius_cube:
-            filters:
-                thumbnail: { size: [347, 240], mode: outbound }
-        sylius_product_list:
-            filters:
-                thumbnail: { size: [175, 160], mode: outbound }
         sylius_90x60:
             filters:
                 thumbnail: { size: [90, 60], mode: outbound }

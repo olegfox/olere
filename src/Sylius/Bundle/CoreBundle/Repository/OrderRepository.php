@@ -21,7 +21,7 @@ class OrderRepository extends CartRepository
      * Create user orders paginator.
      *
      * @param UserInterface $user
-     * @param array         $sorting
+     * @param array $sorting
      *
      * @return PagerfantaInterface
      */
@@ -36,7 +36,7 @@ class OrderRepository extends CartRepository
      * Gets orders for user.
      *
      * @param  UserInterface $user
-     * @param  array         $sorting
+     * @param  array $sorting
      * @return array
      */
     public function findByUser(UserInterface $user, array $sorting = array())
@@ -45,8 +45,7 @@ class OrderRepository extends CartRepository
 
         return $queryBuilder
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -91,25 +90,23 @@ class OrderRepository extends CartRepository
             ->addSelect('shippingAddress')
             ->addSelect('shippingCountry')
             ->andWhere($queryBuilder->expr()->eq('o.id', ':id'))
-            ->setParameter('id', $id)
-        ;
+            ->setParameter('id', $id);
 
         return $queryBuilder
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 
     /**
      * Create filter paginator.
      *
-     * @param array   $criteria
-     * @param array   $sorting
+     * @param array $criteria
+     * @param array $sorting
      * @param Boolean $deleted
      *
      * @return PagerfantaInterface
      */
-    public function createFilterPaginator($criteria = array(), $sorting = array(), $deleted = false)
+    public function createFilterPaginator($criteria = array(), $sorting = array(), $deleted = false, $state = 3)
     {
         $queryBuilder = parent::getCollectionQueryBuilder();
         $queryBuilder->andWhere($queryBuilder->expr()->isNotNull('o.completedAt'));
@@ -121,32 +118,30 @@ class OrderRepository extends CartRepository
         if (!empty($criteria['number'])) {
             $queryBuilder
                 ->andWhere('o.number = :number')
-                ->setParameter('number', $criteria['number'])
-            ;
+                ->setParameter('number', $criteria['number']);
         }
+        $queryBuilder
+            ->andWhere('o.state = :state')
+            ->setParameter('state', $state);
         if (!empty($criteria['totalFrom'])) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->gte('o.total', ':totalFrom'))
-                ->setParameter('totalFrom', $criteria['totalFrom'] * 100)
-            ;
+                ->setParameter('totalFrom', $criteria['totalFrom'] * 100);
         }
         if (!empty($criteria['totalTo'])) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->lte('o.total', ':totalTo'))
-                ->setParameter('totalTo', $criteria['totalTo'] * 100)
-            ;
+                ->setParameter('totalTo', $criteria['totalTo'] * 100);
         }
         if (!empty($criteria['createdAtFrom'])) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->gte('o.createdAt', ':createdAtFrom'))
-                ->setParameter('createdAtFrom', $criteria['createdAtFrom'])
-            ;
+                ->setParameter('createdAtFrom', $criteria['createdAtFrom']);
         }
         if (!empty($criteria['createdAtTo'])) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->lte('o.createdAt', ':createdAtTo'))
-                ->setParameter('createdAtTo', $criteria['createdAtTo'])
-            ;
+                ->setParameter('createdAtTo', $criteria['createdAtTo']);
         }
 
         if (empty($sorting)) {
@@ -167,8 +162,7 @@ class OrderRepository extends CartRepository
 
         return $queryBuilder
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     public function countBetweenDates(\DateTime $from, \DateTime $to, $state = null)
@@ -178,8 +172,7 @@ class OrderRepository extends CartRepository
         return $queryBuilder
             ->select('count(o.id)')
             ->getQuery()
-            ->getSingleScalarResult()
-        ;
+            ->getSingleScalarResult();
     }
 
     public function revenueBetweenDates(\DateTime $from, \DateTime $to, $state = null)
@@ -189,8 +182,7 @@ class OrderRepository extends CartRepository
         return $queryBuilder
             ->select('sum(o.total)')
             ->getQuery()
-            ->getSingleScalarResult()
-        ;
+            ->getSingleScalarResult();
     }
 
     public function findExpired(\DateTime $expiresAt, $state = OrderInterface::STATE_PENDING)
@@ -198,11 +190,10 @@ class OrderRepository extends CartRepository
         $queryBuilder = $this->getQueryBuilder();
 
         $queryBuilder
-            ->andWhere($queryBuilder->expr()->lt($this->getAlias().'.updatedAt', ':expiresAt'))
-            ->andWhere($this->getAlias().'.state = :state')
+            ->andWhere($queryBuilder->expr()->lt($this->getAlias() . '.updatedAt', ':expiresAt'))
+            ->andWhere($this->getAlias() . '.state = :state')
             ->setParameter('expiresAt', $expiresAt)
-            ->setParameter('state', $state)
-        ;
+            ->setParameter('state', $state);
 
         return $queryBuilder->getQuery()->getResult();
     }
@@ -213,16 +204,14 @@ class OrderRepository extends CartRepository
         if (null !== $state) {
             $queryBuilder
                 ->andWhere('o.state = :state')
-                ->setParameter('state', $state)
-            ;
+                ->setParameter('state', $state);
         }
 
         return $queryBuilder
             ->andWhere($queryBuilder->expr()->gte('o.createdAt', ':from'))
             ->andWhere($queryBuilder->expr()->lte('o.createdAt', ':to'))
             ->setParameter('from', $from)
-            ->setParameter('to', $to)
-        ;
+            ->setParameter('to', $to);
     }
 
     protected function getCollectionQueryBuilderByUser(UserInterface $user, array $sorting = array())
@@ -232,8 +221,7 @@ class OrderRepository extends CartRepository
         $queryBuilder
             ->innerJoin('o.user', 'user')
             ->andWhere('user = :user')
-            ->setParameter('user', $user)
-        ;
+            ->setParameter('user', $user);
 
         $this->applySorting($queryBuilder, $sorting);
 

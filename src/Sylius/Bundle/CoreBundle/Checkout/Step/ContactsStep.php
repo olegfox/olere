@@ -95,6 +95,12 @@ class ContactsStep extends CheckoutStep
         }
 
         $manager = $this->get('sylius.manager.order');
+
+        $order->setState(3);//Ожидает подтверждения
+        foreach($order->getItems() as $item){
+            $variant = $item->getVariant();
+            $variant->setOnHand($variant->getOnHand() - $item->getQuantity());
+        }
         $manager->persist($order);
         $manager->flush();
         $this->getCurrentCart();

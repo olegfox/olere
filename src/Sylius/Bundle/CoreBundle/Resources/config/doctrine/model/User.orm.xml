@@ -96,6 +96,7 @@
         <field name="correspondentAccount" column="correspondentAccount" type="string" nullable="true" />
         <field name="bik" column="bik" type="string" nullable="true" />
         <field name="address" column="address" type="string" nullable="true" />
+        <field type="integer" name="status" column="status" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>

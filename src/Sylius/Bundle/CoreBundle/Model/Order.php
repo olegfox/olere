@@ -50,6 +50,10 @@ class Order extends Cart implements OrderInterface
 
     protected $user;
 
+    protected $reasonCancel;
+
+    protected $timeCounterOrder;
+
     /**
      * Order shipping address.
      *
@@ -670,5 +674,76 @@ class Order extends Cart implements OrderInterface
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function getStateMessage()
+    {
+        switch($this->state){
+            case OrderInterface::STATE_PENDING:{
+                return "Ожидает подтверждения";
+            }break;
+            case 9:{
+                return "Ожидает оплаты";
+            }break;
+            case OrderInterface::STATE_CANCELLED:{
+                return "Отмененный заказ";
+            }break;
+            case OrderInterface::STATE_SHIPPED:{
+                return "Ожидает отгрузки";
+            }break;
+            case OrderInterface::STATE_CONFIRMED:{
+                return "Выполненный заказ";
+            }break;
+        }
+
+        return '';
+    }
+
+    public function setReasonCancel($reasonCancel)
+    {
+        $this->reasonCancel = $reasonCancel;
+
+        return $this;
+    }
+
+    public function getReasonCancel()
+    {
+        return $this->reasonCancel;
+    }
+
+    public function setTimeCounterOrder($timeCounterOrder)
+    {
+        $this->timeCounterOrder = $timeCounterOrder;
+
+        return $this;
+    }
+
+    public function getTimeCounterOrder()
+    {
+        return $this->timeCounterOrder;
+    }
+
+    public function getTimeCounterOrderDay(){
+        if(is_object($this->timeCounterOrder)){
+            return floor((time() - $this->timeCounterOrder->getTimestamp()) / 86400);
+        }
+        return 0;
+    }
+
+    public function setState($state)
+    {
+        if($this->state != $state){
+            $this->setTimeCounterOrder(new \DateTime());
+        }
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getNameCompany(){
+        if(is_object($this->user)){
+            return $this->user->getNameCompany();
+        }
+        return '';
     }
 }

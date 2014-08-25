@@ -59,6 +59,26 @@ class UserType extends ProfileFormType
                 'multiple' => true,
                 'required' => false
             ))
+            ->add('status', 'choice', array(
+                'label' => 'Статус',
+                'required' => false,
+                'choices' => array(
+                    1 => 'Реальный',
+                    2 => 'В разработке',
+                    3 => 'Бесперспективный',
+                    4 => 'Розничный'
+                )
+            ))
+            ->add('roles', 'collection', array(
+                'label'    => 'Роль',
+                'required' => true,
+//                'choices' => array(
+//                    'ROLE_SYLIUS_ADMIN' => 'Администратор',
+//                    'ROLE_SYLIUS_ADMIN, ROLE_MANAGER' => 'Менеджер',
+//                    '' => 'Розничный покупатель',
+//                    'ROLE_USER_OPT' => 'Оптовый покупатель'
+//                )
+            ))
             ->remove('username')
         ;
     }

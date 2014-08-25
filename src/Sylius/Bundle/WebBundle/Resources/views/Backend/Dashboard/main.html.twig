@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-6">
         <ul class="nav nav-pills nav-justified">
-            <li><a href="{{ path('sylius_backend_order_index') }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.backend.quick_links.orders'|trans }}</a></li>
+            <li><a href="{{ path('sylius_backend_order_index', {state: 3}) }}"><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.backend.quick_links.orders'|trans }}</a></li>
             <li><a href="{{ path('sylius_backend_user_index') }}"><i class="glyphicon glyphicon-user"></i> {{ 'sylius.backend.quick_links.users'|trans }}</a></li>
         </ul>
         <hr>
@@ -49,7 +49,7 @@
 <div class="row">
     <div class="col-md-6">
         {{ list_orders(orders) }}
-        <a href="{{ path('sylius_backend_order_index') }}" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.show_all'|trans }}</a>
+        <a href="{{ path('sylius_backend_order_index', {state : 3}) }}" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-shopping-cart"></i> {{ 'sylius.show_all'|trans }}</a>
     </div>
     <div class="col-md-6">
         {{ list_users(users) }}

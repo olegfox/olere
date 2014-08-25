@@ -2,14 +2,14 @@
 # (c) Paweł Jędrzejewski
 
 sylius_backend_order_index:
-    pattern: /
+    pattern: /{state}
     methods: [GET]
     defaults:
         _controller: sylius.controller.order:indexAction
         _sylius:
             template: SyliusWebBundle:Backend/Order:index.html.twig
             method: createFilterPaginator
-            arguments: [$criteria, $sorting, $deleted]
+            arguments: [$criteria, $sorting, $deleted, $state]
             paginate: 20
 
 sylius_backend_order_create:

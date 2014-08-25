@@ -67,6 +67,7 @@ class DashboardController extends Controller
                         $slider = new Slider();
                         $slider->setImage($data[$i]["image"]);
                         $slider->setType($type);
+                        $slider->setLink($form['link']->getData());
                         $manager->persist($slider);
                     }
                     $i++;

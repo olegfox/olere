@@ -11,11 +11,16 @@
     <thead>
         <tr>
             <th></th>
-            <th>{{ sylius_resource_sort('createdAt', 'sylius.order.created_at'|trans, null, {'route_params' : router_paramters}) }}</th>
             <th>{{ sylius_resource_sort('number', 'sylius.order.number'|trans, null, {'route_params' : router_paramters}) }}</th>
-            <th>{{ sylius_resource_sort('paymentState', 'sylius.order.payment_state'|trans, null, {'route_params' : router_paramters}) }}</th>
+            <th>{{ sylius_resource_sort('createdAt', 'sylius.order.created_at'|trans, null, {'route_params' : router_paramters}) }}</th>
+            {#<th>{{ sylius_resource_sort('paymentState', 'sylius.order.payment_state'|trans, null, {'route_params' : router_paramters}) }}</th>#}
             {#<th>{{ sylius_resource_sort('shippingState', 'sylius.order.shipment_state'|trans, null, {'route_params' : router_paramters}) }}</th>#}
-            {#<th>{{ sylius_resource_sort('total', 'sylius.order.total'|trans, null, {'route_params' : router_paramters}) }}</th>#}
+            <th>{{ sylius_resource_sort('total', 'sylius.order.total'|trans, null, {'route_params' : router_paramters}) }}</th>
+            <th>Название компании</th>
+            <th>Имя</th>
+            <th>Статус заказа</th>
+            <th>Время статуса (дн.)</th>
+            <th>Способ доставки</th>
             <th></th>
         </tr>
     </thead>
@@ -23,12 +28,12 @@
         {% for order in orders %}
         <tr id="{{ order.id }}" {% if order.deleted %} class="danger"{% endif %}>
             <td class="center-text"><input type="checkbox" value="{{ order.id }}" /></td>
-            <td>{{ order.createdAt|date }}</td>
             <td>
                 <a href="{{ path('sylius_backend_order_show', {'id': order.id}) }}">
                     <strong>#{{ order.number }}</strong>
                 </a>
             </td>
+            <td>{{ order.createdAt|date }}</td>
             {#<td>#}
                 {#{% include 'SyliusWebBundle:Backend/Order:_paymentState.html.twig' %}#}
             {#</td>#}
@@ -36,12 +41,30 @@
                 {#{% include 'SyliusWebBundle:Backend/Order:_shippingState.html.twig' %}#}
             {#</td>#}
             <td>{{ order.total|sylius_price(order.currency) }}</td>
+            <td>{{ order.getNameCompany() }}</td>
+            <td>{{ order.username }}</td>
+            <td>
+                {{ order.getStateMessage() }}
+            </td>
+            <td>
+                {{ order.getTimeCounterOrderDay() }}
+            </td>
+            <td>
+                {% if order.delivery == 0 %}
+                    курьер
+                {% endif %}
+                {% if order.delivery == 1 %}
+                    самовывоз
+                {% endif %}
+            </td>
             <td>
                 <div class="pull-right">
                 {{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }}
                 {% if not order.deleted %}
                 {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}
-                {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
+                {% if not is_granted('ROLE_MANAGER') %}
+                    {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
+                {% endif %}
                 {% endif %}
                 </div>
             </td>
