@@ -155,4 +155,38 @@ class OrderController extends ResourceController
 
         return new Response('no');
     }
+
+    public function addItemAction(Request $request, $id){
+        $order = $this->get('sylius.repository.order')->findOneById($id);
+        $sku = $request->get('sku');
+        if($order && $sku != ''){
+            $variant = $this->get('sylius.repository.variant')->findOneBy(array('sku' => $sku));
+            if($variant){
+                if($variant->getOnHand() > 0){
+                    $itemRepository = $this->get('sylius.repository.orderItem');
+                    $manager = $this->getDoctrine()->getManager();
+                    $variant->setOnHand($variant->getOnHand() - 1);
+                    $manager->flush();
+
+                    $item = $itemRepository->createNew();
+                    $item
+                        ->setVariant($variant)
+                        ->setUnitPrice($variant->getPriceOpt())
+                        ->setQuantity(1)
+                        ->calculateTotal()
+                    ;
+                    $order
+                        ->addItem($item);
+                    $manager->flush();
+                }else{
+                    return new Response('Товара с артикулом '.$sku.' не осталось на складе.');
+                }
+            }else{
+                return new Response('Товар с артикулом '.$sku.' не найден.');
+            }
+        }else{
+            return new Response('Не найден заказ или поле артикула не заполнено.');
+        }
+        return $this->redirectHandler->redirectToReferer();
+    }
 }

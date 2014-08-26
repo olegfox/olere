@@ -1,6 +1,6 @@
 {% form_theme form 'SyliusWebBundle:Backend:filterForms.html.twig' %}
 
-<form method="get" action="{{ path('sylius_backend_user_index') }}" class="form-inline form-filter">
+<form method="get" action="{{ path('sylius_backend_user_index') }}" class="form-filter form-filter-user">
     {{ form_row(form.query) }}
     {{ form_row(form.status) }}
     {{ form_row(form.dateBegin) }}

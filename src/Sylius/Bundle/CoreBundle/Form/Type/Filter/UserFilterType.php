@@ -42,12 +42,12 @@ class UserFilterType extends AbstractType
                 )
             ))
             ->add('dateBegin', 'date', array(
-                'label' => 'От',
+                'label' => 'Дата от',
                 'required' => false,
                 'widget' => 'choice'
             ))
             ->add('dateEnd', 'date', array(
-                'label' => 'До',
+                'label' => 'Дата до',
                 'required' => false,
                 'widget' => 'choice'
             ))

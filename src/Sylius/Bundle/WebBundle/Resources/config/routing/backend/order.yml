@@ -33,6 +33,12 @@ sylius_backend_order_create:
             template: SyliusWebBundle:Backend/Order:create.html.twig
             redirect: sylius_backend_order_show
 
+sylius_backend_order_add_item:
+    pattern: /add/item/{id}
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:addItemAction
+
 sylius_backend_order_update:
     pattern: /{id}/edit
     methods: [GET, PUT]

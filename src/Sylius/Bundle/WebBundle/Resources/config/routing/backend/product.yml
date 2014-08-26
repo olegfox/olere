@@ -11,6 +11,16 @@ sylius_backend_product_index:
             method: createFilterPaginator
             arguments: [$criteria, $sorting, $deleted]
 
+sylius_backend_product_index_order:
+    pattern: /order
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Product:indexOrder.html.twig
+            method: createFilterPaginator
+            arguments: [$criteria, $sorting, $deleted]
+
 sylius_backend_product_children_active:
     pattern: /children/active
     methods: [POST]

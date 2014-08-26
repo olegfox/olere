@@ -53,7 +53,7 @@ class UserRepository extends EntityRepository
         }
         if (isset($criteria['dateBegin'])) {
             if($criteria['dateBegin']['year'] != '' && $criteria['dateBegin']['month'] != '' && $criteria['dateBegin']['day'] != ''){
-                $dateBegin = $criteria['dateBegin']['year'].'-'.$criteria['dateBegin']['month'].'-'.$criteria['dateBegin']['day'];
+                $dateBegin = $criteria['dateBegin']['year'].'-'.$criteria['dateBegin']['month'].'-'.$criteria['dateBegin']['day'].' 00:00:00';
 
                 $queryBuilder
                     ->andWhere('o.createdAt >= :dateBegin')
@@ -62,7 +62,7 @@ class UserRepository extends EntityRepository
         }
         if (isset($criteria['dateEnd'])) {
             if($criteria['dateEnd']['year'] != '' && $criteria['dateEnd']['month'] != '' && $criteria['dateEnd']['day'] != ''){
-                $dateEnd = $criteria['dateEnd']['year'].'-'.$criteria['dateEnd']['month'].'-'.$criteria['dateEnd']['day'];
+                $dateEnd = $criteria['dateEnd']['year'].'-'.$criteria['dateEnd']['month'].'-'.$criteria['dateEnd']['day'].' 00:00:00';
                 $queryBuilder
                     ->andWhere('o.createdAt < :dateEnd')
                     ->setParameter('dateEnd', $dateEnd);
