@@ -42,14 +42,36 @@ class UserRepository extends EntityRepository
                 ->orWhere('o.email LIKE :query')
                 ->orWhere('o.firstName LIKE :query')
                 ->orWhere('o.lastName LIKE :query')
-                ->setParameter('query', '%'.$criteria['query'].'%')
-            ;
+                ->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+        if (isset($criteria['status'])) {
+            if ($criteria['status'] != '') {
+                $queryBuilder
+                    ->andWhere('o.status = :status')
+                    ->setParameter('status', $criteria['status']);
+            }
+        }
+        if (isset($criteria['dateBegin'])) {
+            if($criteria['dateBegin']['year'] != '' && $criteria['dateBegin']['month'] != '' && $criteria['dateBegin']['day'] != ''){
+                $dateBegin = $criteria['dateBegin']['year'].'-'.$criteria['dateBegin']['month'].'-'.$criteria['dateBegin']['day'];
+
+                $queryBuilder
+                    ->andWhere('o.createdAt >= :dateBegin')
+                    ->setParameter('dateBegin', $dateBegin);
+            }
+        }
+        if (isset($criteria['dateEnd'])) {
+            if($criteria['dateEnd']['year'] != '' && $criteria['dateEnd']['month'] != '' && $criteria['dateEnd']['day'] != ''){
+                $dateEnd = $criteria['dateEnd']['year'].'-'.$criteria['dateEnd']['month'].'-'.$criteria['dateEnd']['day'];
+                $queryBuilder
+                    ->andWhere('o.createdAt < :dateEnd')
+                    ->setParameter('dateEnd', $dateEnd);
+            }
         }
         if (isset($criteria['enabled'])) {
             $queryBuilder
                 ->andWhere('o.enabled = :enabled')
-                ->setParameter('enabled', $criteria['enabled'])
-            ;
+                ->setParameter('enabled', $criteria['enabled']);
         }
 
         if (empty($sorting)) {
@@ -77,13 +99,11 @@ class UserRepository extends EntityRepository
 
         $queryBuilder
             ->andWhere($queryBuilder->expr()->eq('o.id', ':id'))
-            ->setParameter('id', $id)
-        ;
+            ->setParameter('id', $id);
 
         $result = $queryBuilder
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
 
         return $result;
     }
@@ -94,15 +114,13 @@ class UserRepository extends EntityRepository
         if (null !== $status) {
             $queryBuilder
                 ->andWhere('o.status = :status')
-                ->setParameter('status', $status)
-            ;
+                ->setParameter('status', $status);
         }
 
         return $queryBuilder
             ->select('count(o.id)')
             ->getQuery()
-            ->getSingleScalarResult()
-        ;
+            ->getSingleScalarResult();
     }
 
     protected function getCollectionQueryBuilderBetweenDates(\DateTime $from, \DateTime $to)
@@ -113,7 +131,6 @@ class UserRepository extends EntityRepository
             ->andWhere($queryBuilder->expr()->gte('o.createdAt', ':from'))
             ->andWhere($queryBuilder->expr()->lte('o.createdAt', ':to'))
             ->setParameter('from', $from)
-            ->setParameter('to', $to)
-        ;
+            ->setParameter('to', $to);
     }
 }

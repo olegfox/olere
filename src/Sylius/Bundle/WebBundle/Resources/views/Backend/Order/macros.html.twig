@@ -21,6 +21,9 @@
             <th>Статус заказа</th>
             <th>Время статуса (дн.)</th>
             <th>Способ доставки</th>
+            {% if app.request.get('state') == 7 %}
+            <th>Причина</th>
+            {% endif %}
             <th></th>
         </tr>
     </thead>
@@ -57,12 +60,31 @@
                     самовывоз
                 {% endif %}
             </td>
+            {% if order.state == 7 %}
+            <td>
+                 {{ order.reasonCancel }}
+            </td>
+            {% endif %}
             <td>
                 <div class="pull-right">
                 {{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }}
                 {% if not order.deleted %}
                 {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}
-                {% if not is_granted('ROLE_MANAGER') %}
+                {% if order.state != 7 and order.state != 4 %}
+                    <form action="{{ path('sylius_backend_order_change_state', {id : order.id, state: order.getButtonState()}) }}" method="post">
+                <button type="submit" class="btn btn-primary">
+                {{ order.getButtonMessage() }}
+                </button>
+                    </form>
+
+                    <form action="{{ path('sylius_backend_order_change_state', {id : order.id, state: 7}) }}" method="post">
+                        {% include 'SyliusWebBundle:Backend/Order:cancel.html.twig' %}
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#reasonCancel{{ order.id }}">
+                    <i class="glyphicon glyphicon-trash"></i> <span>Отменить</span>
+                </button>
+                    </form>
+                {% endif %}
+                    {% if not is_granted('ROLE_MANAGER') %}
                     {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
                 {% endif %}
                 {% endif %}

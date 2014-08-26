@@ -26,9 +26,30 @@ class UserFilterType extends AbstractType
         $builder
             ->add('query', 'text', array(
                 'label' => 'sylius.form.user_filter.query',
+                'required' => false,
                 'attr'  => array(
                     'placeholder' => 'sylius.form.user_filter.query'
                 )
+            ))
+            ->add('status', 'choice', array(
+                'label' => 'Статус',
+                'required' => false,
+                'choices' => array(
+                    1 => 'Реальный',
+                    2 => 'В разработке',
+                    3 => 'Бесперспективный',
+                    4 => 'Розничный'
+                )
+            ))
+            ->add('dateBegin', 'date', array(
+                'label' => 'От',
+                'required' => false,
+                'widget' => 'choice'
+            ))
+            ->add('dateEnd', 'date', array(
+                'label' => 'До',
+                'required' => false,
+                'widget' => 'choice'
             ))
         ;
     }

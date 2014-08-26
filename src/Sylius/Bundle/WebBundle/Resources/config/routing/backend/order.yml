@@ -2,7 +2,7 @@
 # (c) Paweł Jędrzejewski
 
 sylius_backend_order_index:
-    pattern: /{state}
+    pattern: /index/{state}
     methods: [GET]
     defaults:
         _controller: sylius.controller.order:indexAction
@@ -11,6 +11,18 @@ sylius_backend_order_index:
             method: createFilterPaginator
             arguments: [$criteria, $sorting, $deleted, $state]
             paginate: 20
+
+sylius_backend_order_change_quantity:
+    pattern: /{id}/edit/quantity
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:changeQuantityAction
+
+sylius_backend_order_change_state:
+    pattern: /{id}/edit/state/{state}/
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:changeStateAction
 
 sylius_backend_order_create:
     pattern: /new
@@ -29,6 +41,12 @@ sylius_backend_order_update:
         _sylius:
             template: SyliusWebBundle:Backend/Order:update.html.twig
             redirect: sylius_backend_order_show
+
+sylius_backend_order_item_delete:
+    pattern: /item/{id}
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:deleteItemAction
 
 sylius_backend_order_delete:
     pattern: /{id}

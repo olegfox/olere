@@ -15,6 +15,7 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\CoreBundle\SyliusOrderEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -71,5 +72,87 @@ class OrderController extends ResourceController
     private function getFormFactory()
     {
         return $this->get('form.factory');
+    }
+
+    public function changeStateAction(Request $request, $id, $state){
+        $order = $this->get('sylius.repository.order')->findOneById($id);
+        if($order){
+            if($state == 7){
+                if($reasonCancel = $request->get('reasonCancel')){
+                    $order->setReasonCancel($reasonCancel);
+                }
+            }
+            $order->setState($state);
+            $m = $this->get('sylius.manager.order');
+            $m->flush();
+        }
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
+
+    public function changeQuantityAction(Request $request, $id){
+        $orderItem = $this->get('sylius.repository.orderItem')->findOneById($id);
+        $manager = $this->getDoctrine()->getManager();
+        $json = array();
+        if($orderItem){
+            $quantity = $request->get('quantity');
+            if($quantity >= 1){
+                $change = $orderItem->getQuantity() - $quantity;
+                $variant = $orderItem->getVariant();
+                $onHand = $variant->getOnHand() + $change;
+                if($onHand >= 0){
+                    $variant->setOnHand($onHand);
+                    $orderItem->setQuantity($quantity);
+                    $orderItem->setTotal($orderItem->getUnitPrice()*$quantity);
+                    $manager->flush();
+
+                    $order = $orderItem->getOrder();
+                    $total = 0;
+                    foreach($order->getItems() as $item){
+                        $total += $item->getTotal();
+                    }
+                    $orderItem->getOrder()->setItemsTotal($total);
+                    $orderItem->getOrder()->setTotal($total);
+                    $manager->flush();
+
+                    $json = array(
+                        'onHand' => $onHand,
+                        'total' => ($orderItem->getTotal()/100).' руб.',
+                        'amount' => ($total/100).' руб.'
+                    );
+
+
+                }else{
+                    return new Response('Недостаточно товара на складе!');
+                }
+            }
+        }
+        return new Response(json_encode($json));
+    }
+
+    public function deleteItemAction($id){
+        $orderItem = $this->get('sylius.repository.orderItem')->findOneById($id);
+        $manager = $this->getDoctrine()->getManager();
+        if($orderItem){
+
+            $order = $orderItem->getOrder();
+            $total = 0;
+            $quantity = $orderItem->getQuantity();
+            $orderItem->getVariant()->setOnHand($orderItem->getVariant()->getOnHand() + $quantity);
+            $manager->remove($orderItem);
+            $manager->flush();
+
+            foreach($order->getItems() as $item){
+                $total += $item->getTotal();
+            }
+            $orderItem->getOrder()->setItemsTotal($total);
+            $orderItem->getOrder()->setTotal($total);
+            $manager->flush();
+            return new Response(json_encode(array(
+                'amount' => $total
+            )));
+        }
+
+        return new Response('no');
     }
 }

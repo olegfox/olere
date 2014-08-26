@@ -7,7 +7,7 @@
 {% block topbar %}
 <ol class="breadcrumb">
     <li>{{ 'sylius.breadcrumb.sales'|trans }}</li>
-    <li><a href="{{ path('sylius_backend_order_index') }}">{{ 'sylius.breadcrumb.order.index'|trans }}</a></li>
+    {#<li><a href="{{ path('sylius_backend_order_index') }}">{{ 'sylius.breadcrumb.order.index'|trans }}</a></li>#}
     <li>#{{ order.number }}</li>
 </ol>
 {% endblock %}
@@ -17,7 +17,12 @@
     {% if not order.deleted %}
     <div class="actions-menu">
         {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}
+        {% if order.state == 7 %}
+            заказ удален. причина: {{ order.getReasonCancel() }}
+        {% endif %}
+        {% if not is_granted('ROLE_MANAGER') %}
         {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
+        {% endif %}
     </div>
     {% endif %}
     <h1>
@@ -111,8 +116,10 @@
             <th class="picture"></th>
             <th class="info">{{ 'sylius.order_item.product'|trans }}</th>
             <th class="quantity text-center">{{ 'sylius.order_item.quantity'|trans }}</th>
+            <th class="quantity text-center">Остаток</th>
             <th class="unit-price text-center">{{ 'sylius.order_item.unit_price'|trans }}</th>
             <th class="total text-right">{{ 'sylius.order_item.total'|trans }}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -139,12 +146,24 @@
                 </ul>
                 {% endif %}
             </td>
-            <td class="quantity text-center">{{ item.quantity }}</td>
+            <td class="quantity text-center">
+                <form action="{{ path('sylius_backend_order_change_quantity', {id : item.id}) }}" id="quantityForm" method="post">
+                    <input id="quantity" onchange="orderSave(this);" onkeyup="orderSave(this);" oninput="orderSave(this);" name="quantity" required="required" min="1" class="center-text form-control" value="{{ item.quantity }}" type="number">
+                </form>
+            </td>
+            <td class="onHand text-center">{{ item.variant.onHand }}</td>
             <td class="unit-price text-center">
                 {{ item.unitPrice|sylius_price('RUB') }}
             </td>
             <td class="total text-right">
                 {{ item.total|sylius_price('RUB') }}
+            </td>
+            <td>
+                <form action="{{ path('sylius_backend_order_item_delete', {id: item.id}) }}" method="post" class="delete-action-form" novalidate="" onsubmit="orderItemDelete(this); return false;">
+                    <button class="btn btn-danger btn-confirm" type="submit">
+                        <i class="glyphicon glyphicon-trash"></i> <span>Удалить</span>
+                    </button>
+                </form>
             </td>
         </tr>
         {% else %}
@@ -157,12 +176,12 @@
         {% endfor %}
     </tbody>
     <tfoot>
-        <tr>
-            <td class="active text-right" colspan="6">
-                <strong>{{ 'sylius.order.items_total'|trans }}</strong>:
-                <span class="amount">{{ order.itemsTotal|sylius_price('RUB') }}</span>
-            </td>
-        </tr>
+        {#<tr>#}
+            {#<td class="active text-right" colspan="6">#}
+                {#<strong>{{ 'sylius.order.items_total'|trans }}</strong>:#}
+                {#<span class="amount">{{ order.itemsTotal|sylius_price('RUB') }}</span>#}
+            {#</td>#}
+        {#</tr>#}
         {#<tr class="taxes">#}
             {#<td colspan="2">#}
                 {#<h5>{{ 'sylius.order.taxes'|trans }}</h5>#}

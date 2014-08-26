@@ -2,5 +2,8 @@
 
 <form method="get" action="{{ path('sylius_backend_user_index') }}" class="form-inline form-filter">
     {{ form_row(form.query) }}
+    {{ form_row(form.status) }}
+    {{ form_row(form.dateBegin) }}
+    {{ form_row(form.dateEnd) }}
     <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> {{ 'sylius.search'|trans }}</button>
 </form>

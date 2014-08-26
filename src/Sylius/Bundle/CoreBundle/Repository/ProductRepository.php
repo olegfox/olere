@@ -45,6 +45,7 @@ class ProductRepository extends VariableProductRepository
                         ->innerJoin('product.taxons', 'taxon')
                         ->leftJoin('product.variants', 'variant')
                         ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.onHand > 0')
                         ->andWhere('variant.price < :price')
                         ->andWhere('product.enabled = 0')
                         ->orderBy("product.position", $sorting["position"])
@@ -57,6 +58,7 @@ class ProductRepository extends VariableProductRepository
                         ->innerJoin('product.taxons', 'taxon')
                         ->leftJoin('product.variants', 'variant')
                         ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.onHand > 0')
                         ->andWhere('variant.priceOpt < :price')
                         ->andWhere('product.enabled = 0')
                         ->orderBy("product.position", $sorting["position"])
@@ -71,6 +73,7 @@ class ProductRepository extends VariableProductRepository
                         ->innerJoin('product.taxons', 'taxon')
                         ->leftJoin('product.variants', 'variant')
                         ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.onHand > 0')
                         ->andWhere('variant.price < :price')
                         ->andWhere('product.enabled = 0')
                         ->orderBy("product.position2", $sorting["position"])
@@ -83,6 +86,7 @@ class ProductRepository extends VariableProductRepository
                         ->innerJoin('product.taxons', 'taxon')
                         ->leftJoin('product.variants', 'variant')
                         ->andWhere('taxon = :taxon')
+                        ->andWhere('variant.onHand > 0')
                         ->andWhere('variant.priceOpt < :price')
                         ->andWhere('product.enabled = 0')
                         ->orderBy("product.position2", $sorting["position"])
@@ -96,6 +100,7 @@ class ProductRepository extends VariableProductRepository
             $queryBuilder
                 ->innerJoin('product.taxons', 'taxon')
                 ->andWhere('taxon = :taxon')
+                ->andWhere('variant.onHand > 0')
                 ->orderBy("product.name", $sorting["name"])
                 ->andWhere('product.enabled = 0')
                 ->setParameter('taxon', $taxon);
@@ -104,13 +109,16 @@ class ProductRepository extends VariableProductRepository
                 ->innerJoin('product.taxons', 'taxon')
                 ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
+                ->andWhere('variant.onHand > 0')
                 ->orderBy("variant.price", $sorting["price"])
                 ->andWhere('product.enabled = 0')
                 ->setParameter('taxon', $taxon);
         }else{
             $queryBuilder
                 ->innerJoin('product.taxons', 'taxon')
+                ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
+                ->andWhere('variant.onHand > 0')
                 ->andWhere('product.enabled = 0')
                 ->setParameter('taxon', $taxon);
         }

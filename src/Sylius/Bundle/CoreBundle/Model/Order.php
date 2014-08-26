@@ -699,6 +699,40 @@ class Order extends Cart implements OrderInterface
         return '';
     }
 
+    public function getButtonMessage()
+    {
+        switch($this->state){
+            case OrderInterface::STATE_PENDING:{
+                return "Подтвердить";
+            }break;
+            case 9:{
+                return "Оплачен";
+            }break;
+            case OrderInterface::STATE_SHIPPED:{
+                return "Отгружен";
+            }break;
+        }
+
+        return '';
+    }
+
+    public function getButtonState()
+    {
+        switch($this->state){
+            case OrderInterface::STATE_PENDING:{
+                return 9;
+            }break;
+            case 9:{
+                return OrderInterface::STATE_SHIPPED;
+            }break;
+            case OrderInterface::STATE_SHIPPED:{
+                return OrderInterface::STATE_CONFIRMED;
+            }break;
+        }
+
+        return '';
+    }
+
     public function setReasonCancel($reasonCancel)
     {
         $this->reasonCancel = $reasonCancel;
