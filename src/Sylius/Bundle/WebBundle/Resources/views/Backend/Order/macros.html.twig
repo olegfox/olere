@@ -53,11 +53,15 @@
                 {{ order.getTimeCounterOrderDay() }}
             </td>
             <td>
+                {% if order.delivery != null %}
                 {% if order.delivery == 0 %}
                     курьер
                 {% endif %}
                 {% if order.delivery == 1 %}
                     самовывоз
+                {% endif %}
+                {% else %}
+                    транспортная компания
                 {% endif %}
             </td>
             {% if order.state == 7 %}

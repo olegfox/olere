@@ -660,6 +660,10 @@ a, a:hover, a:focus{
 .form-group {
     margin-bottom: 22px;
 }
+.form-group.date select{
+    display: inline-block;
+    width: 100px;
+}
 .form-group span{
     height: 40px;
     line-height: 40px;

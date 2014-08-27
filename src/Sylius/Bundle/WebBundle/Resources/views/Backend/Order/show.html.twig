@@ -57,9 +57,10 @@
             <th>Способ доставки</th>
             <th>Адрес</th>
             <th>Транспортная компания</th>
-            <th>Дата доставки</th>
-            <th>Время доставки</th>
+            <th>{% if order.delivery == 1 %}Дата получения заказа{% else %}Дата доставки{% endif %}</th>
+            <th>{% if order.delivery == 1 %}Время получения заказа{% else %}Время доставки{% endif %}</th>
             <th>Комментарий</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -77,11 +78,15 @@
                 {{ order.city }}
             </td>
             <td>
+                {% if order.delivery != null %}
                 {% if order.delivery == 0 %}
                     курьер
                 {% endif %}
                 {% if order.delivery == 1 %}
                     самовывоз
+                {% endif %}
+                {% else %}
+                    транспортная компания
                 {% endif %}
             </td>
             <td>
@@ -104,6 +109,9 @@
             <td>
                 {{ order.comment }}
             </td>
+            <td>
+                {{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}
+            </td>
         </tr>
     </tbody>
 </table>
@@ -114,6 +122,7 @@
     <thead>
         <tr>
             <th class="picture"></th>
+            <th>Артикул</th>
             <th class="info">{{ 'sylius.order_item.product'|trans }}</th>
             <th class="quantity text-center">{{ 'sylius.order_item.quantity'|trans }}</th>
             <th class="quantity text-center">Остаток</th>
@@ -131,6 +140,11 @@
                 <a href="{{ path('sylius_backend_product_show', {'id': product.id}) }}"
                    title="View {{ product.name|escape('html_attr') }} details.">
                     <img src="{{ product.image ? product.image.path|imagine_filter('sylius_small') : 'http://placehold.it/90x60' }}" alt="" class="imgmedia-object" />
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('sylius_backend_product_show', {'id': product.id}) }}">
+                    {{ product.sku }}
                 </a>
             </td>
             <td class="info">

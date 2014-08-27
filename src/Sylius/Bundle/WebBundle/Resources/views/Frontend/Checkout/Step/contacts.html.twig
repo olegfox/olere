@@ -9,7 +9,7 @@
         <script type="text/javascript">
             window.ord = {
                 username : '{{ user.firstName }}',
-                city : '{% if user.city.id is defined %}{{ user.city.id }}{% endif %}',
+                city : '{% if user.city is defined %}{{ user.city }}{% endif %}',
                 email : '{{ user.email }}',
                 phone : '{{ user.phone }}',
                 address : '{{ user.address }}'
@@ -52,7 +52,7 @@
                             <label for="sylius_checkout_contacts_delivery_1">{{ form_widget(form.delivery[1], {attr : {'ng-model' : 'ord.delivery'} }) }} самовывоз (<a href="{{ path('sylius_page_show', {id : '/contacts'}) }}">контакты</a>)</label>
                         </div>
                     </div>
-                    <div class="form-group" ng-if="ord.delivery == 0 && ord.city == 'Москва'">
+                    <div class="form-group" ng-if="ord.delivery != 1">
                         <span class="valid"></span>{{ form_widget(form.address) }}<span>*</span>
                     </div>
                     <div class="form-group" ng-if="ord.city != 'Москва' && ord.city != null">
@@ -62,15 +62,22 @@
                         <span class="valid"></span>{{ form_widget(form.username) }}<span>*</span>
                     </div>
                     <div class="form-group date">
-                        <div class="form-control border-null">
+                        <div class="form-control border-null" ng-hide="ord.delivery == 1">
                             Дата доставки
                         </div>
+                        <div class="form-control border-null" ng-show="ord.delivery == 1">
+                            Дата получения заказа
+                        </div>
                         <br>
-                        <span class="valid"></span>{{ form_widget(form.date) }}
+                        <span class="valid"></span>
+                        {{ form_widget(form.date.day) }}{{ form_widget(form.date.month) }}{{ form_widget(form.date.year) }}
                     </div>
                     <div class="form-group time">
-                        <div class="form-control border-null">
+                        <div class="form-control border-null" ng-hide="ord.delivery == 1">
                             Время доставки
+                        </div>
+                        <div class="form-control border-null" ng-show="ord.delivery == 1">
+                            Время получения заказа
                         </div>
                         <br>
                         <span class="valid"></span>{{ form_widget(form.time) }}

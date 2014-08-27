@@ -16,6 +16,7 @@
     {% block stylesheets %}
         <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" type="text/css"/>
+        {#<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" />#}
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
               type="text/css"/>
         {% stylesheets output='assets/compiled/frontend.css' filter='cssrewrite'
@@ -160,6 +161,8 @@
 {% block javascripts %}
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    {#<script type="text/javascript" src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>#}
     {#<script type="text/javascript" src="{{ asset('js/fixed.menu.after.scroll.js') }}"></script>#}
     {#{% if app.request.attributes.get('_route') != 'sylius_homepage' %}#}
         {#<script type="text/javascript" src="{{ asset('js/menu.resize.scroll.js') }}"></script>#}

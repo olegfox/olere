@@ -149,8 +149,8 @@ class ProductRepository extends VariableProductRepository
         }
         if (!empty($criteria['sku'])) {
             $queryBuilder
-                ->andWhere('variant.sku = :sku')
-                ->setParameter('sku', $criteria['sku']);
+                ->andWhere('variant.sku LIKE :sku')
+                ->setParameter('sku', '%'.$criteria['sku'].'%');
         }
         if (!empty($criteria['priceBegin'])) {
             $queryBuilder

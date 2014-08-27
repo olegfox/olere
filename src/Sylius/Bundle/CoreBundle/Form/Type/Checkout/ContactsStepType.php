@@ -99,7 +99,7 @@ class ContactsStepType extends AbstractType
             ))
             ->add('date', 'date', array(
                 'widget' => 'choice',
-                'years' => range(Date('Y'), 2014)
+                'data' => new \DateTime()
             ))
             ->add('time', 'choice', array(
                 'required' => '',

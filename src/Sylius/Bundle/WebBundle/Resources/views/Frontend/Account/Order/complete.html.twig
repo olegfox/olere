@@ -3,5 +3,9 @@
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 
 {% block content %}
-    <div class="col-md-12">{{ alerts.info('Ваш заказ успешно оформлен. Номер заказа – '~order.number~', Сумма заказа – '~order.total|sylius_price(order.currency)~'. В ближайшее время менеджер свяжется с Вами для подтверждения заказа.') }}</div>
+    {% if order.delivery == 1 %}
+        <div class="col-md-12">{{ alerts.info('Ваш заказ успешно оформлен. Номер заказа – '~order.number~', Сумма заказа – '~order.total|sylius_price(order.currency)~'. Для подтверждения даты заказа с вами свяжется менеджер.') }}</div>
+    {% else %}
+        <div class="col-md-12">{{ alerts.info('Ваш заказ успешно оформлен. Номер заказа – '~order.number~', Сумма заказа – '~order.total|sylius_price(order.currency)~'. В ближайшее время менеджер свяжется с Вами для подтверждения заказа.') }}</div>
+    {% endif %}
 {% endblock %}
