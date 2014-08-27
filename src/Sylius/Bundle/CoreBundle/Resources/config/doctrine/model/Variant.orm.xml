@@ -21,9 +21,14 @@
         <field name="skuCode" column="skuCode" type="string" nullable="true" />
         <field name="price" column="price" type="integer" nullable="true" />
         <field name="priceOpt" column="priceOpt" type="integer" nullable="true" />
+        <field name="priceSale" column="priceSale" type="integer" nullable="true" />
         <field name="onHold" column="on_hold" type="integer" />
         <field name="onHand" column="on_hand" type="integer" />
         <field name="availableOnDemand" column="available_on_demand" type="boolean" />
+        <field name="flagSale" column="flag_sale" type="boolean" nullable="true" />
+        <field name="metal" column="metal" type="string" nullable="true" />
+        <field name="box" column="box" type="string" nullable="true" />
+        <field name="size" column="size" type="float" nullable="true" />
 
         <field name="width" column="width" type="float" nullable="true" />
         <field name="height" column="height" type="float" nullable="true" />

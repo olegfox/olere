@@ -178,6 +178,15 @@ class HomepageController extends Controller
         ));
     }
 
+    public function silverAction(Request $request){
+        $repositoryPage = $this->get('sylius.repository.page');
+
+        $page = $repositoryPage->findPage('silverBlock');
+        return $this->render('SyliusWebBundle:Frontend/Homepage:silver.html.twig', array(
+            'page' => $page
+        ));
+    }
+
     /**
      * Store front page.
      *

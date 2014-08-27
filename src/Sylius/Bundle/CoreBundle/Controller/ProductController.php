@@ -60,6 +60,30 @@ class ProductController extends ResourceController
         ));
     }
 
+    public function silverAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $collections = array();
+        $taxons = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.taxonomy = 9
+            '
+        )->getResult();
+
+        foreach($taxons as $taxon){
+            foreach($taxon->getProducts() as $product){
+                if($product->getMasterVariant()->getMetal() == "серебро"){
+                    $collections[] = $taxon;
+                    break;
+                }
+            }
+        }
+
+        return $this->render('SyliusWebBundle:Frontend/Taxon:silver.html.twig', array(
+            'collections' => $collections
+        ));
+    }
+
     public function importIndexAction(Request $request)
     {
         set_time_limit(0);
@@ -105,8 +129,15 @@ class ProductController extends ResourceController
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
                     $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
                     $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
-                    $price = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
+                    $depth = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $priceSale = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
+                    $metal = $objPHPExcel->getActiveSheet()->getCell('L' . $row)->getValue();
+                    $box = $objPHPExcel->getActiveSheet()->getCell('M' . $row)->getValue();
+                    $size = $objPHPExcel->getActiveSheet()->getCell('N' . $row)->getValue();
+                    $weight = $objPHPExcel->getActiveSheet()->getCell('O' . $row)->getValue();
+                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('P' . $row)->getValue();
+                    $price = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
+                    $flagSale = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue();
                     $product = $em->createQuery(
                         'SELECT p FROM
                          Sylius\Bundle\CoreBundle\Model\Product p
@@ -169,11 +200,18 @@ class ProductController extends ResourceController
                             $product->setDescription($description);
                             $product->setPrice($price * 100);
                             $product->setPriceOpt($priceOpt * 100);
+                            $product->setPriceSale($priceSale * 100);
                             if (count($taxs) > 0) {
                                 $product->setTaxons($taxs);
                             }
                             $product->getMasterVariant()->setSku($articul);
                             $product->getMasterVariant()->setSkuCode($codeArticul);
+                            $product->getMasterVariant()->setDepth($depth);
+                            $product->getMasterVariant()->setMetal($metal);
+                            $product->getMasterVariant()->setBox($box);
+                            $product->getMasterVariant()->setSize($size);
+                            $product->getMasterVariant()->setWeight($weight);
+                            $product->getMasterVariant()->setFlagSale($flagSale);
 
 
                             /* Add product property */
@@ -515,13 +553,23 @@ class ProductController extends ResourceController
     function indexByTaxonAction(Request $request, $page, $category)
     {
         $routeName = $request->get('_route');
-        $price = "any";
+        $filter = array(
+            'price' => 'any',
+            'material' => 'any',
+            'weight' => 'any',
+            'depth' => 'any',
+            'box' => 'any',
+            'size' => 'any'
+        );
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
         $type = 1;
 //        }
-        if ($request->get('price') != null) {
-            $price = $request->get('price');
+        if ($request->get('filter') != null) {
+            $filterArray = $request->get('filter');
+            foreach($filterArray as $key=>$f){
+                $filter[$key] = $f;
+            }
         }
         $em = $this->getDoctrine()->getManager();
         if ($routeName == 'sylius_product_index_by_taxon') {
@@ -555,7 +603,7 @@ class ProductController extends ResourceController
             $collections = $this->get('sylius.repository.taxon')->findBy(array("parent" => $taxon->getId()));
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $price, $type);
+                ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
 
             $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -565,7 +613,7 @@ class ProductController extends ResourceController
                 'taxon' => $taxon,
                 'products' => $paginator,
                 'groups' => $groups,
-                'price' => $price,
+                'filter' => $filter,
                 'taxons' => $taxons
             ));
         }
@@ -577,7 +625,7 @@ class ProductController extends ResourceController
         if ($page != 'all') {
             $paginator = $this
                 ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $price, $type);
+                ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
 
             $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -592,7 +640,7 @@ class ProductController extends ResourceController
             'groups' => $groups,
             'page' => $page,
             'taxons' => $taxons,
-            'price' => $price
+            'filter' => $filter
         ));
     }
 

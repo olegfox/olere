@@ -52,6 +52,13 @@ class Variant extends BaseVariant implements VariantInterface
     protected $priceOpt;
 
     /**
+     * The variant priceSale.
+     *
+     * @var integer
+     */
+    protected $priceSale;
+
+    /**
      * On hold.
      *
      * @var integer
@@ -106,6 +113,14 @@ class Variant extends BaseVariant implements VariantInterface
      * @var float
      */
     protected $depth;
+
+    protected $flagSale;
+
+    protected $metal;
+
+    protected $box;
+
+    protected $size;
 
     /**
      * Override constructor to set on hand stock.
@@ -443,5 +458,95 @@ class Variant extends BaseVariant implements VariantInterface
     public function getShippingDepth()
     {
         return $this->getDepth();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriceSale()
+    {
+        return $this->priceSale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPriceSale($priceSale)
+    {
+        $this->priceSale = $priceSale;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFlagSale()
+    {
+        return $this->flagSale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFlagSale($flagSale)
+    {
+        $this->flagSale = $flagSale;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetal()
+    {
+        return $this->metal;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetal($metal)
+    {
+        $this->metal = $metal;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBox()
+    {
+        return $this->box;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setBox($box)
+    {
+        $this->box = $box;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
     }
 }

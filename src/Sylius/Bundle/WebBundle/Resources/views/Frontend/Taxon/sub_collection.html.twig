@@ -5,7 +5,7 @@
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
 
 {% block border %}
-    <div class="borderHead"></div>
+    <div class="borderHead filter"></div>
 {% endblock %}
 
 {#{% macro while(taxon) %}#}
@@ -18,13 +18,7 @@
 
 {% block content %}
     <div class="catalog">
-        <div class="head">
-            {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
-                <a href="{{ path("sylius_collections") }}">Коллекции</a> / {{ taxon.name }}
-            {% else %}
-                <a href="{{ path("sylius_catalog") }}">Каталог</a> / {{ taxon.name }}
-            {% endif %}
-        </div>
+        {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
         {{ gridSub(collections) }}
         {{ grid(products, groups) }}
         {{ pagination(products) }}

@@ -42,5 +42,14 @@ function preview(original, image, name){
 function filter(category){
     var cat = $(".filter #type").val();
     var price = $(".filter #price").val();
-    window.location.href = "/"+category+"/1/"+cat+"?price="+price;
+    var material = $(".filter #material").val();
+    var weight = $(".filter #weight").val();
+    var depth = $(".filter #depth").val();
+    var box = $(".filter #box").val();
+    var size = $(".filter #size").val();
+    var href = "/"+category+"/1/"+cat+"?filter[price]="+price+"&filter[material]="+material+"&filter[weight]="+weight;
+    href = href + "&filter[depth]="+depth;
+    href = href + "&filter[box]="+box;
+    href = href + "&filter[size]="+size;
+    window.location.href = href;
 }

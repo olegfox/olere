@@ -61,9 +61,17 @@ sylius_collections_main:
     defaults:
         _controller: sylius.controller.product:collectionsAction
 
+sylius_silver_main:
+    pattern: /silver_
+    defaults: { _controller: sylius.controller.product:silverAction }
+
 sylius_collections:
     pattern: /collections
     defaults: { _controller: sylius.controller.frontend.homepage:collectionsAction}
+
+sylius_silver:
+    pattern: /silver
+    defaults: { _controller: sylius.controller.frontend.homepage:silverAction}
 
 sylius_feedback:
     pattern: /feedback

@@ -305,7 +305,7 @@ a, a:hover, a:focus{
     font-family: "Calibri";
     font-size: 18px;
     text-transform: uppercase;
-    height: 40px;
+    height: 80px;
     line-height: 40px;
 }
 .catalog .head.filter select{
@@ -340,7 +340,7 @@ a, a:hover, a:focus{
     z-index: 0;
 }
 .borderHead.filter{
-    height: 40px;
+    height: 80px;
 }
 .borderHead2{
     position: absolute;

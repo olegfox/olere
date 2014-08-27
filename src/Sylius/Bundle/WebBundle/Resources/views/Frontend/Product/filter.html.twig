@@ -1,0 +1,87 @@
+<div class="head filter">
+    <div class="type">
+                <span>
+                    {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
+                        {% set category = 'catalog' %}
+                        тип украшения:
+                    {% else %}
+                        {% set category = 'collections' %}
+                        коллекция:
+                    {% endif %}
+                </span>
+        <select name="" id="type" onchange="filter('{{ category }}');">
+            {% for t in taxons %}
+                <option value="{{ t.slug }}" {% if taxon.id == t.id %}selected="selected"{% endif %}>{{ t.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="price">
+        <span>цена:</span>
+        <select name="" id="price" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>любая</option>
+            <option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>
+            <option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>
+            <option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>
+            <option value="500" {% if filter.price == 500 %}selected="selected"{% endif %}>до 500 руб</option>
+            <option value="700" {% if filter.price == 700 %}selected="selected"{% endif %}>до 700 руб</option>
+            <option value="1000" {% if filter.price == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>
+            <option value="1500" {% if filter.price == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>
+            <option value="1700" {% if filter.price == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>
+            <option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>
+        </select>
+    </div>
+    <div class="material">
+        <span>материал:</span>
+        <select name="" id="material" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.material == "any" %}selected="selected"{% endif %}>любой</option>
+            <option value="серебро" {% if filter.material == "серебро" %}selected="selected"{% endif %}>серебро</option>
+        </select>
+    </div>
+    <div class="weight">
+        <span>вес:</span>
+        <select name="" id="weight" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.weight == "any" %}selected="selected"{% endif %}>любой</option>
+            {% for i in 0..100 %}
+                {% set i = i + 10 %}
+                <option value="{{ i }}" {% if filter.weight == i %}selected="selected"{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="depth">
+        <span>глубина:</span>
+        <select name="" id="depth" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.depth == "any" %}selected="selected"{% endif %}>любая</option>
+            {% for i in 0..50 %}
+                {% set i = i + 5 %}
+                <option value="{{ i }}" {% if filter.depth == i %}selected="selected"{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="box">
+        <span>вставка:</span>
+        <select name="" id="box" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>
+            <option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>
+            <option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>
+        </select>
+    </div>
+    <div class="size">
+        <span>размерность:</span>
+        <select name="" id="size" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.size == "any" %}selected="selected"{% endif %}>любая</option>
+            <option value="0" {% if filter.size == '0' %}selected="selected"{% endif %}>0</option>
+            <option value="15" {% if filter.size == 15 %}selected="selected"{% endif %}>15</option>
+            <option value="15.5" {% if filter.size == 15.5 %}selected="selected"{% endif %}>15.5</option>
+            <option value="16" {% if filter.size == 16 %}selected="selected"{% endif %}>16</option>
+            <option value="16.5" {% if filter.size == 16.5 %}selected="selected"{% endif %}>16.5</option>
+            <option value="17" {% if filter.size == 17 %}selected="selected"{% endif %}>17</option>
+            <option value="17.5" {% if filter.size == 17.5 %}selected="selected"{% endif %}>17.5</option>
+            <option value="18" {% if filter.size == 18 %}selected="selected"{% endif %}>18</option>
+            <option value="18.5" {% if filter.size == 18.5 %}selected="selected"{% endif %}>18.5</option>
+            <option value="19" {% if filter.size == 19 %}selected="selected"{% endif %}>19</option>
+            <option value="19.5" {% if filter.size == 19.5 %}selected="selected"{% endif %}>19.5</option>
+            <option value="20" {% if filter.size == 20 %}selected="selected"{% endif %}>20</option>
+            <option value="20.5" {% if filter.size == 20.5 %}selected="selected"{% endif %}>20.5</option>
+        </select>
+    </div>
+</div>

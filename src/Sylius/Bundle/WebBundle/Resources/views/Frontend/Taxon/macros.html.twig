@@ -2,6 +2,10 @@
 
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}{% if collections[0].getTaxons()|length > 0 %}<div class="boxes">{% endif %}{% for t in collections[0].getTaxons() %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBox.html.twig' %}{% endfor %}{% if collections[0].getTaxons()|length > 0 %}</div>{% endif %}{% endmacro %}
 
+{% macro gridSilver(collections) %}
+
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}<div class="boxes">{% for t in collections %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBoxSilver.html.twig' %}{% endfor %}</div>{% endmacro %}
+
 {% macro gridSub(collections, size = 4) %}
 
     {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}<div class="boxes">{% for t in collections %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBoxSub.html.twig' %}{% endfor %}</div>{% endmacro %}
