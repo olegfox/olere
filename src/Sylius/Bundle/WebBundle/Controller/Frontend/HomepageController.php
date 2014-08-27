@@ -75,9 +75,9 @@ class HomepageController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Olere')
-                ->setFrom(array('info@olere.ru' => "Olere"))
+                ->setFrom(array('order@olere.ru' => "Olere"))
 //                ->setTo('info@olere.ru')
-                ->setTo('info@olere.ru')
+                ->setTo('order@olere.ru')
                 ->setBody(
                     $this->renderView(
                         'SyliusWebBundle:Email:feedback.html.twig',
