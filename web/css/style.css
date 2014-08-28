@@ -303,14 +303,14 @@ a, a:hover, a:focus{
 }
 .catalog .head.filter{
     font-family: "Calibri";
-    font-size: 18px;
+    font-size: 17px;
     text-transform: uppercase;
-    height: 80px;
+    height: 40px;
     line-height: 40px;
 }
 .catalog .head.filter select{
     font-family: "Calibri"!important;
-    font-size: 18px!important;
+    font-size: 17px!important;
     text-transform: uppercase!important;
     border: solid 1px #aeaeae;
     height: 26px;
@@ -340,7 +340,7 @@ a, a:hover, a:focus{
     z-index: 0;
 }
 .borderHead.filter{
-    height: 80px;
+    height: 40px;
 }
 .borderHead2{
     position: absolute;
@@ -421,7 +421,7 @@ a, a:hover, a:focus{
     text-align: center;
 }
 .catalog .nameBox .stickerPrices{
-    padding: 10px;
+    padding: 5px 8px 5px 8px;
     background: #000;
     color: #fff;
     margin-top: 5px;
@@ -1169,7 +1169,7 @@ a.btn-lg:hover{
     display: inline-block;
 }
 .filter.head div.type{
-    margin-right: 30px;
+    margin-right: 0px;
 }
 /* end filter */
 div.form-horizontal{

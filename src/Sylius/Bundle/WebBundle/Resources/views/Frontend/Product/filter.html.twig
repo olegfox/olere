@@ -49,24 +49,24 @@
             {% endfor %}
         </select>
     </div>
-    <div class="depth">
-        <span>глубина:</span>
-        <select name="" id="depth" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.depth == "any" %}selected="selected"{% endif %}>любая</option>
-            {% for i in 0..50 %}
-                {% set i = i + 5 %}
-                <option value="{{ i }}" {% if filter.depth == i %}selected="selected"{% endif %}>{{ i }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="box">
-        <span>вставка:</span>
-        <select name="" id="box" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>
-            <option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>
-            <option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>
-        </select>
-    </div>
+    {#<div class="depth">#}
+        {#<span>глубина:</span>#}
+        {#<select name="" id="depth" onchange="filter('{{ category }}');">#}
+            {#<option value="any" {% if filter.depth == "any" %}selected="selected"{% endif %}>любая</option>#}
+            {#{% for i in 0..50 %}#}
+                {#{% set i = i + 5 %}#}
+                {#<option value="{{ i }}" {% if filter.depth == i %}selected="selected"{% endif %}>{{ i }}</option>#}
+            {#{% endfor %}#}
+        {#</select>#}
+    {#</div>#}
+    {#<div class="box">#}
+        {#<span>вставка:</span>#}
+        {#<select name="" id="box" onchange="filter('{{ category }}');">#}
+            {#<option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>#}
+            {#<option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>#}
+            {#<option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>#}
+        {#</select>#}
+    {#</div>#}
     <div class="size">
         <span>размерность:</span>
         <select name="" id="size" onchange="filter('{{ category }}');">

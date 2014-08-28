@@ -65,18 +65,18 @@ class ProductRepository extends VariableProductRepository
                     ->andWhere('variant.weight < :weight');
             }
         }
-        if (isset($filter['depth'])) {
-            if ($filter['depth'] != 'any') {
-                $queryBuilder
-                    ->andWhere('variant.depth < :depth');
-            }
-        }
-        if (isset($filter['box'])) {
-            if ($filter['box'] != 'any') {
-                $queryBuilder
-                    ->andWhere('variant.box LIKE :box');
-            }
-        }
+//        if (isset($filter['depth'])) {
+//            if ($filter['depth'] != 'any') {
+//                $queryBuilder
+//                    ->andWhere('variant.depth < :depth');
+//            }
+//        }
+//        if (isset($filter['box'])) {
+//            if ($filter['box'] != 'any') {
+//                $queryBuilder
+//                    ->andWhere('variant.box LIKE :box');
+//            }
+//        }
         if (isset($filter['size'])) {
             if ($filter['size'] != 'any') {
                 $queryBuilder
@@ -141,18 +141,18 @@ class ProductRepository extends VariableProductRepository
                         ->andWhere('variant.weight < :weight');
                 }
             }
-            if (isset($filter['depth'])) {
-                if ($filter['depth'] != 'any') {
-                    $queryBuilder
-                        ->andWhere('variant.depth < :depth');
-                }
-            }
-            if (isset($filter['box'])) {
-                if ($filter['box'] != 'any') {
-                    $queryBuilder
-                        ->andWhere('variant.box LIKE :box');
-                }
-            }
+//            if (isset($filter['depth'])) {
+//                if ($filter['depth'] != 'any') {
+//                    $queryBuilder
+//                        ->andWhere('variant.depth < :depth');
+//                }
+//            }
+//            if (isset($filter['box'])) {
+//                if ($filter['box'] != 'any') {
+//                    $queryBuilder
+//                        ->andWhere('variant.box LIKE :box');
+//                }
+//            }
             if (isset($filter['size'])) {
                 if ($filter['size'] != 'any') {
                     $queryBuilder

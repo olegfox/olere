@@ -557,8 +557,8 @@ class ProductController extends ResourceController
             'price' => 'any',
             'material' => 'any',
             'weight' => 'any',
-            'depth' => 'any',
-            'box' => 'any',
+//            'depth' => 'any',
+//            'box' => 'any',
             'size' => 'any'
         );
         $type = 0;
