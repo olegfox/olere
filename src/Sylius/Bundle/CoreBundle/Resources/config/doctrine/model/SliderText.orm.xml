@@ -9,6 +9,9 @@
             <generator strategy="AUTO" />
         </id>
 
+        <field name="enable" column="enable" type="boolean">
+        </field>
+
         <field name="text" column="text" type="text">
         </field>
 

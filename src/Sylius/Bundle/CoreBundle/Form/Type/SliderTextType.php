@@ -28,9 +28,16 @@ class SliderTextType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('enable', 'choice', array(
+                'label'    => 'Включить?',
+                'choices' => array(
+                    0 => 'Да',
+                    1 => 'Нет'
+                )
+            ))
             ->add('text', 'textarea', array(
                 'required' => false,
-                'label'    => 'Текст',
+                'label'    => 'Текст'
             ))
         ;
     }

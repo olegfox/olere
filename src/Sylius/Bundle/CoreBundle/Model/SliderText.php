@@ -8,6 +8,8 @@ class SliderText
 
     protected $text;
 
+    protected $enable;
+
     public function getId()
     {
         return $this->id;
@@ -21,6 +23,18 @@ class SliderText
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getEnable()
+    {
+        return $this->enable;
+    }
+
+    public function setEnable($enable)
+    {
+        $this->enable = $enable;
 
         return $this;
     }
