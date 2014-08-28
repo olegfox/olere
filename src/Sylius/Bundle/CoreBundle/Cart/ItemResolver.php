@@ -150,14 +150,17 @@ class ItemResolver implements ItemResolverInterface
             throw new ItemResolvingException('Submitted form is invalid.');
         }
 
-
-        $price = $variant->getPriceOpt();
-        $sale = $this->saleRepository->findOneBy(array('taxonId' => $taxonId));
-        if($sale){
-            if(1 == $sale->getTypePrice() || 0 == $sale->getTypePrice()){
-                $price = $price - $price*$sale->getPercent()/100;
-            }
+        if($variant->getFlagSale() == 1){
+            $price = $variant->getPriceSale();
+        }else{
+            $price = $variant->getPriceOpt();
         }
+//        $sale = $this->saleRepository->findOneBy(array('taxonId' => $taxonId));
+//        if($sale){
+//            if(1 == $sale->getTypePrice() || 0 == $sale->getTypePrice()){
+//                $price = $price - $price*$sale->getPercent()/100;
+//            }
+//        }
 
 
 

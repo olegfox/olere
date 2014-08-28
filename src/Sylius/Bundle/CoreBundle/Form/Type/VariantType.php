@@ -42,6 +42,10 @@ class VariantType extends BaseVariantType
             ->add('priceOpt', 'sylius_money', array(
                 'label' => 'sylius.form.variant.priceOpt'
             ))
+            ->add('priceSale', 'sylius_money', array(
+                'label' => 'Цена со скидкой',
+                'required' => false
+            ))
             ->add('availableOnDemand', 'checkbox', array(
                 'label' => 'sylius.form.variant.available_on_demand'
             ))
@@ -57,6 +61,26 @@ class VariantType extends BaseVariantType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'label'        => 'sylius.form.variant.images'
+            ))
+            ->add('metal', 'text', array(
+                'required' => false,
+                'label'    => 'Материал'
+            ))
+            ->add('box', 'text', array(
+                'required' => false,
+                'label'    => 'Вставка'
+            ))
+            ->add('size', 'number', array(
+                'required' => false,
+                'label'    => 'Размерность'
+            ))
+            ->add('flagSale', 'choice', array(
+                'required' => false,
+                'label'    => 'Активна скидка?',
+                'choices' => array(
+                    0 => 'Нет',
+                    1 => 'Да'
+                )
             ))
             ->add('width', 'number', array(
                 'required' => false,

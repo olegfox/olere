@@ -28,6 +28,9 @@
         <div class="wrap_product">
         <div class="wrap_description">
             <div class="description">
+                <div class="onHand">
+                    НАЛИЧИЕ НА СКЛАДЕ {{ product.masterVariant.onHand }} ШТ.
+                </div>
                 {% for property in product.properties %}
                     {{ property.name }}: {{ property.value }}<br><br>
                 {% endfor %}
@@ -56,10 +59,10 @@
                 Артикул: {{ product.sku }}
             </div>
             <div class="price">
-                Цена: {{ showPrice(product, groups, taxon) }}
+                Цена: {{ showPrice(product, groups) }}
             </div>
             {% set form = sylius_cart_form({'product': product}) %}
-            <form action="{{ path('sylius_cart_item_add', {'id': product.id, 'taxon': taxon.id}) }}" method="post"
+            <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
                   class="clearfix form-horizontal">
                 {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
                 {% else %}

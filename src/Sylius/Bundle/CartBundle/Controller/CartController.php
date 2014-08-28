@@ -59,6 +59,7 @@ class CartController extends Controller
     public function saveAction(Request $request)
     {
         $cart = $this->getCurrentCart();
+
         $form = $this->createForm('sylius_cart', $cart);
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
             $event = new CartEvent($cart);

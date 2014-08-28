@@ -1,24 +1,29 @@
-{% macro price(product, group, taxon) %}
+{% macro price(product, group) %}
     {% if group.showPrice == 0 %}
         <div class="retail{% if group.showOptPrice != 0 %} one{% endif %}">
-            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{% if taxon.id is not defined %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : product.taxons[0].id})) }}{% else %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 0, 'taxon' : taxon.id})) }}{% endif %}
+            {% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{{ product.price|sylius_price }}
         </div>
     {% endif %}
     {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
         <div class="opt{% if group.showPrice != 0 %} one{% endif %}">
-        Опт. {% if taxon.id is not defined %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : product.taxons[0].id})) }}{% else %}{{ render(url('sylius_product_get_price', {'id' : product.id, 'type' : 1, 'taxon' : taxon.id})) }}{% endif %}
+        Опт. {{ product.priceOpt|sylius_price }}
+        </div>
+    {% endif %}
+    {% if product.masterVariant.flagSale == 1 %}
+        <div class="stickerPrices">
+           SALE. {{ product.priceSale|sylius_price }}
         </div>
     {% endif %}
 {% endmacro %}
 
-{% macro showPrice(product, groups, taxon) %}
+{% macro showPrice(product, groups) %}
     {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import price %}
     {% if is_granted('ROLE_USER_OPT') %}
-        {{ price(product, groups[0], taxon) }}
-    {% elseif is_granted('ROLE_USER', taxon) %}
-        {{ price(product, groups[1], taxon) }}
+        {{ price(product, groups[0]) }}
+    {% elseif is_granted('ROLE_USER') %}
+        {{ price(product, groups[1]) }}
     {% else %}
-        {{ price(product, groups[2], taxon) }}
+        {{ price(product, groups[2]) }}
     {% endif %}
 {% endmacro %}
 

@@ -260,12 +260,12 @@ class BackendMenuBuilder extends MenuBuilder
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
         ))->setLabel('Выполненные');
 
-        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
-            $child->addChild('sales', array(
-                'route' => 'sylius_backend_sale_index',
-                'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
-            ))->setLabel('Скидки');
-        }
+//        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
+//            $child->addChild('sales', array(
+//                'route' => 'sylius_backend_sale_index',
+//                'labelAttributes' => array('icon' => 'glyphicon glyphicon-shopping-cart'),
+//            ))->setLabel('Скидки');
+//        }
 //        $child->addChild('shipments', array(
 //            'route' => 'sylius_backend_shipment_index',
 //            'labelAttributes' => array('icon' => 'glyphicon glyphicon-plane'),

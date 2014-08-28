@@ -30,6 +30,78 @@ class ProductRepository extends VariableProductRepository
      *
      * @return PagerfantaInterface
      */
+
+    public function createBySalePaginator($filter)
+    {
+        if (isset($filter['price'])) {
+            if ($filter['price'] == 'any') {
+                $filter['price'] = 10000000;
+            } else {
+                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
+                    $filter['price'] = $filter['price'] * 100;
+                }
+            }
+        }
+        $queryBuilder = $this->getCollectionQueryBuilder();
+        $params = array();
+
+        foreach ($filter as $key => $f) {
+            if ($f != 'any' && $f != 'asc' && $f != 'desc') {
+                $params[$key] = $f;
+            }
+        }
+
+        $queryBuilder
+            ->innerJoin('product.variants', 'variant')
+            ->andWhere('variant.onHand > 0')
+            ->andWhere('variant.flagSale = 1');
+        if ($filter['material'] != 'any') {
+            $queryBuilder
+                ->andWhere('variant.metal LIKE :material');
+        }
+        if (isset($filter['weight'])) {
+            if ($filter['weight'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.weight < :weight');
+            }
+        }
+        if (isset($filter['depth'])) {
+            if ($filter['depth'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.depth < :depth');
+            }
+        }
+        if (isset($filter['box'])) {
+            if ($filter['box'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.box LIKE :box');
+            }
+        }
+        if (isset($filter['size'])) {
+            if ($filter['size'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.size = :size');
+            }
+        }
+        $queryBuilder
+            ->andWhere('product.enabled = 0');
+        if (isset($filter['price'])) {
+            if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
+                $queryBuilder
+                    ->orderBy('variant.priceSale', $filter['price']);
+            } else {
+                $queryBuilder
+                    ->andWhere('variant.priceSale < :price');
+            }
+        }
+
+        $queryBuilder
+            ->setParameters($params);
+
+
+        return $this->getPaginator($queryBuilder);
+    }
+
     public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter, $type = 0)
     {
         if (isset($filter['price'])) {

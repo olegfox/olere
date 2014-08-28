@@ -113,13 +113,13 @@ class FrontendMenuBuilder extends MenuBuilder
             $id = str_replace("/", "", $page->getId());
             if ($id == 'catalog') {
                 $pagemenu[$id] = array(
-                    "name" => "Каталог",
+                    "name" => $page->getTitle(),
                     "route" => "sylius_catalog",
                     "routeParameters" => array()
                 );
             } elseif ($id == 'collections') {
                 $pagemenu[$id] = array(
-                    "name" => "Коллекции",
+                    "name" => $page->getTitle(),
                     "route" => "sylius_collections",
                     "routeParameters" => array()
                 );

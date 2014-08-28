@@ -65,6 +65,10 @@ sylius_silver_main:
     pattern: /silver_
     defaults: { _controller: sylius.controller.product:silverAction }
 
+sylius_sale:
+    pattern: /sale/{page}
+    defaults: { _controller: sylius.controller.product:saleAction}
+
 sylius_collections:
     pattern: /collections
     defaults: { _controller: sylius.controller.frontend.homepage:collectionsAction}

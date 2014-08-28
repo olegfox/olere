@@ -5,7 +5,7 @@
                 <div class="nameBox">
                     <div class="name">{{ product.name }}</div>
                     <div class="price">
-                        {{ showPrice(product, groups, taxon) }}
+                        {{ showPrice(product, groups) }}
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@
             <div class="bottomBox clickBox">
                 <div class="articul">АРТ: {{ product.getSku() }}</div>
                 {% set form = sylius_cart_form({'product': product}) %}
-                <form action="{% if taxon.id is not defined %}{{ path('sylius_cart_item_add', {'id': product.id, 'taxon': product.taxons[0].id}) }}{% else %}{{ path('sylius_cart_item_add', {'id': product.id, 'taxon': taxon.id}) }}{% endif %}" method="post"
+                <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
                       class="clearfix form-horizontal">
                     {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
                     {% else %}
@@ -42,9 +42,10 @@
             <div class="descriptionBox clickBox">
                 {#<div class="header">Дополнительная информация:</div>#}
                 <div class="property">
-                    {% for property in product.properties %}
-                        {{ property.name }}: {{ property.value }}<br>
-                    {% endfor %}
+                    {#{% for property in product.properties %}#}
+                        {#{{ property.name }}: {{ property.value }}<br>#}
+                    {#{% endfor %}#}
+                    НАЛИЧИЕ НА СКЛАДЕ {{ product.masterVariant.onHand }} ШТ.
                 </div>
             </div>
         </div>

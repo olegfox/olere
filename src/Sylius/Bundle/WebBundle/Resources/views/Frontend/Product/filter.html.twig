@@ -1,4 +1,5 @@
 <div class="head filter">
+    {% if taxons is defined %}
     <div class="type">
                 <span>
                     {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
@@ -15,6 +16,7 @@
             {% endfor %}
         </select>
     </div>
+    {% endif %}
     <div class="price">
         <span>цена:</span>
         <select name="" id="price" onchange="filter('{{ category }}');">

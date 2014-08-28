@@ -17,17 +17,24 @@
             {#{{ form_row(form.masterVariant.availableOnDemand) }}#}
             {{ form_row(form.masterVariant.price) }}
             {{ form_row(form.masterVariant.priceOpt) }}
+            {{ form_row(form.masterVariant.priceSale) }}
             {{ form_row(form.masterVariant.onHand) }}
             <hr />
             <div class="hide">{{ form_row(form.taxCategory) }}
             {{ form_row(form.shippingCategory) }}
             </div>
         </div>
+        <div class="col-md-6">
+            {{ form_row(form.masterVariant.depth) }}
+            {{ form_row(form.masterVariant.weight) }}
+            {{ form_row(form.masterVariant.metal) }}
+            {{ form_row(form.masterVariant.box) }}
+            {{ form_row(form.masterVariant.size) }}
+            {{ form_row(form.masterVariant.flagSale) }}
+        </div>
         <div class="col-md-6 hide">
             {{ form_row(form.masterVariant.width) }}
             {{ form_row(form.masterVariant.height) }}
-            {{ form_row(form.masterVariant.depth) }}
-            {{ form_row(form.masterVariant.weight) }}
             <hr />
             {{ form_row(form.restrictedZone) }}
             {{ form_row(form.variantSelectionMethod) }}

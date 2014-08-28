@@ -51,45 +51,62 @@ class CartItemController extends Controller
      */
     public function addAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $id = $request->get('id');
+        $repositoryProduct = $this->container->get('sylius.repository.product');
+        $product = $repositoryProduct->find($id);
+        $onHand = $product->getMasterVariant()->getOnHand();
         $cart = $this->getCurrentCart();
-        $emptyItem = $this->createNew();
+        $flag = 0;
+        foreach($cart->getItems() as $item){
+            if($item->getVariant()->getId() == $product->getMasterVariant()->getId()){
+                if($item->getQuantity() >= $onHand){
+                    $flag = 1;
+                    break;
+                }
+            }
+        }
+        if ($request->get('sylius_cart_item')['quantity'] <= $onHand && $flag == 0) {
+            $emptyItem = $this->createNew();
 
-        $eventDispatcher = $this->getEventDispatcher();
+            $eventDispatcher = $this->getEventDispatcher();
 
-        try {
-            $item = $this->getResolver()->resolve($emptyItem, $request);
-        } catch (ItemResolvingException $exception) {
+            try {
+                $item = $this->getResolver()->resolve($emptyItem, $request);
+            } catch (ItemResolvingException $exception) {
+                // Write flash message
+                $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_ERROR, new FlashEvent($exception->getMessage()));
+
+                return $this->redirectAfterAdd($request);
+            }
+
+            $event = new CartItemEvent($cart, $item);
+            $event->isFresh(true);
+            $event->isValid(false);
+
+            // Update models
+            $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_INITIALIZE, $event);
+            $eventDispatcher->dispatch(SyliusCartEvents::CART_CHANGE, new GenericEvent($cart));
+            $eventDispatcher->dispatch(SyliusCartEvents::CART_SAVE_INITIALIZE, $event);
+
             // Write flash message
-            $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_ERROR, new FlashEvent($exception->getMessage()));
+            $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_COMPLETED, new FlashEvent());
+            $total = $event->getCart()->getTotal();
+            $r = $total;
+            $total = $total / 100;
+            if ($r % 100 == 0) {
+                $total = $total . ".00";
+            }
+            $total = $total . " руб.";
 
-            return $this->redirectAfterAdd($request);
+            $result = array(
+                "total" => $total,
+                "quantity" => $event->getCart()->getQuantity()
+            );
+            return new Response(json_encode($result));
+        }else{
+            return new Response('На складе нет такого количества.');
         }
-
-        $event = new CartItemEvent($cart, $item);
-        $event->isFresh(true);
-        $event->isValid(false);
-
-        // Update models
-        $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_INITIALIZE, $event);
-        $eventDispatcher->dispatch(SyliusCartEvents::CART_CHANGE, new GenericEvent($cart));
-        $eventDispatcher->dispatch(SyliusCartEvents::CART_SAVE_INITIALIZE, $event);
-
-        // Write flash message
-        $eventDispatcher->dispatch(SyliusCartEvents::ITEM_ADD_COMPLETED, new FlashEvent());
-        $total = $event->getCart()->getTotal();
-        $r = $total;
-        $total = $total / 100;
-        if($r % 100 == 0){
-            $total = $total . ".00";
-        }
-        $total = $total . " руб.";
-
-        $result = array(
-            "total" => $total,
-            "quantity" => $event->getCart()->getQuantity()
-        );
-        return new Response(json_encode($result));
-
         return $this->redirectAfterAdd($request);
     }
 

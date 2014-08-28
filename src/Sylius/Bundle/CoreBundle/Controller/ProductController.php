@@ -752,15 +752,13 @@ class ProductController extends ResourceController
     }
 
     public
-    function showFrontendAction(Request $request, $taxon)
+    function showFrontendAction(Request $request)
     {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
-        $taxon = $this->get('sylius.repository.taxon')->findOneBy(array("id" => $taxon));
         return $this->render($this->config->getTemplate('show.html.twig'), array(
             'product' => $product,
-            'groups' => $groups,
-            'taxon' => $taxon
+            'groups' => $groups
         ));
     }
 
@@ -988,5 +986,54 @@ class ProductController extends ResourceController
             $manager->flush();
         }
         return new Response("ok");
+    }
+
+    public function saleAction(Request $request, $page){
+        $filter = array(
+            'price' => 'any',
+            'material' => 'any',
+            'weight' => 'any',
+            'depth' => 'any',
+            'box' => 'any',
+            'size' => 'any'
+        );
+        $type = 0;
+//        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
+        $type = 1;
+//        }
+        if ($request->get('filter') != null) {
+            $filterArray = $request->get('filter');
+            foreach($filterArray as $key=>$f){
+                $filter[$key] = $f;
+            }
+        }
+
+        $groups = $this->get('sylius.repository.group')->findAll();
+
+        if ($page != 'all') {
+            $paginator = $this
+                ->getRepository()
+                ->createBySalePaginator($filter);
+
+            $paginator->setMaxPerPage(40);
+            $paginator->setCurrentPage($request->query->get('page', $page));
+        }else{
+            $em = $this->getDoctrine()->getManager();
+            $paginator = $em->createQuery(
+                'SELECT p FROM
+                 Sylius\Bundle\CoreBundle\Model\Product p
+                 JOIN p.variants v
+                 WHERE v.flagSale = 1
+                '
+            )->getResult();
+        }
+
+        return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
+            'products' => $paginator,
+            'groups' => $groups,
+            'page' => $page,
+            'filter' => $filter,
+            'category' => 'sale'
+        ));
     }
 }

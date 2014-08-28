@@ -16,16 +16,16 @@
 {% block content %}
     <div class="catalog">
         {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
-        {{ grid(products, groups, taxon) }}
+        {{ grid(products, groups) }}
         {% if page != 'all' and products|length > 40 %}
-            {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{{ path('sylius_product_index_by_taxon', {page: 'all', category: taxon.slug}) }}">Показать всё</a></li></ul>
+            {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}{{ path('sylius_product_index_by_taxon', {page: 'all', category: taxon.slug}) }}{% else %}{{ path('sylius_sale', {page: 'all'}) }}{% endif %}">Показать всё</a></li></ul>
         {% endif %}
     </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon" or app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
+    {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon" or app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" or app.request.attributes.get('_route') == "sylius_sale" %}
         <script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>
     {% endif %}
 {% endblock %}

@@ -2,7 +2,7 @@
 # (c) Paweł Jędrzejewski
 
 sylius_product_show:
-    pattern: /catalog/p/{taxon}/{slug}
+    pattern: /catalog/p/{slug}
     defaults:
         _controller: sylius.controller.product:showFrontendAction
         _sylius:
@@ -27,11 +27,6 @@ sylius_product_index_by_taxon_product:
 
 sylius_product_show_pushstate:
     pattern: /{slug}
-
-sylius_product_get_price:
-    pattern: /product/get_price/{id}/{type}/{taxon}
-    defaults:
-        _controller: sylius.controller.product:getPriceAction
 
 sylius_product_slug_regenerate:
     pattern: /product/slug/regenerate/
