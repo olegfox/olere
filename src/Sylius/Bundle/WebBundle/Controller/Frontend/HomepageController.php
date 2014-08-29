@@ -33,7 +33,7 @@ class HomepageController extends Controller
             'SELECT t
              FROM Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.name LIKE :search
-             AND t.parent = 8
+             AND t.taxonomy = 8
             ')->setParameters(array(
                 'search' => '%'.$search.'%'
             ))->getResult();
@@ -41,7 +41,7 @@ class HomepageController extends Controller
             'SELECT t
              FROM Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.name LIKE :search
-             AND t.parent = 18
+             AND t.taxonomy = 9
             ')->setParameters(array(
                 'search' => '%'.$search.'%'
             ))->getResult();

@@ -61,7 +61,7 @@ a, a:hover, a:focus{
     text-transform: uppercase;
     background: #e8e8e8;
     margin-right: 6px;
-    margin-left: 23px;
+    margin-left: 6px;
 }
 
 ::-webkit-input-placeholder {
@@ -128,12 +128,12 @@ a, a:hover, a:focus{
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -130px;
-    z-index: 1;
+    margin: 0 auto -50px;
+    z-index: 2;
     position: relative;
 }
 .container .push{
-    height: 130px;
+    height: 50px;
     z-index: 0;
 }
 .logoBox{
@@ -304,8 +304,8 @@ a, a:hover, a:focus{
     font-family: "Calibri";
     font-size: 17px;
     text-transform: uppercase;
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
 }
 .catalog .head.filter select{
     font-family: "Calibri"!important;
@@ -339,7 +339,7 @@ a, a:hover, a:focus{
     z-index: 0;
 }
 .borderHead.filter{
-    height: 40px;
+    height: 50px;
 }
 .borderHead2{
     position: absolute;
@@ -356,6 +356,7 @@ a, a:hover, a:focus{
 .catalog .boxes{
     border: solid 1px #dcdcdc;
     border-bottom: 0;
+    margin-bottom: 20px;
 }
 .catalog .row{
     margin: 0;
@@ -535,7 +536,6 @@ a, a:hover, a:focus{
     border-left: solid 1px #dcdcdc;
     display: none;
     font-size: 12px;
-    text-align: right;
 }
 .catalog .inner_box_click .descriptionBox{
     display: block;
@@ -602,6 +602,7 @@ a, a:hover, a:focus{
     margin-top: 10px;
     position: relative;
     z-index: 2;
+    display: none;
 }
 .wrap_bottomMenu .bottomMenu{
     max-width: 1200px;
@@ -635,10 +636,11 @@ a, a:hover, a:focus{
     width: 100%;
 }
 .wrap_footer{
-    background: #fff;
-    height: 80px;
-    line-height: 80px;
+    background: #dcdcdc;
+    height: 50px;
+    line-height: 50px;
     position: relative;
+    z-index: 1;
 }
 .wrap_footer .footer{
     max-width: 1200px;
@@ -711,21 +713,27 @@ a, a:hover, a:focus{
 .product .wrap_description{
     width: 230px;
     display: table-cell;
-    padding-top: 25px;
+    padding-top: 31px;
     vertical-align: top;
 }
 .product .wrap_description .description{
     font-family: Open Sans;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: normal;
     color: #000;
     word-wrap: break-word;
     width: 230px;
 }
+.product .wrap_description .description .hh,
+.product .wrap_description .subPreview .hh{
+    font-weight: bold;
+}
 .product .wrap_description .subPreview{
     font-family: Open Sans;
-    font-size: 14px;
+    font-size: 18px;
     color: #000;
     margin-top: 15px;
+    font-weight: normal;
 }
 .product .wrap_description .subPreview .blockPreview{
     margin-top: 15px;
@@ -749,11 +757,21 @@ a, a:hover, a:focus{
     vertical-align: top;
     padding-top: 25px;
 }
+.product .buyBlock .hh{
+    font-weight: bold;
+    text-align: left!important;
+}
 .product .buyBlock .name{
     font-family: Open Sans;
     font-size: 24px;
     color: #000;
     margin-bottom: 14px;
+}
+.product .buyBlock .onHand{
+    font-family: Open Sans;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 20px;
 }
 .product .buyBlock .articul{
     font-family: Open Sans;
@@ -784,7 +802,7 @@ a, a:hover, a:focus{
     color: #fff;
     text-align: center;
     cursor: pointer;
-    margin-top: 110px;
+    margin-top: 92px;
     border: 0px;
 }
 .product .buyBlock .form-group{
@@ -829,6 +847,10 @@ a, a:hover, a:focus{
 /* end bottom menu cart */
 .pagination{
     width: auto;
+    display: inline-block;
+    padding-left: 0;
+    margin: 0px 0 15px 0;
+    border-radius: 4px;
 }
 
 /* Fixed menu */
@@ -1167,12 +1189,12 @@ a.btn-lg:hover{
 /* filter */
 .filter.head div{
     display: inline-block;
+    margin-right: 10px;
 }
 .filter.head div.box{
     width: auto!important;
 }
 .filter.head div.type{
-    margin-right: 0px;
 }
 /* end filter */
 div.form-horizontal{

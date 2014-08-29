@@ -28,17 +28,14 @@
         <div class="wrap_product">
         <div class="wrap_description">
             <div class="description">
-                <div class="onHand">
-                    НАЛИЧИЕ НА СКЛАДЕ {{ product.masterVariant.onHand }} ШТ.
-                </div>
                 {% for property in product.properties %}
-                    {{ property.name }}: {{ property.value }}<br><br>
+                    <div class="hh">{{ property.name }}:</div> {{ property.value }}<br><br>
                 {% endfor %}
 
-                Описание: {{ product.description }}<br><br><br>
+                <div class="hh">Описание:</div> {{ product.description }}<br><br><br>
             </div>
             <div class="subPreview">
-                Дополнительные фото:
+                <div class="hh">Дополнительные фото:</div>
                 <div class="blockPreview">
                     {% for image in product.images %}
                         <img onclick="preview('{{ '/media/image/'~image.path }}', '{{ image ? '/media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');" src="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/45x45' }}" alt="{{ image ? image('media/image/'~image.path).zoomCrop(68, 68).jpeg() : 'http://placehold.it/68x68' }}" width="68px" height="68px" >
@@ -56,10 +53,13 @@
                 {{ product.name }}
             </div>
             <div class="articul">
-                Артикул: {{ product.sku }}
+                <div class="hh">Артикул:</div> {{ product.sku }}
+            </div>
+            <div class="onHand">
+                <div class="hh">На складе:</div> {{ product.masterVariant.onHand }} шт.
             </div>
             <div class="price">
-                Цена: {{ showPrice(product, groups) }}
+                <div class="hh">Цена:</div> {{ showPrice(product, groups) }}
             </div>
             {% set form = sylius_cart_form({'product': product}) %}
             <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"

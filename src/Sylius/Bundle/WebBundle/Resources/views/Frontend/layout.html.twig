@@ -89,6 +89,9 @@
             <div class="topPhone">
                 8 499 157-97-44
             </div>
+            <div class="topSearch">
+                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+            </div>
             {#<div class="topTimes">#}
                 {#Время работы: с 9 до 19#}
             {#</div>#}
@@ -108,9 +111,6 @@
             </div>
             <div class="topTrash">
                 <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
-            </div>
-            <div class="topSearch">
-                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
             </div>
         </div>
         {#<div class="last"></div>#}
