@@ -4,7 +4,7 @@
                 <span>
                     {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
                         {% set category = 'catalog' %}
-                        тип украшения:
+                        {#тип украшения:#}
                     {% else %}
                         {% set category = 'collections' %}
                         коллекция:
@@ -18,9 +18,9 @@
     </div>
     {% endif %}
     <div class="price">
-        <span>цена:</span>
+        {#<span>цена:</span>#}
         <select name="" id="price" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>любая</option>
+            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>все цены</option>
             <option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>
             <option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>
             <option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>
@@ -32,14 +32,14 @@
             <option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>
         </select>
     </div>
-    <div class="material">
+    <div class="material hide">
         <span>материал:</span>
         <select name="" id="material" onchange="filter('{{ category }}');">
             <option value="any" {% if filter.material == "any" %}selected="selected"{% endif %}>любой</option>
             <option value="серебро" {% if filter.material == "серебро" %}selected="selected"{% endif %}>серебро</option>
         </select>
     </div>
-    <div class="weight">
+    <div class="weight{% if filter.material != "серебро" %} hide{% endif %}">
         <span>вес:</span>
         <select name="" id="weight" onchange="filter('{{ category }}');">
             <option value="any" {% if filter.weight == "any" %}selected="selected"{% endif %}>любой</option>
@@ -59,15 +59,24 @@
             {#{% endfor %}#}
         {#</select>#}
     {#</div>#}
-    {#<div class="box">#}
-        {#<span>вставка:</span>#}
-        {#<select name="" id="box" onchange="filter('{{ category }}');">#}
-            {#<option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>#}
-            {#<option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>#}
-            {#<option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>#}
-        {#</select>#}
-    {#</div>#}
-    <div class="size">
+    <div class="color">
+        <span>цвет:</span>
+        <select name="" id="color" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.color == "any" %}selected="selected"{% endif %}>любой</option>
+            <option value="%черный%" {% if filter.color == "%черный%" %}selected="selected"{% endif %}>черный</option>
+            <option value="%серебряный%" {% if filter.color == "%серебряный%" %}selected="selected"{% endif %}>серебряный</option>
+            <option value="%сереневый%" {% if filter.color == "%сереневый%" %}selected="selected"{% endif %}>сереневый</option>
+        </select>
+    </div>
+    <div class="box">
+        <span>вставка:</span>
+        <select name="" id="box" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>
+            <option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>
+            <option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>
+        </select>
+    </div>
+    <div class="size{% if taxon is defined %}{% if taxon.slug != 'kol-tsa' %} hide{% endif %}{% else %} hide{% endif %}">
         <span>размерность:</span>
         <select name="" id="size" onchange="filter('{{ category }}');">
             <option value="any" {% if filter.size == "any" %}selected="selected"{% endif %}>любая</option>

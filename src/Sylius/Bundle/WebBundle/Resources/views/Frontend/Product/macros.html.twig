@@ -9,10 +9,12 @@
         Опт. {{ product.priceOpt|sylius_price }}
         </div>
     {% endif %}
-    {% if product.masterVariant.flagSale == 1 %}
-        <div class="stickerPrices">
-           SALE. {{ product.priceSale|sylius_price }}
-        </div>
+    {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
+        {% if product.masterVariant.flagSale == 1 %}
+            <div class="stickerPrices">
+               SALE. {{ product.priceSale|sylius_price }}
+            </div>
+        {% endif %}
     {% endif %}
 {% endmacro %}
 

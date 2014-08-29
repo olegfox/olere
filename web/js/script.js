@@ -52,8 +52,9 @@ function filter(category) {
     var price = $(".filter #price").val();
     var material = $(".filter #material").val();
     var weight = $(".filter #weight").val();
+    var color = $(".filter #color").val();
 //    var depth = $(".filter #depth").val();
-//    var box = $(".filter #box").val();
+    var box = $(".filter #box").val();
     var size = $(".filter #size").val();
     if (category != 'sale') {
         var href = "/" + category + "/1/" + cat + "?filter[price]=" + price + "&filter[material]=" + material + "&filter[weight]=" + weight;
@@ -61,7 +62,8 @@ function filter(category) {
         var href = "/" + category + "/1?filter[price]=" + price + "&filter[material]=" + material + "&filter[weight]=" + weight;
     }
 //    href = href + "&filter[depth]=" + depth;
-//    href = href + "&filter[box]=" + box;
+    href = href + "&filter[box]=" + box;
     href = href + "&filter[size]=" + size;
+    href = href + "&filter[color]=" + color;
     window.location.href = href;
 }

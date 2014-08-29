@@ -60,7 +60,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function silverAction(Request $request){
+    public function silverAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $collections = array();
         $taxons = $em->createQuery(
@@ -70,9 +71,9 @@ class ProductController extends ResourceController
             '
         )->getResult();
 
-        foreach($taxons as $taxon){
-            foreach($taxon->getProducts() as $product){
-                if($product->getMasterVariant()->getMetal() == "серебро"){
+        foreach ($taxons as $taxon) {
+            foreach ($taxon->getProducts() as $product) {
+                if ($product->getMasterVariant()->getMetal() == "серебро") {
                     $collections[] = $taxon;
                     break;
                 }
@@ -148,7 +149,7 @@ class ProductController extends ResourceController
                          )
                         '
                     )->setParameter('sku', $articul)->getResult();
-                    if(count($product) <= 0){
+                    if (count($product) <= 0) {
                         $data[$i] = array(
                             "articul" => $articul,
                             "name" => $name,
@@ -275,7 +276,7 @@ class ProductController extends ResourceController
                             $product->setPosition2($product->getId());
                             $i++;
                         }
-                    }else{
+                    } else {
 
                         continue;
                     }
@@ -476,7 +477,7 @@ class ProductController extends ResourceController
                                 $manager->flush();
                                 $count++;
                             } else {
-                                print("Не удалось скачать файл " . $i . "\n". $ret);
+                                print("Не удалось скачать файл " . $i . "\n" . $ret);
                             }
                             $total++;
                         }
@@ -558,8 +559,9 @@ class ProductController extends ResourceController
             'material' => 'any',
             'weight' => 'any',
 //            'depth' => 'any',
-//            'box' => 'any',
-            'size' => 'any'
+            'box' => 'any',
+            'size' => 'any',
+            'color' => 'any'
         );
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -567,7 +569,7 @@ class ProductController extends ResourceController
 //        }
         if ($request->get('filter') != null) {
             $filterArray = $request->get('filter');
-            foreach($filterArray as $key=>$f){
+            foreach ($filterArray as $key => $f) {
                 $filter[$key] = $f;
             }
         }
@@ -932,24 +934,25 @@ class ProductController extends ResourceController
 //        $manager->flush();
 //    }
 
-    public function getPriceAction($id, $type, $taxon){
+    public function getPriceAction($id, $type, $taxon)
+    {
         $repositoryProduct = $this->container->get('sylius.repository.product');
         $repositorySale = $this->getDoctrine()
             ->getRepository('Sylius\Bundle\CoreBundle\Model\Sale');
         $product = $repositoryProduct->find($id);
         $price = 0;
         $priceOld = 0;
-        if($type == 0){
+        if ($type == 0) {
             $price = $product->getPrice();
             $priceOld = $price;
-        }else{
+        } else {
             $price = $product->getPriceOpt();
             $priceOld = $price;
         }
         $sale = $repositorySale->findOneBy(array('taxonId' => $taxon));
-        if($sale){
-            if(($type == 1 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 1)) || ($type == 0 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 2))){
-                $price = $price - $price*$sale->getPercent()/100;
+        if ($sale) {
+            if (($type == 1 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 1)) || ($type == 0 && ($sale->getTypePrice() == 0 || $sale->getTypePrice() == 2))) {
+                $price = $price - $price * $sale->getPercent() / 100;
             }
         }
         return $this->render('SyliusWebBundle:Frontend/Product:getPrice.html.twig', array(
@@ -958,7 +961,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function slugRegenerateAction(){
+    public function slugRegenerateAction()
+    {
         set_time_limit(0);
         ini_set('error_reporting', E_ALL);
         ini_set('display_errors', TRUE);
@@ -967,9 +971,9 @@ class ProductController extends ResourceController
         $taxons = $repositoryTaxon->findAll();
         $manager = $this->container->get('sylius.manager.taxon');
         $name = '';
-        foreach($taxons as $t){
+        foreach ($taxons as $t) {
             $name = $t->getName();
-            $t->setName($name+uniqid());
+            $t->setName($name + uniqid());
             $manager->flush();
             $t->setName($name);
             $manager->flush();
@@ -978,9 +982,9 @@ class ProductController extends ResourceController
         $products = $repositoryProduct->findAll();
         $manager = $this->container->get('sylius.manager.product');
         $name = '';
-        foreach($products as $p){
+        foreach ($products as $p) {
             $name = $p->getName();
-            $p->setName($name+uniqid());
+            $p->setName($name + uniqid());
             $manager->flush();
             $p->setName($name);
             $manager->flush();
@@ -988,52 +992,67 @@ class ProductController extends ResourceController
         return new Response("ok");
     }
 
-    public function saleAction(Request $request, $page){
-        $filter = array(
-            'price' => 'any',
-            'material' => 'any',
-            'weight' => 'any',
-            'depth' => 'any',
-            'box' => 'any',
-            'size' => 'any'
-        );
-        $type = 0;
+    public function saleAction(Request $request, $page)
+    {
+        $repositoryGroup = $this->container->get('sylius.repository.group');
+        $groups = $repositoryGroup->findAll();
+        if ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER_OPT')) {
+            $group = $groups[0];
+        } elseif ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER')) {
+            $group = $groups[1];
+        } else {
+            $group = $groups[2];
+        }
+        if ($group->getShowOptPrice() == 1) {
+            throw new NotFoundHttpException('Страница не найдена!');
+        } else {
+            $filter = array(
+                'price' => 'any',
+                'material' => 'any',
+                'weight' => 'any',
+//            'depth' => 'any',
+                'box' => 'any',
+                'size' => 'any',
+                'color' => 'any'
+            );
+            $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
-        $type = 1;
+            $type = 1;
 //        }
-        if ($request->get('filter') != null) {
-            $filterArray = $request->get('filter');
-            foreach($filterArray as $key=>$f){
-                $filter[$key] = $f;
+            if ($request->get('filter') != null) {
+                $filterArray = $request->get('filter');
+                foreach ($filterArray as $key => $f) {
+                    $filter[$key] = $f;
+                }
             }
+
+            $groups = $this->get('sylius.repository.group')->findAll();
+
+            if ($page != 'all') {
+                $paginator = $this
+                    ->getRepository()
+                    ->createBySalePaginator($filter);
+
+                $paginator->setMaxPerPage(40);
+                $paginator->setCurrentPage($request->query->get('page', $page));
+            } else {
+                $em = $this->getDoctrine()->getManager();
+                $paginator = $em->createQuery(
+                    'SELECT p FROM
+                     Sylius\Bundle\CoreBundle\Model\Product p
+                     JOIN p.variants v
+                     WHERE v.flagSale = 1
+                    '
+                )->getResult();
+            }
+
+            return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
+                'products' => $paginator,
+                'groups' => $groups,
+                'page' => $page,
+                'filter' => $filter,
+                'category' => 'sale'
+            ));
         }
-
-        $groups = $this->get('sylius.repository.group')->findAll();
-
-        if ($page != 'all') {
-            $paginator = $this
-                ->getRepository()
-                ->createBySalePaginator($filter);
-
-            $paginator->setMaxPerPage(40);
-            $paginator->setCurrentPage($request->query->get('page', $page));
-        }else{
-            $em = $this->getDoctrine()->getManager();
-            $paginator = $em->createQuery(
-                'SELECT p FROM
-                 Sylius\Bundle\CoreBundle\Model\Product p
-                 JOIN p.variants v
-                 WHERE v.flagSale = 1
-                '
-            )->getResult();
-        }
-
-        return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
-            'products' => $paginator,
-            'groups' => $groups,
-            'page' => $page,
-            'filter' => $filter,
-            'category' => 'sale'
-        ));
     }
 }

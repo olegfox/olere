@@ -75,6 +75,7 @@ class FrontendMenuBuilder extends MenuBuilder
      * @param RepositoryInterface $exchangeRateRepository
      * @param RepositoryInterface $taxonomyRepository
      * @param RepositoryInterface $pageRepository
+     * @param RepositoryInterface $groupRepository
      * @param CartProviderInterface $cartProvider
      * @param SyliusMoneyExtension $moneyExtension
      */
@@ -86,6 +87,7 @@ class FrontendMenuBuilder extends MenuBuilder
         RepositoryInterface $exchangeRateRepository,
         RepositoryInterface $taxonomyRepository,
         RepositoryInterface $pageRepository,
+        RepositoryInterface $groupRepository,
         CartProviderInterface $cartProvider,
         SyliusMoneyExtension $moneyExtension
     )
@@ -95,6 +97,7 @@ class FrontendMenuBuilder extends MenuBuilder
         $this->exchangeRateRepository = $exchangeRateRepository;
         $this->taxonomyRepository = $taxonomyRepository;
         $this->pageRepository = $pageRepository;
+        $this->groupRepository = $groupRepository;
         $this->cartProvider = $cartProvider;
         $this->moneyExtension = $moneyExtension;
     }
@@ -108,6 +111,14 @@ class FrontendMenuBuilder extends MenuBuilder
     {
         $menu = $this->factory->createItem('root');
         $pages = $this->pageRepository->findBy(array('typeMenu' => 0, 'typeContent' => 0, 'enable' => 0), array('position' => 'asc'));
+        $groups = $this->groupRepository->findAll();
+        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_USER_OPT')) {
+            $group = $groups[0];
+        } elseif ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_USER')) {
+            $group = $groups[1];
+        } else {
+            $group = $groups[2];
+        }
         $pagemenu = array();
         foreach ($pages as $page) {
             $id = str_replace("/", "", $page->getId());
@@ -124,19 +135,23 @@ class FrontendMenuBuilder extends MenuBuilder
                     "routeParameters" => array()
                 );
             } else {
-                if ($page->getSub() == '') {
-                    if ($page->getLink() != "") {
-                        $pagemenu[$id] = array(
-                            "name" => $page->getTitle(),
-                            "uri" => $page->getLink(),
-                            "linkAttributes" => array('title' => $page->getTitle())
-                        );
-                    } else {
-                        $pagemenu[$id] = array(
-                            "name" => $page->getTitle(),
-                            "route" => "sylius_page_show",
-                            "routeParameters" => array("id" => $id)
-                        );
+                if ($id == 'sale' && $group->getShowOptPrice() == 1) {
+
+                } else {
+                    if ($page->getSub() == '') {
+                        if ($page->getLink() != "") {
+                            $pagemenu[$id] = array(
+                                "name" => $page->getTitle(),
+                                "uri" => $page->getLink(),
+                                "linkAttributes" => array('title' => $page->getTitle())
+                            );
+                        } else {
+                            $pagemenu[$id] = array(
+                                "name" => $page->getTitle(),
+                                "route" => "sylius_page_show",
+                                "routeParameters" => array("id" => $id)
+                            );
+                        }
                     }
                 }
             }

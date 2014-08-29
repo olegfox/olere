@@ -12,7 +12,7 @@ if (!empty($_FILES)) {
     $tempFile = $_FILES['Filedata']['tmp_name'];
     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
     // Validate the file type
-    $fileTypes = array('jpg', 'jpeg', 'gif', 'png'); // File extensions
+    $fileTypes = array('jpg', 'jpeg', 'gif', 'png', 'JPG', 'JPEG', 'GIF', 'PNG'); // File extensions
     $fileParts = pathinfo($_FILES['Filedata']['name']);
     $newFileName = uniqid() . '.' . $fileParts['extension'];
     $targetFile = rtrim($targetPath, '/') . '/' . $newFileName;

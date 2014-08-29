@@ -109,6 +109,9 @@
             <div class="topTrash">
                 <a href="{{ path('sylius_cart_summary') }}">Корзина</a>
             </div>
+            <div class="topSearch">
+                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+            </div>
         </div>
         {#<div class="last"></div>#}
     </div>
@@ -117,11 +120,7 @@
 <!-- Menu -->
 <div class="wrap_menu">
     <div class="menu">
-        {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}<div class="pull-right">
-            <div class="topSearch">
-                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
-            </div>
-        </div>
+        {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
     </div>
 </div>
 

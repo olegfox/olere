@@ -6,7 +6,7 @@ $(function () {
     $('#sylius_import_image').uploadify({
         'auto': false,
         'fileTypeDesc' : 'Image Files',
-        'fileTypeExts' : '*.gif; *.jpg; *.png',
+        'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.GIF; *.JPG; *.JPEG; *.PNG',
         'swf': '/js/uploadify/uploadify.swf',
         'uploader': '/js/uploadify/uploadify_import_products.php',
         "buttonText" : "Выбрать файл",
