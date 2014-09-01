@@ -49,4 +49,19 @@ class UserController extends ResourceController
         return $response;
     }
 
+    public function updateAction(Request $request){
+        if($request->isMethod('PUT')){
+            $id = $request->get('id');
+            $user = $this->get('fos_user.user_manager')->findUserBy(array('id' => $id)); // get a user from the datastore
+            $user->setPlainPassword($request->get('sylius_user')['plainPassword']);
+            $this->get('fos_user.user_manager')->updatePassword($user);
+            $this->get('fos_user.user_manager')->updateUser($user, false);
+
+            // make more modifications to the database
+
+            $this->getDoctrine()->getManager()->flush();
+        }
+        return parent::updateAction($request);
+    }
+
 }
