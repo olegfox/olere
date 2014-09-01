@@ -401,7 +401,8 @@ class ProductController extends ResourceController
 
     public function importScanAction(Request $request)
     {
-        set_time_limit(0);
+        set_time_limit(80000);
+        ini_set('max_execution_time', 80000);
         ini_set('error_reporting', E_ALL);
         ini_set('display_errors', TRUE);
         header('Content-Type: text/html; charset=UTF-8');
@@ -413,7 +414,6 @@ class ProductController extends ResourceController
         $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
         $filesystem = new Filesystem($adapter);
         $imageUploader = new ImageUploader($filesystem);
-
         if (!$connect) {
             return false;
         }
@@ -463,11 +463,20 @@ class ProductController extends ResourceController
                         natcasesort($images);
                         $images = array_reverse($images);
                         foreach ($images as $i) {
-                            $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
-                            while ($ret == FTP_MOREDATA) {
-                                $ret = ftp_nb_continue($connect);
+//                            print "Вывод команды";
+                            if(!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)){
+                                exec('wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/sylius/web/import/files/',$output, $retval);
+//                                print 'wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/Migura/web/import/files/';
                             }
-                            if ($ret == FTP_FINISHED) {
+//                            $fp = fopen($i, "w");
+//                            fclose($fp);
+//                            $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
+//                            print $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i;
+//                            while ($ret == FTP_MOREDATA) {
+//                                echo ".";
+//                                $ret = ftp_nb_continue($connect);
+//                            }
+                            if (!$retval && file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
                                 $variantImage = new VariantImage();
                                 $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
                                 $variantImage->setFile($fileinfo);
@@ -477,7 +486,7 @@ class ProductController extends ResourceController
                                 $manager->flush();
                                 $count++;
                             } else {
-                                print("Не удалось скачать файл " . $i . "\n" . $ret);
+                                print("Не удалось скачать файл " . $i . "\n");
                             }
                             $total++;
                         }
