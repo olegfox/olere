@@ -792,7 +792,8 @@ a, a:hover, a:focus{
     background: #000;
     color: #fff;
 }
-.product .buyBlock .addCart{
+.product .buyBlock .addCart,
+.product .buyBlock .addCartRing{
     width: 170px;
     height: 45px;
     line-height: 45px;
@@ -817,7 +818,7 @@ a, a:hover, a:focus{
     bottom: 0;
     height: 50px;
     line-height: 50px;
-    z-index: 1000;
+    z-index: 1002;
     display: none;
     padding: 0 20px;
 }
@@ -995,6 +996,34 @@ h4, .container form{
 .cartForm input[type="number"]{
     line-height: 21px;
     font-size: 16px;
+    width: 100px!important;
+}
+.cartForm .col-lg-10{
+    width: 320px;
+    text-align: right;
+}
+.cartForm .nameQuantity{
+    text-align: right;
+    padding-right: 35px;
+}
+.cartForm span.nameSize{
+    margin-right: 10px;
+}
+.cartForm select{
+  width: 100px;
+  max-width: 414px;
+  height: 38px;
+  border: solid 1px #dcdcdc;
+  border-radius: 0;
+  color: #000;
+  font-family: "Calibri";
+  font-size: 21px;
+  line-height: 25px\0/;
+  display: inline-block;
+  background: #fff;
+  line-height: 21px;
+  font-size: 16px;
+  padding: 6px 7px;
 }
 .feedbackForm label[for="remember_me"]{
     display: block!important;

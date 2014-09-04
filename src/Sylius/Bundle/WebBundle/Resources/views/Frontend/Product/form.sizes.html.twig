@@ -1,0 +1,6 @@
+<span class="nameSize">Размер</span><select name="size" id="size"
+        onchange="changeSizeCart(this, '{{ path('sylius_product_change_size_cart', {item: item}) }}');">
+    {% for s in sizes %}
+        <option value="{{ s.id }}" {% if s.id == id %}selected="selected" {% endif %}>{{ s.name }}</option>
+    {% endfor %}
+</select>

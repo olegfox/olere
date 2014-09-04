@@ -1,0 +1,29 @@
+<fieldset class="well">
+    <h2>Выберите нужный размер</h2>
+    <hr>
+    <table class="table">
+        <thead>
+        <th>Размер</th>
+        <th>Остаток</th>
+        <th>Кол-во</th>
+        <th></th>
+        </thead>
+        <tbody>
+        {% for p in products %}
+            <tr id="tr{{ p.id }}">
+                <td id="size">{{ p.masterVariant.size }}</td>
+                <td id="onHand">{{ p.masterVariant.onHand }}</td>
+                <td>
+                    {% set form = sylius_cart_form({'product': p}) %}
+                    <form action="{{ path('sylius_cart_item_add', {'id': p.id}) }}" method="post"
+                          class="clearfix form-horizontal">
+                        {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                        {{ form_widget(form._token) }}
+                        <button type="submit" class="addCart">Купить</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</fieldset>

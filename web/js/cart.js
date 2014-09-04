@@ -11,3 +11,13 @@ function cartSave(object, onHand) {
         alert('На складе нет такого количества.');
     }
 }
+
+function changeSizeCart(object, url){
+    $.post(url, {size: $(object).val()}, function (data) {
+        if(data == 'ok'){
+            window.location.reload();
+        }else{
+            alert(data);
+        }
+    });
+}

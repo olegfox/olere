@@ -32,6 +32,16 @@ sylius_scan_products:
     defaults:
         _controller: sylius.controller.product:scanProductsAction
 
+sylius_by_ring_form:
+    pattern: /by/ring/form/{sku}
+    defaults:
+        _controller: sylius.controller.product:byRingFormAction
+
+sylius_by_ring:
+    pattern: /by/ring/{id}
+    defaults:
+        _controller: sylius.controller.product:byRingFormAction
+
 sylius_cart:
     resource: @SyliusCartBundle/Resources/config/routing.yml
     prefix: /cart

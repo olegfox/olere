@@ -61,16 +61,22 @@
             <div class="price">
                 <div class="hh">Цена:</div> {{ showPrice(product, groups) }}
             </div>
-            {% set form = sylius_cart_form({'product': product}) %}
-            <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
-                  class="clearfix form-horizontal">
-                {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
-                {% else %}
-                    {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-                    {{ form_widget(form._token) }}
-                {% endif %}
-            <button type="submit" class="addCart">Добавить в корзину</button>
-            </form>
+            {% if product.getCatalogName != 'Кольца' %}
+                {% set form = sylius_cart_form({'product': product}) %}
+                <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
+                      class="clearfix form-horizontal">
+                    {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                    {% else %}
+                        {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                        {{ form_widget(form._token) }}
+                    {% endif %}
+                <button type="submit" class="addCart">Добавить в корзину</button>
+                </form>
+            {% else %}
+                <form action="{{ path('sylius_by_ring_form', {'sku': product.sku}) }}" method="get" class="clearfix form-horizontal">
+                    <button type="submit" class="addCartRing">Добавить в корзину</button>
+                </form>
+            {% endif %}
         </div>
         </div>
     </div>

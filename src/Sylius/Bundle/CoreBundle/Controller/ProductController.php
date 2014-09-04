@@ -149,7 +149,25 @@ class ProductController extends ResourceController
                          )
                         '
                     )->setParameter('sku', $articul)->getResult();
-                    if (count($product) <= 0) {
+                    $flag = 0;
+                    if(count($product) <= 0){
+                        $flag = 1;
+                    }
+                    if(count($product) > 0){
+                        if($product[0]->getCatalogName() == 'Кольца'){
+                            $f = 0;
+                            foreach($product as $p){
+                                if($p->getMasterVariant()->getSize() == $size){
+                                    $f = 1;
+                                    break;
+                                }
+                            }
+                            if($f == 0){
+                                $flag = 1;
+                            }
+                        }
+                    }
+                    if ($flag == 1) {
                         $data[$i] = array(
                             "articul" => $articul,
                             "name" => $name,
@@ -584,7 +602,6 @@ class ProductController extends ResourceController
         }
         $em = $this->getDoctrine()->getManager();
         if ($routeName == 'sylius_product_index_by_taxon') {
-
             $taxons = $em->createQuery(
                 'SELECT t FROM
                  Sylius\Bundle\CoreBundle\Model\Taxon t
@@ -641,7 +658,17 @@ class ProductController extends ResourceController
             $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
         } else {
-            $paginator = $taxon->getProducts();
+//            $paginator = $taxon->getProducts();
+            $em = $this->getDoctrine()->getManager();
+            $paginator = $em->createQuery(
+                'SELECT p FROM
+                 Sylius\Bundle\CoreBundle\Model\Product p
+                 JOIN p.variants v
+                 JOIN p.taxons t
+                 WHERE t.id = :taxon
+                 GROUP BY v.sku
+                '
+            )->setParameter('taxon', $taxon->getId())->getResult();
         }
 
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
@@ -1051,6 +1078,7 @@ class ProductController extends ResourceController
                      Sylius\Bundle\CoreBundle\Model\Product p
                      JOIN p.variants v
                      WHERE v.flagSale = 1
+                     GROUP BY v.sku
                     '
                 )->getResult();
             }
@@ -1063,5 +1091,70 @@ class ProductController extends ResourceController
                 'category' => 'sale'
             ));
         }
+    }
+
+    public function byRingFormAction(Request $request, $sku = null){
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->createQuery(
+            'SELECT p FROM
+             Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.variants v
+             WHERE v.sku LIKE :sku
+             AND v.onHand > 0
+            '
+        )->setParameter('sku', $sku)->getResult();
+        return $this->render('SyliusWebBundle:Frontend/Product:form.ring.html.twig', array(
+            'products' => $products
+        ));
+    }
+
+    public function sizesProductAction(Request $request, $sku = null, $id = null, $item = null){
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->createQuery(
+            'SELECT p FROM
+             Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.variants v
+             WHERE v.sku LIKE :sku
+             AND v.onHand > 0
+            '
+        )->setParameter('sku', $sku)->getResult();
+        $sizes = array();
+        $i = 0;
+        foreach($products as $p){
+            $sizes[$i]['id'] = $p->getId();
+            $sizes[$i]['name'] = $p->getMasterVariant()->getSize();
+            $i++;
+        }
+        return $this->render('SyliusWebBundle:Frontend/Product:form.sizes.html.twig', array(
+            'sizes' => $sizes,
+            'id' => $id,
+            'item' => $item
+        ));
+    }
+
+    public function changeSizeCartAction(Request $request, $item){
+        $productId = $request->get('size');
+        $repositoryProduct = $this->container->get('sylius.repository.product');
+        $repositoryOrderItem = $this->container->get('sylius.repository.orderItem');
+        $em = $this->getDoctrine()->getManager();
+        $product = $repositoryProduct->find($productId);
+        $orderItem = $repositoryOrderItem->find($item);
+        if($orderItem->getQuantity() > $product->getMasterVariant()->getOnHand()){
+            return new Response('На складе нет такого количества.');
+        }
+        $orderI = $repositoryOrderItem->findOneBy(array('order' => $orderItem->getOrder()->getId(), 'variant' => $product->getMasterVariant()->getId()));
+        if($orderI){
+            if($orderItem->getQuantity() + $orderI->getQuantity() > $product->getMasterVariant()->getOnHand()){
+                return new Response('На складе нет такого количества.');
+            }else{
+                $orderI->setQuantity($orderI->getQuantity() + $orderItem->getQuantity());
+                $em->remove($orderItem);
+                $em->flush();
+                return new Response('ok');
+            }
+        }
+        $orderItem->setVariant($product->getMasterVariant());
+        $em->flush();
+        return new Response('ok');
     }
 }

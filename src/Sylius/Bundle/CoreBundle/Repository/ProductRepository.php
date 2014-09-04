@@ -96,6 +96,7 @@ class ProductRepository extends VariableProductRepository
         }
 
         $queryBuilder
+            ->addGroupBy('variant.sku')
             ->setParameters($params);
 
 
@@ -207,6 +208,7 @@ class ProductRepository extends VariableProductRepository
                 }
             }
             $queryBuilder
+                ->addGroupBy('variant.sku')
                 ->setParameters($params);
 
         } elseif (isset($sorting["name"])) {
@@ -313,6 +315,7 @@ class ProductRepository extends VariableProductRepository
             }
             $queryBuilder
                 ->andWhere('taxon.id IN (:taxons)')
+                ->addGroupBy('variant.sku')
                 ->setParameter('taxons', $id);
         }
 

@@ -1,0 +1,40 @@
+.simplemodal-overlay {
+  background: #000;
+}
+
+.simplemodal-data {
+  background: #fff;
+  hr{
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  td{
+    vertical-align: middle!important;
+  }
+  .form-group{
+    margin-bottom: 0px;
+    margin-top: -3px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  label{
+    display: none;
+  }
+  button[type=submit], input[type=number]{
+    border: solid 1px #000;
+    width: 70px;
+    height: 34px;
+    background: none;
+    font-weight: normal;
+    border-radius: inherit;
+    font-size: 12px;
+    line-height: 31px;
+    display: inline-block;
+    margin-left: 14px;
+  }
+  input[type=number]{
+    padding-left: 10px;
+    display: inline-block;
+    line-height: 20px;
+  }
+}

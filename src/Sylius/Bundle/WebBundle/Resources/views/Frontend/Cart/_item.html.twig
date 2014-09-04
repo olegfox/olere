@@ -5,10 +5,16 @@
         {{ include('SyliusWebBundle:Frontend/Product:_variant.html.twig', {'variant': item.variant}) }}
     </td>
     <td class="col-md-2">
-        {{ form_row(form.items[loop.index0].quantity, {'label': false, 'attr' : {"onchange" : "cartSave(this, "~item.variant.onHand~");", "onkeyup" : "cartSave(this, "~item.variant.onHand~");", "oninput" : "cartSave(this, "~item.variant.onHand~");"} } ) }}
+        <div class="form-group">
+            <div class="col-lg-10">
+                {% if product.getCatalogName() == 'Кольца' %}{{ render(url('sylius_product_sizes', {sku: product.sku, id: product.id, item: item.id})) }}{% endif %}
+                {{ form_widget(form.items[loop.index0].quantity, {'label': false, 'attr' : {"onchange" : "cartSave(this, "~item.variant.onHand~");", "onkeyup" : "cartSave(this, "~item.variant.onHand~");", "oninput" : "cartSave(this, "~item.variant.onHand~");"} } ) }}
+            </div>
+        </div>
     </td>
     <td class="col-md-1">
-        <a href="{{ path('sylius_cart_item_remove', {'id': item.id}) }}" class="btn btn-danger"><i class="icon-trash icon-white"></i></a>
+        <a href="{{ path('sylius_cart_item_remove', {'id': item.id}) }}" class="btn btn-danger"><i
+                    class="icon-trash icon-white"></i></a>
     </td>
     <td class="col-md-1">
         {{ item.unitPrice|sylius_price }}

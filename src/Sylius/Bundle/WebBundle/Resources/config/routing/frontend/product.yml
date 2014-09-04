@@ -1,6 +1,16 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
 
+sylius_product_sizes:
+    pattern: /product/sizes/{sku}/{id}/{item}
+    defaults:
+        _controller: sylius.controller.product:sizesProductAction
+
+sylius_product_change_size_cart:
+    pattern: /product/sizes/{item}
+    defaults:
+        _controller: sylius.controller.product:changeSizeCartAction
+
 sylius_product_show:
     pattern: /catalog/p/{slug}
     defaults:

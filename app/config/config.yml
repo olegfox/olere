@@ -87,7 +87,7 @@ fos_user:
     firewall_name: main
     user_class: %sylius.model.user.class%
     from_email:
-        address:        info@olere.ru
+        address:        order@olere.ru
         sender_name:    Украшения Olere
     group:
         group_class: Sylius\Bundle\CoreBundle\Model\Group
