@@ -73,6 +73,7 @@ function filter(category) {
     var material = $(".filter #material").val();
     var weight = $(".filter #weight").val();
     var color = $(".filter #color").val();
+    var collection = $(".filter #collection").val();
 //    var depth = $(".filter #depth").val();
     var box = $(".filter #box").val();
     var size = $(".filter #size").val();
@@ -85,5 +86,6 @@ function filter(category) {
     href = href + "&filter[box]=" + box;
     href = href + "&filter[size]=" + size;
     href = href + "&filter[color]=" + color;
+    href = href + "&filter[collection]=" + collection;
     window.location.href = href;
 }

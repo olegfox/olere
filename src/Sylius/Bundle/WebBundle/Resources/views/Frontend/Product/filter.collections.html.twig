@@ -1,0 +1,3 @@
+{% for c in collections %}
+    <option value="{{ c.slug }}" {% if filter == c.slug %}selected="selected"{% endif %}>{{ c.name }}</option>
+{% endfor %}

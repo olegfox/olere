@@ -161,6 +161,9 @@
                 {% endif %}
             </td>
             <td class="quantity text-center">
+                {% if product.getCatalogName() == 'Кольца' %}
+                    Размер {{ variant.size }}
+                {% endif %}
                 <form action="{{ path('sylius_backend_order_change_quantity', {id : item.id}) }}" id="quantityForm" method="post">
                     <input id="quantity" onchange="orderSave(this);" onkeyup="orderSave(this);" oninput="orderSave(this);" name="quantity" required="required" min="1" class="center-text form-control" value="{{ item.quantity }}" type="number">
                 </form>

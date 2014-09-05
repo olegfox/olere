@@ -103,7 +103,7 @@ class ProductRepository extends VariableProductRepository
         return $this->getPaginator($queryBuilder);
     }
 
-    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter, $type = 0)
+    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter = array(), $type = 0)
     {
         if (isset($filter['price'])) {
             if ($filter['price'] == 'any') {
@@ -129,12 +129,21 @@ class ProductRepository extends VariableProductRepository
 
             $queryBuilder
                 ->innerJoin('product.taxons', 'taxon')
+                ->innerJoin('product.taxons', 'taxon2')
                 ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0');
-            if ($filter['material'] != 'any') {
-                $queryBuilder
-                    ->andWhere('variant.metal LIKE :material');
+            if (isset($filter['collection'])) {
+                if ($filter['collection'] != 'any') {
+                    $queryBuilder
+                        ->andWhere('taxon2.slug LIKE :collection');
+                }
+            }
+            if (isset($filter['material'])) {
+                if ($filter['material'] != 'any') {
+                    $queryBuilder
+                        ->andWhere('variant.metal LIKE :material');
+                }
             }
             if (isset($filter['weight'])) {
                 if ($filter['weight'] != 'any') {
@@ -315,7 +324,6 @@ class ProductRepository extends VariableProductRepository
             }
             $queryBuilder
                 ->andWhere('taxon.id IN (:taxons)')
-                ->addGroupBy('variant.sku')
                 ->setParameter('taxons', $id);
         }
 

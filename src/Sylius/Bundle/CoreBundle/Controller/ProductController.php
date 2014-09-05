@@ -73,7 +73,7 @@ class ProductController extends ResourceController
 
         foreach ($taxons as $taxon) {
             foreach ($taxon->getProducts() as $product) {
-                if ($product->getMasterVariant()->getMetal() == "серебро") {
+                if (mb_stripos($product->getMasterVariant()->getMetal(), "серебро", 0, 'UTF-8') !== false) {
                     $collections[] = $taxon;
                     break;
                 }
@@ -588,7 +588,8 @@ class ProductController extends ResourceController
 //            'depth' => 'any',
             'box' => 'any',
             'size' => 'any',
-            'color' => 'any'
+            'color' => 'any',
+            'collection' => 'any'
         );
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -1049,7 +1050,8 @@ class ProductController extends ResourceController
 //            'depth' => 'any',
                 'box' => 'any',
                 'size' => 'any',
-                'color' => 'any'
+                'color' => 'any',
+                'collection' => 'any'
             );
             $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -1156,5 +1158,20 @@ class ProductController extends ResourceController
         $orderItem->setVariant($product->getMasterVariant());
         $em->flush();
         return new Response('ok');
+    }
+
+    public function getCollectionListAction($filter){
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.taxonomy = 9
+             AND t.parent > 0
+            '
+        )->getResult();
+        return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
+            'collections' => $collections,
+            'filter' => $filter
+        ));
     }
 }

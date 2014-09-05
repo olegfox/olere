@@ -17,6 +17,13 @@
         </select>
     </div>
     {% endif %}
+    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}hide{% endif %}">
+        коллекция:
+        <select name="" id="collection" onchange="filter('{{ category }}');">
+            <option value="any">любая</option>
+            {{ render(url('sylius_get_collection_list', {filter: filter.collection})) }}
+        </select>
+    </div>
     <div class="price">
         {#<span>цена:</span>#}
         <select name="" id="price" onchange="filter('{{ category }}');">
