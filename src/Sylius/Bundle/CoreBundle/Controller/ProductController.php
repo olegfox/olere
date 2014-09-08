@@ -34,7 +34,14 @@ class ProductController extends ResourceController
 
     public function collectionAction(Request $request)
     {
-        $collections = $this->get('sylius.repository.taxonomy')->findBy(array("id" => 8));
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.taxonomy = 8
+             AND t.parent IS NOT NULL
+            '
+        )->getResult();
 //        $collections = array();
 //        foreach($parent as $p){
 //            foreach($p->getTaxons() as $t){
@@ -48,13 +55,24 @@ class ProductController extends ResourceController
 
     public function collectionsAction(Request $request)
     {
-        $collections = $this->get('sylius.repository.taxonomy')->findBy(array("id" => 9));
-//        $collections = array();
-//        foreach($parent as $p){
-//            foreach($p->getTaxons() as $t){
-//                $collections[] = $t;
-//            }
-//        }
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             JOIN t.products p
+             JOIN p.variants v
+             WHERE t.taxonomy = 9
+             AND t.id NOT IN
+             (
+             SELECT tt.id FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon tt
+             JOIN tt.products pp
+             JOIN pp.variants vv
+             WHERE tt.taxonomy = 9
+             AND vv.metal LIKE :silver
+             )
+            '
+        )->setParameter('silver', "%серебро%")->getResult();
         return $this->render('SyliusWebBundle:Frontend/Taxon:collection.html.twig', array(
             'collections' => $collections
         ));
@@ -63,22 +81,15 @@ class ProductController extends ResourceController
     public function silverAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $collections = array();
-        $taxons = $em->createQuery(
+        $collections = $em->createQuery(
             'SELECT t FROM
              Sylius\Bundle\CoreBundle\Model\Taxon t
+             JOIN t.products p
+             JOIN p.variants v
              WHERE t.taxonomy = 9
+             AND v.metal LIKE :silver
             '
-        )->getResult();
-
-        foreach ($taxons as $taxon) {
-            foreach ($taxon->getProducts() as $product) {
-                if (mb_stripos($product->getMasterVariant()->getMetal(), "серебро", 0, 'UTF-8') !== false) {
-                    $collections[] = $taxon;
-                    break;
-                }
-            }
-        }
+        )->setParameter('silver', "%серебро%")->getResult();
 
         return $this->render('SyliusWebBundle:Frontend/Taxon:silver.html.twig', array(
             'collections' => $collections
@@ -150,19 +161,19 @@ class ProductController extends ResourceController
                         '
                     )->setParameter('sku', $articul)->getResult();
                     $flag = 0;
-                    if(count($product) <= 0){
+                    if (count($product) <= 0) {
                         $flag = 1;
                     }
-                    if(count($product) > 0){
-                        if($product[0]->getCatalogName() == 'Кольца'){
+                    if (count($product) > 0) {
+                        if ($product[0]->getCatalogName() == 'Кольца') {
                             $f = 0;
-                            foreach($product as $p){
-                                if($p->getMasterVariant()->getSize() == $size){
+                            foreach ($product as $p) {
+                                if ($p->getMasterVariant()->getSize() == $size) {
                                     $f = 1;
                                     break;
                                 }
                             }
-                            if($f == 0){
+                            if ($f == 0) {
                                 $flag = 1;
                             }
                         }
@@ -357,62 +368,33 @@ class ProductController extends ResourceController
             $repositoryTaxon = $this->container->get('sylius.repository.taxon');
             $manager = $this->container->get('sylius.manager.product');
             foreach ($products as $product) {
-                $ctf = 0;
-                $cl = 0;
-                $taxons = new ArrayCollection();
-                $ar = array();
-                $ar['ctf'] = $ctf;
-                $ar['cl'] = $cl;
-                foreach ($product->getTaxons() as $i => $taxon) {
-                    $ar['taxon_id' . $i] = $taxon->getId();
-                    if ($taxon->getTaxonomy()->getId() == 8) {
-                        $ctf = 1;
-                        $ar['ctf'] = $ctf;
-                        $ar['catalogParent'] = $taxon->getTaxonomy()->getId();
-                    }
-                    if ($taxon->getTaxonomy()->getId() == 9) {
-                        $cl = 1;
-                        $ar['cl'] = $cl;
-                        $ar['collectionParent'] = $taxon->getTaxonomy()->getId();
-                    }
+                $taxons = array();
+                $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
+                if ($catalog) {
+                    $taxons[] = $catalog;
                 }
-                if ($ctf == 0) {
-                    $ar['catalog'] = $product->getCatalog();
-                    $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
-                    if (is_object($catalog)) {
-                        $taxons[] = $catalog;
-                    }
+                $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
+                if ($collection) {
+                    $taxons[] = $collection;
                 }
-                if ($cl == 0) {
-                    $ar['collection'] = $product->getCollection();
-                    $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
-
-                    if (is_object($collection)) {
-                        $taxons[] = $collection;
-                    }
-                }
-                if (count($taxons) > 0) {
-                    print $product->getName();
-                    $ar['product'] = $product->getId();
-                    foreach ($taxons as $t) {
-                        $fl = 0;
-                        foreach ($product->getTaxons() as $tt) {
-                            if ($tt->getId() == $t->getId()) {
-                                $fl = 1;
-                            }
-                        }
-                        if ($fl == 0) {
-                            $product->addTaxon($t);
+                $fc = 0;
+                foreach ($taxons as $t) {
+                    $flag = 0;
+                    foreach ($product->getTaxons() as $taxon) {
+                        if ($t->getId() == $taxon->getId()) {
+                            $flag = 1;
                         }
                     }
-                    $manager->flush();
-                    print json_encode($ar);
+                    if ($flag == 0) {
+                        $product->addTaxon($t);
+                        $fc = 1;
+                    }
+                }
+                if($fc == 1){
                     $count++;
-//                    if($count > 1000){
-//                        return new Response("Обновлено $count продуктов.");
-//                    }
                 }
             }
+            $manager->flush();
         }
         return new Response("Обновлено $count продуктов.");
     }
@@ -482,8 +464,8 @@ class ProductController extends ResourceController
                         $images = array_reverse($images);
                         foreach ($images as $i) {
 //                            print "Вывод команды";
-                            if(!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)){
-                                exec('wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/sylius/web/import/files/',$output, $retval);
+                            if (!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
+                                exec('wget ftp://fotobank.olere.ru/"' . $i . '" -P /var/www/sylius/web/import/files/', $output, $retval);
 //                                print 'wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/Migura/web/import/files/';
                             }
 //                            $fp = fopen($i, "w");
@@ -610,12 +592,35 @@ class ProductController extends ResourceController
                 '
             )->setParameter('taxonomy', 8)->getResult();
         } else {
-            $taxons = $em->createQuery(
-                'SELECT t FROM
-                 Sylius\Bundle\CoreBundle\Model\Taxon t
-                 WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
-                '
-            )->setParameter('taxonomy', 9)->getResult();
+            if($filter['material'] == '%серебро%'){
+                $taxons = $em->createQuery(
+                    'SELECT t FROM
+                     Sylius\Bundle\CoreBundle\Model\Taxon t
+                     JOIN t.products p
+                     JOIN p.variants v
+                     WHERE t.taxonomy = 9
+                     AND v.metal LIKE :silver
+                    '
+                )->setParameter('silver', "%серебро%")->getResult();
+            }else{
+                $taxons = $em->createQuery(
+                    'SELECT t FROM
+                     Sylius\Bundle\CoreBundle\Model\Taxon t
+                     JOIN t.products p
+                     JOIN p.variants v
+                     WHERE t.taxonomy = 9
+                     AND t.id NOT IN
+                     (
+                     SELECT tt.id FROM
+                     Sylius\Bundle\CoreBundle\Model\Taxon tt
+                     JOIN tt.products pp
+                     JOIN pp.variants vv
+                     WHERE tt.taxonomy = 9
+                     AND vv.metal LIKE :silver
+                     )
+                    '
+                )->setParameter('silver', "%серебро%")->getResult();
+            }
         }
 
 
@@ -1095,7 +1100,8 @@ class ProductController extends ResourceController
         }
     }
 
-    public function byRingFormAction(Request $request, $sku = null){
+    public function byRingFormAction(Request $request, $sku = null)
+    {
         $em = $this->getDoctrine()->getManager();
         $products = $em->createQuery(
             'SELECT p FROM
@@ -1110,7 +1116,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function sizesProductAction(Request $request, $sku = null, $id = null, $item = null){
+    public function sizesProductAction(Request $request, $sku = null, $id = null, $item = null)
+    {
         $em = $this->getDoctrine()->getManager();
         $products = $em->createQuery(
             'SELECT p FROM
@@ -1122,7 +1129,7 @@ class ProductController extends ResourceController
         )->setParameter('sku', $sku)->getResult();
         $sizes = array();
         $i = 0;
-        foreach($products as $p){
+        foreach ($products as $p) {
             $sizes[$i]['id'] = $p->getId();
             $sizes[$i]['name'] = $p->getMasterVariant()->getSize();
             $i++;
@@ -1134,21 +1141,22 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function changeSizeCartAction(Request $request, $item){
+    public function changeSizeCartAction(Request $request, $item)
+    {
         $productId = $request->get('size');
         $repositoryProduct = $this->container->get('sylius.repository.product');
         $repositoryOrderItem = $this->container->get('sylius.repository.orderItem');
         $em = $this->getDoctrine()->getManager();
         $product = $repositoryProduct->find($productId);
         $orderItem = $repositoryOrderItem->find($item);
-        if($orderItem->getQuantity() > $product->getMasterVariant()->getOnHand()){
+        if ($orderItem->getQuantity() > $product->getMasterVariant()->getOnHand()) {
             return new Response('На складе нет такого количества.');
         }
         $orderI = $repositoryOrderItem->findOneBy(array('order' => $orderItem->getOrder()->getId(), 'variant' => $product->getMasterVariant()->getId()));
-        if($orderI){
-            if($orderItem->getQuantity() + $orderI->getQuantity() > $product->getMasterVariant()->getOnHand()){
+        if ($orderI) {
+            if ($orderItem->getQuantity() + $orderI->getQuantity() > $product->getMasterVariant()->getOnHand()) {
                 return new Response('На складе нет такого количества.');
-            }else{
+            } else {
                 $orderI->setQuantity($orderI->getQuantity() + $orderItem->getQuantity());
                 $em->remove($orderItem);
                 $em->flush();
@@ -1160,7 +1168,8 @@ class ProductController extends ResourceController
         return new Response('ok');
     }
 
-    public function getCollectionListAction($filter){
+    public function getCollectionListAction($filter)
+    {
         $em = $this->getDoctrine()->getManager();
         $collections = $em->createQuery(
             'SELECT t FROM

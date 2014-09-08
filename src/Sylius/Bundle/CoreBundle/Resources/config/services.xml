@@ -503,6 +503,9 @@
             <argument type="service" id="sylius.checker.restricted_zone" />
             <tag name="twig.extension" />
         </service>
+        <service id="sylius.twig.price_extension" class="Sylius\Bundle\CoreBundle\Twig\SyliusPriceExtension">
+            <tag name="twig.extension" />
+        </service>
         <service id="sylius.twig.money" class="%sylius.twig.money.class%">
             <argument type="service" id="sylius.price_calculator.default" />
             <argument type="service" id="sylius.currency_context" />

@@ -18,16 +18,15 @@
     </div>
     {% endif %}
     <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}hide{% endif %}">
-        коллекция:
         <select name="" id="collection" onchange="filter('{{ category }}');">
-            <option value="any">любая</option>
+            <option value="any">все коллекции</option>
             {{ render(url('sylius_get_collection_list', {filter: filter.collection})) }}
         </select>
     </div>
     <div class="price">
         {#<span>цена:</span>#}
         <select name="" id="price" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>все цены</option>
+            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>{{ products|price }}</option>
             <option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>
             <option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>
             <option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>
@@ -43,7 +42,7 @@
         <span>материал:</span>
         <select name="" id="material" onchange="filter('{{ category }}');">
             <option value="any" {% if filter.material == "any" %}selected="selected"{% endif %}>любой</option>
-            <option value="серебро" {% if filter.material == "серебро" %}selected="selected"{% endif %}>серебро</option>
+            <option value="%серебро%" {% if filter.material == "%серебро%" %}selected="selected"{% endif %}>серебро</option>
         </select>
     </div>
     <div class="weight{% if filter.material != "серебро" %} hide{% endif %}">
@@ -67,20 +66,18 @@
         {#</select>#}
     {#</div>#}
     <div class="color">
-        <span>цвет:</span>
         <select name="" id="color" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.color == "any" %}selected="selected"{% endif %}>любой</option>
+            <option value="any" {% if filter.color == "any" %}selected="selected"{% endif %}>все цвета</option>
             <option value="%черный%" {% if filter.color == "%черный%" %}selected="selected"{% endif %}>черный</option>
             <option value="%серебряный%" {% if filter.color == "%серебряный%" %}selected="selected"{% endif %}>серебряный</option>
             <option value="%сереневый%" {% if filter.color == "%сереневый%" %}selected="selected"{% endif %}>сереневый</option>
         </select>
     </div>
     <div class="box">
-        <span>вставка:</span>
-        <select name="" id="box" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>любая</option>
-            <option value="камень" {% if filter.box == "камень" %}selected="selected"{% endif %}>камень</option>
-            <option value="бриллиант" {% if filter.box == "бриллиант" %}selected="selected"{% endif %}>бриллиант</option>
+        <select name="" id="box" onchange="filter('{{ category }}');" {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}class="hide"{% endif %}>
+            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>выбрать вставку</option>
+            <option value="%камень%" {% if filter.box == "%камень%" %}selected="selected"{% endif %}>камень</option>
+            <option value="%бриллиант%" {% if filter.box == "%бриллиант%" %}selected="selected"{% endif %}>бриллиант</option>
         </select>
     </div>
     <div class="size{% if taxon is defined %}{% if taxon.slug != 'kol-tsa' %} hide{% endif %}{% else %} hide{% endif %}">

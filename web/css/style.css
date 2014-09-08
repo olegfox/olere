@@ -146,7 +146,7 @@ a, a:hover, a:focus{
 .logoBox img{
     vertical-align: middle;
     max-height: 64px;
-    width: 100px;
+    width: 158px;
     margin-top: -5px;
 }
 .wrap_menu{
@@ -320,6 +320,13 @@ a, a:hover, a:focus{
     appearance:none;
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
+}
+.catalog .head.filter select:focus{
+    outline: 0;
+}
+.catalog .head.filter select#collection,
+.catalog .head.filter select#type{
+    /*max-width: 100px;*/
 }
 .catalogSearch .head{
     margin-top: 18px;
@@ -602,6 +609,7 @@ a, a:hover, a:focus{
 .catalog .box .description a.header{
     display: block;
     margin-top: 10px;
+    font-size: 18px;
 }
 .catalog .box .description a.header2{
     display: block;
