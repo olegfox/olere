@@ -860,9 +860,36 @@ class ProductController extends ResourceController
             $idx = json_decode($idx);
             if (count($idx) > 0) {
                 foreach ($idx as $id) {
+                    $em = $this->getDoctrine()->getManager();
+                    $countOrderItem = $em->createQuery(
+                        'SELECT count(o.id) FROM
+                         Sylius\Bundle\CoreBundle\Model\OrderItem o
+                         JOIN o.variant v
+                         JOIN v.product p
+                         WHERE p.id = :id
+                        '
+                    )->setParameter('id', $id)->getSingleScalarResult();
                     $product = $repository->findOneBy(array("id" => $id));
-                    $manager->remove($product);
-                    $manager->flush();
+                    if($countOrderItem <= 0){
+                        $manager->remove($product);
+                        $manager->flush();
+                    }else{
+                        $order = $em->createQuery(
+                            'SELECT o FROM
+                             Sylius\Bundle\CoreBundle\Model\Order o
+                             JOIN o.items oi
+                             JOIN oi.variant v
+                             JOIN v.product p
+                             WHERE p.id = :id
+                             AND o.number IS NOT NULL
+                            '
+                        )->setParameter('id', $id)->getResult();
+                        $return = '';
+                        foreach($order as $o){
+                            $return = $return.' #'.$o->getNumber();
+                        }
+                        return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+                    }
                 }
             }
         }

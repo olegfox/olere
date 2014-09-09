@@ -129,7 +129,7 @@ class HomepageController extends Controller
         $page1 = $repositoryPage->findPage('main1');
         $page2 = $repositoryPage->findPage('main2');
 
-        if($request->getHost() == "olere.ru"){
+        if($request->getHost() == "olere.ru" || $request->getHost() == "www.olere.ru"){
             $sliders = $repository->findBy(array('type' => 1));
         }else{
             $sliders = $repository->findBy(array('type' => 0));

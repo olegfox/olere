@@ -232,6 +232,9 @@ a, a:hover, a:focus{
 .menu ul li ul li {
     margin-right: 46px;
 }
+.menu ul li ul li.last{
+    width: auto;
+}
 
 .menu ul li ul li a{
     color: #000!important;
