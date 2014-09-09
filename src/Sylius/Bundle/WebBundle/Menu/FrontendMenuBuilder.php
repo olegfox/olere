@@ -323,11 +323,11 @@ class FrontendMenuBuilder extends MenuBuilder
 //            'labelAttributes' => array('icon' => 'icon-shopping-cart icon-large')
 //        ))->setLabel($this->translate('sylius.frontend.menu.main.cart'));
 
-//        $menu->addChild("", array(
-//            'route' => "",
-//            'routeParameters' => "",
-//            'linkAttributes' => array(),
-//        ))->setLabel("");
+        $menu->addChild("", array(
+            'route' => "",
+            'routeParameters' => "",
+            'linkAttributes' => array(),
+        ))->setLabel("");
 
         return $menu;
     }
