@@ -26,7 +26,7 @@
     <div class="price">
         {#<span>цена:</span>#}
         <select name="" id="price" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>{{ products|price }}</option>
+            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>Все цены</option>
             <option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>
             <option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>
             <option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>
