@@ -23,7 +23,7 @@
         </id>
 
         <one-to-one field="order" target-entity="Sylius\Bundle\OrderBundle\Model\OrderInterface">
-            <join-column name="order_id" referenced-column-name="id" nullable="false" />
+            <join-column name="order_id" referenced-column-name="id" nullable="true" />
             <cascade>
                 <cascade-all/>
             </cascade>

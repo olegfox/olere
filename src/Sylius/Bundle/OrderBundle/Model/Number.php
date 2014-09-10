@@ -26,7 +26,7 @@ class Number implements NumberInterface
         return $this->order;
     }
 
-    public function setOrder(OrderInterface $order)
+    public function setOrder(OrderInterface $order = null)
     {
         $this->order = $order;
 
