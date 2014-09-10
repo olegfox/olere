@@ -3,8 +3,6 @@
 
 sylius_product_index_by_taxon_collections:
     pattern: /collections/{page}/{category}
-    requirements:
-         page:  \d+
     defaults:
         _controller: sylius.controller.product:indexByTaxonAction
         _sylius:
@@ -12,8 +10,6 @@ sylius_product_index_by_taxon_collections:
 
 sylius_product_index_by_taxon_product_collections:
     pattern: /collections/{page}/{category}/{slug}
-    requirements:
-         page:  \d+
     defaults:
         _controller: sylius.controller.product:indexByTaxonProductAction
         _sylius:

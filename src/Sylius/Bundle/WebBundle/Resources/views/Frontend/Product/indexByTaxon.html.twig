@@ -18,7 +18,7 @@
         {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
         {{ grid(products, groups) }}
         {% if page != 'all' and products|length > 40 %}
-            {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}{{ path('sylius_product_index_by_taxon', {page: 'all', category: taxon.slug}) }}{% else %}{{ path('sylius_sale', {page: 'all'}) }}{% endif %}">Показать всё</a></li></ul>
+            {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}{{ path('sylius_product_index_by_taxon', {page: 'all', category: taxon.slug}) }}{% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}{{ path('sylius_product_index_by_taxon_collections', {page: 'all', category: taxon.slug}) }}{% else %}{{ path('sylius_sale', {page: 'all'}) }}{% endif %}">Показать всё</a></li></ul>
         {% endif %}
     </div>
 {% endblock %}
