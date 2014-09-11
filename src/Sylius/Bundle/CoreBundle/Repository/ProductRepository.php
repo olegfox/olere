@@ -143,6 +143,10 @@ class ProductRepository extends VariableProductRepository
                 if ($filter['material'] != 'any') {
                     $queryBuilder
                         ->andWhere('variant.metal LIKE :material');
+                }else{
+                    $params['notSilver'] = '%серебро%';
+                    $queryBuilder
+                        ->andWhere('variant.id NOT IN (SELECT v.id FROM Sylius\Bundle\CoreBundle\Model\Variant v WHERE v.metal LIKE :notSilver)');
                 }
             }
             if (isset($filter['weight'])) {

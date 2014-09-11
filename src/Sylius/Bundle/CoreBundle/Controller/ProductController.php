@@ -59,9 +59,8 @@ class ProductController extends ResourceController
         $collections = $em->createQuery(
             'SELECT t FROM
              Sylius\Bundle\CoreBundle\Model\Taxon t
-             JOIN t.products p
-             JOIN p.variants v
              WHERE t.taxonomy = 9
+             AND t.parent IS NOT NULL
              AND t.id NOT IN
              (
              SELECT tt.id FROM
@@ -674,7 +673,9 @@ class ProductController extends ResourceController
                  WHERE t.id = :taxon
                  GROUP BY v.sku
                 '
-            )->setParameter('taxon', $taxon->getId())->getResult();
+            )->setParameters(array(
+                    'taxon' => $taxon->getId()
+                ))->getResult();
         }
 
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
