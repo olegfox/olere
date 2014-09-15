@@ -274,7 +274,6 @@ class FrontendMenuBuilder extends MenuBuilder
 //        } else {
 //            $pagemenu['customers'] = '';
 //        }
-        $menu->setCurrentUri($this->request->getRequestUri());
         foreach ($pagemenu as $key => $p) {
             if (isset($p["route"])) {
                 $m = $menu->addChild($key, array(
@@ -306,7 +305,20 @@ class FrontendMenuBuilder extends MenuBuilder
                 ))->setLabel($p["name"]);
             }
         }
-
+        $menu->setCurrentUri($this->request->getRequestUri());
+        if($this->request->get('filter')['material'] == '%серебро%'){
+            $menu->setCurrentUri('/silver');
+        }else{
+            if(stripos($this->request->getRequestUri(), 'catalog', 0) !== FALSE){
+                $menu->setCurrentUri('/catalog');
+            }
+            if(stripos($this->request->getRequestUri(), 'collections', 0) !== FALSE){
+                $menu->setCurrentUri('/collections');
+            }
+            if(stripos($this->request->getRequestUri(), 'silver', 0) !== FALSE){
+                $menu->setCurrentUri('/silver');
+            }
+        }
 //        if ($this->cartProvider->hasCart()) {
 //            $cart = $this->cartProvider->getCart();
 //            $cartTotals = array('items' => $cart->getTotalItems(), 'total' => $cart->getTotal());

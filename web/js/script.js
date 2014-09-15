@@ -38,9 +38,9 @@ $(function () {
         });
     });
     addCart();
-    if (window.location.href.indexOf('catalog') + 1) {
-        $("a[href='/catalog']").parent().addClass("current");
-    }
+//    if (window.location.href.indexOf('catalog') + 1) {
+//        $("a[href='/catalog']").parent().addClass("current");
+//    }
     $(".fancybox").fancybox();
     $(window).load(function () {
         footerBottom();
