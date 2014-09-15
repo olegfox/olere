@@ -40,6 +40,7 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.taxonomy = 8
              AND t.parent IS NOT NULL
+             ORDER BY t.position ASC
             '
         )->getResult();
 //        $collections = array();
@@ -61,6 +62,12 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.taxonomy = 9
              AND t.parent IS NOT NULL
+             AND t.parent IN
+             (
+             SELECT taxon.id FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon taxon
+             WHERE taxon.parent IS NULL
+             )
              AND t.id NOT IN
              (
              SELECT tt.id FROM
@@ -70,6 +77,7 @@ class ProductController extends ResourceController
              WHERE tt.taxonomy = 9
              AND vv.metal LIKE :silver
              )
+             ORDER BY t.position ASC
             '
         )->setParameter('silver', "%серебро%")->getResult();
         return $this->render('SyliusWebBundle:Frontend/Taxon:collection.html.twig', array(
@@ -87,6 +95,7 @@ class ProductController extends ResourceController
              JOIN p.variants v
              WHERE t.taxonomy = 9
              AND v.metal LIKE :silver
+             ORDER BY t.position ASC
             '
         )->setParameter('silver', "%серебро%")->getResult();
 
@@ -305,7 +314,7 @@ class ProductController extends ResourceController
                             $i++;
                         }
                     } else {
-
+//echo 'stroka = '.$row.' id = '.$product[0]->getId().'\n';
                         continue;
                     }
 
@@ -318,7 +327,6 @@ class ProductController extends ResourceController
                 ));
             }
         }
-
         return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
             'form' => $form->createView()
         ));
@@ -475,7 +483,7 @@ class ProductController extends ResourceController
 //                                echo ".";
 //                                $ret = ftp_nb_continue($connect);
 //                            }
-                            if (!$retval && file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
+                            if (file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
                                 $variantImage = new VariantImage();
                                 $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
                                 $variantImage->setFile($fileinfo);
@@ -605,9 +613,8 @@ class ProductController extends ResourceController
                 $taxons = $em->createQuery(
                     'SELECT t FROM
                      Sylius\Bundle\CoreBundle\Model\Taxon t
-                     JOIN t.products p
-                     JOIN p.variants v
                      WHERE t.taxonomy = 9
+                     AND t.parent IS NOT NULL
                      AND t.id NOT IN
                      (
                      SELECT tt.id FROM
@@ -617,6 +624,7 @@ class ProductController extends ResourceController
                      WHERE tt.taxonomy = 9
                      AND vv.metal LIKE :silver
                      )
+                     ORDER BY t.position ASC
                     '
                 )->setParameter('silver', "%серебро%")->getResult();
             }
@@ -663,19 +671,12 @@ class ProductController extends ResourceController
             $paginator->setMaxPerPage(40);
             $paginator->setCurrentPage($request->query->get('page', $page));
         } else {
-//            $paginator = $taxon->getProducts();
-            $em = $this->getDoctrine()->getManager();
-            $paginator = $em->createQuery(
-                'SELECT p FROM
-                 Sylius\Bundle\CoreBundle\Model\Product p
-                 JOIN p.variants v
-                 JOIN p.taxons t
-                 WHERE t.id = :taxon
-                 GROUP BY v.sku
-                '
-            )->setParameters(array(
-                    'taxon' => $taxon->getId()
-                ))->getResult();
+            $paginator = $this
+                ->getRepository()
+                ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
+
+            $paginator->setMaxPerPage(10000);
+            $paginator->setCurrentPage($request->query->get('page', 1));
         }
 
         return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
@@ -1203,9 +1204,18 @@ class ProductController extends ResourceController
             'SELECT t FROM
              Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.taxonomy = 9
-             AND t.parent > 0
+             AND t.parent IS NOT NULL
+             AND t.id NOT IN
+             (
+             SELECT tt.id FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon tt
+             JOIN tt.products pp
+             JOIN pp.variants vv
+             WHERE tt.taxonomy = 9
+             AND vv.metal LIKE :silver
+             )
             '
-        )->getResult();
+        )->setParameter('silver', "%серебро%")->getResult();
         return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
             'collections' => $collections,
             'filter' => $filter

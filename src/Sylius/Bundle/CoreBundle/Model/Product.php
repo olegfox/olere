@@ -530,4 +530,11 @@ class Product extends BaseProduct implements ProductInterface
         return $this->getTaxon(9, 1);
     }
 
+    public function isSilver(){
+        if(mb_stripos($this->getMasterVariant()->getMetal(), "серебро", 0, 'UTF-8') !== FALSE){
+            return 1;
+        }
+        return 0;
+    }
+
 }
