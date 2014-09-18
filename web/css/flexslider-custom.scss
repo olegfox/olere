@@ -2,27 +2,32 @@
   width: 100%;
   margin: 0px auto 0px auto;
   max-width: 100%;
-  overflow: hidden !important; }
+  overflow: hidden !important;
+}
 
 .flexslider2 {
   width: 100%;
   margin: 0px auto 0px auto;
   max-width: 100%;
   background: none;
-  background-size: cover; }
+  background-size: cover;
+}
 
 .borderSlider {
   position: relative;
   height: 1px;
   background: #dcdcdc;
-  margin-top: 0px; }
+  margin-top: 0px;
+}
 
 .flexslider .slides > li {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .flexslider .slides > li img {
   height: auto;
-  width: 100%; }
+  width: 100%;
+}
 
 .flexslider .wrapText {
   position: absolute;
@@ -34,7 +39,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2; }
+  z-index: 2;
+}
 
 .flexslider .text {
   position: absolute;
@@ -42,24 +48,27 @@
   bottom: 0;
   margin: auto 0;
   height: 308px;
-  padding-left: 20px; }
+  padding-left: 20px;
   @media screen and (max-width: 1024px) {
-    .flexslider .text {
-      width: 100%; } }
+    width: 100%;
+  }
+}
 
 .flexslider .text .header {
   color: #fff;
   font-family: "Calibri";
   font-size: 30px;
   margin-bottom: 12px;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75); }
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, .75);
+}
 
 .flexslider .text p {
   color: #fff;
   font-family: "Calibri";
   font-size: 18px;
   margin-bottom: 17px;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75); }
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, .75);
+}
 
 .flexslider .text .btn {
   border: solid 1px #fff;
@@ -70,21 +79,17 @@
   height: 44px;
   line-height: 30px;
   border-radius: 0;
-  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75);
-  /* drop shadow */
-  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75);
-  /* drop shadow */
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75);
-  /* drop shadow */
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75);
-  /* drop shadow */ }
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, .75); /* drop shadow */
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .75); /* drop shadow */
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .75); /* drop shadow */
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, .75); /* drop shadow */
   @media screen and (max-width: 1024px) {
-    .flexslider .text .btn {
-      position: absolute;
-      right: 40px;
-      bottom: 80px; } }
+    position: absolute;
+    right: 40px;
+    bottom: 80px;
+  }
+}
 
 .flexslider .text .btn:hover {
-  color: #fff; }
-
-/*# sourceMappingURL=flexslider-custom.css.map */
+  color: #fff;
+}

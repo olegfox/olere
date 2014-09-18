@@ -15,7 +15,7 @@
     vertical-align: middle; }
   .simplemodal-data label {
     display: none; }
-  .simplemodal-data button[type=submit], .simplemodal-data input[type=number] {
+  .simplemodal-data button[type=submit], .simplemodal-data input {
     border: solid 1px #000;
     width: 70px;
     height: 34px;
@@ -26,7 +26,7 @@
     line-height: 31px;
     display: inline-block;
     margin-left: 14px; }
-  .simplemodal-data input[type=number] {
+  .simplemodal-data input {
     padding-left: 10px;
     display: inline-block;
     line-height: 20px; }

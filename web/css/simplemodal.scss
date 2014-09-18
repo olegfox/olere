@@ -20,7 +20,7 @@
   label{
     display: none;
   }
-  button[type=submit], input[type=number]{
+  button[type=submit], input{
     border: solid 1px #000;
     width: 70px;
     height: 34px;
@@ -32,7 +32,7 @@
     display: inline-block;
     margin-left: 14px;
   }
-  input[type=number]{
+  input{
     padding-left: 10px;
     display: inline-block;
     line-height: 20px;
