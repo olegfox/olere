@@ -890,7 +890,27 @@ class ProductController extends ResourceController
                         foreach($order as $o){
                             $return = $return.' #'.$o->getNumber();
                         }
-                        return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+                        if(count($order) <= 0){
+                            $orderItems = $em->createQuery(
+                                'SELECT o FROM
+                                 Sylius\Bundle\CoreBundle\Model\OrderItem o
+                                 JOIN o.variant v
+                                 JOIN v.product p
+                                 WHERE p.id = :id
+                                '
+                            )->setParameter('id', $id)->getResult();
+                            if(count($orderItems) > 0){
+                                foreach($orderItems as $orderItem){
+                                    $em->remove($orderItem);
+                                    $em->flush();
+                                }
+                                $manager->remove($product);
+                                $manager->flush();
+                            }
+//                            return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть у кого-то в корзине.');
+                        }else{
+                            return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+                        }
                     }
                 }
             }
@@ -997,13 +1017,62 @@ class ProductController extends ResourceController
         ));
     }
 
-//    public function deleteAction(Request $request){
-//        $repository = $this->container->get('sylius.repository.product');
-//        $manager = $this->container->get('sylius.manager.product');
-//        $product = $repository->findOneBy(array('id' => $request->get('id')));
-//        $manager->remove($product);
-//        $manager->flush();
-//    }
+    public function deleteAction(Request $request){
+        $repository = $this->container->get('sylius.repository.product');
+        $manager = $this->container->get('sylius.manager.product');
+        $id = $request->get('id');
+        $product = $repository->findOneBy(array('id' => $id));
+        $em = $this->getDoctrine()->getManager();
+        $countOrderItem = $em->createQuery(
+            'SELECT count(o.id) FROM
+             Sylius\Bundle\CoreBundle\Model\OrderItem o
+             JOIN o.variant v
+             JOIN v.product p
+             WHERE p.id = :id
+            '
+        )->setParameter('id', $id)->getSingleScalarResult();
+        if($countOrderItem <= 0){
+            $manager->remove($product);
+            $manager->flush();
+        }else{
+            $order = $em->createQuery(
+                'SELECT o FROM
+                 Sylius\Bundle\CoreBundle\Model\Order o
+                 JOIN o.items oi
+                 JOIN oi.variant v
+                 JOIN v.product p
+                 WHERE p.id = :id
+                 AND o.number IS NOT NULL
+                '
+            )->setParameter('id', $id)->getResult();
+            $return = '';
+            foreach($order as $o){
+                $return = $return.' #'.$o->getNumber();
+            }
+            if(count($order) <= 0){
+                $orderItems = $em->createQuery(
+                    'SELECT o FROM
+                     Sylius\Bundle\CoreBundle\Model\OrderItem o
+                     JOIN o.variant v
+                     JOIN v.product p
+                     WHERE p.id = :id
+                    '
+                )->setParameter('id', $id)->getResult();
+                if(count($orderItems) > 0){
+                    foreach($orderItems as $orderItem){
+                        $em->remove($orderItem);
+                        $em->flush();
+                    }
+                    $manager->remove($product);
+                    $manager->flush();
+                }
+//                return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть у кого-то в корзине.');
+            }else{
+                return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+            }
+        }
+        return $this->redirectHandler->redirectToReferer();
+    }
 
     public function getPriceAction($id, $type, $taxon)
     {
