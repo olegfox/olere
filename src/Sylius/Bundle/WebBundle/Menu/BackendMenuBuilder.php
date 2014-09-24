@@ -338,20 +338,20 @@ class BackendMenuBuilder extends MenuBuilder
 //            'labelAttributes' => array('icon' => 'glyphicon glyphicon-cog'),
 //        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.tax_rates', $section)));
 
-        $child->addChild('shipping_categories', array(
-            'route' => 'sylius_backend_shipping_category_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-cog'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipping_categories', $section)));
+//        $child->addChild('shipping_categories', array(
+//            'route' => 'sylius_backend_shipping_category_index',
+//            'labelAttributes' => array('icon' => 'glyphicon glyphicon-cog'),
+//        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipping_categories', $section)));
 
-        $child->addChild('shipping_methods', array(
-            'route' => 'sylius_backend_shipping_method_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-cog'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipping_methods', $section)));
+//        $child->addChild('shipping_methods', array(
+//            'route' => 'sylius_backend_shipping_method_index',
+//            'labelAttributes' => array('icon' => 'glyphicon glyphicon-cog'),
+//        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.shipping_methods', $section)));
 
-        $child->addChild('countries', array(
-            'route' => 'sylius_backend_country_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-flag'),
-        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.countries', $section)));
+//        $child->addChild('countries', array(
+//            'route' => 'sylius_backend_country_index',
+//            'labelAttributes' => array('icon' => 'glyphicon glyphicon-flag'),
+//        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.countries', $section)));
 
 //        $child->addChild('zones', array(
 //            'route' => 'sylius_backend_zone_index',
