@@ -2,467 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="790bd95c-e439-4c66-bd8f-01bd92751966" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/..png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/.image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/avi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/bg_transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/bg_transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/bz2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ccd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/cgi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard-add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard-add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard-clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard-clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/clipboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/clipboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/com.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/copy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/csh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/cue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/deb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/denied.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/denied.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/dll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/doc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/docx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/download.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/download.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/exe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/fla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/flv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/folder-new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/folder-new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/folder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/folder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/fon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/gif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/gz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/htm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/html.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ini.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/iso.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/java.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/jpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/js.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/kcf_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/kcf_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/maximize.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/maximize.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mdx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mid.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/midi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mkv.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mov.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/move.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/move.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mp3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mp4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mpeg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/mpg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/nfo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/nrg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ogg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pdf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/php.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/phps.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/tree/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/tree/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/png.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ppt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/pptx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/psd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/qt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/rename.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/rename.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rpm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/rtf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sql.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/srt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/sub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/swf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tgz.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tif.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/tiff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/torrent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/ttf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/txt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/ui-icons_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_grey.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/ui-icons_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/ui-icons_white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/icons/view.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/icons/view.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/wav.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/wma.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/xls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/xlsx.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/big/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/img/files/small/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/big/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/img/files/small/zip.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/000._jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/000.base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/002._jqueryui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/006.jquery.uniform.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/01.ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/01.ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/010.jquery.fixes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/02.misc.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/02.misc.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/020.jquery.rightClick.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/021.jquery.taphold.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/029.jquery.agent.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/030.jquery.helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/031.jquery.md5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/040.object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/041.dialogs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/050.init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/060.toolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/070.settings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/080.files.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/090.folders.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/091.menus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/091.viewImage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/100.clipboard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/110.dropUpload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/120.misc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/999.agent.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/BolmerCMS.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/Changelog" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/LICENSE.GPL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/doc/LICENSE.LGPL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/af.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/autoload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/base.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/bg.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/bootstrap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/browse.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/browser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ca.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_fastImage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_gd.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_gmagick.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_image_imagick.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/class_zipFolder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/cs.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/da.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/de.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/integration/drupal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/el.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/en.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/es.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/et.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fa.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/fr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/he.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_dir.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_file.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_httpCache.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_path.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lib/helper_text.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/hu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/id.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/css/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/it.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ja.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/dark/js.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/themes/default/js.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/js_localize.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/lt.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/lv.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/minifier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/nl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/no.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pt-br.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/pt.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ro.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/ru.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/sk.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/sv.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_dark.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_dark.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/cache/theme_default.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_browser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_css.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/tpl/tpl_javascript.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/tr.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/types/type_img.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/types/type_mime.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/uk.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/conf/upload.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/upload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/core/class/uploader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/vi.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/kcfinder/lang/zh-cn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Migura.iml" afterPath="$PROJECT_DIR$/.idea/Migura.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/feedback.html.twig" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/feedback.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml" afterPath="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Migura.iws" />
@@ -486,114 +26,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProductController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php">
+      <file leaf-file-name="PageType.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/PageType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="449" column="36" selection-start="19973" selection-end="19973" vertical-scroll-proportion="-6.0" vertical-offset="7920" max-vertical-offset="23454">
+            <state line="95" column="34" selection-start="2754" selection-end="2771" vertical-scroll-proportion="-16.666666" vertical-offset="1134" max-vertical-offset="1872">
               <folding>
-                <element signature="e#7#216#0" expanded="true" />
-                <element signature="e#266#329#0" expanded="true" />
-                <marker date="1411374009913" expanded="true" signature="1176:1350" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="1888:2534" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="2923:3159" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="7007:7321" placeholder="SELECT p FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="23833:23900" placeholder="SELECT v FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="25924:26064" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="26276:26515" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="26693:27254" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="35302:35519" placeholder="SELECT count..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="35946:36265" placeholder="SELECT o FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="36689:36928" placeholder="SELECT o FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="39588:39705" placeholder="SELECT p FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="40278:40417" placeholder="SELECT t FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="41742:41911" placeholder="SELECT count..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="42167:42414" placeholder="SELECT o FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="42730:42921" placeholder="SELECT o FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="47874:48066" placeholder="SELECT p FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="48629:48792" placeholder="SELECT p FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="49208:49371" placeholder="SELECT p FRO..Sylius..." />
-                <marker date="1411374009913" expanded="true" signature="51362:51782" placeholder="SELECT t FRO..Sylius..." />
+                <element signature="e#265#305#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parameters.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <file leaf-file-name="validation.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="463" selection-end="463" vertical-scroll-proportion="0.369863" vertical-offset="0" max-vertical-offset="792">
+            <state line="93" column="26" selection-start="3696" selection-end="3696" vertical-scroll-proportion="0.38297874" vertical-offset="1458" max-vertical-offset="3006">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/main.yml">
+      <file leaf-file-name="StaticContent.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="15" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="2934">
+            <state line="43" column="36" selection-start="1100" selection-end="1100" vertical-scroll-proportion="-11.333333" vertical-offset="108" max-vertical-offset="6732">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/index.html.twig">
+      <file leaf-file-name="StaticContentBase.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContentBase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="27" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="738">
+            <state line="18" column="17" selection-start="393" selection-end="396" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="1422">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="macros.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/macros.html.twig">
+      <file leaf-file-name="sylius.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/sylius.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="0" selection-start="6747" selection-end="7203" vertical-scroll-proportion="0.0" vertical-offset="2016" max-vertical-offset="2664">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/backend/product.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="0" selection-start="2156" selection-end="2326" vertical-scroll-proportion="0.0" vertical-offset="1278" max-vertical-offset="2196">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/layout.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="30" selection-start="3616" selection-end="3616" vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="1854">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="feedback.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/feedback.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="22" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="990">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/layout.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="38" selection-start="8475" selection-end="8475" vertical-scroll-proportion="0.0" vertical-offset="3069" max-vertical-offset="3744">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="groupForm.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/groupForm.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="24" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="738">
+            <state line="129" column="23" selection-start="4121" selection-end="4182" vertical-scroll-proportion="0.0" vertical-offset="1952" max-vertical-offset="2556">
               <folding />
             </state>
           </provider>
@@ -619,7 +93,6 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/web/css/simplemodal.css" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/form.ring.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/config/routing/frontend/product.yml" />
         <option value="$PROJECT_DIR$/web/js/cart.js" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Cart/_item.html.twig" />
@@ -663,6 +136,7 @@
         <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/feedback.html.twig" />
         <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Controller/ProductController.php" />
+        <option value="$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml" />
       </list>
     </option>
   </component>
@@ -759,11 +233,105 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony-cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContentBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -982,6 +550,134 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Type" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migura" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sylius" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1513,7 +1209,11 @@
       <created>1411059628778</created>
       <updated>1411059628778</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="kcfinder">
+      <created>1411539916348</created>
+      <updated>1411539916348</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1541,22 +1241,22 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328594" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40600315" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.81299525" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5293186" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3134441" sideWeight="0.49945945" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25559106" sideWeight="0.50054055" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24703345" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280507" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25559106" sideWeight="0.50054055" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32767764" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3134441" sideWeight="0.49945945" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280507" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5293186" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1599,7 +1299,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="до создания выбора размера колец в корзине" />
     <MESSAGE value="мелкие исправления" />
     <MESSAGE value="мелкие исправления&#10;&#10;" />
     <MESSAGE value="новый yandex счетчик" />
@@ -1624,7 +1323,8 @@
     <MESSAGE value="минимальная ширина 1024" />
     <MESSAGE value="вывод сообщения при ошибке удаления одного продукта" />
     <MESSAGE value="вывод сообщения при ошибке удаления одного продукта&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="вывод сообщения при ошибке удаления одного продукта&#10;&#10;" />
+    <MESSAGE value="kcfinder" />
+    <option name="LAST_COMMIT_MESSAGE" value="kcfinder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1632,51 +1332,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/InventoryUnit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.8448598" vertical-offset="2057" max-vertical-offset="2592" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Repository/ProductRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="33" selection-start="4837" selection-end="4837" vertical-scroll-proportion="0.0" vertical-offset="2646" max-vertical-offset="7686" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/filter.collections.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="35" selection-start="62" selection-end="62" vertical-scroll-proportion="0.03180212" vertical-offset="0" max-vertical-offset="566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/filterForm.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="223" selection-end="223" vertical-scroll-proportion="0.12435233" vertical-offset="0" max-vertical-offset="579" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Product/filter.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="53" selection-start="1079" selection-end="1105" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1926" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Controller/Frontend/HomepageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="33" selection-start="5844" selection-end="5857" vertical-scroll-proportion="0.33333334" vertical-offset="2412" max-vertical-offset="5094" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/catalog.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="39" selection-start="281" selection-end="303" vertical-scroll-proportion="0.24242425" vertical-offset="0" max-vertical-offset="891" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Model/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="533" column="87" selection-start="10180" selection-end="10180" vertical-scroll-proportion="0.0" vertical-offset="9594" max-vertical-offset="9828" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="15" selection-start="932" selection-end="932" vertical-scroll-proportion="-18.666666" vertical-offset="0" max-vertical-offset="720" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Taxon/_singleBoxSilver.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="223" selection-start="223" selection-end="250" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="108" />
@@ -1890,7 +1545,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/WebBundle/Resources/views/Backend/Product/groupForm.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="738">
+        <state line="12" column="24" selection-start="578" selection-end="578" vertical-scroll-proportion="0.07446808" vertical-offset="174" max-vertical-offset="738">
           <folding />
         </state>
       </provider>
@@ -1901,33 +1556,98 @@
           <folding>
             <element signature="e#7#216#0" expanded="true" />
             <element signature="e#266#329#0" expanded="true" />
-            <marker date="1411374009913" expanded="true" signature="1176:1350" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="1888:2534" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="2923:3159" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="7007:7321" placeholder="SELECT p FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="23833:23900" placeholder="SELECT v FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="25924:26064" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="26276:26515" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="26693:27254" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="35302:35519" placeholder="SELECT count..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="35946:36265" placeholder="SELECT o FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="36689:36928" placeholder="SELECT o FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="39588:39705" placeholder="SELECT p FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="40278:40417" placeholder="SELECT t FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="41742:41911" placeholder="SELECT count..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="42167:42414" placeholder="SELECT o FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="42730:42921" placeholder="SELECT o FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="47874:48066" placeholder="SELECT p FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="48629:48792" placeholder="SELECT p FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="49208:49371" placeholder="SELECT p FRO..Sylius..." />
-            <marker date="1411374009913" expanded="true" signature="51362:51782" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT v FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT count..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT o FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT o FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT count..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT o FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT o FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..Sylius..." />
+            <marker date="1411374009913" expanded="true" signature="-1:-1" placeholder="SELECT t FRO..Sylius..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="463" selection-end="463" vertical-scroll-proportion="0.369863" vertical-offset="0" max-vertical-offset="792">
+        <state line="5" column="23" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Controller/ContentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="7" selection-start="695" selection-end="695" vertical-scroll-proportion="41.925926" vertical-offset="1420" max-vertical-offset="1962">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Resources/config/doctrine-model/StaticContent.phpcr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="33" selection-start="916" selection-end="916" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Resources/config/doctrine-phpcr/StaticContent.phpcr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="15" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Resources/config/doctrine-phpcr/StaticContentBase.phpcr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Form/Type/PageType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="34" selection-start="2754" selection-end="2771" vertical-scroll-proportion="-16.666666" vertical-offset="1134" max-vertical-offset="1872">
+          <folding>
+            <element signature="e#265#305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/sylius.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="23" selection-start="4121" selection-end="4182" vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="2556">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="36" selection-start="1100" selection-end="1100" vertical-scroll-proportion="-11.333333" vertical-offset="108" max-vertical-offset="6732">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony-cmf/content-bundle/Symfony/Cmf/Bundle/ContentBundle/Model/StaticContentBase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="17" selection-start="393" selection-end="396" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="1422">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sylius/Bundle/CoreBundle/Resources/config/validation.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="26" selection-start="3696" selection-end="3696" vertical-scroll-proportion="0.38297874" vertical-offset="1458" max-vertical-offset="3006">
           <folding />
         </state>
       </provider>

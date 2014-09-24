@@ -73,6 +73,15 @@
         </property>
     </class>
 
+    <class name="Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent">
+        <property name="id">
+            <constraint name="NotBlank">
+                <option name="message">ID не может быть пустым. (Пример заполнения ID: /contacts)</option>
+                <option name="groups">sylius</option>
+            </constraint>
+        </property>
+    </class>
+
     <class name="Sylius\Bundle\CoreBundle\Model\User">
         <property name="firstName">
             <constraint name="NotBlank">
