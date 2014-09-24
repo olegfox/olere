@@ -17,8 +17,6 @@
     {% else %}
     <form name="form" action="{{ path('sylius_feedback') }}" method="post" class="form-horizontal registerForm feedbackForm" ng-submit="submit" ng-controller="RegisterController as reg" novalidate>
         <fieldset class="well">
-            {{ 'registration.feedback'|trans|raw }}
-            <hr>
             <div class="left">
                 <div class="form-group">
                     {{ form_label(form.firstName) }}

@@ -397,7 +397,7 @@ class ProductController extends ResourceController
                         $fc = 1;
                     }
                 }
-                if($fc == 1){
+                if ($fc == 1) {
                     $count++;
                 }
             }
@@ -443,25 +443,28 @@ class ProductController extends ResourceController
 //                print "sku = ".$sku;
                     foreach ($files as $file) {
                         $fileName = str_replace('./', '', $file);
-                        if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
+                        $symbols = array(' ', '-', '_', '(', '.');
+                        if (in_array($fileName{strlen($sku)}, $symbols)) {
+                            if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
 
-                        } else {
-                            $fl = 0;
-                            foreach ($images as $i) {
-                                if ($i == $fileName) {
-                                    $fl = 1;
+                            } else {
+                                $fl = 0;
+                                foreach ($images as $i) {
+                                    if ($i == $fileName) {
+                                        $fl = 1;
+                                    }
                                 }
-                            }
-                            foreach ($p->getMasterVariant()->getImages() as $image) {
-                                $path = $image->getOriginal();
+                                foreach ($p->getMasterVariant()->getImages() as $image) {
+                                    $path = $image->getOriginal();
 //                            $path_parts = explode(".", $path);
-                                if ($path == $fileName) {
-                                    $fl = 1;
+                                    if ($path == $fileName) {
+                                        $fl = 1;
+                                    }
                                 }
-                            }
 //                        print "fl = ".$fl;
-                            if ($fl == 0) {
-                                $images[] = $fileName;
+                                if ($fl == 0) {
+                                    $images[] = $fileName;
+                                }
                             }
                         }
                     }
@@ -599,7 +602,7 @@ class ProductController extends ResourceController
                 '
             )->setParameter('taxonomy', 8)->getResult();
         } else {
-            if($filter['material'] == '%серебро%'){
+            if ($filter['material'] == '%серебро%') {
                 $taxons = $em->createQuery(
                     'SELECT t FROM
                      Sylius\Bundle\CoreBundle\Model\Taxon t
@@ -609,7 +612,7 @@ class ProductController extends ResourceController
                      AND v.metal LIKE :silver
                     '
                 )->setParameter('silver', "%серебро%")->getResult();
-            }else{
+            } else {
                 $taxons = $em->createQuery(
                     'SELECT t FROM
                      Sylius\Bundle\CoreBundle\Model\Taxon t
@@ -872,10 +875,10 @@ class ProductController extends ResourceController
                         '
                     )->setParameter('id', $id)->getSingleScalarResult();
                     $product = $repository->findOneBy(array("id" => $id));
-                    if($countOrderItem <= 0){
+                    if ($countOrderItem <= 0) {
                         $manager->remove($product);
                         $manager->flush();
-                    }else{
+                    } else {
                         $order = $em->createQuery(
                             'SELECT o FROM
                              Sylius\Bundle\CoreBundle\Model\Order o
@@ -887,10 +890,10 @@ class ProductController extends ResourceController
                             '
                         )->setParameter('id', $id)->getResult();
                         $return = '';
-                        foreach($order as $o){
-                            $return = $return.' #'.$o->getNumber();
+                        foreach ($order as $o) {
+                            $return = $return . ' #' . $o->getNumber();
                         }
-                        if(count($order) <= 0){
+                        if (count($order) <= 0) {
                             $orderItems = $em->createQuery(
                                 'SELECT o FROM
                                  Sylius\Bundle\CoreBundle\Model\OrderItem o
@@ -899,8 +902,8 @@ class ProductController extends ResourceController
                                  WHERE p.id = :id
                                 '
                             )->setParameter('id', $id)->getResult();
-                            if(count($orderItems) > 0){
-                                foreach($orderItems as $orderItem){
+                            if (count($orderItems) > 0) {
+                                foreach ($orderItems as $orderItem) {
                                     $em->remove($orderItem);
                                     $em->flush();
                                 }
@@ -908,8 +911,8 @@ class ProductController extends ResourceController
                                 $manager->flush();
                             }
 //                            return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть у кого-то в корзине.');
-                        }else{
-                            return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+                        } else {
+                            return new Response('Товар с артикулом ' . $product->getSku() . ' не может быть удален, т.к. он есть в заказе с номерами ' . $return);
                         }
                     }
                 }
@@ -1017,7 +1020,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function deleteAction(Request $request){
+    public function deleteAction(Request $request)
+    {
         $repository = $this->container->get('sylius.repository.product');
         $manager = $this->container->get('sylius.manager.product');
         $id = $request->get('id');
@@ -1031,10 +1035,10 @@ class ProductController extends ResourceController
              WHERE p.id = :id
             '
         )->setParameter('id', $id)->getSingleScalarResult();
-        if($countOrderItem <= 0){
+        if ($countOrderItem <= 0) {
             $manager->remove($product);
             $manager->flush();
-        }else{
+        } else {
             $order = $em->createQuery(
                 'SELECT o FROM
                  Sylius\Bundle\CoreBundle\Model\Order o
@@ -1046,10 +1050,10 @@ class ProductController extends ResourceController
                 '
             )->setParameter('id', $id)->getResult();
             $return = '';
-            foreach($order as $o){
-                $return = $return.' #'.$o->getNumber();
+            foreach ($order as $o) {
+                $return = $return . ' #' . $o->getNumber();
             }
-            if(count($order) <= 0){
+            if (count($order) <= 0) {
                 $orderItems = $em->createQuery(
                     'SELECT o FROM
                      Sylius\Bundle\CoreBundle\Model\OrderItem o
@@ -1058,8 +1062,8 @@ class ProductController extends ResourceController
                      WHERE p.id = :id
                     '
                 )->setParameter('id', $id)->getResult();
-                if(count($orderItems) > 0){
-                    foreach($orderItems as $orderItem){
+                if (count($orderItems) > 0) {
+                    foreach ($orderItems as $orderItem) {
                         $em->remove($orderItem);
                         $em->flush();
                     }
@@ -1067,8 +1071,8 @@ class ProductController extends ResourceController
                     $manager->flush();
                 }
 //                return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть у кого-то в корзине.');
-            }else{
-                return new Response('Товар с артикулом '.$product->getSku().' не может быть удален, т.к. он есть в заказе с номерами '.$return);
+            } else {
+                return new Response('Товар с артикулом ' . $product->getSku() . ' не может быть удален, т.к. он есть в заказе с номерами ' . $return);
             }
         }
         return $this->redirectHandler->redirectToReferer();
