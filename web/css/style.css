@@ -68,7 +68,7 @@ a, a:hover, a:focus{
     margin-right: 6px;
     margin-left: 6px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .wrap_top .top .topCallback .buttonCallback{
         margin-right: 3px;
         margin-left: 3px;
@@ -131,7 +131,7 @@ a, a:hover, a:focus{
 .wrap_top .top .topSearch{
     margin-left: 6px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .wrap_top .top .topSearch{
         margin-left: 3px;
     }
@@ -165,7 +165,7 @@ a, a:hover, a:focus{
     width: 158px;
     margin-top: -5px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .logoBox img{
         width: 100px;
     }
@@ -202,7 +202,7 @@ a, a:hover, a:focus{
     text-transform: uppercase;
     padding: 0px 8px 0px 30px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .wrap_top .top .topSearch .searchText{
         width: 100px;
     }
@@ -538,7 +538,7 @@ a, a:hover, a:focus{
     }
 }
 @media only screen and (min-device-width: 481px) and
-(max-device-width: 1024px) and (orientation:landscape) {
+(max-device-width: 1070px) and (orientation:landscape) {
     .catalog .bottomBox{
         bottom: 20px;
     }
@@ -577,7 +577,7 @@ a, a:hover, a:focus{
     display: none;
     font-size: 12px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .catalog .bottomBox button[type="submit"],
     .catalog .bottomBox input{
         width: 60px;
@@ -600,7 +600,7 @@ a, a:hover, a:focus{
 .catalog .bottomBox button[type="submit"]{
     margin-left: 14px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .catalog .bottomBox button[type="submit"]{
         margin-left: 5px;
     }
@@ -1167,7 +1167,7 @@ h4, .container form{
     border: solid 2px #000;
     color: #000;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1070px) {
     .cartForm .btn-sm3{
         margin-bottom: 11px;
     }
