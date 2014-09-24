@@ -1,6 +1,7 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 {% from 'SyliusWebBundle:Frontend/Taxon:macros.html.twig' import gridSub %}
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 
 {% block content %}
     {% if catalogs|length > 0 %}
@@ -26,6 +27,9 @@
             </div>
             {{ grid(products, groups) }}
         </div>
+    {% endif %}
+    {% if catalogs|length <= 0 and collections|length <= 0 and products|length <= 0 %}
+        {{ alerts.info('Ничего не найдено') }}
     {% endif %}
 {% endblock %}
 

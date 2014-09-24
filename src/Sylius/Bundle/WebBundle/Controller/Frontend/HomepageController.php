@@ -49,6 +49,7 @@ class HomepageController extends Controller
             'SELECT p
              FROM Sylius\Bundle\CoreBundle\Model\Product p
              JOIN p.variants v
+             JOIN p.taxons t
              WHERE (p.name LIKE :search
              OR v.sku LIKE :search)
              AND p.enabled = 0
