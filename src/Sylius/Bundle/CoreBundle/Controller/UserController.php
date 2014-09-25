@@ -13,6 +13,7 @@ namespace Sylius\Bundle\CoreBundle\Controller;
 
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends ResourceController
 {
@@ -62,6 +63,26 @@ class UserController extends ResourceController
             $this->getDoctrine()->getManager()->flush();
         }
         return parent::updateAction($request);
+    }
+
+    public function deleteAction(Request $request)
+    {
+        $id = $request->get('id');
+        if ($id) {
+            $user = $this->get('sylius.repository.user')->findOneById($id);
+            $m = $this->getDoctrine()->getManager();
+            if(count($user->getOrders()) <= 0){
+                $m->remove($user);
+                $m->flush();
+            }else{
+                $orderNumbers = "";
+                foreach($user->getOrders() as $order){
+                    $orderNumbers = $orderNumbers.$order->getNumber()."  ";
+                }
+                return new Response("Нельзя удалить этого пользователя, потому что него есть заказы. Номера заказов: ".$orderNumbers);
+            }
+        }
+        return $this->redirectHandler->redirectToReferer();
     }
 
 }

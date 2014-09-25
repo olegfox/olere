@@ -122,6 +122,8 @@ swiftmailer:
     password:  %sylius.mailer.password%
     spool:     { type: memory }
     auth_mode:  login
+    port:       465
+    encryption: ssl
 
 liip_doctrine_cache:
     namespaces:
