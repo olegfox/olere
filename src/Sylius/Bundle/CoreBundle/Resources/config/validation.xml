@@ -79,6 +79,10 @@
                 <option name="message">ID не может быть пустым. (Пример заполнения ID: /contacts)</option>
                 <option name="groups">sylius</option>
             </constraint>
+            <constraint name="Regex">
+                <option name="pattern">/\/\w+/</option>
+                <option name="message">ID заполнено неверно. (Пример заполнения ID: /contacts)</option>
+            </constraint>
         </property>
     </class>
 
