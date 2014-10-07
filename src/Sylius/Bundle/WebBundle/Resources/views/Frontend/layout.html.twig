@@ -92,24 +92,25 @@
 <div class="wrap_top{% if app.request.attributes.get('_route') != 'sylius_homepage' %} f-nav0{% endif %}">
     <div class="top">
         <div class="pull-left">
+            <div class="topPhone">
+                +7 499 157-97-44
+            </div>
+        </div>
+        <div class="pull-center">
             {#<!-- Logo -->#}
             <div class="logoBox">
-                <a href="{{ path('sylius_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="{{ asset('images/logo.png') }}"></a>
+                <a href="{{ path('sylius_homepage') }}">
+                    <img src="{{ asset('images/logo.jpg') }}" alt="{{ asset('images/logo.jpg') }}" width="162px" height="32px">
+                </a>
             </div>
         </div>
         <div class="pull-right">
-            <div class="topPhone">
-                8 499 157-97-44
-            </div>
-            <div class="topSearch">
-                {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
-            </div>
             {#<div class="topTimes">#}
                 {#Время работы: с 9 до 19#}
             {#</div>#}
-            <div class="topCallback">
-                <a href="{{ path('sylius_feedback') }}" class="buttonCallback">Заказать обратный звонок</a>
-            </div>
+            {#<div class="topCallback">#}
+                {#<a href="{{ path('sylius_feedback') }}" class="buttonCallback">Заказать обратный звонок</a>#}
+            {#</div>#}
             <div class="topMyAccount">
                 {% if is_granted('ROLE_USER') %}
                     {% if app.request.attributes.get('_route') == "fos_user_profile_edit" or app.request.attributes.get('_route') == "fos_user_profile_show" %}
@@ -133,6 +134,9 @@
 <div class="wrap_menu">
     <div class="menu">
         {{ knp_menu_render('sylius.frontend.pagemenu', {'template': 'SyliusWebBundle:Frontend:menu.html.twig'}) }}
+        <div class="topSearch">
+            {% include "SyliusWebBundle:Frontend/Product:filterForm.html.twig" %}
+        </div>
     </div>
 </div>
 
