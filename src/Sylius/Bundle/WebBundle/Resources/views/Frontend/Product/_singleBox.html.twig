@@ -60,7 +60,7 @@
                     {#{% for property in product.properties %}#}
                         {#{{ property.name }}: {{ property.value }}<br>#}
                     {#{% endfor %}#}
-                    НАЛИЧИЕ НА СКЛАДЕ {{ product.masterVariant.onHand }} ШТ.
+                    НАЛИЧИЕ НА СКЛАДЕ {{ render(url('sylius_product_onHand', {sku: product.sku})) }} ШТ.
                 </div>
             </div>
         </div>

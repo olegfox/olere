@@ -82,6 +82,7 @@
             <constraint name="Regex">
                 <option name="pattern">/\/\w+/</option>
                 <option name="message">ID заполнено неверно. (Пример заполнения ID: /contacts)</option>
+                <option name="groups">sylius</option>
             </constraint>
         </property>
     </class>

@@ -1,6 +1,11 @@
 # This file is part of the Sylius package.
 # (c) Paweł Jędrzejewski
 
+sylius_product_onHand:
+    pattern: /product/onHand/{sku}
+    defaults:
+        _controller: sylius.controller.product:onHandProductAction
+
 sylius_product_sizes:
     pattern: /product/sizes/{sku}/{id}/{item}
     defaults:

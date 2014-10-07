@@ -35,7 +35,9 @@
                 {% for property in product.properties %}
                     <div class="hh">{{ property.name }}:</div> {{ property.value }}<br><br>
                 {% endfor %}
-
+                {% if product.isSilver() %}
+                <div class="hh">Вес:</div> {{ product.masterVariant.weight }} г<br><br>
+                {% endif %}
                 <div class="hh">Описание:</div> {{ product.description }}<br><br><br>
             </div>
             <div class="subPreview">

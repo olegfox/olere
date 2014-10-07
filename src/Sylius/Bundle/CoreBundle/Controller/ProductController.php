@@ -1294,4 +1294,20 @@ class ProductController extends ResourceController
             'filter' => $filter
         ));
     }
+
+    public function onHandProductAction($sku){
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->createQuery(
+            'SELECT p FROM
+             Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.variants v
+             WHERE v.sku LIKE :sku
+            '
+        )->setParameter('sku', $sku)->getResult();
+        $onHand = 0;
+        foreach($products as $p){
+            $onHand+= $p->getMasterVariant()->getOnHand();
+        }
+        return new Response($onHand);
+    }
 }
