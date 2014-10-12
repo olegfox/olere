@@ -11,6 +11,7 @@
 
 {% block border %}
     <div class="borderHead filter"></div>
+    {% include 'SyliusWebBundle:Frontend/Product:showAjaxWindow.html.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -28,5 +29,9 @@
     {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon" or app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" or app.request.attributes.get('_route') == "sylius_sale" %}
         {#<script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>#}
     {% endif %}
+    <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/productAjax.js') }}"></script>
 {% endblock %}
 

@@ -24,6 +24,14 @@ sylius_product_show:
             template: SyliusWebBundle:Frontend/Product:show.html.twig
             criteria: {slug: $slug}
 
+sylius_product_show_ajax:
+    pattern: /catalog/p/{slug}/{type}
+    defaults:
+        _controller: sylius.controller.product:showFrontendAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Product:show.html.twig
+            criteria: {slug: $slug}
+
 sylius_product_index_by_taxon:
     pattern: /catalog/{page}/{category}
     defaults:

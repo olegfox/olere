@@ -25,8 +25,24 @@ sylius_product_show_collections:
             template: SyliusWebBundle:Frontend/Product:show.html.twig
             criteria: {slug: $slug}
 
+sylius_product_show_collections_ajax:
+    pattern: /collections/p/{taxon}/{slug}/{type}/
+    defaults:
+        _controller: sylius.controller.product:showFrontendAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Product:show.html.twig
+            criteria: {slug: $slug}
+
 sylius_product_show_collections_silver:
     pattern: /silver/p/{taxon}/{slug}
+    defaults:
+        _controller: sylius.controller.product:showFrontendAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Product:show.html.twig
+            criteria: {slug: $slug}
+
+sylius_product_show_collections_silver_ajax:
+    pattern: /silver/p/{taxon}/{slug}/{type}/
     defaults:
         _controller: sylius.controller.product:showFrontendAction
         _sylius:

@@ -1,0 +1,18 @@
+{% if taxon.id is not defined %}
+    {% set taxonId = product.taxons[0].id %}
+{% else %}
+    {% set taxonId = taxon.id %}
+{% endif %}
+{% if product.isSilver %}
+    {% set url = path('sylius_product_show_collections_silver_ajax', {'slug': product.slug, 'taxon': taxonId, 'type': 'ajax'}) %}
+{% elseif app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
+    {% set url = path('sylius_product_show_collections_ajax', {'slug': product.slug, 'taxon': taxonId, 'type': 'ajax'}) %}
+{% else %}
+    {% set url = path('sylius_product_show_ajax', {'slug': product.slug, 'taxon' : taxonId, 'type': 'ajax'}) %}
+{% endif %}
+<a href="{{ url }}" onclick="return false;">
+    <img src="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/500x500' }}"
+         data-image1="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/500x500' }}"
+         data-image2="{% if product.images|length > 1 %}{{ product.images[1] ? image('media/image/'~product.images[1].path).resize(500, 500, '#fff') : '' }}{% endif %}"
+         alt="{{ product.name }}">
+</a>

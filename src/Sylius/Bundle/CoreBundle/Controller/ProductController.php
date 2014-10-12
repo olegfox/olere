@@ -801,10 +801,19 @@ class ProductController extends ResourceController
     }
 
     public
-    function showFrontendAction(Request $request)
+    function showFrontendAction(Request $request, $type = '')
     {
         $groups = $this->get('sylius.repository.group')->findAll();
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
+
+
+        if($type == 'ajax'){
+            return $this->render('SyliusWebBundle:Frontend/Product:showAjax.html.twig', array(
+                'product' => $product,
+                'groups' => $groups
+            ));
+        }
+
         return $this->render($this->config->getTemplate('show.html.twig'), array(
             'product' => $product,
             'groups' => $groups

@@ -50,6 +50,18 @@ $(function () {
     });
 
     $('input, textarea').placeholder();
+
+    if($('.catalog .head.filter').length > 0){
+        $(window).scroll(function(){
+            if($(window).scrollTop() > 125){
+                $('.borderHead.filter').addClass('fixed');
+                $('.catalog .head.filter').addClass('fixed');
+            }else{
+                $('.borderHead.filter').removeClass('fixed');
+                $('.catalog .head.filter').removeClass('fixed');
+            }
+        });
+    }
 });
 
 function footerBottom() {

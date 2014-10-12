@@ -3,6 +3,10 @@
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
 {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
 
+{% block border %}
+    {% include 'SyliusWebBundle:Frontend/Product:showAjaxWindow.html.twig' %}
+{% endblock %}
+
 {% block content %}
     {% if catalogs|length > 0 %}
         <div class="catalog catalogMain catalogSearch">
@@ -36,4 +40,8 @@
 {% block javascripts %}
     {{ parent() }}
     {#<script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>#}
+    <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/productAjax.js') }}"></script>
 {% endblock %}
