@@ -1,18 +1,6 @@
 {% if loop.index0%4 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%4 }}">
         {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
         <div class="inner_box">
-            <div class="topBox clickBox">
-                <div class="nameBox">
-                    <div class="name">{{ product.name }}</div>
-                    <div class="price">
-                        {{ showPrice(product, groups) }}
-                    </div>
-
-                </div>
-                {#<div class="composition">#}
-                {#{{ product.properties[2].value }}#}
-                {#</div>#}
-            </div>
             {% if taxon.id is not defined %}
                 {% set taxonId = product.taxons[0].id %}
             {% else %}
@@ -38,14 +26,19 @@
             {#</div>#}
             {#</div>#}
             <div class="bottomBox clickBox">
-                <div class="articul">АРТ: {{ product.getSku() }}</div>
+                <div class="nameBox">
+                    <div class="name">{{ product.name }}</div>
+                    <div class="price">
+                        цена {{ showPrice(product, groups) }}
+                    </div>
+
+                </div>
                 {% if product.getCatalogName != 'Кольца' %}
                     {% set form = sylius_cart_form({'product': product}) %}
                     <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
                           class="clearfix form-horizontal">
-                            {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
                             {{ form_widget(form._token) }}
-                        <button type="submit" class="addCart">Купить</button>
+                            {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}<button type="submit" class="addCart">Купить</button>
                     </form>
                 {% else %}
                     <form action="{{ path('sylius_by_ring_form', {'sku': product.sku}) }}" method="get" class="clearfix form-horizontal">
@@ -53,15 +46,15 @@
                     </form>
                 {% endif %}
             </div>
-            <div class="wrap_descriptionBoxBorderTop"><div class="descriptionBoxBorderTop"></div></div>
-            <div class="descriptionBox clickBox">
-                {#<div class="header">Дополнительная информация:</div>#}
-                <div class="property">
-                    {#{% for property in product.properties %}#}
-                        {#{{ property.name }}: {{ property.value }}<br>#}
-                    {#{% endfor %}#}
-                    НАЛИЧИЕ НА СКЛАДЕ {{ render(url('sylius_product_onHand', {sku: product.sku})) }} ШТ.
-                </div>
-            </div>
+            {#<div class="wrap_descriptionBoxBorderTop"><div class="descriptionBoxBorderTop"></div></div>#}
+            {#<div class="descriptionBox clickBox">#}
+                {#&#123;&#35;<div class="header">Дополнительная информация:</div>&#35;&#125;#}
+                {#<div class="property">#}
+                    {#&#123;&#35;{% for property in product.properties %}&#35;&#125;#}
+                        {#&#123;&#35;{{ property.name }}: {{ property.value }}<br>&#35;&#125;#}
+                    {#&#123;&#35;{% endfor %}&#35;&#125;#}
+                    {#НАЛИЧИЕ НА СКЛАДЕ {{ render(url('sylius_product_onHand', {sku: product.sku})) }} ШТ.#}
+                {#</div>#}
+            {#</div>#}
         </div>
     </div>{% if loop.index0%4 == 3 or loop.index == count %}</div>{% endif %}

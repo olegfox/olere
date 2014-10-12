@@ -90,7 +90,7 @@
     <class name="Sylius\Bundle\CoreBundle\Model\User">
         <property name="firstName">
             <constraint name="NotBlank">
-                <option name="message">sylius.user.first_name.not_blank</option>
+                <!--<option name="message">sylius.user.first_name.not_blank</option>-->
                 <option name="groups">
                     <value>Profile</value>
                     <value>Registration</value>

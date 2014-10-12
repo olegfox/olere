@@ -55,7 +55,10 @@ class CartItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantity', 'integer', array('attr' => array('min' => 1)))
+            ->add('quantity', 'integer', array(
+                'label' => 'sylius.order_item.quantity',
+                'attr' => array('min' => 1)
+            ))
         ;
     }
 

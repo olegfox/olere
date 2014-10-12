@@ -14,7 +14,7 @@ html, body{
     margin: 0px;
     padding: 0px;
     height: 100%;
-    min-width: 1024px;
+    min-width: 960px;
 }
 th{
     font-weight: normal;
@@ -111,7 +111,7 @@ a, a:hover, a:focus{
 .wrap_top .top .topPhone{
     background: url('/images/icon_phone.jpg') no-repeat 0 center;
     padding-left: 35px;
-    font-family: 'Calibri Bold';
+    font-family: 'Calibri';
     font-size: 24px;
     line-height: 72px;
 }
@@ -141,7 +141,7 @@ a, a:hover, a:focus{
     height: 24px;
     line-height: 18px;
     color: #000;
-    font-family: "Calibri Bold";
+    font-family: "Calibri";
     font-size: 18px;
     text-align: center;
     padding: 5px 0px;
@@ -183,11 +183,11 @@ a, a:hover, a:focus{
     vertical-align: middle;
     margin-top: -5px;
 }
-@media screen and (max-width: 1070px) {
-    .logoBox img{
-        width: 100px;
-    }
-}
+/*@media screen and (max-width: 1070px) {*/
+    /*.logoBox img{*/
+        /*width: 100px;*/
+    /*}*/
+/*}*/
 .wrap_menu{
     background: #000;
 }
@@ -207,9 +207,10 @@ a, a:hover, a:focus{
     background: #000;
     height: 30px;
     width: 130px;
-    line-height: 31px;
+    line-height: 30px;
+    line-height: 25px\9;
     color: #fff;
-    font-family: "Calibri Bold";
+    font-family: "Calibri";
     font-size: 18px;
     text-align: left;
     border: solid 2px #fff;
@@ -217,7 +218,7 @@ a, a:hover, a:focus{
     text-transform: uppercase;
     padding: 0px 8px 0px 8px;
     float: right;
-    top: 10px;
+    top: 11px;
 }
 .wrap_menu .topSearch .searchText:focus{
     outline: 0;
@@ -258,8 +259,11 @@ a, a:hover, a:focus{
     -webkit-margin-before: 0px;
     float: left;
     width: 100%;
-    max-width: 841px;
+    max-width: 800px;
     height: 50%;
+}
+@media screen and (max-width: 1024px) {
+    max-width: 841px;
 }
 .menu ul li{
     list-style: none;
@@ -298,7 +302,7 @@ a, a:hover, a:focus{
 }
 .menu ul li a{
     color: #fff; /* text color */
-    font-family: "Calibri Bold";
+    font-family: "Calibri";
     font-size: 18px;
     text-transform: uppercase;
 }
@@ -355,7 +359,7 @@ a, a:hover, a:focus{
 .catalog .head{
     min-height: 50px;
     line-height: 50px;
-    font-family: 'Calibri Bold';
+    font-family: 'Calibri';
     font-size: 18px;
     color: #fff;
     padding: 0px;
@@ -364,7 +368,7 @@ a, a:hover, a:focus{
     text-transform: uppercase;
 }
 .catalog .head.filter{
-    font-family: "Calibri Bold";
+    font-family: "Calibri";
     font-size: 18px;
     text-transform: uppercase;
     min-height: 50px;
@@ -372,7 +376,7 @@ a, a:hover, a:focus{
     background: #d86a43;
 }
 .catalog .head.filter select{
-    font-family: "Calibri Bold"!important;
+    font-family: "Calibri"!important;
     font-size: 18px!important;
     text-transform: uppercase !important;
     border: solid 2px #fff;
@@ -445,7 +449,7 @@ a, a:hover, a:focus{
     width: 100%;
     height: 50px;
     background: none;
-    border-bottom: solid 1px #dcdcdc;
+    border-bottom: solid 2px #f2f2f2;
     z-index: 0;
 }
 .latestProducts .head{
@@ -453,13 +457,13 @@ a, a:hover, a:focus{
     background: none;
 }
 .catalog .boxes{
-    border: solid 1px #dcdcdc;
+    border: solid 2px #f2f2f2;
     border-bottom: 0;
     margin-bottom: 20px;
 }
 .catalog .row{
     margin: 0;
-    border-bottom: solid 1px #dcdcdc;
+    border-bottom: solid 2px #f2f2f2;
 }
 .catalog .box{
     width: 25%;
@@ -502,22 +506,23 @@ a, a:hover, a:focus{
     width: 100%;
 }
 .catalog .nameBox{
-    padding: 10px 10px 0px 10px;
     text-transform: uppercase;
+    font-family: 'Calibri';
     font-weight: normal;
-    font-size: 12px;
+    font-size: 16px;
     width: 100%;
 }
 .catalog .nameBox .name{
-    display: inline-block;
+    display: block;
+    margin-bottom: 6px;
 }
 .catalog .nameBox .price{
     font-weight: normal;
-    height: 36px;
-    font-size: 12px;
-    float: right;
-    display: inline-block;
-    text-align: center;
+    font-family: 'Calibri';
+    font-size: 16px;
+    display: block;
+    text-align: left;
+    margin-bottom: 2px;
 }
 .catalog .nameBox .stickerPrices{
     padding: 5px 8px 5px 8px;
@@ -543,19 +548,15 @@ a, a:hover, a:focus{
 }
 
 .catalog .bottomBox{
-    padding: 10px;
+    display: block;
+    width: 100%;
+    font-family: 'Calibri';
+    font-size: 16px;
+    position: relative;
+    width: 100%;
+    padding: 10px 15px 5px 15px;
 }
 
-.catalog .bottomBox{
-    height: 36px;
-    line-height: 36px;
-    display: table;
-    width: 100%;
-    font-size: 12px;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari only override */
     ::i-block-chrome,.catalog .bottomBox{
@@ -569,38 +570,49 @@ a, a:hover, a:focus{
     }
 }
 .catalog .bottomBox form{
-    float: right;
     padding: 0;
 }
 
 .catalog .bottomBox .form-group{
-    margin-bottom: 0px;
-    margin-top: -3px;
+    text-transform: uppercase;
+    padding: 0px;
+    display: inline-block;
+    margin: 0;
+}
+
+.catalog .bottomBox .form-group label{
+    height: 28px;
+    padding: 0px;
+    line-height: 30px;
+}
+
+.catalog .bottomBox .form-group .col-lg-10{
+    width: auto;
+    padding: 0 5px;
+}
+
+.catalog .bottomBox .form-group .col-lg-2{
+    width: auto;
 }
 
 .catalog .bottomBox .form-group input[type="number"]{
-    line-height: 20px\0/;
-}
-
-.catalog .bottomBox *{
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.catalog .bottomBox label{
-    display: none;
+    font-family: 'Calibri';
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 0px 0px 0px 10px;
+    width: 73px;
+    height: 28px;
+    line-height: 26px;
 }
 
 .catalog .bottomBox button[type="submit"],
 .catalog .bottomBox input{
-    border: solid 1px #000;
+    border: solid 2px #c4c4c4;
     width: 70px;
-    height: 34px;
     background: none;
     font-weight: normal;
     border-radius: inherit;
-    display: none;
-    font-size: 12px;
+    font-size: 16px;
 }
 @media screen and (max-width: 1070px) {
     .catalog .bottomBox button[type="submit"],
@@ -615,15 +627,16 @@ a, a:hover, a:focus{
 .catalog .inner_box_click .bottomBox input{
     display: inline-block;
 }
-.catalog .bottomBox input{
-    width: 60px;
-}
-.catalog .bottomBox button[type="submit"]{
-    line-height: 31px;
-}
 
 .catalog .bottomBox button[type="submit"]{
-    margin-left: 14px;
+    font-family: 'Calibri';
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 114px;
+    height: 28px;
+    line-height: 26px;
+    display: inline-block;
+    vertical-align: top;
 }
 @media screen and (max-width: 1070px) {
     .catalog .bottomBox button[type="submit"]{
@@ -686,8 +699,8 @@ a, a:hover, a:focus{
 }
 .catalog .box img{
     width: 100%;
-    margin: 42px 0px 59px;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 .latestProducts .box img{
     margin: 0;

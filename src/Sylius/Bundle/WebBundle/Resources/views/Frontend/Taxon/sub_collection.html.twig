@@ -27,7 +27,7 @@
 {% block javascripts %}
     {{ parent() }}
     {% if app.request.attributes.get('_route') == "sylius_product_index_by_taxon" or app.request.attributes.get('_route') == "sylius_product_index_by_taxon_collections" %}
-        <script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>
+        {#<script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>#}
     {% endif %}
 {% endblock %}
 
