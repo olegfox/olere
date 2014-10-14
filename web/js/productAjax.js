@@ -16,7 +16,7 @@ function productShow(object) {
             productClose($clone_productWindow, $clone_overlay);
         })
         .css({
-            'z-index' : parseInt($('.productWindow_overlay:visible').last().css('z-index')) + 1
+            'z-index': parseInt($('.productWindow_overlay:visible').last().css('z-index')) + 1
         })
         .fadeIn(200);
     $clone_productWindow
@@ -24,18 +24,43 @@ function productShow(object) {
         .html('')
         .load($(object).attr('href'), function () {
             $clone_productWindow
-                .animate({
-                    'top': 0
-                }, 200)
-                .find('.close a').click(function () {
-                    productClose($clone_productWindow, $clone_overlay);
-                })
-                .end()
-                .find('.latestProducts a').click(function () {
-                    productShow(this);
+                .find('.pictureProduct img')
+                .one("load",function () {
+                    $clone_productWindow
+                        .animate({
+                            'top': 0
+                        }, 200)
+                        .find('.close a').click(function () {
+                            productClose($clone_productWindow, $clone_overlay);
+                        })
+                        .end()
+                        .find('.latestProducts a').click(function () {
+                            productShow(this);
+                        })
+                        .end();
+                    if ($clone_productWindow.find('.productWindow_content .buyBlock').height() < $('body').height()) {
+                        $clone_productWindow
+                            .find('.productWindow_content')
+                            .css({
+                                'max-height': $('body').height() - 40
+                            });
+                        $clone_productWindow
+                            .find('.productWindow_content')
+                            .css({
+                                'top': ($('body').height() - $clone_productWindow.find('.productWindow_content').height()) / 2
+                            })
+                            .find('.pictureProduct')
+                            .css({
+                                'max-height': $clone_productWindow.find('.productWindow_content').height() - $clone_productWindow.find('.latestProducts').height() - 10
+                            });
+                    }
+
+                    smoothZoom();
+                    addCart();
+                    addCartRing();
+                }).each(function () {
+                    if (this.complete) $(this).load();
                 });
-            smoothZoom();
-            addCart();
         })
         .end()
         .on('click', function (e) {
@@ -45,7 +70,7 @@ function productShow(object) {
         })
         .css({
             'top': '100%',
-            'z-index' : parseInt($('.productWindow:visible').last().css('z-index')) + 1
+            'z-index': parseInt($('.productWindow:visible').last().css('z-index')) + 1
         })
         .show();
 }

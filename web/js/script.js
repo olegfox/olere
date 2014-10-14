@@ -19,14 +19,15 @@ function addCart(){
         });
     });
 }
-$(function () {
+function addCartRing(){
     $(".addCartRing").click(function(){
         form = $(this).parent();
         $(form).unbind("submit").submit(function () {
             $.get($(form).attr("action"), $(form).serialize(), function (data) {
                 try {
                     $.modal(data, {
-                        overlayClose: true
+                        overlayClose: true,
+                        zIndex: 100000
                     });
                     addCart();
                 }
@@ -37,6 +38,9 @@ $(function () {
             return false;
         });
     });
+}
+$(function () {
+    addCartRing();
     addCart();
 //    if (window.location.href.indexOf('catalog') + 1) {
 //        $("a[href='/catalog']").parent().addClass("current");

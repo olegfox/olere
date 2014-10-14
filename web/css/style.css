@@ -138,15 +138,16 @@ a, a:hover, a:focus{
 .wrap_top .top .topMyAccount a,
 .wrap_top .top .topTrash a{
     border: 0px;
-    height: 24px;
+    height: 65px;
     line-height: 18px;
     color: #000;
     font-family: "Calibri";
     font-size: 18px;
     text-align: center;
-    padding: 5px 0px;
     cursor: pointer;
     text-transform: uppercase;
+    display: block;
+    padding-top: 30px;
 }
 .wrap_menu .topSearch{
     margin-left: 6px;
@@ -922,7 +923,8 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     text-transform: uppercase;
 }
 .product .wrap_product .description .descriptionBox{
-    margin-bottom: 25px;
+    margin-bottom: 16px;
+    line-height: 17px;
 }
 .product .wrap_product .description .descriptionBox .hh{
     width: 100%;
@@ -960,7 +962,8 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 
 .product .pictureProduct{
-
+    overflow: hidden;
+    margin-bottom: 1px;
 }
 .product .pictureProduct div{
     display: inline-block;
@@ -1003,20 +1006,20 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     font-size: 14px;
     text-transform: uppercase;
     color: #000;
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 .product .buyBlock .onHand{
     font-family: 'Calibri';
     font-size: 14px;
     text-transform: uppercase;
     color: #000;
-    margin-bottom: 25px;
+    margin-bottom: 13px;
 }
 .product .buyBlock .articul{
     font-family: 'Calibri';
     font-size: 14px;
     color: #000;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 .product .buyBlock .price{
     font-family: 'Calibri Bold';
@@ -1523,8 +1526,9 @@ div.form-horizontal{
     overflow: auto;
 }
 .productWindow .productWindow_content{
+    position: relative;
     background: #f0f0f0;
-    margin-top: 125px;
-    margin-bottom: 100px;
+    /*margin-top: 125px;*/
+    /*margin-bottom: 100px;*/
 }
 /* end product window */

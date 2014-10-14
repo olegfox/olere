@@ -6,7 +6,7 @@
     {% endif %}
     {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
         <div class="opt{% if group.showPrice != 0 %} one{% endif %}">
-        Опт. {{ product.priceOpt|sylius_price }}
+        {{ product.priceOpt|sylius_price }}
         </div>
     {% endif %}
     {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
