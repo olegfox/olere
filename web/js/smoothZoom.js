@@ -1,8 +1,12 @@
-function smoothZoom(){
-    $('.pictureProduct img').one('load', function() {
-        $('.pictureProduct img').smoothZoom({
-            width: $('.pictureProduct').width() - 40,
-            height: $('.pictureProduct').height(),
+function smoothZoom(object){
+    $(object)
+	.find('img')
+	.one('load', function() {
+        $(object)
+		.find('img')
+		.smoothZoom({
+            width: $(object).width() - 40,
+            height: $(object).height(),
             border_TRANSPARENCY: 20,
             pan_BUTTONS_SHOW: "NO",
             pan_LIMIT_BOUNDARY: "NO",
@@ -21,7 +25,7 @@ function smoothZoom(){
         $(".smooth_zoom_preloader div").hide();
         $(".smooth_zoom_preloader div.noSel").show();
         $(window).resize(function(){
-            $('.pictureProduct').html($('.pictureProduct img').attr("width", "500px"));
+            $(object).html($(object).find('img').attr("width", "500px"));
             smoothZoom();
         });
     }).each(function() {

@@ -76,9 +76,9 @@ function footerBottom() {
     }
 }
 
-function preview(original, image, name) {
-    $(".product .pictureProduct").html("<img src='" + image + "' alt='" + name + "' width='500px'>");
-    smoothZoom();
+function preview(object, original, image, name) {
+    $(object).parent().parent().parent().parent().parent().find(".pictureProduct").html("<img src='" + image + "' alt='" + name + "' width='500px'>");
+    smoothZoom($(object).parent().parent().parent().parent().parent().find(".pictureProduct")[0]);
 }
 
 function filter(category) {

@@ -976,7 +976,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 .product .buyBlock .inner_buyBlock{
     width: 295px;
-    padding: 0 20px;
+    padding: 0 20px 25px 20px;
 }
 .product .buyBlock .inner_buyBlock .close{
     opacity: 1;
@@ -1528,7 +1528,7 @@ div.form-horizontal{
 .productWindow .productWindow_content{
     position: relative;
     background: #f0f0f0;
-    /*margin-top: 125px;*/
-    /*margin-bottom: 100px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 /* end product window */

@@ -9,7 +9,7 @@
                 <div class="hh">Доп. фото:</div>
                 <div class="blockPreview">
                     {% for image in product.images %}
-                        <img onclick="preview('{{ '/media/image/'~image.path }}', '{{ image ? '/media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');"
+                        <img onclick="preview(this, '{{ '/media/image/'~image.path }}', '{{ image ? '/media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');"
                              src="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
                              alt="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
                              width="128px" height="128px">
@@ -19,8 +19,12 @@
         </div><div class="wrap_pictureProduct">
             {#<a href="{{ asset('media/image/'~product.image.path) }}" class="fancybox">#}
             <div class="pictureProduct">
+                {% set height = image('media/image/'~product.image.path).height() %}
+                {% set width = image('media/image/'~product.image.path).width() %}
+                {% set const = height/width %}
+                {% set height = const*500 %}
             <img src="{{ product.image ? '/media/image/'~product.image.path : 'http://placehold.it/175x160' }}"
-                 alt="{{ product.name }}" width="500px">
+                 alt="{{ product.name }}" width="500px" height="{{ height }}px">
             {#</a>#}
             </div>
             <!-- Catalog -->
