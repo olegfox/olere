@@ -554,11 +554,32 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .nameBox .price .opt.one{
     display: inline-block;
 }
+.catalog .nameBox .price .sale{
+    text-decoration: line-through;
+}
 .catalog .nameBox .price .retail{
     margin-bottom: 5px;
 }
 .catalog .inner_box_click .composition{
     padding: 0px 20px;
+}
+.catalog .inner_box .sticker_sale,
+.catalog .inner_box .sticker_new{
+    position: absolute;
+    width: 75px;
+    height: 30px;
+    background: #0077ed;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+.catalog .inner_box .sticker_new{
+    background: #fe0000;
+}
+.catalog .inner_box .sticker_new.right{
+    top: 30px;
 }
 
 .catalog .bottomBox{
@@ -1022,7 +1043,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     margin-bottom: 14px;
 }
 .product .buyBlock .price{
-    font-family: 'Calibri Bold';
+    font-family: 'Calibri';
     font-size: 14px;
     color: #000;
 }
@@ -1033,10 +1054,8 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     text-transform: uppercase;
     text-align: left;
 }
-.product .buyBlock .price .stickerPrices{
-    padding: 10px;
-    background: #000;
-    color: #fff;
+.product .buyBlock .price .sale{
+    text-decoration: line-through;
 }
 .product .buyBlock .addCart,
 .product .buyBlock .addCartRing{

@@ -91,6 +91,8 @@ class Product extends BaseProduct implements ProductInterface
 
     private $enabled = 0;
 
+    private $new = 0;
+
     /**
      * Constructor.
      */
@@ -495,6 +497,24 @@ class Product extends BaseProduct implements ProductInterface
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNew()
+    {
+        return $this->new;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNew($new)
+    {
+        $this->new = $new;
 
         return $this;
     }

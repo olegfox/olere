@@ -139,6 +139,12 @@ class ProductRepository extends VariableProductRepository
                         ->andWhere('taxon2.slug LIKE :collection');
                 }
             }
+            if (isset($filter['catalog'])) {
+                if ($filter['catalog'] != 'any') {
+                    $queryBuilder
+                        ->andWhere('taxon2.slug LIKE :catalog');
+                }
+            }
             if (isset($filter['material'])) {
                 if ($filter['material'] != 'any') {
                     $queryBuilder

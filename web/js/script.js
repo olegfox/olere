@@ -90,6 +90,7 @@ function filter(category) {
     var weight = $(".filter #weight").val();
     var color = $(".filter #color").val();
     var collection = $(".filter #collection").val();
+    var catalog = $(".filter #catalog").val();
 //    var depth = $(".filter #depth").val();
     var box = $(".filter #box").val();
     var size = $(".filter #size").val();
@@ -103,5 +104,6 @@ function filter(category) {
     href = href + "&filter[size]=" + size;
     href = href + "&filter[color]=" + color;
     href = href + "&filter[collection]=" + collection;
+    href = href + "&filter[catalog]=" + catalog;
     window.location.href = href;
 }

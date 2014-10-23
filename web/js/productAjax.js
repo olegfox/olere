@@ -1,10 +1,45 @@
 $(function () {
-    $('.inner_box a').click(function () {
-        productShow(this);
+    initClick();
+
+    $(window).scroll(function(){
+        if($(".indexByTaxonAjax").length > 0){
+            if (($(window).scrollTop() >= ($(document).height() - $(window).height()) - 1000)){
+                var link = $(".indexByTaxonAjax").attr('href');
+                $(".indexByTaxonAjax").remove();
+                $.get(link, {}, function(data){
+                    $(".catalog .boxes").append(data);
+                    initClick();
+                });
+            }
+        }
     });
 });
 
+function initClick(){
+    $('.inner_box a').unbind('click').click(function () {
+        productShow(this);
+    });
+}
+
 function initWindow($clone_productWindow){
+    if ($clone_productWindow.find('.productWindow_content .buyBlock .inner_buyBlock').height() < $('body').height()) {
+        $clone_productWindow
+            .find('.productWindow_content')
+            .css({
+                'max-height': $('body').height(),
+                'margin' : 0
+            });
+        $clone_productWindow
+            .find('.productWindow_content')
+            .css({
+                'top': ($('body').height() - $clone_productWindow.find('.productWindow_content').height()) / 2
+            })
+            .find('.pictureProduct')
+            .css({
+                'max-height': $clone_productWindow.find('.productWindow_content').height() - $clone_productWindow.find('.latestProducts').height() - 10
+            });
+    }
+
     $clone_productWindow
         .find('.pictureProduct img')
         .css({'opacity' : 0})
@@ -55,7 +90,7 @@ function productShow(object, time) {
                         .find('.inner_box a')
                         .get(0);
                     if($(tmp).length <= 0){
-                        object = $(object)
+                        tmp = $(object)
                             .parent()
                             .parent()
                             .parent()
@@ -158,23 +193,6 @@ function productShow(object, time) {
                     productShow(this);
                 })
                 .end();
-            if ($clone_productWindow.find('.productWindow_content .buyBlock .inner_buyBlock').height() < $('body').height()) {
-                $clone_productWindow
-                    .find('.productWindow_content')
-                    .css({
-                        'max-height': $('body').height(),
-                        'margin' : 0
-                    });
-                $clone_productWindow
-                    .find('.productWindow_content')
-                    .css({
-                        'top': ($('body').height() - $clone_productWindow.find('.productWindow_content').height()) / 2
-                    })
-                    .find('.pictureProduct')
-                    .css({
-                        'max-height': $clone_productWindow.find('.productWindow_content').height() - $clone_productWindow.find('.latestProducts').height() - 10
-                    });
-            }
 
             initWindow($clone_productWindow);
         })

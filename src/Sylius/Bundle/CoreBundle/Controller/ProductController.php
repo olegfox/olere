@@ -559,29 +559,20 @@ class ProductController extends ResourceController
         return new Response(json_encode($deletedProduct));
     }
 
-    /**
-     * List products categorized under given taxon.
-     *
-     * @param Request $request
-     * @param string $permalink
-     *
-     * @return Response
-     *
-     * @throws NotFoundHttpException
-     */
     public
     function indexByTaxonAction(Request $request, $page, $category)
     {
         $routeName = $request->get('_route');
+        $ajax = $request->get('ajax');
         $filter = array(
             'price' => 'any',
             'material' => 'any',
             'weight' => 'any',
-//            'depth' => 'any',
             'box' => 'any',
             'size' => 'any',
             'color' => 'any',
-            'collection' => 'any'
+            'collection' => 'any',
+            'catalog' => 'any'
         );
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -633,7 +624,6 @@ class ProductController extends ResourceController
             }
         }
 
-
         $sorting = array(
             "position" => 'ASC'
         );
@@ -666,31 +656,43 @@ class ProductController extends ResourceController
             throw new NotFoundHttpException('Requested taxon does not exist.');
         }
 
-        if ($page != 'all') {
-            $paginator = $this
-                ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
+        $paginator = $this
+            ->getRepository()
+            ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
 
-            $paginator->setMaxPerPage(40);
+        $paginator->setMaxPerPage(40);
+
+        $count_page =  $paginator->getNbResults()/40 + 1;
+
+        if ($page != 'all') {
             $paginator->setCurrentPage($request->query->get('page', $page));
         } else {
-            $paginator = $this
-                ->getRepository()
-                ->createByTaxonPaginator($taxon, $sorting, $filter, $type);
-
-            $paginator->setMaxPerPage(10000);
             $paginator->setCurrentPage($request->query->get('page', 1));
         }
 
-        return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
-            'taxon' => $taxon,
-            'products' => $paginator,
-            'permalink' => "/catalog/" . $page . "/" . $category,
-            'groups' => $groups,
-            'page' => $page,
-            'taxons' => $taxons,
-            'filter' => $filter
-        ));
+        if($ajax == 1){
+            return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxonAjax.html.twig', array(
+                'taxon' => $taxon,
+                'products' => $paginator,
+                'permalink' => "/catalog/" . $page . "/" . $category,
+                'groups' => $groups,
+                'page' => $page,
+                'count_page' => $count_page,
+                'taxons' => $taxons,
+                'filter' => $filter
+            ));
+        }else{
+            return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
+                'taxon' => $taxon,
+                'products' => $paginator,
+                'permalink' => "/catalog/" . $page . "/" . $category,
+                'groups' => $groups,
+                'page' => $page,
+                'count_page' => $count_page,
+                'taxons' => $taxons,
+                'filter' => $filter
+            ));
+        }
     }
 
     public
@@ -1167,7 +1169,8 @@ class ProductController extends ResourceController
                 'box' => 'any',
                 'size' => 'any',
                 'color' => 'any',
-                'collection' => 'any'
+                'collection' => 'any',
+                'catalog' => 'any'
             );
             $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -1298,6 +1301,22 @@ class ProductController extends ResourceController
              )
             '
         )->setParameter('silver', "%серебро%")->getResult();
+        return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
+            'collections' => $collections,
+            'filter' => $filter
+        ));
+    }
+
+    public function getCatalogListAction($filter)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             WHERE t.taxonomy = 8
+             AND t.parent IS NOT NULL
+            '
+        )->getResult();
         return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
             'collections' => $collections,
             'filter' => $filter

@@ -7,7 +7,7 @@
                         {#тип украшения:#}
                     {% else %}
                         {% set category = 'collections' %}
-                        коллекция:
+                        {#коллекция:#}
                     {% endif %}
                 </span>
         <select name="" id="type" onchange="filter('{{ category }}');">
@@ -17,6 +17,12 @@
         </select>
     </div>
     {% endif %}
+    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}hide{% endif %}">
+        <select name="" id="catalog" onchange="filter('{{ category }}');">
+            <option value="any">все типы</option>
+            {{ render(url('sylius_get_catalog_list', {filter: filter.catalog})) }}
+        </select>
+    </div>
     <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}hide{% endif %}">
         <select name="" id="collection" onchange="filter('{{ category }}');">
             <option value="any">все коллекции</option>

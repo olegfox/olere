@@ -27,6 +27,11 @@ sylius_get_collection_list:
     defaults:
         _controller: sylius.controller.product:getCollectionListAction
 
+sylius_get_catalog_list:
+    pattern: /get/catalog/list/{filter}
+    defaults:
+        _controller: sylius.controller.product:getCatalogListAction
+
 sylius_scan_code_articul:
     pattern: /scan/code_articul/
     defaults:

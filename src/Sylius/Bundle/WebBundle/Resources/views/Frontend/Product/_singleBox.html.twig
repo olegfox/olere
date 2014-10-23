@@ -1,6 +1,12 @@
 {% if loop.index0%4 == 0 %}<div class="row">{% endif %}<div class="box box{{ loop.index0%4 }}">
         {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import showPrice %}
         <div class="inner_box">
+            {% if product.masterVariant.flagSale == 1 %}
+                <div class="sticker_sale">SALE</div>
+            {% endif %}
+            {% if product.new == 1 %}
+                <div class="sticker_new{% if product.masterVariant.flagSale == 1 %} right{% endif %}">NEW</div>
+            {% endif %}
             {% if taxon.id is not defined %}
                 {% set taxonId = product.taxons[0].id %}
             {% else %}
