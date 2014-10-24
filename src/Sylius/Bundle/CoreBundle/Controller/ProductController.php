@@ -149,7 +149,7 @@ class ProductController extends ResourceController
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
                     $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
                     $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                    $depth = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $onHand= $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
                     $priceSale = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
                     $metal = $objPHPExcel->getActiveSheet()->getCell('L' . $row)->getValue();
                     $box = $objPHPExcel->getActiveSheet()->getCell('M' . $row)->getValue();
@@ -244,7 +244,7 @@ class ProductController extends ResourceController
                             }
                             $product->getMasterVariant()->setSku($articul);
                             $product->getMasterVariant()->setSkuCode($codeArticul);
-                            $product->getMasterVariant()->setDepth($depth);
+                            $product->getMasterVariant()->setOnHand($onHand);
                             $product->getMasterVariant()->setMetal($metal);
                             $product->getMasterVariant()->setBox($box);
                             $product->getMasterVariant()->setSize($size);
