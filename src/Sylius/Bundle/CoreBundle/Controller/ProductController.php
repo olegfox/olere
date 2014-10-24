@@ -173,7 +173,8 @@ class ProductController extends ResourceController
                         $flag = 1;
                     }
                     if (count($product) > 0) {
-                        if ($product[0]->getCatalogName() == 'Кольца') {
+                        if($product[0]->isRing()){
+//                        if ($product[0]->getName() == 'Кольца') {
                             $f = 0;
                             foreach ($product as $p) {
                                 if ($p->getMasterVariant()->getSize() == $size) {

@@ -15,6 +15,9 @@ web/assets/compiled/*
 web/media/*
 web/uploads/*
 web/cache/*
+web/images/slider/*
+web/images/page/*
+web/images/uploads/*
 
 bin/behat
 bin/doctrine*

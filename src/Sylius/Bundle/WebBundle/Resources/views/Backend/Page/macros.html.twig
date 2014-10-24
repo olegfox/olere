@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>{{ 'sylius.page.id'|trans }}</th>
+                <th>Фон</th>
                 <th>{{ sylius_resource_sort('title', 'sylius.page.title'|trans) }}</th>
                 <th></th>
             </tr>
@@ -17,6 +18,13 @@
         {% for page in pages %}
             <tr id="{{ page.id }}">
                 <td><i>{{ page.id }}</i></td>
+                <td>
+                    {% if page.webPath != "" %}
+                        <a class="fancybox" href="{{ asset(page.webPath) }}" target="_blank">
+                            <img src="{{ image(page.webPath).zoomCrop(150, 150) }}" alt="{{ image(page.webPath).zoomCrop(150, 150) }}"/>
+                        </a>
+                    {% endif %}
+                </td>
                 <td>{{ page.title }}</td>
                 <td>
                     <div class="pull-right">

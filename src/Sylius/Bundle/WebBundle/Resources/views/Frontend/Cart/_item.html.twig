@@ -7,7 +7,7 @@
     <td class="col-md-2">
         <div class="form-group">
             <div class="col-lg-10">
-                {% if product.getCatalogName() == 'Кольца' %}{{ render(url('sylius_product_sizes', {sku: product.sku, id: product.id, item: item.id})) }}{% endif %}
+                {% if product.isRing %}{{ render(url('sylius_product_sizes', {sku: product.sku, id: product.id, item: item.id})) }}{% endif %}
                 {{ form_widget(form.items[loop.index0].quantity, {'label': false, 'attr' : {"onchange" : "cartSave(this, "~item.variant.onHand~");", "onkeyup" : "cartSave(this, "~item.variant.onHand~");", "oninput" : "cartSave(this, "~item.variant.onHand~");"} } ) }}
             </div>
         </div>

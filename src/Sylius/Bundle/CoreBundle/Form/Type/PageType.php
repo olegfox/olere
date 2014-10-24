@@ -35,6 +35,18 @@ class PageType extends AbstractType
             ->add('id', 'text', array(
                 'label' => 'sylius.form.page.id'
             ))
+            ->add('file', 'file', array(
+                'label' => 'Фон страницы',
+                'required' => false
+            ))
+            ->add('backgroundShow', 'choice', array(
+                'label' => 'Показать фон?',
+                'choices' => array(
+                    0 => 'Нет',
+                    1 => 'Да'
+                ),
+                'required' => true
+            ))
             ->add('enable', 'choice', array(
                 'label' => 'Скрыть',
                 'choices' => array(

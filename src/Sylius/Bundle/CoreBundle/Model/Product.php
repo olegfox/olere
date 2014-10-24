@@ -557,4 +557,11 @@ class Product extends BaseProduct implements ProductInterface
         return 0;
     }
 
+    public function isRing(){
+        if(mb_stripos($this->getName(), "кольц", 0, 'UTF-8') !== FALSE){
+            return 1;
+        }
+        return 0;
+    }
+
 }
