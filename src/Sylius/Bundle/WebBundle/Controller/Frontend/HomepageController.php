@@ -55,6 +55,7 @@ class HomepageController extends Controller
              WHERE (p.name LIKE :search
              OR v.sku LIKE :search)
              AND p.enabled = 0
+             AND p.action = 0
              GROUP BY v.sku
             ')->setParameters(array(
                 'search' => '%'.$search.'%'

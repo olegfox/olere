@@ -50,6 +50,18 @@ class ProductType extends BaseProductType
                 ),
                 'label'    => 'Новинка?'
             ))
+            ->add('action', 'choice', array(
+                'required' => true,
+                'choices' => array(
+                    false => 'Нет',
+                    true => 'Да'
+                ),
+                'label'    => 'Акция?'
+            ))
+            ->add('warehouse', 'text', array(
+                'required' => false,
+                'label'    => 'Склад'
+            ))
             ->add('taxCategory', 'sylius_tax_category_choice', array(
                 'required'    => false,
                 'empty_value' => '---',

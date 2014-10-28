@@ -149,15 +149,18 @@ class ProductController extends ResourceController
                     $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
                     $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
                     $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                    $onHand= $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
+                    $onHand = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
                     $priceSale = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
                     $metal = $objPHPExcel->getActiveSheet()->getCell('L' . $row)->getValue();
                     $box = $objPHPExcel->getActiveSheet()->getCell('M' . $row)->getValue();
                     $size = $objPHPExcel->getActiveSheet()->getCell('N' . $row)->getValue();
                     $weight = $objPHPExcel->getActiveSheet()->getCell('O' . $row)->getValue();
                     $priceOpt = $objPHPExcel->getActiveSheet()->getCell('P' . $row)->getValue();
-                    $price = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
-                    $flagSale = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue();
+//                    $price = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
+                    $flagSale = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
+                    $action = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue();
+                    $new = $objPHPExcel->getActiveSheet()->getCell('S' . $row)->getValue();
+                    $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue();
                     $product = $em->createQuery(
                         'SELECT p FROM
                          Sylius\Bundle\CoreBundle\Model\Product p
@@ -173,7 +176,7 @@ class ProductController extends ResourceController
                         $flag = 1;
                     }
                     if (count($product) > 0) {
-                        if($product[0]->isRing()){
+                        if ($product[0]->isRing()) {
 //                        if ($product[0]->getName() == 'Кольца') {
                             $f = 0;
                             foreach ($product as $p) {
@@ -194,7 +197,6 @@ class ProductController extends ResourceController
                             "sost" => $sost,
                             "color" => $color,
                             "gb" => $gb,
-                            "price" => $price,
                             "description" => $description,
                             "collection" => $collection,
                             "codeArticul" => $codeArticul,
@@ -237,7 +239,6 @@ class ProductController extends ResourceController
                             $product->setCollection($collection);
                             $product->setName($name);
                             $product->setDescription($description);
-                            $product->setPrice($price * 100);
                             $product->setPriceOpt($priceOpt * 100);
                             $product->setPriceSale($priceSale * 100);
                             if (count($taxs) > 0) {
@@ -251,6 +252,9 @@ class ProductController extends ResourceController
                             $product->getMasterVariant()->setSize($size);
                             $product->getMasterVariant()->setWeight($weight);
                             $product->getMasterVariant()->setFlagSale($flagSale);
+                            $product->setAction($action);
+                            $product->setNew($new);
+                            $product->setWarehouse($warehouse);
 
 
                             /* Add product property */
@@ -663,7 +667,7 @@ class ProductController extends ResourceController
 
         $paginator->setMaxPerPage(40);
 
-        $count_page =  $paginator->getNbResults()/40 + 1;
+        $count_page = $paginator->getNbResults() / 40 + 1;
 
         if ($page != 'all') {
             $paginator->setCurrentPage($request->query->get('page', $page));
@@ -671,7 +675,7 @@ class ProductController extends ResourceController
             $paginator->setCurrentPage($request->query->get('page', 1));
         }
 
-        if($ajax == 1){
+        if ($ajax == 1) {
             return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxonAjax.html.twig', array(
                 'taxon' => $taxon,
                 'products' => $paginator,
@@ -682,7 +686,7 @@ class ProductController extends ResourceController
                 'taxons' => $taxons,
                 'filter' => $filter
             ));
-        }else{
+        } else {
             return $this->render($this->config->getTemplate('indexByTaxon.html'), array(
                 'taxon' => $taxon,
                 'products' => $paginator,
@@ -810,7 +814,7 @@ class ProductController extends ResourceController
         $product = $this->get('sylius.repository.product')->findOneBy(array("slug" => $request->get('slug')));
 
 
-        if($type == 'ajax'){
+        if ($type == 'ajax') {
             return $this->render('SyliusWebBundle:Frontend/Product:showAjax.html.twig', array(
                 'product' => $product,
                 'groups' => $groups
@@ -1166,17 +1170,12 @@ class ProductController extends ResourceController
                 'price' => 'any',
                 'material' => 'any',
                 'weight' => 'any',
-//            'depth' => 'any',
                 'box' => 'any',
                 'size' => 'any',
                 'color' => 'any',
                 'collection' => 'any',
                 'catalog' => 'any'
             );
-            $type = 0;
-//        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
-            $type = 1;
-//        }
             if ($request->get('filter') != null) {
                 $filterArray = $request->get('filter');
                 foreach ($filterArray as $key => $f) {
@@ -1200,6 +1199,7 @@ class ProductController extends ResourceController
                      Sylius\Bundle\CoreBundle\Model\Product p
                      JOIN p.variants v
                      WHERE v.flagSale = 1
+                     AND p.action = 0
                      GROUP BY v.sku
                     '
                 )->getResult();
@@ -1213,6 +1213,73 @@ class ProductController extends ResourceController
                 'category' => 'sale'
             ));
         }
+    }
+
+    public function actionAction(Request $request, $page)
+    {
+        $repositoryGroup = $this->container->get('sylius.repository.group');
+        $groups = $repositoryGroup->findAll();
+        if ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER_OPT')) {
+            $group = $groups[0];
+        } elseif ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER')) {
+            $group = $groups[1];
+        } else {
+            $group = $groups[2];
+        }
+        if ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER_OPT')) {
+            if ($this->get('security.context')->getToken()->getUser()->getAction() == 1) {
+                if ($group->getShowOptPrice() == 1) {
+                    throw new NotFoundHttpException('Страница не найдена!');
+                } else {
+                    $filter = array(
+                        'price' => 'any',
+                        'material' => 'any',
+                        'weight' => 'any',
+                        'box' => 'any',
+                        'size' => 'any',
+                        'color' => 'any',
+                        'collection' => 'any',
+                        'catalog' => 'any'
+                    );
+                    if ($request->get('filter') != null) {
+                        $filterArray = $request->get('filter');
+                        foreach ($filterArray as $key => $f) {
+                            $filter[$key] = $f;
+                        }
+                    }
+
+                    $groups = $this->get('sylius.repository.group')->findAll();
+
+                    if ($page != 'all') {
+                        $paginator = $this
+                            ->getRepository()
+                            ->createByActionPaginator($filter);
+
+                        $paginator->setMaxPerPage(40);
+                        $paginator->setCurrentPage($request->query->get('page', $page));
+                    } else {
+                        $em = $this->getDoctrine()->getManager();
+                        $paginator = $em->createQuery(
+                            'SELECT p FROM
+                             Sylius\Bundle\CoreBundle\Model\Product p
+                             JOIN p.variants v
+                             WHERE p.action = 1
+                             GROUP BY v.sku
+                            '
+                        )->getResult();
+                    }
+
+                    return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
+                        'products' => $paginator,
+                        'groups' => $groups,
+                        'page' => $page,
+                        'filter' => $filter,
+                        'category' => 'sale'
+                    ));
+                }
+            }
+        }
+        throw new NotFoundHttpException('Страница не найдена!');
     }
 
     public function byRingFormAction(Request $request, $sku = null)
@@ -1324,7 +1391,8 @@ class ProductController extends ResourceController
         ));
     }
 
-    public function onHandProductAction($sku){
+    public function onHandProductAction($sku)
+    {
         $em = $this->getDoctrine()->getManager();
         $products = $em->createQuery(
             'SELECT p FROM
@@ -1334,8 +1402,8 @@ class ProductController extends ResourceController
             '
         )->setParameter('sku', $sku)->getResult();
         $onHand = 0;
-        foreach($products as $p){
-            $onHand+= $p->getMasterVariant()->getOnHand();
+        foreach ($products as $p) {
+            $onHand += $p->getMasterVariant()->getOnHand();
         }
         return new Response($onHand);
     }

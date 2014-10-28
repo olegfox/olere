@@ -126,6 +126,7 @@
             <th class="info">{{ 'sylius.order_item.product'|trans }}</th>
             <th class="quantity text-center">{{ 'sylius.order_item.quantity'|trans }}</th>
             <th class="quantity text-center">Остаток</th>
+            <th class="quantity text-center">Склад</th>
             <th class="unit-price text-center">{{ 'sylius.order_item.unit_price'|trans }}</th>
             <th class="total text-right">{{ 'sylius.order_item.total'|trans }}</th>
             <th></th>
@@ -169,6 +170,7 @@
                 </form>
             </td>
             <td class="onHand text-center">{{ item.variant.onHand }}</td>
+            <td class="onHand text-center">{{ product.warehouse }}</td>
             <td class="unit-price text-center">
                 {{ item.unitPrice|sylius_price('RUB') }}
             </td>

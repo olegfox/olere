@@ -97,6 +97,7 @@
         <field name="bik" column="bik" type="string" nullable="true" />
         <field name="address" column="address" type="string" nullable="true" />
         <field type="integer" name="status" column="status" nullable="true" />
+        <field type="boolean" name="action" column="action" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>

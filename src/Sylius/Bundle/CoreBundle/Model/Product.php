@@ -93,6 +93,10 @@ class Product extends BaseProduct implements ProductInterface
 
     private $new = 0;
 
+    private $action = 0;
+
+    private $warehouse;
+
     /**
      * Constructor.
      */
@@ -515,6 +519,43 @@ class Product extends BaseProduct implements ProductInterface
     public function setNew($new)
     {
         $this->new = $new;
+
+        return $this;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getWarehouse()
+    {
+        return $this->warehouse;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setWarehouse($warehouse)
+    {
+        $this->warehouse = $warehouse;
 
         return $this;
     }

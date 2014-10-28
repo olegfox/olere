@@ -53,16 +53,46 @@ class ProductRepository extends VariableProductRepository
 
         $queryBuilder
             ->innerJoin('product.variants', 'variant')
+            ->innerJoin('product.taxons', 'taxon')
+            ->innerJoin('product.taxons', 'taxon2')
             ->andWhere('variant.onHand > 0')
-            ->andWhere('variant.flagSale = 1');
-        if ($filter['material'] != 'any') {
-            $queryBuilder
-                ->andWhere('variant.metal LIKE :material');
+            ->andWhere('variant.flagSale = 1')
+            ->andWhere('product.action = 0');
+        if (isset($filter['collection'])) {
+            if ($filter['collection'] != 'any') {
+                $queryBuilder
+                    ->andWhere('taxon.slug LIKE :collection');
+            }
+        }
+        if (isset($filter['catalog'])) {
+            if ($filter['catalog'] != 'any') {
+                $queryBuilder
+                    ->andWhere('taxon2.slug LIKE :catalog');
+            }
+        }
+        if (isset($filter['material'])) {
+            if ($filter['material'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.metal LIKE :material');
+            }
         }
         if (isset($filter['weight'])) {
             if ($filter['weight'] != 'any') {
                 $queryBuilder
                     ->andWhere('variant.weight < :weight');
+            }
+        }
+        if (isset($filter['color'])) {
+            if ($filter['color'] != 'any') {
+                $queryBuilder
+                    ->leftJoin('product.properties', 'property')
+                    ->andWhere('property.value LIKE :color');
+            }
+        }
+        if (isset($filter['box'])) {
+            if ($filter['box'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.box LIKE :box');
             }
         }
 //        if (isset($filter['depth'])) {
@@ -103,6 +133,95 @@ class ProductRepository extends VariableProductRepository
         return $this->getPaginator($queryBuilder);
     }
 
+    public function createByActionPaginator($filter)
+    {
+        if (isset($filter['price'])) {
+            if ($filter['price'] == 'any') {
+                $filter['price'] = 10000000;
+            } else {
+                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
+                    $filter['price'] = $filter['price'] * 100;
+                }
+            }
+        }
+        $queryBuilder = $this->getCollectionQueryBuilder();
+        $params = array();
+
+        foreach ($filter as $key => $f) {
+            if ($f != 'any' && $f != 'asc' && $f != 'desc') {
+                $params[$key] = $f;
+            }
+        }
+
+        $queryBuilder
+            ->innerJoin('product.variants', 'variant')
+            ->innerJoin('product.taxons', 'taxon')
+            ->innerJoin('product.taxons', 'taxon2')
+            ->andWhere('variant.onHand > 0')
+            ->andWhere('product.action = 1');
+        if (isset($filter['collection'])) {
+            if ($filter['collection'] != 'any') {
+                $queryBuilder
+                    ->andWhere('taxon.slug LIKE :collection');
+            }
+        }
+        if (isset($filter['catalog'])) {
+            if ($filter['catalog'] != 'any') {
+                $queryBuilder
+                    ->andWhere('taxon2.slug LIKE :catalog');
+            }
+        }
+        if (isset($filter['material'])) {
+            if ($filter['material'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.metal LIKE :material');
+            }
+        }
+        if (isset($filter['weight'])) {
+            if ($filter['weight'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.weight < :weight');
+            }
+        }
+        if (isset($filter['color'])) {
+            if ($filter['color'] != 'any') {
+                $queryBuilder
+                    ->leftJoin('product.properties', 'property')
+                    ->andWhere('property.value LIKE :color');
+            }
+        }
+        if (isset($filter['box'])) {
+            if ($filter['box'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.box LIKE :box');
+            }
+        }
+        if (isset($filter['size'])) {
+            if ($filter['size'] != 'any') {
+                $queryBuilder
+                    ->andWhere('variant.size = :size');
+            }
+        }
+        $queryBuilder
+            ->andWhere('product.enabled = 0');
+        if (isset($filter['price'])) {
+            if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
+                $queryBuilder
+                    ->orderBy('variant.priceOpt', $filter['price']);
+            } else {
+                $queryBuilder
+                    ->andWhere('variant.priceOpt < :price');
+            }
+        }
+
+        $queryBuilder
+            ->addGroupBy('variant.sku')
+            ->setParameters($params);
+
+
+        return $this->getPaginator($queryBuilder);
+    }
+
     public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter = array(), $type = 0)
     {
         if (isset($filter['price'])) {
@@ -132,7 +251,8 @@ class ProductRepository extends VariableProductRepository
                 ->innerJoin('product.taxons', 'taxon2')
                 ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
-                ->andWhere('variant.onHand > 0');
+                ->andWhere('variant.onHand > 0')
+                ->andWhere('product.action = 0');
             if (isset($filter['collection'])) {
                 if ($filter['collection'] != 'any') {
                     $queryBuilder
@@ -237,6 +357,7 @@ class ProductRepository extends VariableProductRepository
                 ->andWhere('variant.onHand > 0')
                 ->orderBy("product.name", $sorting["name"])
                 ->andWhere('product.enabled = 0')
+                ->andWhere('product.action = 0')
                 ->setParameter('taxon', $taxon);
         } elseif (isset($sorting["price"])) {
             $queryBuilder
@@ -246,6 +367,7 @@ class ProductRepository extends VariableProductRepository
                 ->andWhere('variant.onHand > 0')
                 ->orderBy("variant.price", $sorting["price"])
                 ->andWhere('product.enabled = 0')
+                ->andWhere('product.action = 0')
                 ->setParameter('taxon', $taxon);
         } else {
             $queryBuilder
@@ -254,6 +376,7 @@ class ProductRepository extends VariableProductRepository
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
                 ->andWhere('product.enabled = 0')
+                ->andWhere('product.action = 0')
                 ->setParameter('taxon', $taxon);
         }
 

@@ -89,6 +89,10 @@ sylius_sale:
     pattern: /sale/{page}
     defaults: { _controller: sylius.controller.product:saleAction}
 
+sylius_action:
+    pattern: /action/{page}
+    defaults: { _controller: sylius.controller.product:actionAction}
+
 sylius_collections:
     pattern: /collections
     defaults: { _controller: sylius.controller.frontend.homepage:collectionsAction}

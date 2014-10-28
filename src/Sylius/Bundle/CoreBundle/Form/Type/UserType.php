@@ -69,6 +69,14 @@ class UserType extends ProfileFormType
                     4 => 'Розничный'
                 )
             ))
+            ->add('action', 'choice', array(
+                'label' => 'Показывать акцию?',
+                'required' => false,
+                'choices' => array(
+                    false => 'Нет',
+                    true => 'Да'
+                )
+            ))
 //            ->add('roles', 'collection', array(
 //                'label'    => 'Роль',
 //                'required' => true,

@@ -50,6 +50,7 @@ class User extends BaseUser implements UserInterface
     protected $bik;
     protected $address;
     protected $status;
+    protected $action;
 
     public function __construct()
     {
@@ -651,6 +652,24 @@ class User extends BaseUser implements UserInterface
                 return 'Розничный';
             }break;
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAction()
+    {
+        return $this->action;
     }
 
     public function isOpt(){

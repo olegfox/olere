@@ -8,6 +8,8 @@
     {{ form_row(form.masterVariant.skuCode) }}
     {{ form_row(form.enabled) }}
     {{ form_row(form.new) }}
+    {{ form_row(form.action) }}
+    {{ form_row(form.warehouse) }}
     <hr />
     <div class="row">
         <div class="col-md-6">
@@ -16,7 +18,9 @@
             {{ form_widget(form.masterVariant.availableOn, {'label': false}) }}
             </div>
             {#{{ form_row(form.masterVariant.availableOnDemand) }}#}
-            {{ form_row(form.masterVariant.price) }}
+            <div class="hide">
+                {{ form_row(form.masterVariant.price) }}
+            </div>
             {{ form_row(form.masterVariant.priceOpt) }}
             {{ form_row(form.masterVariant.priceSale) }}
             {{ form_row(form.masterVariant.onHand) }}

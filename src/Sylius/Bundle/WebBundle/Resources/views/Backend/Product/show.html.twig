@@ -137,10 +137,10 @@
                     <td>{{ 'sylius.product.stock'|trans }}</td>
                     <td><span class="label label-{{ product.masterVariant.inStock ? 'success' : 'important' }}">{{ product.masterVariant.onHand }}</span></td>
                 </tr>
-                <tr>
-                    <td>{{ 'sylius.product.price'|trans }}</td>
-                    <td>{{ product.masterVariant.price|sylius_price('RUB') }}</td>
-                </tr>
+                {#<tr>#}
+                    {#<td>{{ 'sylius.product.price'|trans }}</td>#}
+                    {#<td>{{ product.masterVariant.price|sylius_price('RUB') }}</td>#}
+                {#</tr>#}
                 <tr>
                     <td>{{ 'sylius.product.priceOpt'|trans }}</td>
                     <td>{{ product.masterVariant.priceOpt|sylius_price('RUB') }}</td>

@@ -17,24 +17,22 @@
                 {{ form_label(form.firstName) }}
                 <span class="valid"></span>{{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'ng-model' : 'user.firstName', 'ng-minlength' : '2', 'ng-maxlength' : '255'}, 'required' : 'required'  }) }}<span>*</span>
             </div>
-            <div class="form-group">
-                {{ form_label(form.inn) }}
-                <span class="valid"></span>{{ form_widget(form.inn, { 'attr': {'class': 'form-control', 'ng-model' : 'user.inn', 'ng-minlength' : '10', 'ng-maxlength' : '12', 'ng-pattern' : 'onlyNumbers'}, 'required' : 'required' }) }}<span>*</span>
-            </div>
-            <div class="form-group">
-                {{ form_label(form.formCompany) }}
-                <span class="valid"></span>{{ form_widget(form.formCompany, { 'attr': {'class': 'form-control', 'ng-model' : 'user.formCompany'}, 'required' : 'required' }) }}<span>*</span>
-            </div>
-            <div class="form-group">
-                {{ form_label(form.nameCompany) }}
-                <span class="valid"></span>{{ form_widget(form.nameCompany, { 'attr': {'class': 'form-control', 'ng-model' : 'user.nameCompany'}, 'required' : 'required' }) }}<span>*</span>
-            </div>
-            <div class="form-group">
-                {{ form_label(form.city) }}
-                <span class="valid"></span>{{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}<span>*</span>
-            </div>
-        </div>
-        <div class="right">
+            {#<div class="form-group">#}
+                {#{{ form_label(form.inn) }}#}
+                {#<span class="valid"></span>{{ form_widget(form.inn, { 'attr': {'class': 'form-control', 'ng-model' : 'user.inn', 'ng-minlength' : '10', 'ng-maxlength' : '12', 'ng-pattern' : 'onlyNumbers'}, 'required' : 'required' }) }}<span>*</span>#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#{{ form_label(form.formCompany) }}#}
+                {#<span class="valid"></span>{{ form_widget(form.formCompany, { 'attr': {'class': 'form-control', 'ng-model' : 'user.formCompany'}, 'required' : 'required' }) }}<span>*</span>#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#{{ form_label(form.nameCompany) }}#}
+                {#<span class="valid"></span>{{ form_widget(form.nameCompany, { 'attr': {'class': 'form-control', 'ng-model' : 'user.nameCompany'}, 'required' : 'required' }) }}<span>*</span>#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#{{ form_label(form.city) }}#}
+                {#<span class="valid"></span>{{ form_widget(form.city, { 'attr': {'class': 'form-control', 'ng-model' : 'user.city'}, 'required' : 'required' }) }}<span>*</span>#}
+            {#</div>#}
             <div class="form-group">
                 {{ form_label(form.email, '') }}
                 <span class="valid"></span>{{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder' : 'form.email', 'ng-model' : 'user.email'}, 'required' : 'required' }) }}<span>*</span>
@@ -50,17 +48,20 @@
                 </div>
             {% endfor %}
         </div>
+        {#<div class="right">#}
+
+        {#</div>#}
         <div class="form-actions clearfix">
-            <div class="left">
-                <div class="form-group">
-                    {{ form_label(form.profileCompany, '') }}
-                    {{ form_widget(form.profileCompany, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.countPoint, '') }}
-                    {{ form_widget(form.countPoint, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-            </div>
+            {#<div class="left">#}
+                {#<div class="form-group">#}
+                    {#{{ form_label(form.profileCompany, '') }}#}
+                    {#{{ form_widget(form.profileCompany, { 'attr': {'class': 'form-control'} }) }}#}
+                {#</div>#}
+                {#<div class="form-group">#}
+                    {#{{ form_label(form.countPoint, '') }}#}
+                    {#{{ form_widget(form.countPoint, { 'attr': {'class': 'form-control'} }) }}#}
+                {#</div>#}
+            {#</div>#}
             <button type="submit" class="btn btn-success btn-lg" ng-disabled="form.$invalid">{{ 'registration.submit'|trans }}</button>
         </div>
         {{ form_errors(form) }}
