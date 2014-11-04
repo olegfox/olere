@@ -222,7 +222,7 @@ class Variant extends BaseVariant implements VariantInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritpdoc}
      */
     public function isInStock()
     {

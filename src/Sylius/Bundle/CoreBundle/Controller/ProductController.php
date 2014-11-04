@@ -1407,4 +1407,112 @@ class ProductController extends ResourceController
         }
         return new Response($onHand);
     }
+
+    public function exportOrderAction($id){
+        $repository = $this->container->get('sylius.repository.order');
+
+        $order = $repository->find($id);
+
+        if(!$order){
+            throw $this->createNotFoundException('Заказ не найден');
+        }
+
+        $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('export/template_order.xlsx');
+        $sheet = $objPHPExcel->setActiveSheetIndex(0);
+
+        $sheet->setCellValue('C4', $order->getUser()->getEmail());
+        $sheet->setCellValue('E4', $order->getTransportName());
+        $sheet->setCellValue('D4', $order->getUser()->getFormCompany());
+        $sheet->setCellValue('K4', $order->getComment());
+        $sheet->setCellValue('F4', $order->getCity() . ', ' . $order->getAddress() . ', ' . $order->getPhone() . ', ' . $order->getEmail());
+        $sheet->setCellValue('G4', $order->getUsername());
+
+        $i = 6;
+        $quantity = 0;
+        foreach($order->getItems() as $key => $orderItem){
+            $i = $i + $key;
+            $sheet->getRowDimension($i)
+                ->setRowHeight(200);
+            if(is_object($orderItem->getVariant()->getProduct()->getImage())){
+                $objDrawing = new \PHPExcel_Worksheet_Drawing();
+                $objDrawing->setWorksheet($sheet);
+//            $objDrawing->setName("name");
+//            $objDrawing->setDescription("Description");
+                $path = 'media/image/' . $orderItem->getVariant()->getProduct()->getImage()->getPath();
+                $path_parts = pathinfo($path);
+                $filename = 'export/' . uniqid() . '.' . $path_parts['extension'];
+                $this->get('image.handling')->open($path)
+                    ->cropResize(232)
+                    ->save($filename);
+                $height = $this->get('image.handling')->open($filename)->height();
+                $sheet->getRowDimension($i)
+                    ->setRowHeight($height - 80);
+                $objDrawing->setPath($filename);
+                $objDrawing->setCoordinates('B'.$i);
+                $objDrawing->setOffsetX(0);
+                $objDrawing->setOffsetY(1);
+            }
+            $sheet->getStyle('E'.$i)->getAlignment()->setWrapText(true);
+            $sheet->getStyle('F'.$i)->getAlignment()->setWrapText(true);
+            $sheet->getStyle('H'.$i)->getAlignment()->setWrapText(true);
+
+            $sheet->getStyle('E'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('F'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('H'.$i)->getAlignment()->setVertical('center');
+
+            $sheet->getStyle('E'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('F'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('H'.$i)->getAlignment()->setHorizontal('center');
+
+            $sheet->setCellValue('A'.$i, $key);
+            $sheet->setCellValue('C'.$i, $orderItem->getVariant()->getSku());//артикул
+            $sheet->setCellValue('D'.$i, $orderItem->getVariant()->getProduct()->getName());//наименование
+            $property = $orderItem->getVariant()->getProduct()->getProperties();
+            $p = array();
+            foreach($property as $pr){
+                if($pr->getProperty()->getId() == 10){
+                    $p['color'] = $pr->getValue();
+                }elseif($pr->getProperty()->getId() == 11){
+                    $p['gb'] = $pr->getValue();
+                }elseif($pr->getProperty()->getId() == 12){
+                    $p['sost'] = $pr->getValue();
+                }
+            }
+
+            if(isset($p['sost'])){
+                $sheet->setCellValue('E'.$i, $p['sost']);//состав
+            }
+            if(isset($p['gb'])){
+                $sheet->setCellValue('F'.$i, $p['gb']);//габариты
+            }
+            $sheet->setCellValue('G'.$i, $orderItem->getVariant()->getSize());//размер кольца
+            if(isset($p['color'])){
+                $sheet->setCellValue('H'.$i, $p['color']);//цвет
+            }
+            $sheet->setCellValue('I'.$i, $orderItem->getUnitPrice()/100);//цена
+            $sheet->setCellValue('J'.$i, $orderItem->getQuantity());//заказать
+            $sheet->setCellValue('K'.$i, $orderItem->getTotal()/100);//стоимость
+
+            $quantity = $quantity + $orderItem->getQuantity();
+        }
+
+        $i = $i + 1;
+
+        $sheet->setCellValue('I'.$i, 'Итого');
+        $sheet->setCellValue('J'.$i, $quantity);//итого (шт.)
+        $sheet->setCellValue('K'.$i, $order->getTotal()/100);//итого (стоимость)
+
+        $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
+
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Content-Disposition', 'attachment;filename=export_order.xlsx');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+
+        return $response;
+
+//        return new Response('');
+    }
 }

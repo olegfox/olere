@@ -23,8 +23,8 @@
                 {% set width = image('media/image/'~product.image.path).width() %}
                 {% set const = height/width %}
                 {% set height = const*500 %}
-            <img src="{{ product.image ? '/media/image/'~product.image.path : 'http://placehold.it/175x160' }}"
-                 alt="{{ product.name }}" width="500px" height="{{ height }}px">
+                <img src="{{ product.image ? '/media/image/'~product.image.path : 'http://placehold.it/175x160' }}"
+                     alt="{{ product.name }}" width="500px" height="{{ height }}px">
             {#</a>#}
             </div>
             <!-- Catalog -->

@@ -20,6 +20,9 @@
         {% if order.state == 7 %}
             заказ удален. причина: {{ order.getReasonCancel() }}
         {% endif %}
+        <a href="{{ path('sylius_backend_order_export', {'id': order.id}) }}" target="_blank" class="btn btn-primary">
+            <i class="glyphicon glyphicon-plus-sign"></i><span>Экспорт в xlsx</span>
+        </a>
         {% if not is_granted('ROLE_MANAGER') %}
         {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
         {% endif %}

@@ -628,6 +628,31 @@ class Order extends Cart implements OrderInterface
         return $this->transport;
     }
 
+    public function getTransportName()
+    {
+        $transportName = '';
+
+        switch($this->transport){
+            case 0: {
+                $transportName = 'Деловые линии';
+            }break;
+            case 1: {
+                $transportName = 'Байкал сервис';
+            }break;
+            case 2: {
+                $transportName = 'Пони экспресс';
+            }break;
+            case 3: {
+                $transportName = 'Почта России';
+            }break;
+            default: {
+                $transportName = '';
+            }
+        }
+
+        return $transportName;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;

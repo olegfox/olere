@@ -11,6 +11,7 @@ behat.yml
 
 web/bundles/*
 web/import/*
+web/export/*
 web/assets/compiled/*
 web/media/*
 web/uploads/*
