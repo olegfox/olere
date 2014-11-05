@@ -1430,7 +1430,6 @@ class ProductController extends ResourceController
         $i = 6;
         $quantity = 0;
         foreach($order->getItems() as $key => $orderItem){
-            $i = $i + $key;
             $sheet->getRowDimension($i)
                 ->setRowHeight(200);
             if(is_object($orderItem->getVariant()->getProduct()->getImage())){
@@ -1440,7 +1439,7 @@ class ProductController extends ResourceController
 //            $objDrawing->setDescription("Description");
                 $path = 'media/image/' . $orderItem->getVariant()->getProduct()->getImage()->getPath();
                 $path_parts = pathinfo($path);
-                $filename = 'export/' . uniqid() . '.' . $path_parts['extension'];
+                $filename = 'export/' . $path_parts['basename'];
                 $this->get('image.handling')->open($path)
                     ->cropResize(232)
                     ->save($filename);
@@ -1456,13 +1455,27 @@ class ProductController extends ResourceController
             $sheet->getStyle('F'.$i)->getAlignment()->setWrapText(true);
             $sheet->getStyle('H'.$i)->getAlignment()->setWrapText(true);
 
+            $sheet->getStyle('A'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('C'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('D'.$i)->getAlignment()->setVertical('center');
             $sheet->getStyle('E'.$i)->getAlignment()->setVertical('center');
             $sheet->getStyle('F'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('G'.$i)->getAlignment()->setVertical('center');
             $sheet->getStyle('H'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('I'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('J'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('K'.$i)->getAlignment()->setVertical('center');
 
+            $sheet->getStyle('A'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('C'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('D'.$i)->getAlignment()->setHorizontal('center');
             $sheet->getStyle('E'.$i)->getAlignment()->setHorizontal('center');
             $sheet->getStyle('F'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('G'.$i)->getAlignment()->setHorizontal('center');
             $sheet->getStyle('H'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('I'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('J'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('K'.$i)->getAlignment()->setHorizontal('center');
 
             $sheet->setCellValue('A'.$i, $key);
             $sheet->setCellValue('C'.$i, $orderItem->getVariant()->getSku());//артикул
@@ -1494,9 +1507,10 @@ class ProductController extends ResourceController
             $sheet->setCellValue('K'.$i, $orderItem->getTotal()/100);//стоимость
 
             $quantity = $quantity + $orderItem->getQuantity();
+            $i++;
         }
 
-        $i = $i + 1;
+//        $i = $i + 1;
 
         $sheet->setCellValue('I'.$i, 'Итого');
         $sheet->setCellValue('J'.$i, $quantity);//итого (шт.)

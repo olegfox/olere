@@ -1,12 +1,32 @@
-$(function () {
-    initClick();
+var cache = [];
 
-    $(window).scroll(function(){
-        if($(".indexByTaxonAjax").length > 0){
-            if (($(window).scrollTop() >= ($(document).height() - $(window).height()) - 1000)){
+$(function () {
+    $.fn.loadCache = function (object, href, callback) {
+        if (cache[$(object).attr('href')] != undefined) {
+            $(this).html(cache[$(object).attr('href')]);
+            if($('.productWindow').last().css('display') == 'none'){
+                setTimeout(function(){
+                    callback();
+                }, 200);
+            }else{
+                callback();
+            }
+        } else {
+            $(this).load(href, callback);
+        }
+
+        return this;
+    };
+    initClick();
+    $(window).bind('load', function(){
+//        cacheProducts();
+    });
+    $(window).scroll(function () {
+        if ($(".indexByTaxonAjax").length > 0) {
+            if (($(window).scrollTop() >= ($(document).height() - $(window).height()) - 1000)) {
                 var link = $(".indexByTaxonAjax").attr('href');
                 $(".indexByTaxonAjax").remove();
-                $.get(link, {}, function(data){
+                $.get(link, {}, function (data) {
                     $(".catalog .boxes").append(data);
                     initClick();
                 });
@@ -15,37 +35,68 @@ $(function () {
     });
 });
 
-function initClick(){
+function cacheProducts(object) {
+    object = object || 0;
+    if(object != 0){
+        var $prev = $(object).parent().parent().prev().find('.inner_box a');
+        var $next = $(object).parent().parent().next().find('.inner_box a');
+        if (cache[$prev.attr('href')] == undefined) {
+            $.post($prev.attr('href'), {}, function (data) {
+                cache[$prev.attr('href')] = data;
+            });
+        }
+        if (cache[$next.attr('href')] == undefined) {
+            $.post($next.attr('href'), {}, function (data) {
+                cache[$next.attr('href')] = data;
+            });
+        }
+    }
+}
+
+function initClick() {
     $('.inner_box a').unbind('click').click(function () {
         productShow(this);
     });
 }
 
-function initWindow($clone_productWindow){
-    if ($clone_productWindow.find('.productWindow_content .buyBlock .inner_buyBlock').height() < $('body').height()) {
-        $clone_productWindow
-            .find('.productWindow_content')
-            .css({
-                'max-height': $('body').height(),
-                'margin' : 0
-            });
-        $clone_productWindow
-            .find('.productWindow_content')
-            .css({
-                'top': ($('body').height() - $clone_productWindow.find('.productWindow_content').height()) / 2
-            })
-            .find('.pictureProduct')
-            .css({
-                'max-height': $clone_productWindow.find('.productWindow_content').height() - $clone_productWindow.find('.latestProducts').height() - 10
-            });
-    }
+function initWindow(object, $clone_productWindow, $clone_overlay) {
+    $clone_productWindow
+        .animate({
+            'top': 0
+        }, 200)
+        .find('.close a').click(function () {
+            productClose($clone_productWindow, $clone_overlay);
+        })
+        .end()
+        .find('.latestProducts a').click(function () {
+            productShow(this, 200, 1);
+        })
+        .end();
 
     $clone_productWindow
         .find('.pictureProduct img')
-        .css({'opacity' : 0})
+        .css({'opacity': 0})
         .one("load",function () {
-            $(this).css({'opacity' : 1});
+            if ($clone_productWindow.find('.productWindow_content .buyBlock .inner_buyBlock').height() < $('body').height()) {
+                $clone_productWindow
+                    .find('.productWindow_content')
+                    .css({
+                        'max-height': $('body').height(),
+                        'margin': 0
+                    });
+                $clone_productWindow
+                    .find('.productWindow_content')
+                    .css({
+                        'top': ($('body').height() - $clone_productWindow.find('.productWindow_content').height()) / 2
+                    })
+                    .find('.pictureProduct')
+                    .css({
+                        'max-height': $clone_productWindow.find('.productWindow_content').height() - $clone_productWindow.find('.latestProducts').height() - 10
+                    });
+            }
+            $(this).css({'opacity': 1});
             smoothZoom($clone_productWindow.find('.pictureProduct')[0]);
+            cacheProducts(object);
         }).each(function () {
             if (this.complete) $(this).load();
         });
@@ -54,8 +105,9 @@ function initWindow($clone_productWindow){
     addCartRing();
 }
 
-function productShow(object, time) {
+function productShow(object, time, latest) {
     time = time || 200;
+    latest = latest || 0;
 
     var $clone_overlay = $('.productWindow_hide .productWindow_overlay').clone().appendTo('body'),
         $clone_productWindow = $('.productWindow_hide .productWindow').clone().appendTo('body');
@@ -76,20 +128,25 @@ function productShow(object, time) {
     $clone_productWindow
         .find('.productWindow_content')
         .html('')
-        .load($(object).attr('href'), function () {
+        .loadCache(object, $(object).attr('href'), function () {
             var $navright = $clone_productWindow.find('.navright'),
                 $navleft = $clone_productWindow.find('.navleft');
 
+            if(latest == 1){
+                $navleft.hide();
+                $navright.hide();
+            }
+
             $navleft
                 .unbind('click')
-                .click(function(){
+                .click(function () {
                     var tmp = $(object)
                         .parent()
                         .parent()
                         .prev()
                         .find('.inner_box a')
                         .get(0);
-                    if($(tmp).length <= 0){
+                    if ($(tmp).length <= 0) {
                         tmp = $(object)
                             .parent()
                             .parent()
@@ -98,15 +155,15 @@ function productShow(object, time) {
                             .find('.box3 .inner_box a')
                             .get(0);
                     }
-                    if($(tmp).length > 0){
+                    if ($(tmp).length > 0) {
                         object = tmp;
                         $clone_productWindow
                             .find('.productWindow_content')
                             .css({
-                                'height' : $clone_productWindow.find('.productWindow_content').height()
+                                'height': $clone_productWindow.find('.productWindow_content').height()
                             })
                             .html('')
-                            .load($(object).attr('href'), function(){
+                            .loadCache(object, $(object).attr('href'), function () {
                                 $clone_productWindow
                                     .find('.close a').click(function () {
                                         productClose($clone_productWindow, $clone_overlay);
@@ -114,23 +171,23 @@ function productShow(object, time) {
                                     .end()
                                     .find('.productWindow_content')
                                     .css({
-                                        'height' : 'auto'
+                                        'height': 'auto'
                                     });
-                                initWindow($clone_productWindow);
+                                initWindow(object, $clone_productWindow, $clone_overlay);
                             });
                     }
                 });
 
             $navright
                 .unbind('click')
-                .click(function(){
+                .click(function () {
                     var tmp = $(object)
                         .parent()
                         .parent()
                         .next()
                         .find('.inner_box a')
                         .get(0);
-                    if($(tmp).length <= 0){
+                    if ($(tmp).length <= 0) {
                         tmp = $(object)
                             .parent()
                             .parent()
@@ -139,22 +196,22 @@ function productShow(object, time) {
                             .find('.box0 .inner_box a')
                             .get(0);
                     }
-                    if($(tmp).length > 0){
+                    if ($(tmp).length > 0) {
                         object = tmp;
                         $clone_productWindow
                             .find('.productWindow_content')
                             .css({
-                                'height' : $clone_productWindow.find('.productWindow_content').height()
+                                'height': $clone_productWindow.find('.productWindow_content').height()
                             })
                             .html('')
-                            .load($(object).attr('href'), function(){
+                            .loadCache(object, $(object).attr('href'), function () {
                                 $clone_productWindow
                                     .find('.productWindow_content')
                                     .css({
-                                        'height' : $clone_productWindow.find('.productWindow_content').height()
+                                        'height': $clone_productWindow.find('.productWindow_content').height()
                                     })
                                     .html('')
-                                    .load($(object).attr('href'), function(){
+                                    .loadCache(object, $(object).attr('href'), function () {
                                         $clone_productWindow
                                             .find('.close a').click(function () {
                                                 productClose($clone_productWindow, $clone_overlay);
@@ -162,9 +219,9 @@ function productShow(object, time) {
                                             .end()
                                             .find('.productWindow_content')
                                             .css({
-                                                'height' : 'auto'
+                                                'height': 'auto'
                                             });
-                                        initWindow($clone_productWindow);
+                                        initWindow(object, $clone_productWindow, $clone_overlay);
                                     });
                             });
                     }
@@ -173,28 +230,15 @@ function productShow(object, time) {
             $(window)
                 .unbind('keyup')
                 .keyup(function (event) {
-                    if ( event.keyCode == 37 ){
+                    if (event.keyCode == 37) {
                         $navleft.click();
                     }
-                    if ( event.keyCode == 39 ){
+                    if (event.keyCode == 39) {
                         $navright.click();
                     }
                 });
 
-            $clone_productWindow
-                .animate({
-                    'top': 0
-                }, time)
-                .find('.close a').click(function () {
-                    productClose($clone_productWindow, $clone_overlay);
-                })
-                .end()
-                .find('.latestProducts a').click(function () {
-                    productShow(this);
-                })
-                .end();
-
-            initWindow($clone_productWindow);
+            initWindow(object, $clone_productWindow, $clone_overlay);
         })
         .end()
         .on('click', function (e) {
