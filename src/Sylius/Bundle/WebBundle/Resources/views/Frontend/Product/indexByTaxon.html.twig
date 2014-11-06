@@ -17,7 +17,9 @@
 {% block content %}
     <div class="catalog">
         {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
-        {{ grid(products, groups) }}
+        <div class="page" id="page{% if page == 'all' %}1{% else %}{{ page }}{% endif %}">
+            {{ grid(products, groups) }}
+        </div>
         {% if page != 'all' and products|length > 40 %}
             {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': 'all'})|merge(app.request.query.all)) }}{% else %}{{ path('sylius_sale', {page: 'all'}) }}{% endif %}">Показать всё</a></li></ul>
         {% elseif products|length > 40 %}
@@ -36,6 +38,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.lazyload.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/productAjax.js') }}"></script>
 {% endblock %}
 

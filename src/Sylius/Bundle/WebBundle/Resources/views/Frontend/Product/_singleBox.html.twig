@@ -20,10 +20,11 @@
                 {% set url = path('sylius_product_show_ajax', {'slug': product.slug, 'taxon' : taxonId, 'type': 'ajax'}) %}
             {% endif %}
             <a href="{{ url }}" onclick="return false;">
-                <img src="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/500x500' }}"
+                <img class="lazy" src="{{ asset('images/lazy.jpg') }}"
+                     data-original="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/500x500' }}"
                      data-image1="{{ product.image ? image('media/image/'~product.image.path).resize(500, 500, '#fff') : 'http://placehold.it/500x500' }}"
                      data-image2="{% if product.images|length > 1 %}{{ product.images[1] ? image('media/image/'~product.images[1].path).resize(500, 500, '#fff') : '' }}{% endif %}"
-                     alt="{{ product.name }}">
+                     alt="{{ product.name }}" width="500" height="500">
             </a>
 
             {#<div class="wrap_description">#}
