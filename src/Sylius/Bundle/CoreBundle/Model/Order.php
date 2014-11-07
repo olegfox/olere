@@ -118,6 +118,8 @@ class Order extends Cart implements OrderInterface
      */
     protected $promotions;
 
+    protected $comments;
+
     /**
      * Constructor.
      */
@@ -127,6 +129,7 @@ class Order extends Cart implements OrderInterface
 
         $this->shipments = new ArrayCollection();
         $this->promotions = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -804,5 +807,22 @@ class Order extends Cart implements OrderInterface
             return $this->user->getNameCompany();
         }
         return '';
+    }
+
+    public function addComment(OrderComment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    public function removeComment(OrderComment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

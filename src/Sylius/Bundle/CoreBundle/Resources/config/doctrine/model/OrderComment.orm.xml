@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+>
+
+    <entity name="Sylius\Bundle\CoreBundle\Model\OrderComment" table="sylius_order_comment">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="text" column="text" type="text"></field>
+
+        <field name="created" column="created" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+
+        <many-to-one field="order" target-entity="Sylius\Bundle\CoreBundle\Model\Order">
+            <join-column name="id_order" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+        <many-to-one field="user" target-entity="Sylius\Bundle\CoreBundle\Model\User">
+            <join-column name="id_user" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

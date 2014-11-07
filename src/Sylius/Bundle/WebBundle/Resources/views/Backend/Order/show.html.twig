@@ -13,6 +13,8 @@
 {% endblock %}
 
 {% block content %}
+
+{% render(url('sylius_backend_order_comment_index', {order_id: order.id})) %}
 <div class="page-header">
     {% if not order.deleted %}
     <div class="actions-menu">

@@ -66,7 +66,7 @@ $(function () {
                 var number_page = $page_first.attr('id').match(re) - 1;
                 if(pages['page' + number_page] != undefined){
                     $page_first
-                        .before('<div class="page" id="page'+number_page+'"><div class="boxes">'+pages['page'+number_page]+'</div></div>');
+                        .before('<div class="page" id="page'+number_page+'">'+pages['page'+number_page]+'</div>');
                     after_insert_page_top($page_first);
                 }
             }
@@ -80,7 +80,7 @@ $(function () {
                     var number_page = link.match(re);
                     if(pages['page'+number_page] != undefined){
                         $page_last
-                            .append('<div class="page" id="page'+number_page+'"><div class="boxes">'+pages['page'+number_page]+'</div></div>');
+                            .append('<div class="page" id="page'+number_page+'">'+pages['page'+number_page]+'</div>');
                         after_insert_page_bottom($page_last);
                     }else{
                         $.get(link, {}, function (data) {

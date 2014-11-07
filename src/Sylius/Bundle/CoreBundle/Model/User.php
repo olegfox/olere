@@ -51,12 +51,14 @@ class User extends BaseUser implements UserInterface
     protected $address;
     protected $status;
     protected $action;
+    protected $comments;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->orders    = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->comments = new ArrayCollection();
 
         parent::__construct();
     }
@@ -680,5 +682,22 @@ class User extends BaseUser implements UserInterface
             }
         }
         return $check;
+    }
+
+    public function addComment(OrderComment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    public function removeComment(OrderComment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

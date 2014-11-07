@@ -77,16 +77,16 @@ class UserType extends ProfileFormType
                     true => 'Да'
                 )
             ))
-//            ->add('roles', 'collection', array(
-//                'label'    => 'Роль',
-//                'required' => true,
-////                'choices' => array(
-////                    'ROLE_SYLIUS_ADMIN' => 'Администратор',
-////                    'ROLE_SYLIUS_ADMIN, ROLE_MANAGER' => 'Менеджер',
-////                    '' => 'Розничный покупатель',
-////                    'ROLE_USER_OPT' => 'Оптовый покупатель'
-////                )
-//            ))
+            ->add('roles', 'collection', array(
+                'label'    => 'Роль',
+                'required' => true,
+//                'choices' => array(
+//                    'ROLE_SYLIUS_ADMIN' => 'Администратор',
+//                    'ROLE_SYLIUS_ADMIN, ROLE_MANAGER' => 'Менеджер',
+//                    '' => 'Розничный покупатель',
+//                    'ROLE_USER_OPT' => 'Оптовый покупатель'
+//                )
+            ))
             ->remove('username')
         ;
     }

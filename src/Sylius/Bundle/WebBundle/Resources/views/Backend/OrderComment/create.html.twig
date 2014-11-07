@@ -1,0 +1,12 @@
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import create %}
+
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-plus-sign"></i> Добавление комментария</h1>
+</div>
+
+{{ form_errors(form) }}
+
+<form action="{{ path('sylius_backend_order_comment_create', {'order_id' : order_id}) }}" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
+    {% include 'SyliusWebBundle:Backend/OrderComment:_form.html.twig' %}
+    {{ create() }}
+</form>

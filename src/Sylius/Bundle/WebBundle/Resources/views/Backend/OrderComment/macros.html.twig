@@ -1,0 +1,41 @@
+{% macro list(comments) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+{% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
+
+{% if comments|length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Автор</th>
+                <th>Дата</th>
+                <th>Текст</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr id="{{ comment.id }}">
+                <td><i>{{ comment.id }}</i></td>
+                <td>
+                    {{ comment.user.email }}
+                </td>
+                <td>{{ comment.user.created|date('m.d.y') }}</td>
+                <td>{{ comment.text|raw }}</td>
+                <td>
+                    <div class="pull-right">
+                    {{ buttons.edit(path('sylius_backend_order_comment_edit', {'id': comment.id})) }}
+                    {{ buttons.delete(path('sylius_backend_order_comment_delete', {'id': comment.id})) }}
+                   </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+Нет комментариев
+{% endif %}
+
+{% endmacro %}
