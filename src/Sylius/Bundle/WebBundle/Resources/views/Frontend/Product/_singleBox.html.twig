@@ -4,6 +4,9 @@
             {% if product.masterVariant.flagSale == 1 %}
                 <div class="sticker_sale">SALE</div>
             {% endif %}
+            {% if product.hit == 1 %}
+                <div class="sticker_hit">HIT</div>
+            {% endif %}
             {% if product.new == 1 %}
                 <div class="sticker_new{% if product.masterVariant.flagSale == 1 %} right{% endif %}">NEW</div>
             {% endif %}

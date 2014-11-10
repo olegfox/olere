@@ -58,6 +58,14 @@ class ProductType extends BaseProductType
                 ),
                 'label'    => 'Акция?'
             ))
+            ->add('hit', 'choice', array(
+                'required' => true,
+                'choices' => array(
+                    false => 'Нет',
+                    true => 'Да'
+                ),
+                'label'    => 'Хит?'
+            ))
             ->add('warehouse', 'text', array(
                 'required' => false,
                 'label'    => 'Склад'

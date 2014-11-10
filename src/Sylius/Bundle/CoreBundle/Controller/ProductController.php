@@ -1533,11 +1533,20 @@ class ProductController extends ResourceController
     }
 
     public function exportIndexAction(){
+//        set_time_limit(0);
+//        ini_set('error_reporting', E_ALL);
+//        ini_set('display_errors', TRUE);
+//        ini_set('memory_limit', '3000MB');
+
         $repository = $this->container->get('sylius.repository.product');
 
         $products = $repository->findAll();
 
-        $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('export/price.xlsx');
+//        $cacheMethod = \PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+//        $cacheSettings = array( 'memoryCacheSize' => '5GB');
+//        \PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+
+        $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('export/price.xls');
         $sheet = $objPHPExcel->setActiveSheetIndex(0);
 
         $i = 2;
@@ -1574,20 +1583,21 @@ class ProductController extends ResourceController
             $sheet->setCellValue('G'.$i, $product->getCollection());
             $sheet->setCellValue('H'.$i, $product->getCatalog());
             $sheet->setCellValue('I'.$i, $product->getSkuCode());
-            $sheet->setCellValue('J'.$i, $product->getOnHand());
+            $sheet->setCellValue('J'.$i, $product->getMasterVariant()->getOnHand());
             $sheet->setCellValue('K'.$i, $product->getPriceSale()/100);
             $sheet->setCellValue('L'.$i, $product->getMasterVariant()->getMetal());
             $sheet->setCellValue('M'.$i, $product->getMasterVariant()->getBox());
             $sheet->setCellValue('N'.$i, $product->getMasterVariant()->getSize());
             $sheet->setCellValue('O'.$i, $product->getMasterVariant()->getWeight());
-            $sheet->setCellValue('P'.$i, $product->getPriceOpt());
-            $sheet->setCellValue('Q'.$i, $product->getMasterVariant()->getFlagSale());
-            $sheet->setCellValue('R'.$i, $product->getAction());
-            $sheet->setCellValue('S'.$i, $product->getNew());
+            $sheet->setCellValue('P'.$i, $product->getPriceOpt()/100);
+            $sheet->setCellValue('Q'.$i, $product->getMasterVariant()->getFlagSale() ? 1 : 0);
+            $sheet->setCellValue('R'.$i, $product->getAction() ? 1 : 0);
+            $sheet->setCellValue('S'.$i, $product->getNew() ? 1 : 0);
             $sheet->setCellValue('T'.$i, $product->getWarehouse());
-            $sheet->setCellValue('U'.$i, $product->getHit());
+            $sheet->setCellValue('U'.$i, $product->getHit() ? 1 : 0);
 
             $i++;
+
         }
 
         $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
@@ -1595,11 +1605,10 @@ class ProductController extends ResourceController
         $response = $this->get('phpexcel')->createStreamedResponse($writer);
         // adding headers
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
-        $response->headers->set('Content-Disposition', 'attachment;filename=export_products.xlsx');
+        $response->headers->set('Content-Disposition', 'attachment;filename=export_products.xls');
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
 
         return $response;
-
     }
 }

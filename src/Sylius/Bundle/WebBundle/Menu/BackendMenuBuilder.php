@@ -112,23 +112,24 @@ class BackendMenuBuilder extends MenuBuilder
             ->addChild('assortment', $childOptions)
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.assortment', $section)));
 
-        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
+//        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
             $child->addChild('taxonomies', array(
                 'route' => 'sylius_backend_taxonomy_index',
                 'labelAttributes' => array('icon' => 'glyphicon glyphicon-folder-close'),
             ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.taxonomies', $section)));
-        }
+//        }
         $child->addChild('products', array(
             'route' => 'sylius_backend_product_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-list'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.products', $section)));
 
-        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
+
             $child->addChild('import', array(
                 'route' => 'sylius_backend_import_index',
                 'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
             ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.import', $section)));
 
+        if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_MANAGER2') == false) {
             $child->addChild('export', array(
                 'route' => 'sylius_backend_export_index',
                 'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),

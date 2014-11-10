@@ -5,3 +5,13 @@ tr.tDnD_whileDrag{
     width: 100px;
     height: 50px;
 }
+
+/* comments window */
+.comments .form-horizontal .control-label{
+    width: 100%;
+    text-align: center;
+}
+.comments .col-lg-10{
+    width: 100%;
+}
+/* end comments window */

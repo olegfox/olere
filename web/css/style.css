@@ -576,7 +576,8 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     padding: 0px 20px;
 }
 .catalog .inner_box .sticker_sale,
-.catalog .inner_box .sticker_new{
+.catalog .inner_box .sticker_new,
+.catalog .inner_box .sticker_hit{
     position: absolute;
     width: 75px;
     height: 30px;
@@ -589,6 +590,9 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 .catalog .inner_box .sticker_new{
     background: #fe0000;
+}
+.catalog .inner_box .sticker_hit{
+    background: #249a27;
 }
 .catalog .inner_box .sticker_new.right{
     top: 30px;
