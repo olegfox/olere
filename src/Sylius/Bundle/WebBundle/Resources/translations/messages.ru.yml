@@ -146,6 +146,8 @@ sylius:
       index: Список каталогов
     import:
       index: Ипорт продуктов
+    export:
+      index: Экспорт продуктов
     update: sylius.breadcrumb.update
     user:
       index: Список пользователей
@@ -460,6 +462,8 @@ sylius:
     updated_at: Последнее обновление
   import:
     create_header: Ипортирование продуктов
+  export:
+    create_header: Экспорт продуктов
   product:
     add_property: Добавить свойство
     available_on: Доступен с

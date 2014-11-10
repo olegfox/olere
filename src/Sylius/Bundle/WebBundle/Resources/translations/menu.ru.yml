@@ -7,6 +7,7 @@ sylius:
       main:
         assortment: Ассортимент
         import: Импорт продуктов
+        export: Экспорт продуктов
         slider: Слайдер на главной
         configuration: Настройки
         countries: Страны
@@ -40,6 +41,7 @@ sylius:
       sidebar:
         assortment: Ассортимент
         import: Импорт продуктов
+        export: Экспорт продуктов
         slider: Слайдер на главной
         blocks: Блоки
         configuration: Настройки

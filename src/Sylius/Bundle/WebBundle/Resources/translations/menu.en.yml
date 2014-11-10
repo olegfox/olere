@@ -4,6 +4,7 @@ sylius:
             main:
                 assortment: Assortment
                 import: Import products
+                export: Export products
                 slider: Slider on main
                 configuration: Configuration
                 countries: Countries
@@ -37,6 +38,7 @@ sylius:
             sidebar:
                 assortment: Assortment
                 import: Import products
+                export: Export products
                 slider: Slider on main
                 blocks: Blocks
                 configuration: Configuration

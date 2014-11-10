@@ -28,6 +28,10 @@ sylius_backend_import:
     resource: @SyliusWebBundle/Resources/config/routing/backend/import.yml
     prefix: /products/import
 
+sylius_backend_export:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/export.yml
+    prefix: /products/export
+
 sylius_backend_inventory:
     resource: @SyliusWebBundle/Resources/config/routing/backend/inventory.yml
     prefix: /inventory

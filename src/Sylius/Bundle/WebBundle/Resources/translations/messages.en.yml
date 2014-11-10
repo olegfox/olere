@@ -151,6 +151,8 @@ sylius:
             index: Taxonomies
         import:
             index: Import products
+        export:
+            index: Export products
         update: Edit
         user:
             index: Users
@@ -465,6 +467,8 @@ sylius:
         updated_at: Last update
     import:
       create_header: Import products
+    export:
+      create_header: Export products
     product:
         add_property: Add property
         available_on: Available on

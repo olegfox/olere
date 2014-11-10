@@ -161,6 +161,7 @@ class ProductController extends ResourceController
                     $action = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue();
                     $new = $objPHPExcel->getActiveSheet()->getCell('S' . $row)->getValue();
                     $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue();
+                    $hit = $objPHPExcel->getActiveSheet()->getCell('U' . $row)->getValue();
                     $product = $em->createQuery(
                         'SELECT p FROM
                          Sylius\Bundle\CoreBundle\Model\Product p
@@ -255,6 +256,7 @@ class ProductController extends ResourceController
                             $product->setAction($action);
                             $product->setNew($new);
                             $product->setWarehouse($warehouse);
+                            $product->setHit($hit);
 
 
                             /* Add product property */
@@ -1528,5 +1530,76 @@ class ProductController extends ResourceController
         return $response;
 
 //        return new Response('');
+    }
+
+    public function exportIndexAction(){
+        $repository = $this->container->get('sylius.repository.product');
+
+        $products = $repository->findAll();
+
+        $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('export/price.xlsx');
+        $sheet = $objPHPExcel->setActiveSheetIndex(0);
+
+        $i = 2;
+        foreach($products as $product){
+            $sheet->setCellValue('A'.$i, $product->getSku());
+            $sheet->setCellValue('B'.$i, $product->getName());
+            $sheet->setCellValue('B'.$i, $product->getName());
+
+            $property = $product->getProperties();
+            $p = array();
+            foreach($property as $pr){
+                if($pr->getProperty()->getId() == 10){
+                    $p['color'] = $pr->getValue();
+                }elseif($pr->getProperty()->getId() == 11){
+                    $p['gb'] = $pr->getValue();
+                }elseif($pr->getProperty()->getId() == 12){
+                    $p['sost'] = $pr->getValue();
+                }
+            }
+
+            if(isset($p['gb'])){
+                $sheet->setCellValue('C'.$i, $p['gb']);//габариты
+            }
+
+            if(isset($p['color'])){
+                $sheet->setCellValue('D'.$i, $p['color']);//габариты
+            }
+
+            if(isset($p['sost'])){
+                $sheet->setCellValue('E'.$i, $p['sost']);//состав
+            }
+
+            $sheet->setCellValue('F'.$i, $product->getDescription());
+            $sheet->setCellValue('G'.$i, $product->getCollection());
+            $sheet->setCellValue('H'.$i, $product->getCatalog());
+            $sheet->setCellValue('I'.$i, $product->getSkuCode());
+            $sheet->setCellValue('J'.$i, $product->getOnHand());
+            $sheet->setCellValue('K'.$i, $product->getPriceSale()/100);
+            $sheet->setCellValue('L'.$i, $product->getMasterVariant()->getMetal());
+            $sheet->setCellValue('M'.$i, $product->getMasterVariant()->getBox());
+            $sheet->setCellValue('N'.$i, $product->getMasterVariant()->getSize());
+            $sheet->setCellValue('O'.$i, $product->getMasterVariant()->getWeight());
+            $sheet->setCellValue('P'.$i, $product->getPriceOpt());
+            $sheet->setCellValue('Q'.$i, $product->getMasterVariant()->getFlagSale());
+            $sheet->setCellValue('R'.$i, $product->getAction());
+            $sheet->setCellValue('S'.$i, $product->getNew());
+            $sheet->setCellValue('T'.$i, $product->getWarehouse());
+            $sheet->setCellValue('U'.$i, $product->getHit());
+
+            $i++;
+        }
+
+        $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
+
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Content-Disposition', 'attachment;filename=export_products.xlsx');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+
+        return $response;
+
     }
 }

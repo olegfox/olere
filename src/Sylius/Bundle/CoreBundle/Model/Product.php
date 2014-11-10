@@ -97,6 +97,8 @@ class Product extends BaseProduct implements ProductInterface
 
     private $warehouse;
 
+    private $hit;
+
     /**
      * Constructor.
      */
@@ -556,6 +558,24 @@ class Product extends BaseProduct implements ProductInterface
     public function setWarehouse($warehouse)
     {
         $this->warehouse = $warehouse;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getHit()
+    {
+        return $this->hit;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setHit($hit)
+    {
+        $this->hit = $hit;
 
         return $this;
     }

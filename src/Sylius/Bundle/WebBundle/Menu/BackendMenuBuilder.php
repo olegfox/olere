@@ -124,30 +124,15 @@ class BackendMenuBuilder extends MenuBuilder
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.products', $section)));
 
         if ($this->securityContext->getToken() && $this->securityContext->isGranted('ROLE_SYLIUS_ADMIN')) {
-//            $child->addChild('inventory', array(
-//                'route' => 'sylius_backend_inventory_index',
-//                'labelAttributes' => array('icon' => 'glyphicon glyphicon-tasks'),
-//            ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.stockables', $section)));
-
-//            $child->addChild('options', array(
-//                'route' => 'sylius_backend_option_index',
-//                'labelAttributes' => array('icon' => 'glyphicon glyphicon-th'),
-//            ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.options', $section)));
-
-            //        $child->addChild('properties', array(
-            //            'route' => 'sylius_backend_property_index',
-            //            'labelAttributes' => array('icon' => 'glyphicon glyphicon-list-alt'),
-            //        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.properties', $section)));
-
-            //        $child->addChild('prototypes', array(
-            //            'route' => 'sylius_backend_prototype_index',
-            //            'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
-            //        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.prototypes', $section)));
-
             $child->addChild('import', array(
                 'route' => 'sylius_backend_import_index',
                 'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
             ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.import', $section)));
+
+            $child->addChild('export', array(
+                'route' => 'sylius_backend_export_index',
+                'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
+            ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.export', $section)));
         }
     }
 
