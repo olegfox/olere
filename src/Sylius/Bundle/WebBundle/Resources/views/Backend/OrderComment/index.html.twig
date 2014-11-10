@@ -2,9 +2,13 @@
 {% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
 {% from 'SyliusWebBundle:Backend/OrderComment:macros.html.twig' import list %}
 
+{% include "SyliusWebBundle:Backend/OrderComment:modal.html.twig" %}
+
 <div class="page-header">
     <div class="actions-menu">
-        {{ buttons.create(path('sylius_backend_order_comment_create', {order_id: order_id}), 'Добавить') }}
+        <div id="add">
+            {{ buttons.create(path('sylius_backend_order_comment_create', {order_id: order_id}), 'Добавить') }}
+        </div>
     </div>
     <h1><i class="glyphicon glyphicon-th-list"></i>Комментарии к заказу</h1>
 </div>

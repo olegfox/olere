@@ -54,6 +54,8 @@ class Order extends Cart implements OrderInterface
 
     protected $timeCounterOrder;
 
+    protected $status;
+
     /**
      * Order shipping address.
      *
@@ -824,5 +826,17 @@ class Order extends Cart implements OrderInterface
     public function getComments()
     {
         return $this->comments;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

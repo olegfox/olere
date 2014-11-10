@@ -111,10 +111,19 @@ class OrderType extends BaseOrderType
             ))
             ->add('comment', 'textarea', array(
                 'required' => '',
-                'label' => 'Комментарий',
+                'label' => 'Причина отмены',
                 'attr' => array(
                     'ng-model' => 'ord.comment',
-                    'placeholder' => 'Комментарий'
+                    'placeholder' => 'Причина отмены'
+                )
+            ))
+            ->add('status', 'choice', array(
+                'required' => '',
+                'label' => 'Оплатный статус',
+                'choices' => array(
+                    0 => 'Пока деньги не пришли, нет отгрузки.',
+                    1 => 'Товар должен быть отгружен, по приходу в руки контрагента, тот оплачивает товар.',
+                    2 => 'Статус дебеторской задолжности.'
                 )
             ))
         ;

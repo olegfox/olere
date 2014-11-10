@@ -60,6 +60,10 @@ sylius_backend_order:
     resource: @SyliusWebBundle/Resources/config/routing/backend/order.yml
     prefix: /orders
 
+sylius_backend_order_comment:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/order_comment.yml
+    prefix: /order_comment
+
 sylius_backend_promotion:
     resource: @SyliusWebBundle/Resources/config/routing/backend/promotion.yml
     prefix: /promotions

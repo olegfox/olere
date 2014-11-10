@@ -14,7 +14,9 @@
 
 {% block content %}
 
-{% render(url('sylius_backend_order_comment_index', {order_id: order.id})) %}
+<div class="comments">
+    {{ render(url('sylius_backend_order_comment_index', {order_id: order.id})) }}
+</div>
 <div class="page-header">
     {% if not order.deleted %}
     <div class="actions-menu">
@@ -22,9 +24,13 @@
         {% if order.state == 7 %}
             заказ удален. причина: {{ order.getReasonCancel() }}
         {% endif %}
+
+        {% if not is_granted('ROLE_MANAGER2') %}
         <a href="{{ path('sylius_backend_order_export', {'id': order.id}) }}" target="_blank" class="btn btn-primary">
             <i class="glyphicon glyphicon-plus-sign"></i><span>Экспорт в xlsx</span>
         </a>
+        {% endif %}
+
         {% if not is_granted('ROLE_MANAGER') %}
         {{ buttons.delete(path('sylius_backend_order_delete', {'id': order.id})) }}
         {% endif %}
@@ -361,4 +367,9 @@
     </form>
 {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/order_comment.js') }}"></script>
 {% endblock %}

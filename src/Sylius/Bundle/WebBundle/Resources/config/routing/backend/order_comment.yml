@@ -1,19 +1,15 @@
 sylius_backend_order_comment_delete:
     pattern: /delete/{id}/
-    defaults:
-        _controller: Sylius\Bundle\CoreBundle\OrderComment:deleteAction
+    defaults: { _controller: SyliusCoreBundle:OrderComment:delete}
 
 sylius_backend_order_comment_edit:
     pattern: /edit/{id}/
-    defaults:
-        _controller: Sylius\Bundle\CoreBundle\OrderComment:editAction
+    defaults: { _controller: SyliusCoreBundle:OrderComment:edit}
 
 sylius_backend_order_comment_create:
     pattern: /{order_id}/create/
-    defaults:
-        _controller: Sylius\Bundle\CoreBundle\OrderComment:createAction
+    defaults: { _controller: SyliusCoreBundle:OrderComment:create}
 
 sylius_backend_order_comment_index:
     pattern: /{order_id}/
-    defaults:
-        _controller: Sylius\Bundle\CoreBundle\OrderComment:indexAction
+    defaults: { _controller: SyliusCoreBundle:OrderComment:index}

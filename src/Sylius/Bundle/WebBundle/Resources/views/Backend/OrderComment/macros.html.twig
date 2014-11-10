@@ -26,8 +26,12 @@
                 <td>{{ comment.text|raw }}</td>
                 <td>
                     <div class="pull-right">
-                    {{ buttons.edit(path('sylius_backend_order_comment_edit', {'id': comment.id})) }}
-                    {{ buttons.delete(path('sylius_backend_order_comment_delete', {'id': comment.id})) }}
+                    <div id="edit">
+                        {{ buttons.edit(path('sylius_backend_order_comment_edit', {'id': comment.id})) }}
+                    </div>
+                    <div id="delete">
+                        {{ buttons.delete(path('sylius_backend_order_comment_delete', {'id': comment.id})) }}
+                    </div>
                    </div>
                 </td>
             </tr>
