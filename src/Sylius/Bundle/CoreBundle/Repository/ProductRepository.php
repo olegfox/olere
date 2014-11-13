@@ -31,15 +31,20 @@ class ProductRepository extends VariableProductRepository
      * @return PagerfantaInterface
      */
 
-    public function createBySalePaginator($filter)
+    public function createBySalePaginator($filter, $type = 1)
     {
-        if (isset($filter['price'])) {
-            if ($filter['price'] == 'any') {
-                $filter['price'] = 10000000;
+        if (isset($filter['price_from'])) {
+            if ($filter['price_from'] == 'any') {
+                $filter['price_from'] = 10000000;
             } else {
-                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
-                    $filter['price'] = $filter['price'] * 100;
-                }
+                $filter['price_from'] = $filter['price_from'] * 100;
+            }
+        }
+        if (isset($filter['price_to'])) {
+            if ($filter['price_to'] == 'any') {
+                $filter['price_to'] = 10000000;
+            } else {
+                $filter['price_to'] = $filter['price_to'] * 100;
             }
         }
         $queryBuilder = $this->getCollectionQueryBuilder();
@@ -113,15 +118,38 @@ class ProductRepository extends VariableProductRepository
                     ->andWhere('variant.size = :size');
             }
         }
+        if (isset($filter['created'])) {
+            if ($filter['created'] != 'any') {
+                $queryBuilder
+                    ->orderBy('product.createdAt', $filter['created']);
+            }
+        }
+
+        if (isset($filter['priceSale'])) {
+            if ($filter['priceSale'] != 'any') {
+                $queryBuilder
+                    ->orderBy('variant.flagSale', $filter['priceSale']);
+            }
+        }
+
         $queryBuilder
             ->andWhere('product.enabled = 0');
-        if (isset($filter['price'])) {
-            if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
+        if (isset($filter['price_from'])) {
+            if ($type == 0) {
                 $queryBuilder
-                    ->orderBy('variant.priceSale', $filter['price']);
+                    ->andWhere('variant.price > :price_from');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceSale < :price');
+                    ->andWhere('variant.priceOpt > :price_from');
+            }
+        }
+        if (isset($filter['price_to'])) {
+            if ($type == 0) {
+                $queryBuilder
+                    ->andWhere('variant.price < :price_to');
+            } else {
+                $queryBuilder
+                    ->andWhere('variant.priceOpt < :price_to');
             }
         }
 
@@ -133,15 +161,20 @@ class ProductRepository extends VariableProductRepository
         return $this->getPaginator($queryBuilder);
     }
 
-    public function createByActionPaginator($filter)
+    public function createByActionPaginator($filter, $type = 1)
     {
-        if (isset($filter['price'])) {
-            if ($filter['price'] == 'any') {
-                $filter['price'] = 10000000;
+        if (isset($filter['price_from'])) {
+            if ($filter['price_from'] == 'any') {
+                $filter['price_from'] = 10000000;
             } else {
-                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
-                    $filter['price'] = $filter['price'] * 100;
-                }
+                $filter['price_from'] = $filter['price_from'] * 100;
+            }
+        }
+        if (isset($filter['price_to'])) {
+            if ($filter['price_to'] == 'any') {
+                $filter['price_to'] = 10000000;
+            } else {
+                $filter['price_to'] = $filter['price_to'] * 100;
             }
         }
         $queryBuilder = $this->getCollectionQueryBuilder();
@@ -202,15 +235,36 @@ class ProductRepository extends VariableProductRepository
                     ->andWhere('variant.size = :size');
             }
         }
+        if (isset($filter['created'])) {
+            if ($filter['created'] != 'any') {
+                $queryBuilder
+                    ->orderBy('product.createdAt', $filter['created']);
+            }
+        }
+        if (isset($filter['priceSale'])) {
+            if ($filter['priceSale'] != 'any') {
+                $queryBuilder
+                    ->orderBy('variant.flagSale', $filter['priceSale']);
+            }
+        }
         $queryBuilder
             ->andWhere('product.enabled = 0');
-        if (isset($filter['price'])) {
-            if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
+        if (isset($filter['price_from'])) {
+            if ($type == 0) {
                 $queryBuilder
-                    ->orderBy('variant.priceOpt', $filter['price']);
+                    ->andWhere('variant.price > :price_from');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceOpt < :price');
+                    ->andWhere('variant.priceOpt > :price_from');
+            }
+        }
+        if (isset($filter['price_to'])) {
+            if ($type == 0) {
+                $queryBuilder
+                    ->andWhere('variant.price < :price_to');
+            } else {
+                $queryBuilder
+                    ->andWhere('variant.priceOpt < :price_to');
             }
         }
 
@@ -222,15 +276,20 @@ class ProductRepository extends VariableProductRepository
         return $this->getPaginator($queryBuilder);
     }
 
-    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter = array(), $type = 0)
+    public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter = array(), $type = 1)
     {
-        if (isset($filter['price'])) {
-            if ($filter['price'] == 'any') {
-                $filter['price'] = 10000000;
+        if (isset($filter['price_from'])) {
+            if ($filter['price_from'] == 'any') {
+                $filter['price_from'] = 10000000;
             } else {
-                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
-                    $filter['price'] = $filter['price'] * 100;
-                }
+                $filter['price_from'] = $filter['price_from'] * 100;
+            }
+        }
+        if (isset($filter['price_to'])) {
+            if ($filter['price_to'] == 'any') {
+                $filter['price_to'] = 10000000;
+            } else {
+                $filter['price_to'] = $filter['price_to'] * 100;
             }
         }
         $queryBuilder = $this->getCollectionQueryBuilder();
@@ -269,7 +328,7 @@ class ProductRepository extends VariableProductRepository
                 if ($filter['material'] != 'any') {
                     $queryBuilder
                         ->andWhere('variant.metal LIKE :material');
-                }else{
+                } else {
                     $params['notSilver'] = '%серебро%';
                     $queryBuilder
                         ->andWhere('variant.id NOT IN (SELECT v.id FROM Sylius\Bundle\CoreBundle\Model\Variant v WHERE v.metal LIKE :notSilver)');
@@ -306,28 +365,40 @@ class ProductRepository extends VariableProductRepository
                         ->andWhere('variant.size = :size');
                 }
             }
-            $queryBuilder
-                ->andWhere('product.enabled = 0');
-            if (isset($filter['price'])) {
-                if ($type == 0) {
-                    if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
-                        $queryBuilder
-                            ->orderBy('variant.price', $filter['price']);
-                    } else {
-                        $queryBuilder
-                            ->andWhere('variant.price < :price');
-                    }
-                } else {
-                    if ($filter['price'] == 'desc' || $filter['price'] == 'asc') {
-                        $queryBuilder
-                            ->orderBy('variant.priceOpt', $filter['price']);
-                    } else {
-                        $queryBuilder
-                            ->andWhere('variant.priceOpt < :price');
-                    }
+            if (isset($filter['created'])) {
+                if ($filter['created'] != 'any') {
+                    $queryBuilder
+                        ->orderBy('product.createdAt', $filter['created']);
                 }
             }
-            if (!isset($filter['price'])) {
+            if (isset($filter['priceSale'])) {
+                if ($filter['priceSale'] != 'any') {
+                    $queryBuilder
+                        ->orderBy('variant.flagSale', $filter['priceSale']);
+                }
+            }
+            $queryBuilder
+                ->andWhere('product.enabled = 0');
+            if (isset($filter['price_from'])) {
+                if ($type == 0) {
+                    $queryBuilder
+                        ->andWhere('variant.price > :price_from');
+                } else {
+                    $queryBuilder
+                        ->andWhere('variant.priceOpt > :price_from');
+                }
+            }
+            if (isset($filter['price_to'])) {
+                if ($type == 0) {
+                    $queryBuilder
+                        ->andWhere('variant.price < :price_to');
+                } else {
+                    $queryBuilder
+                        ->andWhere('variant.priceOpt < :price_to');
+                }
+            }
+
+            if (!isset($filter['created']) && !isset($filter['priceSale'])) {
                 if ($taxonomyId == 8) {
                     $queryBuilder
                         ->orderBy("product.position", $sorting["position"]);
@@ -336,7 +407,7 @@ class ProductRepository extends VariableProductRepository
                         ->orderBy("product.position2", $sorting["position"]);
                 }
             } else {
-                if ($filter['price'] != 'desc' && $filter['price'] != 'asc') {
+                if ($filter['created'] != 'desc' && $filter['created'] != 'asc' && $filter['priceSale'] != 'desc' && $filter['priceSale'] != 'asc') {
                     if ($taxonomyId == 8) {
                         $queryBuilder
                             ->orderBy("product.position", $sorting["position"]);

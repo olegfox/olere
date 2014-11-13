@@ -88,6 +88,8 @@ $(function () {
                                 .after(data);
                             $(".indexByTaxonAjax.hold").remove();
                             after_insert_page_bottom($page_last);
+                        }).fail(function(){
+                            $(".indexByTaxonAjax").hide();
                         });
                     }
                 }
@@ -138,7 +140,7 @@ function initWindow(object, $clone_productWindow, $clone_overlay) {
 
     $clone_productWindow
         .find('.pictureProduct img')
-        .css({'opacity': 0})
+//        .css({'opacity': 0})
         .one("load",function () {
             if ($clone_productWindow.find('.productWindow_content .buyBlock .inner_buyBlock').height() < $('body').height()) {
                 $clone_productWindow

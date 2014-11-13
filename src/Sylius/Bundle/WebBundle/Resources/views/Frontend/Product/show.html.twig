@@ -121,7 +121,7 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>#}
     {% if product.getChildren()|length > 0 %}
         {#<script type="text/javascript" src="{{ asset("js/productClick.js") }}"></script>#}
     {% endif %}

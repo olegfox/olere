@@ -9,7 +9,7 @@
                 <div class="hh">Доп. фото:</div>
                 <div class="blockPreview">
                     {% for image in product.images %}
-                        <img onclick="preview(this, '{{ '/media/image/'~image.path }}', '{{ image ? '/media/image/'~image.path : 'http://placehold.it/175x160' }}', '{{ product.name }}');"
+                        <img onclick="preview(this, '{{ '/media/image/'~image.path }}', '{{ image ? image('media/image/'~image.path).cropResize(500) : 'http://placehold.it/500x720' }}', '{{ product.name }}');"
                              src="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
                              alt="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
                              width="128px" height="128px">
@@ -19,12 +19,12 @@
         </div><div class="wrap_pictureProduct">
             {#<a href="{{ asset('media/image/'~product.image.path) }}" class="fancybox">#}
             <div class="pictureProduct">
-                {% set height = image('media/image/'~product.image.path).height() %}
-                {% set width = image('media/image/'~product.image.path).width() %}
-                {% set const = height/width %}
-                {% set height = const*500 %}
-                <img src="{{ product.image ? '/media/image/'~product.image.path : 'http://placehold.it/175x160' }}"
-                     alt="{{ product.name }}" width="500px" height="{{ height }}px">
+                {#{% set height = image('media/image/'~product.image.path).height() %}#}
+                {#{% set width = image('media/image/'~product.image.path).width() %}#}
+                {#{% set const = height/width %}#}
+                {#{% set height = const*500 %}#}
+                <img data-src="{{ '/media/image/'~product.image.path }}" src="{{ product.image ? image('media/image/'~product.image.path).cropResize(500) : 'http://placehold.it/500x720' }}"
+                     alt="{{ product.name }}" height="100%">
             {#</a>#}
             </div>
             <!-- Catalog -->
@@ -65,25 +65,27 @@
             <div class="onHand">
                 <div class="hh">На складе:</div> {{ product.masterVariant.onHand }} шт.
             </div>
-            <div class="price">
-                <div class="hh">Цена:</div> {{ showPrice(product, groups) }}
-            </div>
-            {% if product.isRing %}
-                <form action="{{ path('sylius_by_ring_form', {'sku': product.sku}) }}" method="get"
-                      class="clearfix form-horizontal">
-                    <button type="submit" class="addCartRing">Добавить в корзину</button>
-                </form>
-            {% else %}
-                {% set form = sylius_cart_form({'product': product}) %}
-                <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
-                      class="clearfix form-horizontal">
-                    {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
-                    {% else %}
-                        {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
-                        {{ form_widget(form._token) }}
-                    {% endif %}
-                    <button type="submit" class="addCart">Добавить в корзину</button>
-                </form>
+            {% if app.user %}
+                <div class="price">
+                    <div class="hh">Цена:</div> {{ showPrice(product, groups) }}
+                </div>
+                {% if product.isRing %}
+                    <form action="{{ path('sylius_by_ring_form', {'sku': product.sku}) }}" method="get"
+                          class="clearfix form-horizontal">
+                        <button type="submit" class="addCartRing">Добавить в корзину</button>
+                    </form>
+                {% else %}
+                    {% set form = sylius_cart_form({'product': product}) %}
+                    <form action="{{ path('sylius_cart_item_add', {'id': product.id}) }}" method="post"
+                          class="clearfix form-horizontal">
+                        {% if not product.hasVariants and not sylius_inventory_is_available(product.masterVariant) %}
+                        {% else %}
+                            {{ form_row(form.quantity, {'attr': {'class': 'center-text'}, 'empty_value': '1'}) }}
+                            {{ form_widget(form._token) }}
+                        {% endif %}
+                        <button type="submit" class="addCart">Добавить в корзину</button>
+                    </form>
+                {% endif %}
             {% endif %}
         </div>
         </div>

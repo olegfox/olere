@@ -24,7 +24,7 @@
             {{ pagination(products) }}<ul class="pagination"><li class="next"><a href="{% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': 'all'})|merge(app.request.query.all)) }}{% else %}{{ path('sylius_sale', {page: 'all'}) }}{% endif %}">Показать всё</a></li></ul>
         {% elseif products|length > 40 %}
             {% if page + 1 <= count_page %}
-                <a class="indexByTaxonAjax hide" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': 2})|merge({'ajax': 1})|merge(app.request.query.all)) }}"></a>
+                <a class="indexByTaxonAjax" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': 2})|merge({'ajax': 1})|merge(app.request.query.all)) }}"></a>
             {% endif %}
         {% endif %}
     </div>
@@ -37,7 +37,7 @@
     {% endif %}
     <script type="text/javascript" src="{{ asset('js/jquery.smoothZoom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/smoothZoom.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>#}
     <script type="text/javascript" src="{{ asset('js/jquery.lazyload.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/productAjax.js') }}"></script>
 {% endblock %}

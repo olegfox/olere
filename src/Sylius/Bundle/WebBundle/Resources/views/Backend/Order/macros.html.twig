@@ -85,11 +85,17 @@
                 {% if not order.deleted %}
                 {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}
                 {% if order.state != 7 and order.state != 4 %}
+                    {% set enable = 0 %}
+                    {% if order.state == 9 and is_granted('ROLE_MANAGER3') %}
+                        {% set enable = 1 %}
+                    {% endif %}
+                    {% if enable == 0 %}
                     <form action="{{ path('sylius_backend_order_change_state', {id : order.id, state: order.getButtonState()}) }}" method="post">
                 <button type="submit" class="btn btn-primary">
                 {{ order.getButtonMessage() }}
                 </button>
                     </form>
+                     {% endif %}
 
                     <form action="{{ path('sylius_backend_order_change_state', {id : order.id, state: 7}) }}" method="post">
                         {% include 'SyliusWebBundle:Backend/Order:cancel.html.twig' %}

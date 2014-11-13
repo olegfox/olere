@@ -1,4 +1,4 @@
-function addCart(){
+function addCart() {
     $(".addCart").click(function () {
         form = $(this).parent();
         $(form).unbind("submit").submit(function () {
@@ -19,8 +19,8 @@ function addCart(){
         });
     });
 }
-function addCartRing(){
-    $(".addCartRing").click(function(){
+function addCartRing() {
+    $(".addCartRing").click(function () {
         form = $(this).parent();
         $(form).unbind("submit").submit(function () {
             $.get($(form).attr("action"), $(form).serialize(), function (data) {
@@ -55,17 +55,29 @@ $(function () {
 
     $('input, textarea').placeholder();
 
-    if($('.catalog .head.filter').length > 0){
-        $(window).scroll(function(){
-            if($(window).scrollTop() > 125){
+    if ($('.catalog .head.filter').length > 0) {
+        $(".catalog .head.filter #price").ionRangeSlider({
+            min: 1,
+            max: 2000,
+            type: "double",
+            onFinish: function (data) {
+                $(".catalog .head.filter #price_from").val(data.from);
+                $(".catalog .head.filter #price_to").val(data.to);
+            }
+        });
+
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 125) {
                 $('.borderHead.filter').addClass('fixed');
                 $('.catalog .head.filter').addClass('fixed');
-            }else{
+            } else {
                 $('.borderHead.filter').removeClass('fixed');
                 $('.catalog .head.filter').removeClass('fixed');
             }
         });
     }
+
 });
 
 function footerBottom() {
@@ -77,7 +89,7 @@ function footerBottom() {
 }
 
 function preview(object, original, image, name) {
-    $(object).parent().parent().parent().parent().parent().find(".pictureProduct").html("<img src='" + image + "' alt='" + name + "' width='500px'>");
+    $(object).parent().parent().parent().parent().parent().find(".pictureProduct").html("<img data-src='"+original+"' src='" + image + "' alt='" + name + "' height='100%'>");
     smoothZoom($(object).parent().parent().parent().parent().parent().find(".pictureProduct")[0]);
 }
 
@@ -85,7 +97,9 @@ function filter(category) {
     if (category != 'sale') {
         var cat = $(".filter #type").val();
     }
-    var price = $(".filter #price").val();
+    var price_from = $(".filter #price_from").val();
+    var price_to = $(".filter #price_to").val();
+    var priceSale = $(".filter #priceSale").val();
     var material = $(".filter #material").val();
     var weight = $(".filter #weight").val();
     var color = $(".filter #color").val();
@@ -94,10 +108,11 @@ function filter(category) {
 //    var depth = $(".filter #depth").val();
     var box = $(".filter #box").val();
     var size = $(".filter #size").val();
+    var created = $(".filter #created").val();
     if (category != 'sale') {
-        var href = "/" + category + "/1/" + cat + "?filter[price]=" + price + "&filter[material]=" + material + "&filter[weight]=" + weight;
+        var href = "/" + category + "/1/" + cat + "?filter[price_from]=" + price_from + "&filter[price_to]=" + price_to + "&filter[material]=" + material + "&filter[weight]=" + weight;
     } else {
-        var href = "/" + category + "/1?filter[price]=" + price + "&filter[material]=" + material + "&filter[weight]=" + weight;
+        var href = "/" + category + "/1?filter[price_from]=" + price_from + "&filter[price_to]=" + price_to + "&filter[material]=" + material + "&filter[weight]=" + weight;
     }
 //    href = href + "&filter[depth]=" + depth;
     href = href + "&filter[box]=" + box;
@@ -105,5 +120,7 @@ function filter(category) {
     href = href + "&filter[color]=" + color;
     href = href + "&filter[collection]=" + collection;
     href = href + "&filter[catalog]=" + catalog;
+    href = href + "&filter[created]=" + created;
+    href = href + "&filter[priceSale]=" + priceSale;
     window.location.href = href;
 }

@@ -31,17 +31,35 @@
     </div>
     <div class="price">
         {#<span>цена:</span>#}
-        <select name="" id="price" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>Все цены</option>
-            <option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>
-            <option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>
-            <option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>
-            <option value="500" {% if filter.price == 500 %}selected="selected"{% endif %}>до 500 руб</option>
-            <option value="700" {% if filter.price == 700 %}selected="selected"{% endif %}>до 700 руб</option>
-            <option value="1000" {% if filter.price == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>
-            <option value="1500" {% if filter.price == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>
-            <option value="1700" {% if filter.price == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>
-            <option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>
+        {#<select name="" id="price" onchange="filter('{{ category }}');">#}
+            {#<option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>Все цены</option>#}
+            {#<option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>#}
+            {#<option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>#}
+            {#<option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>#}
+            {#<option value="500" {% if filter.price == 500 %}selected="selected"{% endif %}>до 500 руб</option>#}
+            {#<option value="700" {% if filter.price == 700 %}selected="selected"{% endif %}>до 700 руб</option>#}
+            {#<option value="1000" {% if filter.price == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>#}
+            {#<option value="1500" {% if filter.price == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>#}
+            {#<option value="1700" {% if filter.price == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>#}
+            {#<option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>#}
+        {#</select>#}
+        <input type="hidden" id="price_from" name="price_from" value="{% if filter.price_from != "any" %}{{ filter.price_from }}{% else %}any{% endif %}" />
+        <input type="hidden" id="price_to" name="price_to" value="{% if filter.price_to != "any" %}{{ filter.price_to }}{% else %}any{% endif %}" />
+        <input type="text" id="price" name="price" value="" data-from="{% if filter.price_from != "any" %}{{ filter.price_from }}{% else %}1{% endif %}" data-to="{% if filter.price_to != "any" %}{{ filter.price_to }}{% else %}2000{% endif %}" />
+        <button id="button_price" class="button_price" onclick="filter('{{ category }}');">Показать</button>
+    </div>
+    <div class="priceSale">
+        <select name="" id="priceSale" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.priceSale == "any" %}selected="selected"{% endif %}>Скидки</option>
+            <option value="asc" {% if filter.priceSale == 'asc' %}selected="selected"{% endif %}>сначала без скидки</option>
+            <option value="desc" {% if filter.priceSale == 'desc' %}selected="selected"{% endif %}>сначала со скидкой</option>
+        </select>
+    </div>
+    <div class="created">
+        <select name="" id="created" onchange="filter('{{ category }}');">
+            <option value="any" {% if filter.created == "any" %}selected="selected"{% endif %}>По дате</option>
+            <option value="asc" {% if filter.created == 'asc' %}selected="selected"{% endif %}>Старые</option>
+            <option value="desc" {% if filter.created == 'desc' %}selected="selected"{% endif %}>Новые</option>
         </select>
     </div>
     <div class="material hide">
@@ -105,4 +123,9 @@
             <option value="20.5" {% if filter.size == 20.5 %}selected="selected"{% endif %}>20.5</option>
         </select>
     </div>
+    {% if products is defined %}
+    <div class="count">
+        Кол-во: {{ products|length }}
+    </div>
+    {% endif %}
 </div>

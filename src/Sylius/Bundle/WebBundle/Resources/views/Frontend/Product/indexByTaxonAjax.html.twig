@@ -9,7 +9,7 @@
 
 {% if products|length > 40 %}
     {#{% if page + 1 <= count_page %}#}
-        <a class="indexByTaxonAjax hide" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': page + 1})|merge({'ajax': 1})|merge(app.request.query.all)) }}"></a>
+        <a class="indexByTaxonAjax" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': page + 1})|merge({'ajax': 1})|merge(app.request.query.all)) }}"></a>
     {#{% endif %}#}
 {% endif %}
 

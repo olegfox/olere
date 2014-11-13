@@ -104,6 +104,53 @@ class ProductController extends ResourceController
         ));
     }
 
+//    public function importIndexAction(Request $request)
+//    {
+//        set_time_limit(0);
+//        ini_set('error_reporting', E_ALL);
+//        ini_set('display_errors', TRUE);
+//        header('Content-Type: text/html; charset=UTF-8');
+//        $import = new Import();
+//
+//        $form = $this->createForm(new ImportType(), $import);
+//        $repository = $this->container->get('sylius.repository.variant');
+//        $manager = $this->container->get('sylius.manager.product');
+//        $em = $this->getDoctrine()->getManager();
+//        if ($request->isMethod('POST')) {
+//            $form->bind($request);
+//            $xls = $form['file']->getData();
+//            if ($xls != "") {
+//                $newFileName = $xls->getClientOriginalName();
+//                $newFileName = iconv("utf-8", "cp1251", $newFileName);
+//                $xls->move('import/xls/', $newFileName);
+//                $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
+//                $objWorksheet = $objPHPExcel->getActiveSheet();
+//                $highestRow = $objWorksheet->getHighestRow();
+//                $data = array();
+//                for ($row = 2; $row <= $highestRow; $row++) {
+//                    $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue();
+//                    $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
+//                    $variant = $repository->findBy(array("sku" => $articul));
+//                    if($variant){
+//                        foreach($variant as $v){
+//                           $product = $v->getProduct();
+//                           $product->setCatalog($catalog);
+//                        }
+//                    }
+//                }
+//                $manager->flush();
+////                $this->importScanAction($request);
+//                return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
+//                    'form' => $form->createView(),
+//                    'data' => $data
+//                ));
+//            }
+//        }
+//        return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
+//            'form' => $form->createView()
+//        ));
+//    }
+
     public function importIndexAction(Request $request)
     {
         set_time_limit(0);
@@ -1176,7 +1223,8 @@ class ProductController extends ResourceController
                 'size' => 'any',
                 'color' => 'any',
                 'collection' => 'any',
-                'catalog' => 'any'
+                'catalog' => 'any',
+                'created' => 'any'
             );
             if ($request->get('filter') != null) {
                 $filterArray = $request->get('filter');
@@ -1241,7 +1289,8 @@ class ProductController extends ResourceController
                         'size' => 'any',
                         'color' => 'any',
                         'collection' => 'any',
-                        'catalog' => 'any'
+                        'catalog' => 'any',
+                        'created' => 'any'
                     );
                     if ($request->get('filter') != null) {
                         $filterArray = $request->get('filter');

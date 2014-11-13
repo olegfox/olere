@@ -56,15 +56,55 @@
     </div>
     <div class="borderSlider"></div>
 {% endblock %}
-{% block content %}
+{% block content1 %}
     {% if page1.enable is defined %}
         {% if page1.enable == 0 %}
-            <div class="content">
-                {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
+            <div class="container">
+                <div class="content">
+                    {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
+                </div>
             </div>
         {% endif %}
     {% endif %}
-
+{% endblock %}
+{% block content2 %}
+    <!-- Advantages -->
+    <div class="wrap_advantages">
+        <div class="advantages">
+            <h1>
+                наши преимущества
+            </h1>
+            <ul>
+                <li>
+                    <img src="{{ asset('images/advantages/icon1.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Широкий ассортимент</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon2.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Вкусные цены</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon3.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Пожизненная гарантия</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon4.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Прогрессивная <br/> система скидок</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon5.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Обмен товара</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon6.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Тысяча новых моделей <br/> каждый месяц</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon7.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Наличие товара <br/> на складе</p>
+                </li><li>
+                    <img src="{{ asset('images/advantages/icon8.png') }}" alt="" width="187px" height="187px"/>
+                    <p>Товар сертифицирован</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
     <!-- Catalog -->
     <div class="catalog catalogMain">
         <div class="head">
