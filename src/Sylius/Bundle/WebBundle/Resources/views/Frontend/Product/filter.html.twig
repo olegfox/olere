@@ -29,7 +29,7 @@
             {{ render(url('sylius_get_collection_list', {filter: filter.collection})) }}
         </select>
     </div>
-    <div class="price">
+    <div class="price{% if app.user == 0 %} hide{% endif %}">
         {#<span>цена:</span>#}
         {#<select name="" id="price" onchange="filter('{{ category }}');">#}
             {#<option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>Все цены</option>#}
@@ -43,12 +43,12 @@
             {#<option value="1700" {% if filter.price == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>#}
             {#<option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>#}
         {#</select>#}
-        <input type="hidden" id="price_from" name="price_from" value="{% if filter.price_from != "any" %}{{ filter.price_from }}{% else %}any{% endif %}" />
-        <input type="hidden" id="price_to" name="price_to" value="{% if filter.price_to != "any" %}{{ filter.price_to }}{% else %}any{% endif %}" />
-        <input type="text" id="price" name="price" value="" data-from="{% if filter.price_from != "any" %}{{ filter.price_from }}{% else %}1{% endif %}" data-to="{% if filter.price_to != "any" %}{{ filter.price_to }}{% else %}2000{% endif %}" />
+        <input type="hidden" id="price_from" name="price_from" value="{{ filter.price_from }}" />
+        <input type="hidden" id="price_to" name="price_to" value="{{ filter.price_to }}" />
+        <input type="text" id="price" name="price" value="" data-from="{{ filter.price_from }}" data-to="{{ filter.price_to }}" />
         <button id="button_price" class="button_price" onclick="filter('{{ category }}');">Показать</button>
     </div>
-    <div class="priceSale">
+    <div class="priceSale{% if app.user == 0 %} hide{% endif %}">
         <select name="" id="priceSale" onchange="filter('{{ category }}');">
             <option value="any" {% if filter.priceSale == "any" %}selected="selected"{% endif %}>Скидки</option>
             <option value="asc" {% if filter.priceSale == 'asc' %}selected="selected"{% endif %}>сначала без скидки</option>

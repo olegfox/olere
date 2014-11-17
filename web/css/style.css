@@ -477,23 +477,32 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     text-transform: uppercase;
 }
 
-.catalog .head.filter {
-    font-family: "Calibri";
-    font-size: 18px;
-    text-transform: uppercase;
-    min-height: 50px;
-    line-height: 50px;
+.wrap_filter{
     background: #d86a43;
+    margin-bottom: 20px;
 }
 
-.catalog .head.filter.fixed {
+.wrap_filter.fixed{
     position: fixed;
     top: 0px;
     z-index: 3;
     width: 100%;
 }
 
-.catalog .head.filter select {
+.head.filter {
+    font-family: "Calibri";
+    font-size: 18px;
+    text-transform: uppercase;
+    min-height: 50px;
+    line-height: 50px;
+    background: #d86a43;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+
+.head.filter select {
     font-family: "Calibri" !important;
     font-size: 18px !important;
     text-transform: uppercase !important;
@@ -511,7 +520,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     color: #fff;
 }
 
-.catalog .head.filter .button_price {
+.head.filter .button_price {
     font-family: "Calibri" !important;
     font-size: 18px !important;
     text-transform: uppercase !important;
@@ -523,35 +532,35 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    ::i-block-chrome, .catalog .head.filter select {
+    ::i-block-chrome, .head.filter select {
         padding-left: 5px;
     }
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .catalog .head.filter select {
+    .head.filter select {
         background: url(/images/arrow.png) no-repeat center right #d86a43;
         padding-right: 20px;
     }
 }
 
-.catalog .head.filter span {
+.head.filter span {
     line-height: 20 px\0;
     display: inline-block\0;
     position: relative\0;
     top: -1 px\0;
 }
 
-.catalog .head.filter select::-ms-expand {
+.head.filter select::-ms-expand {
     display: none;
 }
 
-.catalog .head.filter select:focus {
+.head.filter select:focus {
     outline: 0;
 }
 
-.catalog .head.filter select#collection,
-.catalog .head.filter select#type {
+.head.filter select#collection,
+.head.filter select#type {
     /*max-width: 100px;*/
 }
 
@@ -1832,7 +1841,7 @@ a.btn-lg:hover {
 }
 
 .filter.head div.count {
-
+    color: #fff;
 }
 
 .filter.head div.box {
@@ -1987,6 +1996,52 @@ ul li p{
 }
 
 /* end Advantages */
+
+/* blocks */
+.wrap_blocks{
+    background: #4fa0de;
+    padding-top: 45px;
+}
+.wrap_blocks .blocks{
+    position: relative;
+    max-width: 1250px;
+    width: 100%;
+    margin: 0px auto 0px auto;
+    padding: 0px;
+}
+.wrap_blocks .blocks .bl{
+    position: relative;
+    display: inline-block;
+    width: 33.33%;
+    margin-bottom: 45px;
+    vertical-align: top;
+}
+.wrap_blocks .blocks .bl .wrap{
+    padding: 0px 25px;
+}
+.wrap_blocks .blocks .bl .wrap p{
+    font-family: "Calibri";
+    font-size: 19px;
+    line-height: 22px;
+    text-transform: uppercase;
+    background: #FFFFFF;
+    padding: 30px;
+    margin: 0px;
+    height: 200px;
+    overflow: hidden;
+}
+.wrap_blocks .blocks .bl .wrap a{
+    font-family: "Calibri";
+    font-size: 19px;
+    color: #FFFFFF;
+    background: #99c45a;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+}
+/* end blocks */
 
 /* image-viewer */
 .image-viewer{

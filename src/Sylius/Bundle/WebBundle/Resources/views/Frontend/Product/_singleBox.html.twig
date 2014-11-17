@@ -39,7 +39,7 @@
                 <div class="nameBox">
                     <div class="name">{{ product.name }}</div>
                     <div class="price">
-                        цена {{ showPrice(product, groups) }}
+                        {% if app.user %}цена {{ showPrice(product, groups) }}{% endif %}
                     </div>
 
                 </div>

@@ -4,16 +4,16 @@
             {#{% if group.showOptPrice == 0 or app.request.host != 'olere-shop.ru' %}Розн. {% endif %}{{ product.price|sylius_price }}#}
         {#</div>#}
     {#{% endif %}#}
-    {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
-        <div class="opt{% if group.showPrice != 0 %} one{% endif %}{% if product.masterVariant.flagSale == 1 %} sale{% endif %}">
-        {{ product.priceOpt|sylius_price }}
-        </div>
-    {% endif %}
-    {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
-        {% if product.masterVariant.flagSale == 1 %}
-               {{ product.priceSale|sylius_price }}
+        {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
+            <div class="opt{% if group.showPrice != 0 %} one{% endif %}{% if product.masterVariant.flagSale == 1 %} sale{% endif %}">
+            {{ product.priceOpt|sylius_price }}
+            </div>
         {% endif %}
-    {% endif %}
+        {% if group.showOptPrice == 0 and app.request.host != 'olere-shop.ru' %}
+            {% if product.masterVariant.flagSale == 1 %}
+                   {{ product.priceSale|sylius_price }}
+            {% endif %}
+        {% endif %}
 {% endmacro %}
 
 {% macro showPrice(product, groups) %}

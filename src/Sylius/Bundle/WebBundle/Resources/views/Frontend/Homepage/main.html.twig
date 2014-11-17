@@ -57,15 +57,15 @@
     <div class="borderSlider"></div>
 {% endblock %}
 {% block content1 %}
-    {% if page1.enable is defined %}
-        {% if page1.enable == 0 %}
-            <div class="container">
-                <div class="content">
-                    {{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}
-                </div>
-            </div>
-        {% endif %}
-    {% endif %}
+    {#{% if page1.enable is defined %}#}
+        {#{% if page1.enable == 0 %}#}
+            {#<div class="container">#}
+                {#<div class="content">#}
+                    {#{{ render(url('sylius_page_show_content', {'id' : 'main1'})) }}#}
+                {#</div>#}
+            {#</div>#}
+        {#{% endif %}#}
+    {#{% endif %}#}
 {% endblock %}
 {% block content2 %}
     <!-- Advantages -->
@@ -103,22 +103,62 @@
             </ul>
         </div>
     </div>
+    <div class="wrap_blocks">
+        <ul class="blocks">
+            <li class="bl">
+                <div class="wrap">
+                   <p>
+                       чтобы увидеть цены а так же
+                       получить персональную скидку
+                       на украшения, пожалуйста,
+                       зарегистрируйтесь!
+                   </p>
+                    <a href="{{ path('fos_user_opt_register') }}">
+                        Зарегистрироваться
+                    </a>
+                </div>
+            </li><li class="bl">
+                <div class="wrap">
+                    <p>
+                        чтобы наш менеджер помог
+                        вам с регистрацией или ответил
+                        на ваши вопросы, закажите
+                        обратный звонок!
+                    </p>
+                    <a href="{{ path('sylius_feedback') }}">
+                        заказать обратный звонок
+                    </a>
+                </div>
+            </li><li class="bl">
+                <div class="wrap">
+                    <p>
+                        чтобы оценить качество
+                        продукции, посетите наш
+                        шоу-рум в москве
+                    </p>
+                    <a href="{{ path('fos_user_opt_register') }}">
+                        посетить шоу-рум
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
 {% block content %}
     <!-- Catalog -->
-    <div class="catalog catalogMain">
-        <div class="head">
-            Каталог
-        </div>
-        {{ render(url('sylius_collection_main')) }}
-    </div>
+    {#<div class="catalog catalogMain">#}
+        {#<div class="head">#}
+            {#Каталог#}
+        {#</div>#}
+        {#{{ render(url('sylius_collection_main')) }}#}
+    {#</div>#}
 
     <!-- Content -->
-    {% if page2.enable is defined %}
-        {% if page2.enable == 0 %}
-        <div class="content">
-            {{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}
-        </div>
-        {% endif %}
-    {% endif %}
+    {#{% if page2.enable is defined %}#}
+        {#{% if page2.enable == 0 %}#}
+        {#<div class="content">#}
+            {#{{ render(url('sylius_page_show_content', {'id' : 'main2'})) }}#}
+        {#</div>#}
+        {#{% endif %}#}
+    {#{% endif %}#}
 {% endblock %}

@@ -14,9 +14,14 @@
     {% include 'SyliusWebBundle:Frontend/Product:showAjaxWindow.html.twig' %}
 {% endblock %}
 
+{% block content1 %}
+    <div class="wrap_filter">
+        {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="catalog">
-        {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
         <div class="page" id="page{% if page == 'all' %}1{% else %}{{ page }}{% endif %}">
             {{ grid(products, groups) }}
         </div>
