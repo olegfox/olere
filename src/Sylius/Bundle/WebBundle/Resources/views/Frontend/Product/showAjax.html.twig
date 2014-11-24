@@ -10,8 +10,8 @@
                 <div class="blockPreview">
                     {% for image in product.images %}
                         <img onclick="preview(this, '{{ '/media/image/'~image.path }}', '{{ image ? image('media/image/'~image.path).cropResize(500) : 'http://placehold.it/500x720' }}', '{{ product.name }}');"
-                             src="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
-                             alt="{{ image ? image('media/image/'~image.path).zoomCrop(128, 128).jpeg() : 'http://placehold.it/128x128' }}"
+                             src="{{ image ? image('media/image/'~image.path).resize(128, 128, '0xffffff').jpeg() : 'http://placehold.it/128x128' }}"
+                             alt="{{ image ? image('media/image/'~image.path).resize(128, 128, '0xffffff').jpeg() : 'http://placehold.it/128x128' }}"
                              width="128px" height="128px">
                     {% endfor %}
                 </div>

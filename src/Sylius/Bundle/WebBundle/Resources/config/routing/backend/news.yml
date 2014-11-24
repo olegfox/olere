@@ -1,0 +1,22 @@
+sylius_backend_news_index:
+    pattern:  /
+    defaults: { _controller: SyliusCoreBundle:News:index}
+
+sylius_backend_news_create:
+    pattern:  /new
+    defaults: { _controller: SyliusCoreBundle:News:create}
+    methods: [GET, POST]
+
+sylius_backend_news_update:
+    pattern:  /{id}/edit
+    defaults: { _controller: SyliusCoreBundle:News:update}
+    methods: [GET, POST]
+    requirements:
+            id: ".+"
+
+sylius_backend_news_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: SyliusCoreBundle:News:delete}
+    methods: [DELETE]
+    requirements:
+            id: ".+"

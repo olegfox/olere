@@ -3,7 +3,7 @@ function smoothZoom(object){
         .find('img')
         .unbind('click')
         .click(function(){
-            $('body').append("<div class='image-viewer'><img style='opacity: 0;' src='"+$(this).data('src')+"' /><div class='close'></div></div>");
+            $('body').append("<div class='image-viewer'><img style='opacity: 0;' src='"+$(this).data('src')+"' /><div class='close'></div><div class='plus'></div><div class='minus'></div></div>");
             $(".image-viewer")
                 .find('.close')
                 .click(function(){
@@ -30,6 +30,16 @@ function smoothZoom(object){
                             zoom_MAX: 150,
                             animation_SPEED_ZOOM: 1,
                             animation_SMOOTHNESS: 10
+                        });
+                    $(".image-viewer .plus")
+                        .unbind("click")
+                        .click(function(){
+                            $(".image-viewer img").smoothZoom('zoomIn');
+                        });
+                    $(".image-viewer .minus")
+                        .unbind("click")
+                        .click(function(){
+                            $(".image-viewer img").smoothZoom('zoomOut');
                         });
                     $(".smooth_zoom_preloader div").hide();
                     $(".smooth_zoom_preloader div.noSel").show();

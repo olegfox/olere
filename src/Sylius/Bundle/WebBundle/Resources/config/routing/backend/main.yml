@@ -155,6 +155,10 @@ sylius_backend_slider:
     resource: @SyliusWebBundle/Resources/config/routing/backend/slider.yml
     prefix: /slider
 
+sylius_backend_news:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/news.yml
+    prefix: /news
+
 # Images uploading
 image_upload:
     pattern:  /admin/image_upload/

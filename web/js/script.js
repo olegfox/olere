@@ -68,13 +68,13 @@ $(function () {
 
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() > 125) {
-                $('.borderHead.filter').addClass('fixed');
-                $('.wrap_filter').addClass('fixed');
-            } else {
-                $('.borderHead.filter').removeClass('fixed');
-                $('.wrap_filter').removeClass('fixed');
-            }
+//            if ($(window).scrollTop() > 125) {
+//                $('.borderHead.filter').addClass('fixed');
+//                $('.wrap_filter').addClass('fixed');
+//            } else {
+//                $('.borderHead.filter').removeClass('fixed');
+//                $('.wrap_filter').removeClass('fixed');
+//            }
         });
     }
 

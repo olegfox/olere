@@ -1,0 +1,31 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('js/uploadify/uploadify.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li>Новости</li>
+        <li>Редактирование новости</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {{ form_errors(form) }}
+
+    <form action="{{ path('sylius_backend_news_update', {id: news.id}) }}" {{ form_enctype(form) }} method="post" class="form-horizontal">
+        {% include 'SyliusWebBundle:Backend/News:_form.html.twig' %}
+        {{ update() }}
+        {{ form_end(form) }}
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/uploadify/jquery.uploadify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/init_uploadify_news.js') }}"></script>
+{% endblock %}

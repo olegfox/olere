@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+>
+
+    <entity name="Sylius\Bundle\CoreBundle\Model\NewsImages" table="sylius_news_images">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" length="500">
+        </field>
+
+        <field name="extension" column="extension" type="string" length="10" nullable="true">
+        </field>
+
+        <field name="path" column="path" type="string" length="500" nullable="true">
+        </field>
+
+        <many-to-one field="news" target-entity="Sylius\Bundle\CoreBundle\Model\News" inversed-by="images"/>
+
+    </entity>
+
+</doctrine-mapping>

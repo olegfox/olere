@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+>
+
+    <entity name="Sylius\Bundle\CoreBundle\Model\NewsVideo" table="sylius_news_video">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="title" column="name" type="string" length="500">
+        </field>
+
+        <field name="link" column="link" type="string" length="500">
+        </field>
+
+        <field name="content" column="content" type="text">
+        </field>
+
+        <many-to-one field="news" target-entity="Sylius\Bundle\CoreBundle\Model\News" inversed-by="video"/>
+    </entity>
+
+</doctrine-mapping>

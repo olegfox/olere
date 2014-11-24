@@ -275,19 +275,20 @@ function productShow(object, time, latest) {
                                     .css({
                                         'height': $clone_productWindow.find('.productWindow_content').height()
                                     })
-                                    .html('')
-                                    .loadCache(object, $(object).attr('href'), function () {
-                                        $clone_productWindow
-                                            .find('.close a').click(function () {
-                                                productClose($clone_productWindow, $clone_overlay);
-                                            })
-                                            .end()
-                                            .find('.productWindow_content')
-                                            .css({
-                                                'height': 'auto'
-                                            });
-                                        initWindow(object, $clone_productWindow, $clone_overlay);
+                                    .end()
+                                    .find('.close a').click(function () {
+                                        productClose($clone_productWindow, $clone_overlay);
+                                    })
+                                    .end()
+                                    .find('.productWindow_content')
+                                    .css({
+                                        'height': 'auto'
                                     });
+                                    initWindow(object, $clone_productWindow, $clone_overlay);
+//                                    .loadCache(object, $(object).attr('href'), function () {
+//                                        $clone_productWindow
+//
+//                                    });
                             });
                     }
                 });

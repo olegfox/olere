@@ -1,0 +1,36 @@
+{% macro list(news) %}
+
+    {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+    {% if news|length > 0 %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Новости</th>
+                    <th>Добавление новости</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in news %}
+                    <tr id="{{ n.id }}">
+                        <td>{{ n.title }}</td>
+                        <td>{{ n.created|date('d.m.Y') }}</td>
+                        <td>
+                            {{ buttons.edit(path('sylius_backend_news_update', {'id': n.id})) }}
+                        </td>
+                        <td>
+                            {{ buttons.delete(path('sylius_backend_news_delete', {'id': n.id})) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        {{ alerts.info('Нет новостей') }}
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,17 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/News:macros.html.twig' import list %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li>Новости</li>
+        <li>Все новости</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+
+    {{ list(news) }}
+
+{% endblock content %}
