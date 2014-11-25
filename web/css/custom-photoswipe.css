@@ -5,7 +5,7 @@ div.ps-toolbar {
   width: 200px; }
 
 div.ps-toolbar div div.ps-toolbar-content {
-  background-image: url("/sitemain/img/photoswipe/sprite.png"); }
+  background-image: url("/images/photoswipe/sprite.png"); }
 
 div.ps-toolbar-close div.ps-toolbar-content {
   background-position: 0 0;

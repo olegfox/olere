@@ -2907,7 +2907,10 @@
 			});
 			Util.DOM.hide(this.el);
 			Util.DOM.appendToBody(this.el);
-			
+
+            // Previous
+            this.previousEl = Util.DOM.createElement('div', { 'class': Code.PhotoSwipe.ToolbarClass.CssClasses.previous }, '<div class="' + Code.PhotoSwipe.ToolbarClass.CssClasses.content + '"></div>');
+            Util.DOM.appendChild(this.previousEl, this.el);
 			
 			// Close
 			this.closeEl = Util.DOM.createElement('div', { 'class': Code.PhotoSwipe.ToolbarClass.CssClasses.close }, '<div class="' + Code.PhotoSwipe.ToolbarClass.CssClasses.content + '"></div>');
@@ -2916,14 +2919,11 @@
 				Util.DOM.hide(this.closeEl);
 			}
 			Util.DOM.appendChild(this.closeEl, this.el);
-			
+
 			// Play
 			this.playEl = Util.DOM.createElement('div', { 'class': Code.PhotoSwipe.ToolbarClass.CssClasses.play }, '<div class="' + Code.PhotoSwipe.ToolbarClass.CssClasses.content + '"></div>');
 			Util.DOM.appendChild(this.playEl, this.el);
-			
-			// Previous
-			this.previousEl = Util.DOM.createElement('div', { 'class': Code.PhotoSwipe.ToolbarClass.CssClasses.previous }, '<div class="' + Code.PhotoSwipe.ToolbarClass.CssClasses.content + '"></div>');
-			Util.DOM.appendChild(this.previousEl, this.el);
+
 			
 			// Next
 			this.nextEl = Util.DOM.createElement('div', { 'class': Code.PhotoSwipe.ToolbarClass.CssClasses.next }, '<div class="' + Code.PhotoSwipe.ToolbarClass.CssClasses.content + '"></div>');

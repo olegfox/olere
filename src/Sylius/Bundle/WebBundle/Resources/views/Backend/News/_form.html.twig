@@ -12,7 +12,7 @@
                     <a href="{{ asset(image.webPath) }}" class="thumbnail">
                         <img src="{{ image(image.webPath).cropResize(100, 100) }}" alt=""/>
                     </a>
-                    <button onclick="newsImageDelete(this, '{{ path('sylius_backend_news_images_delete', {id: image.id}) }}');">Удалить</button>
+                    <button onclick="newsImageDelete(this, '{{ path('sylius_backend_news_images_delete', {id: image.id}) }}'); return false;">Удалить</button>
                 </li>
             {% endfor %}
         </ul>

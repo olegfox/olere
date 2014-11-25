@@ -70,11 +70,5 @@ function newsImageDelete(object, link){
             $(object)
                 .parent()
                 .remove();
-    }).error(function(){
-        $(object)
-            .parent()
-            .show();
-
-        alert('Ошибка!');
     });
 }
