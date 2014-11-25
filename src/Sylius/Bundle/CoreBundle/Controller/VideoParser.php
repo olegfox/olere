@@ -18,8 +18,8 @@ class VideoParser {
         $video = json_decode($r);
 
         if (isset($video->title)) {
-            $video->html = preg_replace('/height="\d+/', 'height="439', $video->html);
-            $video->html = preg_replace('/width=\"\d+/', 'width="720', $video->html);
+            $video->html = preg_replace('/height="\d+/', 'height="470', $video->html);
+            $video->html = preg_replace('/width=\"\d+/', 'width="100%', $video->html);
             $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=1", $video->html);
             return $video;
         } else {
@@ -28,7 +28,7 @@ class VideoParser {
     }
 
     private static function getVimeoVideo($url) {
-        $url = "http://vimeo.com/api/oembed.json?url=" . urlencode($url) . "&width=720&height=439";
+        $url = "http://vimeo.com/api/oembed.json?url=" . urlencode($url) . "&width=100%&height=470";
 //        $r = file_get_contents($url);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -40,8 +40,8 @@ class VideoParser {
         $video = json_decode($r);
 
         if (isset($video->title)) {
-            $video->html = preg_replace('/height="\d+/', 'height="439', $video->html);
-            $video->html = preg_replace('/width=\"\d+/', 'width="720', $video->html);
+            $video->html = preg_replace('/height="\d+/', 'height="470', $video->html);
+            $video->html = preg_replace('/width=\"\d+/', 'width="100%', $video->html);
             $video->html = str_replace("feature=oembed", "feature=oembed&autoplay=1", $video->html);
             return $video;
         } else {

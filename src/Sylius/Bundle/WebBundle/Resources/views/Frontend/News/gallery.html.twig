@@ -13,7 +13,7 @@
         <div class="gallery">
             {% for i in n.images %}
                 {% if loop.index == 1 %}
-                    <img src="{{ image(i.webPath).cropResize(835) }}" />
+                    <img src="{{ image(i.webPath).zoomCrop(835, 470) }}" />
                     <a href="{{ asset(i.webPath) }}" class="fancybox play" rel="group{{ n.id }}">
                         <img src="{{ asset('images/play.png') }}"
                              width="216px" height="216px"
@@ -29,12 +29,12 @@
         <div class="videos">
             <div class="wrap_video">
                 <div class="video">
-                    <a href="{{ n.getVideo()[0].getEmbed() }}">
+                    <a href="{{ n.getVideo()[0].getContent() }}">
                         <img src="{{ asset('images/play.png') }}"
                              width="216px" height="216px"
                              alt="{{ asset('images/play.png') }}"/>
                     </a>
-                    <img src="{{ image(n.getVideo().getThumbnail()).zoomCrop(835, 470) }}"
+                    <img src="{{ image(n.getVideo()[0].getThumbnail()).zoomCrop(1118, 470) }}"
                          width="835px"
                          alt=""/>
                     <div class="background"></div>
