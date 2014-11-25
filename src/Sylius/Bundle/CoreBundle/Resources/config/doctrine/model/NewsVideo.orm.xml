@@ -8,13 +8,16 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="title" column="name" type="string" length="500">
+        <field name="title" column="name" type="string" length="500" nullable="true">
         </field>
 
         <field name="link" column="link" type="string" length="500">
         </field>
 
         <field name="content" column="content" type="text">
+        </field>
+
+        <field name="thumbnail" column="thumbnail" type="text">
         </field>
 
         <many-to-one field="news" target-entity="Sylius\Bundle\CoreBundle\Model\News" inversed-by="video"/>

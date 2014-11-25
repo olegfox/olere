@@ -1,0 +1,38 @@
+div.ps-toolbar {
+  height: 85px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 0;
+  width: 200px; }
+
+div.ps-toolbar div div.ps-toolbar-content {
+  background-image: url("/sitemain/img/photoswipe/sprite.png"); }
+
+div.ps-toolbar-close div.ps-toolbar-content {
+  background-position: 0 0;
+  width: 43px !important;
+  height: 28px !important; }
+
+div.ps-toolbar-previous div.ps-toolbar-content {
+  background-position: 0 -39px;
+  width: 21px !important;
+  height: 42px !important; }
+
+div.ps-toolbar-next div.ps-toolbar-content {
+  background-position: 0 -90px;
+  width: 21px !important;
+  height: 42px !important; }
+
+div.ps-toolbar-close, div.ps-toolbar-previous, div.ps-toolbar-next, div.ps-toolbar-play {
+  display: inline-block;
+  vertical-align: top; }
+
+div.ps-toolbar-play {
+  display: none; }
+
+div.ps-toolbar-previous, div.ps-toolbar-next {
+  margin-top: 25px; }
+
+div.ps-toolbar-close {
+  margin: 33px 55px 0px 55px; }
+
+/*# sourceMappingURL=custom-photoswipe.css.map */

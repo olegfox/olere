@@ -24,6 +24,10 @@ class News
 
     private $updated;
 
+    private $image;
+
+    private $videoFile;
+
     public function __construct()
     {
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
@@ -128,6 +132,11 @@ class News
         return $this->video;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
     public function setCreated($created)
     {
         $this->created = $created;
@@ -151,5 +160,18 @@ class News
     {
         return $this->updated;
     }
+
+    public function setVideoFile($videoFile)
+    {
+        $this->videoFile = $videoFile;
+
+        return $this;
+    }
+
+    public function getVideoFile()
+    {
+        return $this->videoFile;
+    }
+
 
 }

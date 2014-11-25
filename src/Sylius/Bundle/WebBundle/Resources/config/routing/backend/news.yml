@@ -7,6 +7,12 @@ sylius_backend_news_create:
     defaults: { _controller: SyliusCoreBundle:News:create}
     methods: [GET, POST]
 
+sylius_backend_news_images_delete:
+    pattern:  /images/{id}/delete
+    defaults: { _controller: SyliusCoreBundle:News:imagesDelete}
+    requirements:
+            id: ".+"
+
 sylius_backend_news_update:
     pattern:  /{id}/edit
     defaults: { _controller: SyliusCoreBundle:News:update}

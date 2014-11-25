@@ -123,6 +123,10 @@ sylius_page:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/page.yml
     prefix: /content
 
+sylius_news:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/news.yml
+    prefix: /news
+
 sylius_page_content:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/page_content.yml
     prefix: /page/

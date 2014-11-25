@@ -50,7 +50,7 @@ class NewsType extends AbstractType
                     "multiple" => "multiple",
                 )
             ))
-            ->add('video', 'text', array(
+            ->add('videoFile', 'text', array(
                 'label' => 'Видео',
                 'required' => false,
                 'attr' => array(

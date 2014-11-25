@@ -1,0 +1,9 @@
+sylius_frontend_news_index:
+    pattern:  /
+    defaults: { _controller: SyliusCoreBundle:News:frontendIndex}
+    methods: [GET]
+
+sylius_frontend_news_show:
+    pattern:  /{slug}/
+    defaults: { _controller: SyliusCoreBundle:News:frontendShow}
+    methods: [GET]

@@ -60,3 +60,21 @@ function editProduct(id, route){
         }
     });
 }
+
+function newsImageDelete(object, link){
+    $(object)
+        .parent()
+        .hide();
+
+    $.post(link, {}, function(data){
+            $(object)
+                .parent()
+                .remove();
+    }).error(function(){
+        $(object)
+            .parent()
+            .show();
+
+        alert('Ошибка!');
+    });
+}

@@ -15,3 +15,10 @@ tr.tDnD_whileDrag{
     width: 100%;
 }
 /* end comments window */
+
+/* news images */
+.news_preview li{
+    list-style: none;
+    display: inline-block;
+}
+/* end news images */

@@ -1,0 +1,35 @@
+{% extends 'SiteMainBundle::layout.html.twig' %}
+
+{% block title %}{% if app.request.locale == "en" %}{{ n[0].title }}{% elseif app.request.locale == "it" %}{{ n[0].titleIt }}{% elseif app.request.locale == "ru" %}{{ n[0].titleRu }}{% endif %}{% endblock %}
+{% block keywords %}{% if app.request.locale == "en" %}{{ n[0].keyword }}{% elseif app.request.locale == "it" %}{{ n[0].keywordIt }}{% elseif app.request.locale == "ru" %}{{ n[0].keywordRu }}{% endif %}{% endblock %}
+{% block description %}{% if app.request.locale == "en" %}{{ n[0].description }}{% elseif app.request.locale == "it" %}{{ n[0].descriptionIt }}{% elseif app.request.locale == "ru" %}{{ n[0].descriptionRu }}{% endif %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('sitemain/js/photoswipe/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('sitemain/css/custom-photoswipe.css') }}">
+    {% if page is defined %}
+        <style type="text/css">
+            .wrapper-img {
+                background: url("{% path page.background, 'reference' %}") top center;
+            }
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="wrapperContent">
+        <div class="content contentWhite">
+            {% include 'SiteMainBundle:News:gallery.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('sitemain/js/fancybox/source/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('sitemain/js/photoswipe/lib/simple-inheritance.min.js') }}"></script>
+    <script src="{{ asset('sitemain/js/photoswipe/code-photoswipe-jQuery-1.0.11.js') }}"></script>
+    <script src="{{ asset('sitemain/js/init.gallery.js') }}"></script>
+    <script src="{{ asset("sitemain/js/videoClick.js") }}"></script>
+{% endblock %}

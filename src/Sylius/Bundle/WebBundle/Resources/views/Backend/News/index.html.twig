@@ -1,4 +1,4 @@
-{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
 
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 {% from 'SyliusWebBundle:Backend/News:macros.html.twig' import list %}
@@ -11,6 +11,12 @@
 {% endblock %}
 
 {% block content %}
+    <div class="page-header">
+        <div class="actions-menu">
+            {{ buttons.create(path('sylius_backend_news_create'), 'Добавить новость') }}
+        </div>
+        <h1><i class="glyphicon glyphicon-th-list"></i> Новости</h1>
+    </div>
 
     {{ list(news) }}
 

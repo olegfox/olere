@@ -4,6 +4,20 @@
 {{ form_row(form.keyword) }}
 {{ form_row(form.description) }}
 {{ form_row(form.created) }}
+<div class="news_preview form-group">
+    <div class="col-lg-10">
+        <ul>
+            {% for image in news.images %}
+                <li>
+                    <a href="{{ asset(image.webPath) }}" class="thumbnail">
+                        <img src="{{ image(image.webPath).cropResize(100, 100) }}" alt=""/>
+                    </a>
+                    <button onclick="newsImageDelete(this, '{{ path('sylius_backend_news_images_delete', {id: image.id}) }}');">Удалить</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {{ form_row(form.image) }}
-{{ form_row(form.video) }}
+{{ form_row(form.videoFile) }}
 {{ form_row(form.text) }}

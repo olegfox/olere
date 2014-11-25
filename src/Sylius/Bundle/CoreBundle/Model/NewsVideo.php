@@ -12,6 +12,8 @@ class NewsVideo
 
     private $content;
 
+    private $thumbnail;
+
     private $news;
 
     public function getId(){
@@ -64,5 +66,22 @@ class NewsVideo
     public function getNews()
     {
         return $this->news;
+    }
+
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    public function getEmbed(){
+        $url = "http://www.youtube.com/oembed?url=" . urlencode($this->link) . "?fs=1&amp;autoplay=1";
+        return $url;
     }
 }

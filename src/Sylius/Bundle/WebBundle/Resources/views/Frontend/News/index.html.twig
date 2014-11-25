@@ -1,0 +1,24 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/photoswipe/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-photoswipe.css') }}">
+{% endblock %}
+
+{% block content %}
+            {% for n in news %}
+                {% include 'SyliusWebBundle:Frontend/News:gallery.html.twig' %}
+                {% if news|length > 1 and loop.index != news|length %}
+                    <hr/>
+                {% endif %}
+            {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/photoswipe/lib/simple-inheritance.min.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/code-photoswipe-jQuery-1.0.11.js') }}"></script>
+    <script src="{{ asset('js/init.gallery.js') }}"></script>
+    <script src="{{ asset("js/videoClick.js") }}"></script>
+{% endblock %}

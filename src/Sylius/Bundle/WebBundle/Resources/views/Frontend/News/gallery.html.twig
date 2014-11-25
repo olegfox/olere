@@ -1,0 +1,62 @@
+<div class="wrapperContent">
+    <div class="content contentWhite">
+<div class="wrap_post">
+    <h2>
+        <span class="date">{{ n.created|date("d.m.y") }}</span>
+        <a href="{{ path('sylius_frontend_news_show', {slug: n.slug}) }}">
+            {% set title = n.title %}
+            {% set description = n.description %}
+            {{ n.title }}
+        </a>
+    </h2>
+    {% if n.images|length > 0 %}
+        <div class="gallery">
+            {% for i in n.images %}
+                {% if loop.index == 1 %}
+                    <img src="{{ image(i.webPath).cropResize(835) }}" />
+                    <a href="{{ asset(i.webPath) }}" class="fancybox play" rel="group{{ n.id }}">
+                        <img src="{{ asset('images/play.png') }}"
+                             width="216px" height="216px"
+                             alt=""/>
+                    </a>
+                {% else %}
+                    <a href="{{ asset(i.webPath) }}" class="fancybox hide" rel="group{{ n.id }}"></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if n.getVideo()[0].id is defined %}
+        <div class="videos">
+            <div class="wrap_video">
+                <div class="video">
+                    <a href="{{ n.getVideo()[0].getEmbed() }}">
+                        <img src="{{ asset('images/play.png') }}"
+                             width="216px" height="216px"
+                             alt="{{ asset('images/play.png') }}"/>
+                    </a>
+                    <img src="{{ image(n.getVideo().getThumbnail()).zoomCrop(835, 470) }}"
+                         width="835px"
+                         alt=""/>
+                    <div class="background"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="description">
+        {{ n.text|raw }}
+    </div>
+    <div class="social">
+        <script type="text/javascript">(function() {
+                if (window.pluso)if (typeof window.pluso.start == "function") return;
+                if (window.ifpluso==undefined) { window.ifpluso = 1;
+                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                    var h=d[g]('body')[0];
+                    h.appendChild(s);
+                }})();</script>
+        <div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=04" data-services="facebook,twitter,google" data-url="http://{{ app.request.host }}{{ path('sylius_frontend_news_show', {slug: n.slug}) }}" data-title="{{ title }}" data-description="{{ description }}"></div>
+    </div>
+</div>
+        </div>
+    </div>

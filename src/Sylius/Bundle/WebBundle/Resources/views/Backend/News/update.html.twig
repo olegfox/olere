@@ -15,6 +15,10 @@
 {% endblock %}
 
 {% block content %}
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-plus-sign"></i> Редактирование новости</h1>
+    </div>
+
     {{ form_errors(form) }}
 
     <form action="{{ path('sylius_backend_news_update', {id: news.id}) }}" {{ form_enctype(form) }} method="post" class="form-horizontal">

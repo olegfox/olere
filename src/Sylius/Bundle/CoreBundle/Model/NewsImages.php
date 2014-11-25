@@ -74,12 +74,12 @@ class NewsImages
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../..//uploads/news/'.$this->getUploadDir();
+        return __DIR__.'/../../../../../images/news/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
-        return 'uploads/news';
+        return 'images/news';
     }
 
     public function setFile(UploadedFile $file = null)

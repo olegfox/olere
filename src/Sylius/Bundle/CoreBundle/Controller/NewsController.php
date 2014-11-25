@@ -15,7 +15,7 @@ class NewsController extends Controller
     public function indexAction()
     {
         $repository = $this->getDoctrine()
-            ->getRepository('SyliusWebBundle:News');
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\News');
         $news = $repository->findAll();
         $params = array(
             'news' => $news
@@ -32,19 +32,20 @@ class NewsController extends Controller
 
                 $em = $this->getDoctrine()->getManager();
 
-                if($form["video"]->getData() != ""){
-                    $video = VideoParser::getVideo($form["video"]->getData());
-                    $v = new NewsVideo();
-                    $v->setTitle($video->title);
-                    $v->setLink($form["video"]->getData());
-                    $v->setContent($video->html);
-                    $em->persist($v);
-                    $em->flush();
-                    $news->addVideo($v);
-                }
-
                 $em->persist($news);
                 $em->flush();
+
+                if($form["videoFile"]->getData() != ""){
+                    $video = VideoParser::getVideo($form["videoFile"]->getData());
+                    $v = new NewsVideo();
+                    $v->setTitle($video->title);
+                    $v->setLink($form["videoFile"]->getData());
+                    $v->setContent($video->html);
+                    $v->setNews($news);
+                    $v->setThumbnail($video->thumbnail_url);
+                    $em->persist($v);
+                    $em->flush();
+                }
 
                 $imagesJson = $request->get('gallery');
                 if ($imagesJson != "") {
@@ -53,14 +54,14 @@ class NewsController extends Controller
                         if ($image != "") {
                             $i = new NewsImages();
                             $i->setPath($image);
+                            $i->setNews($news);
+                            print $image;
                             $em->persist($i);
                             $em->flush();
-                            $news->addImage($i);
                         }
                     }
                 }
 
-                $em->flush();
                 return $this->redirect($this->generateUrl('sylius_backend_news_index'));
             }
         }
@@ -72,74 +73,111 @@ class NewsController extends Controller
 
     public function updateAction(Request $request, $id){
         $repository = $this->getDoctrine()
-            ->getRepository('SiteMainBundle:News');
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\News');
         $news = $repository->find($id);
         $form = $this->createForm(new NewsType(), $news);
+
+        if(is_object($news->getVideo()[0])){
+            $form["videoFile"]->setData($news->getVideo()[0]->getLink());
+        }
+
         if($request->isMethod('POST')){
             $form->handleRequest($request);
             if($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
 
-//              Загрузка фото-превью
-                if($news->getFilePreview() !== null){
-
-                    if($news->getPreview() === null){
-                        $i = new Images();
-                    }else{
-                        $i = $news->getPreview();
+                $imagesJson = $request->get('gallery');
+                if ($imagesJson != "") {
+                    $images = json_decode($imagesJson);
+                    foreach ($images as $image) {
+                        if ($image != "") {
+                            $i = new NewsImages();
+                            $i->setPath($image);
+                            $i->setNews($news);
+                            $em->persist($i);
+                            $em->flush();
+                        }
                     }
-
-                    $i->setFile($news->getFilePreview());
-                    $i->upload();
-
-                    if($news->getPreview() === null){
-                        $em->persist($i);
-                    }
-
-                    $em->flush();
-                    $news->setPreview($i);
                 }
 
-//              Загрузка фото-шапки
-                if($news->getFileHeaderPhoto() !== null){
-
-                    if($news->getHeaderPhoto() === null){
-                        $i = new Images();
+                if($form["videoFile"]->getData() != ""){
+                    $video = VideoParser::getVideo($form["videoFile"]->getData());
+                    if(!is_object($news->getVideo()[0])){
+                        $v = new NewsVideo();
                     }else{
-                        $i = $news->getHeaderPhoto();
+                        $v = $news->getVideo()[0];
                     }
-
-                    $i->setFile($news->getFileHeaderPhoto());
-                    $i->upload();
-
-                    if($news->getHeaderPhoto() === null){
-                        $em->persist($i);
-                    }
-
+                    $v->setTitle($video->title);
+                    $v->setLink($form["videoFile"]->getData());
+                    $v->setContent($video->html);
+                    $v->setThumbnail($video->thumbnail_url);
+                    $v->setNews($news);
+                    $em->persist($v);
                     $em->flush();
-                    $news->setHeaderPhoto($i);
                 }
 
                 $em->flush();
-                return $this->redirect($this->generateUrl('backend_news_index'));
+                return $this->redirect($this->generateUrl('sylius_backend_news_index'));
             }
         }
         $params = array(
             'form' => $form->createView(),
             'news' => $news
         );
-        return $this->render('SiteMainBundle:Backend/News:update.html.twig', $params);
+        return $this->render('SyliusWebBundle:Backend/News:update.html.twig', $params);
     }
 
     public function deleteAction($id){
         $repository = $this->getDoctrine()
-            ->getRepository('SiteMainBundle:News');
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\News');
         $news = $repository->find($id);
         if($news){
             $em = $this->getDoctrine()->getManager();
             $em->remove($news);
             $em->flush();
         }
-        return $this->redirect($this->generateUrl('backend_news_index'));
+        return $this->redirect($this->generateUrl('sylius_backend_news_index'));
+    }
+
+    public function imagesDeleteAction($id){
+        $repository = $this->getDoctrine()
+            ->getRepository('Sylius\Bundle\CoreBundle\Model\NewsImages');
+        $newsImage = $repository->find($id);
+        if($newsImage){
+
+            if(file_exists('/images/news/' . $newsImage->getPath())){
+                unlink('/images/news/' . $newsImage->getPath());
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($newsImage);
+            $em->flush();
+
+            return new Response('ok');
+        }
+
+        return new Response('no');
+    }
+
+    public function frontendIndexAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('Sylius\Bundle\CoreBundle\Model\News');
+
+        $news = $repository->findAll();
+
+        $params = array(
+            "news" => $news
+        );
+        return $this->render('SyliusWebBundle:Frontend/News:index.html.twig', $params);
+    }
+
+    public function frontendShowAction($slug){
+        $repository = $this->getDoctrine()->getRepository('Sylius\Bundle\CoreBundle\Model\News');
+        $n = $repository->findOneBy(array('slug' => $slug));
+
+        $params = array(
+            "n" => $n,
+        );
+        return $this->render('SyliusWebBundle:Frontend/News:one.html.twig', $params);
     }
 }

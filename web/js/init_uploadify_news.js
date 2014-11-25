@@ -2,8 +2,8 @@ $(function () {
     var uploadEnd = 0,
         image = [],
         i = 0;
-    $('#sylius_news_image').parent().append("<input type='hidden' name='gallery' class='gallery' />");
-    $('#sylius_news_image').uploadify({
+    $('#news_image').parent().append("<input type='hidden' name='gallery' class='gallery' />");
+    $('#news_image').uploadify({
         'auto': false,
         'fileTypeDesc' : 'Image Files',
         'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.GIF; *.JPG; *.JPEG; *.PNG',

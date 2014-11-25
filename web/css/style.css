@@ -619,9 +619,18 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     margin-bottom: 20px;
 }
 
+.catalog .boxes.boxesCat{
+    border: 0;
+}
+
 .catalog .row {
     margin: 0;
     border-bottom: solid 2px #f2f2f2;
+}
+
+.catalog .row.rowCat{
+    border: 0;
+    margin: 0 -4px;
 }
 
 .catalog .box {
@@ -652,6 +661,11 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .box2 .inner_box {
     border-left: solid 1px #dcdcdc;
     border-right: solid 1px #dcdcdc;
+}
+
+.catalog .boxCat .inner_box{
+    border: 0;
+    margin: 0px 4px 8px 4px;
 }
 
 .catalog .inner_box {
@@ -965,16 +979,19 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .box .description.descriptionTaxon {
     display: block;
     text-align: center;
+    background: #000;
 }
 
 .catalog .box .description a.header {
     display: block;
-    margin-top: 10px;
-    font-size: 18px;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
 }
 
 .catalog .box .description a.header2 {
-    display: block;
+    display: none;
     margin: 5px 50px 10px 50px;
     font-size: 10px;
     line-height: 14px;

@@ -8,7 +8,7 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="name" column="name" type="string" length="500">
+        <field name="name" column="name" type="string" length="500" nullable="true">
         </field>
 
         <field name="extension" column="extension" type="string" length="10" nullable="true">
