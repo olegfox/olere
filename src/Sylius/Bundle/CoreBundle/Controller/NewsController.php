@@ -9,6 +9,8 @@ use Sylius\Bundle\CoreBundle\Model\NewsImages;
 use Sylius\Bundle\CoreBundle\Model\NewsVideo;
 use Sylius\Bundle\CoreBundle\Form\Type\NewsType;
 use Sylius\Bundle\CoreBundle\Controller\VideoParser;
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Pagerfanta;
 
 class NewsController extends Controller
 {

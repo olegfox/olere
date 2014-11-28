@@ -34,14 +34,10 @@ class ProductRepository extends VariableProductRepository
     public function createBySalePaginator($filter, $type = 1)
     {
         if (isset($filter['price_from'])) {
-            if ($filter['price_from'] == 'any') {
-                $filter['price_from'] = 10000000;
-            } else {
-                $filter['price_from'] = $filter['price_from'] * 100;
-            }
+            $filter['price_from'] = $filter['price_from'] * 100;
         }
         if (isset($filter['price_to'])) {
-            if ($filter['price_to'] == 'any') {
+            if ($filter['price_to'] == 1) {
                 $filter['price_to'] = 10000000;
             } else {
                 $filter['price_to'] = $filter['price_to'] * 100;
@@ -137,19 +133,19 @@ class ProductRepository extends VariableProductRepository
         if (isset($filter['price_from'])) {
             if ($type == 0) {
                 $queryBuilder
-                    ->andWhere('variant.price > :price_from');
+                    ->andWhere('variant.price >= :price_from');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceOpt > :price_from');
+                    ->andWhere('variant.priceOpt >= :price_from');
             }
         }
         if (isset($filter['price_to'])) {
             if ($type == 0) {
                 $queryBuilder
-                    ->andWhere('variant.price < :price_to');
+                    ->andWhere('variant.price <= :price_to');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceOpt < :price_to');
+                    ->andWhere('variant.priceOpt <= :price_to');
             }
         }
 
@@ -164,14 +160,10 @@ class ProductRepository extends VariableProductRepository
     public function createByActionPaginator($filter, $type = 1)
     {
         if (isset($filter['price_from'])) {
-            if ($filter['price_from'] == 'any') {
-                $filter['price_from'] = 10000000;
-            } else {
-                $filter['price_from'] = $filter['price_from'] * 100;
-            }
+            $filter['price_from'] = $filter['price_from'] * 100;
         }
         if (isset($filter['price_to'])) {
-            if ($filter['price_to'] == 'any') {
+            if ($filter['price_to'] == 1) {
                 $filter['price_to'] = 10000000;
             } else {
                 $filter['price_to'] = $filter['price_to'] * 100;
@@ -252,19 +244,19 @@ class ProductRepository extends VariableProductRepository
         if (isset($filter['price_from'])) {
             if ($type == 0) {
                 $queryBuilder
-                    ->andWhere('variant.price > :price_from');
+                    ->andWhere('variant.price >= :price_from');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceOpt > :price_from');
+                    ->andWhere('variant.priceOpt >= :price_from');
             }
         }
         if (isset($filter['price_to'])) {
             if ($type == 0) {
                 $queryBuilder
-                    ->andWhere('variant.price < :price_to');
+                    ->andWhere('variant.price <= :price_to');
             } else {
                 $queryBuilder
-                    ->andWhere('variant.priceOpt < :price_to');
+                    ->andWhere('variant.priceOpt <= :price_to');
             }
         }
 
@@ -279,14 +271,10 @@ class ProductRepository extends VariableProductRepository
     public function createByTaxonPaginator(TaxonInterface $taxon, $sorting = null, $filter = array(), $type = 1)
     {
         if (isset($filter['price_from'])) {
-            if ($filter['price_from'] == 'any') {
-                $filter['price_from'] = 10000000;
-            } else {
-                $filter['price_from'] = $filter['price_from'] * 100;
-            }
+            $filter['price_from'] = $filter['price_from'] * 100;
         }
         if (isset($filter['price_to'])) {
-            if ($filter['price_to'] == 'any') {
+            if ($filter['price_to'] == 1) {
                 $filter['price_to'] = 10000000;
             } else {
                 $filter['price_to'] = $filter['price_to'] * 100;
@@ -382,19 +370,19 @@ class ProductRepository extends VariableProductRepository
             if (isset($filter['price_from'])) {
                 if ($type == 0) {
                     $queryBuilder
-                        ->andWhere('variant.price > :price_from');
+                        ->andWhere('variant.price >= :price_from');
                 } else {
                     $queryBuilder
-                        ->andWhere('variant.priceOpt > :price_from');
+                        ->andWhere('variant.priceOpt >= :price_from');
                 }
             }
             if (isset($filter['price_to'])) {
                 if ($type == 0) {
                     $queryBuilder
-                        ->andWhere('variant.price < :price_to');
+                        ->andWhere('variant.price <= :price_to');
                 } else {
                     $queryBuilder
-                        ->andWhere('variant.priceOpt < :price_to');
+                        ->andWhere('variant.priceOpt <= :price_to');
                 }
             }
 

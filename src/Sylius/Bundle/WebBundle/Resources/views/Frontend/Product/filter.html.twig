@@ -30,23 +30,34 @@
         </select>
     </div>
     <div class="price{% if app.user == 0 %} hide{% endif %}">
-        {#<span>цена:</span>#}
-        {#<select name="" id="price" onchange="filter('{{ category }}');">#}
-            {#<option value="any" {% if filter.price == "any" %}selected="selected"{% endif %}>Все цены</option>#}
-            {#<option value="asc" {% if filter.price == 'asc' %}selected="selected"{% endif %}>по возрастанию</option>#}
-            {#<option value="desc" {% if filter.price == 'desc' %}selected="selected"{% endif %}>по убыванию</option>#}
-            {#<option value="200" {% if filter.price == 200 %}selected="selected"{% endif %}>до 200 руб</option>#}
-            {#<option value="500" {% if filter.price == 500 %}selected="selected"{% endif %}>до 500 руб</option>#}
-            {#<option value="700" {% if filter.price == 700 %}selected="selected"{% endif %}>до 700 руб</option>#}
-            {#<option value="1000" {% if filter.price == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>#}
-            {#<option value="1500" {% if filter.price == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>#}
-            {#<option value="1700" {% if filter.price == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>#}
-            {#<option value="2000" {% if filter.price == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>#}
-        {#</select>#}
-        <input type="hidden" id="price_from" name="price_from" value="{{ filter.price_from }}" />
-        <input type="hidden" id="price_to" name="price_to" value="{{ filter.price_to }}" />
-        <input type="text" id="price" name="price" value="" data-from="{{ filter.price_from }}" data-to="{{ filter.price_to }}" />
-        <button id="button_price" class="button_price" onclick="filter('{{ category }}');">Показать</button>
+        <span>цена от:</span>
+        <select name="" id="price_from" name="price_from" onchange="filter('{{ category }}');">
+            <option value="1" {% if filter.price_from == 1 %}selected="selected"{% endif %}>Все цены</option>
+            <option value="250" {% if filter.price_from == 250 %}selected="selected"{% endif %}>от 250 руб</option>
+            <option value="500" {% if filter.price_from == 500 %}selected="selected"{% endif %}>от 500 руб</option>
+            <option value="700" {% if filter.price_from == 700 %}selected="selected"{% endif %}>от 700 руб</option>
+            <option value="1000" {% if filter.price_from == 1000 %}selected="selected"{% endif %}>от 1000 руб</option>
+            <option value="1500" {% if filter.price_from == 1500 %}selected="selected"{% endif %}>от 1500 руб</option>
+            <option value="1700" {% if filter.price_from == 1700 %}selected="selected"{% endif %}>от 1700 руб</option>
+            <option value="2000" {% if filter.price_from == 2000 %}selected="selected"{% endif %}>от 2000 руб</option>
+            <option value="2500" {% if filter.price_from == 2500 %}selected="selected"{% endif %}>от 2500 руб</option>
+        </select>
+        <span> до:</span>
+        <select name="" id="price_to" name="price_to" onchange="filter('{{ category }}');">
+            <option value="1" {% if filter.price_to == 1 %}selected="selected"{% endif %}>Все цены</option>
+            <option value="250" {% if filter.price_to == 250 %}selected="selected"{% endif %}>до 250 руб</option>
+            <option value="500" {% if filter.price_to == 500 %}selected="selected"{% endif %}>до 500 руб</option>
+            <option value="700" {% if filter.price_to == 700 %}selected="selected"{% endif %}>до 700 руб</option>
+            <option value="1000" {% if filter.price_to == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>
+            <option value="1500" {% if filter.price_to == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>
+            <option value="1700" {% if filter.price_to == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>
+            <option value="2000" {% if filter.price_to == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>
+            <option value="2500" {% if filter.price_to == 2500 %}selected="selected"{% endif %}>до 2500 руб</option>
+        </select>
+        {#<input type="hidden" id="price_from" name="price_from" value="{{ filter.price_from }}" />#}
+        {#<input type="hidden" id="price_to" name="price_to" value="{{ filter.price_to }}" />#}
+        {#<input type="text" id="price" name="price" value="" data-from="{{ filter.price_from }}" data-to="{{ filter.price_to }}" />#}
+        {#<button id="button_price" class="button_price" onclick="filter('{{ category }}');">Показать</button>#}
     </div>
     <div class="priceSale{% if app.user == 0 %} hide{% endif %}">
         <select name="" id="priceSale" onchange="filter('{{ category }}');">

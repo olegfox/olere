@@ -50,11 +50,16 @@
     -webkit-margin-after: 0;
     padding: 10px 0px 10px 0px;
     line-height: 16px;
+    text-transform: uppercase;
+    font-size: 22px;
     a{
+      font-family: "Calibri";
       color: #000!important;
+      font-size: 22px;
     }
   }
   .date{
+    font-family: "Calibri";
     font-size: 22px;
   }
   .wrap_video{
@@ -66,6 +71,10 @@
       -webkit-margin-before: 0;
       -webkit-margin-after: 0;
       padding: 10px 0px;
+    }
+    *{
+      font-family: Open Sans!important;
+      font-size: 16px!important;
     }
   }
   .gallery{

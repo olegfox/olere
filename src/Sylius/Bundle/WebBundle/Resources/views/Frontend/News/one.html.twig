@@ -1,8 +1,8 @@
 {% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
 
-{% block title %}{{ n[0].title }}{% endblock %}
-{% block metaKeywords %}{{ n[0].keyword }}{% endblock %}
-{% block metaDescription %}{{ n[0].description }}{% endblock %}
+{% block title %}{{ n.title }}{% endblock %}
+{% block metaKeywords %}{{ n.keyword }}{% endblock %}
+{% block metaDescription %}{{ n.description }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}

@@ -403,11 +403,11 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 
 .menu ul li a:hover {
-    color: #18c9bd; /* text color */
+    color: #d86a43; /* text color */
 }
 
 .menu ul li.current a {
-    color: #18c9bd; /* text color */
+    color: #d86a43; /* text color */
 }
 
 .menu ul li.last {
@@ -491,7 +491,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .head.filter {
     font-family: "Calibri";
-    font-size: 18px;
+    font-size: 12px;
     text-transform: uppercase;
     min-height: 50px;
     line-height: 50px;
@@ -504,7 +504,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .head.filter select {
     font-family: "Calibri" !important;
-    font-size: 18px !important;
+    font-size: 12px !important;
     text-transform: uppercase !important;
     border: solid 2px #fff;
     height: 30px;
@@ -522,7 +522,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .head.filter .button_price {
     font-family: "Calibri" !important;
-    font-size: 18px !important;
+    font-size: 12px !important;
     text-transform: uppercase !important;
     border: solid 2px #fff;
     height: 30px;
@@ -549,6 +549,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     display: inline-block\0;
     position: relative\0;
     top: -1 px\0;
+    color: #FFFFFF;
 }
 
 .head.filter select::-ms-expand {
@@ -1440,7 +1441,7 @@ tr.tDnD_whileDrag {
     top: 0px;
     bottom: 0px;
     position: fixed;
-    z-index: 2001;
+    z-index: 999;
     width: 40px;
     opacity: 0.5;
     background: url("/images/top.png") center center no-repeat;

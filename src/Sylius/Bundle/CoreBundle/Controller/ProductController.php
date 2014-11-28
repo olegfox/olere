@@ -628,8 +628,8 @@ class ProductController extends ResourceController
             'collection' => 'any',
             'catalog' => 'any',
             'created' => 'any',
-            'price_to' => '2000',
-            'price_from' => '1'
+            'price_to' => 1,
+            'price_from' => 1
         );
         $type = 0;
 //        if($this->container->get('security.context')->isGranted('ROLE_USER_OPT')){
@@ -1228,8 +1228,8 @@ class ProductController extends ResourceController
                 'collection' => 'any',
                 'catalog' => 'any',
                 'created' => 'any',
-                'price_to' => '2000',
-                'price_from' => '1'
+                'price_to' => 1,
+                'price_from' => 1
             );
             if ($request->get('filter') != null) {
                 $filterArray = $request->get('filter');
@@ -1296,8 +1296,8 @@ class ProductController extends ResourceController
                         'collection' => 'any',
                         'catalog' => 'any',
                         'created' => 'any',
-                        'price_to' => '2000',
-                        'price_from' => '1'
+                        'price_to' => 1,
+                        'price_from' => 1
                     );
                     if ($request->get('filter') != null) {
                         $filterArray = $request->get('filter');
