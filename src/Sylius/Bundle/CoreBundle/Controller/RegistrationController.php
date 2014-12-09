@@ -9,6 +9,8 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RegistrationController extends BaseController
 {
@@ -57,10 +59,12 @@ class RegistrationController extends BaseController
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
+                $plainPassword = substr(sha1(uniqid(mt_rand(), true)), 0, 6);
+                $user->setDateSend(new \DateTime('2099-01-01'));
+                $user->setPlainPassword($plainPassword);
                 $userManager->updateUser($user);
 
-                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
+//                $this->registerMessage($user->getEmail(), $plainPassword);
 
                 if (null === $response = $event->getResponse()) {
                     $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
@@ -113,17 +117,20 @@ class RegistrationController extends BaseController
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
                 $user->addRole('ROLE_USER_OPT');
-
+                $plainPassword = substr(sha1(uniqid(mt_rand(), true)), 0, 6);
+                $user->setDateSend(new \DateTime('2099-01-01'));
+                $user->setPlainPassword($plainPassword);
+                $user->setTextPassword($plainPassword);
                 $userManager->updateUser($user);
 
-                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
+//                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
+                    $url = $this->container->get('router')->generate('sylius_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
 
-                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+//                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
             }
@@ -134,6 +141,23 @@ class RegistrationController extends BaseController
         ));
     }
 
+    public function sendPasswordAction($id){
+        $repository = $this->getDoctrine()->getRepository('Sylius\Bundle\CoreBundle\Model\User');
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $repository->find($id);
+        if(is_object($user)){
+            $user->setDateSend(new \DateTime());
+//            if(count($user->getTextPassword()) <= 0){
+//                $user
+//            }
+            $userManager->updateUser($user);
+            $this->registerMessage($user->getEmail(), $user->getTextPassword());
+            return new Response('Письмо успешно отправлено!');
+        }else{
+            throw new NotFoundHttpException("Пользователь не найден!");
+        }
+    }
+
     public function registerMessage($email, $password){
         $mailer = $this->container->get('mailer');
         $message = \Swift_Message::newInstance()
@@ -142,5 +166,18 @@ class RegistrationController extends BaseController
             ->setTo($email)
             ->setBody($this->container->get('templating')->render('SyliusWebBundle:Email:register.html.twig', array('email' => $email, 'password' => $password)), 'text/html');
         $mailer->send($message);
+    }
+
+    public function registrationConfirmedAction(){
+        return $this->container->get('templating')->render('FOSUserBundle:Registration:confirmed.html.twig');
+    }
+
+    public function getDoctrine()
+    {
+        if (!$this->container->has('doctrine')) {
+            throw new \LogicException('The DoctrineBundle is not registered in your application.');
+        }
+
+        return $this->container->get('doctrine');
     }
 }

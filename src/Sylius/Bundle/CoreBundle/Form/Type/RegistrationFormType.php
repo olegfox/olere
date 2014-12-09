@@ -64,20 +64,23 @@ class RegistrationFormType extends BaseType
         $builder->remove('plainPassword');
         $builder->add('plainPassword', 'repeated', array(
             'type' => 'password',
+            'required' => false,
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => false, 'attr' => array(
                 'placeholder' => 'form.password',
                 'ng-maxlength' => '10',
                 'ng-minlength' => '5',
-                'ng-model' => 'user.password'
-            ), 'required' => 'required'),
+                'ng-model' => 'user.password',
+                'ng-init' => 'user.password="5s4a8w6d"'
+            ), 'required' => ''),
             'second_options' => array('label' => false, 'attr' => array(
                 'placeholder' => 'form.password_confirmation',
                 'ng-maxlength' => '10',
                 'ng-minlength' => '5',
                 'ng-model' => 'user.passwordConfirm',
-                'password-match' => 'user.password'
-            ), 'required' => 'required'),
+                'password-match' => 'user.password',
+                'ng-init' => 'user.passwordConfirm="5s4a8w6d"'
+            ), 'required' => ''),
             'invalid_message' => '',
         ));
     }

@@ -219,7 +219,7 @@ class ProductController extends ResourceController
                          )
                         '
                     )->setParameter('sku', $articul)->getResult();
-                    $flag = 0;
+                    $flag = 1;
                     if (count($product) <= 0) {
                         $flag = 1;
                     }
@@ -245,6 +245,7 @@ class ProductController extends ResourceController
                             "sost" => $sost,
                             "color" => $color,
                             "gb" => $gb,
+                            "onHand" => $onHand,
                             "description" => $description,
                             "collection" => $collection,
                             "codeArticul" => $codeArticul,
@@ -281,8 +282,18 @@ class ProductController extends ResourceController
                                     $taxs[] = $col;
                                 }
                             }
+                            if (count($product) <= 0) {
+                                $product = $repository->createNew();
+                            }else{
+                                $product = $product[0];
+                            }
 
-                            $product = $repository->createNew();
+                            foreach($product->getProperties() as $pr){
+                                $em->remove($pr);
+//                                $product->removeProperty($pr);
+                                $em->flush();
+                            }
+
                             $product->setCatalog($catalog);
                             $product->setCollection($collection);
                             $product->setName($name);
@@ -360,8 +371,11 @@ class ProductController extends ResourceController
 //                                }
 //                            }
 //                        }
-                            $product->getMasterVariant()->setOnHand(1);
-                            $manager->persist($product);
+//                            $product->getMasterVariant()->setOnHand(1);
+                            if (count($product) <= 0) {
+                                $manager->persist($product);
+                            }
+
                             $manager->flush();
                             $product->setPosition($product->getId());
                             $product->setPosition2($product->getId());

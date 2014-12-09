@@ -11,6 +11,11 @@ sylius_backend_user_index:
             method: createFilterPaginator
             arguments: [$criteria, $sorting, $deleted]
 
+sylius_backend_user_send_password:
+    pattern: /send_password/{id}/
+    defaults:
+        _controller: SyliusCoreBundle:Registration:sendPassword
+
 sylius_backend_user_export:
     pattern: /export/
     defaults:

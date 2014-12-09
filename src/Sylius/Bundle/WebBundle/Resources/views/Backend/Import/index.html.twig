@@ -32,6 +32,14 @@
     </form>
     {% if data is defined %}
         <table>
+            <thead>
+                <th>Артикул</th>
+                <th></th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Остаток</th>
+            </thead>
+            <tbody>
             {% for d in data %}
 
                 <tr>
@@ -43,8 +51,10 @@
                     </td>
                     <td>{{ d.name }}</td>
                     <td>{{ d.price }}</td>
+                    <td>{{ d.onHand }}</td>
                 </tr>
             {% endfor %}
+            </tbody>
         </table>
     {% endif %}
 {% endblock %}

@@ -52,6 +52,8 @@ class User extends BaseUser implements UserInterface
     protected $status;
     protected $action;
     protected $comments;
+    protected $dateSend;
+    protected $textPassword;
 
     public function __construct()
     {
@@ -700,4 +702,29 @@ class User extends BaseUser implements UserInterface
     {
         return $this->comments;
     }
+
+    public function setTextPassword($textPassword)
+    {
+        $this->textPassword = $textPassword;
+
+        return $this;
+    }
+
+    public function getTextPassword()
+    {
+        return $this->textPassword;
+    }
+
+    public function setDateSend($dateSend)
+    {
+        $this->dateSend = $dateSend;
+
+        return $this;
+    }
+
+    public function getDateSend()
+    {
+        return $this->dateSend;
+    }
+
 }

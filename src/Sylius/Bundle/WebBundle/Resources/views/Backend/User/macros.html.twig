@@ -42,6 +42,16 @@
             </td>
             <td>
                 <div class="pull-right">
+                    {% if user.textPassword|length > 0 %}
+                        {% if date(user.dateSend) > date() %}
+                            <span style="color: red;">не отправлено</span>
+                        {% else %}
+                            {{ user.dateSend|date('d.m.y h:i:s') }}
+                        {% endif %}
+                        <a href="{{ path('sylius_backend_user_send_password', {'id': user.id}) }}" target="_blank" class="btn btn-primary">
+                            <span>Отправить пароль</span>
+                        </a>
+                    {% endif %}
                     {{ buttons.show(path('sylius_backend_user_show', {'id': user.id})) }}
                     {% if not user.deleted %}
                     {{ buttons.edit(path('sylius_backend_user_update', {'id': user.id})) }}

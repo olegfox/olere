@@ -107,6 +107,9 @@
                 </option>
             </constraint>
         </property>
+        <!--<property name="plainPassword">-->
+            <!--<constraint name="Valid" />-->
+        <!--</property>-->
         <property name="plainPassword">
             <constraint name="NotBlank">
                 <option name="groups">

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="alert alert-success">
-    {{ 'registration.confirmed'|trans({'%username%': user.firstName}) }}
+    {{ 'registration.confirmed'|trans }}
 </div>
 <div class="catalogShow">
     <a href="{{ path('sylius_catalog') }}" class="btn btn-sm">Перейти в каталог</a>
