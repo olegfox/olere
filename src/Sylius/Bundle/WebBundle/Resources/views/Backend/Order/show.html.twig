@@ -65,6 +65,10 @@
             <th>Имя</th>
             <th>Телефон</th>
             <th>Город</th>
+            {% if order.user.id is defined %}
+            <th>Форма компании</th>
+            <th>Название компании</th>
+            {% endif %}
             <th>Способ доставки</th>
             <th>Адрес</th>
             <th>Транспортная компания</th>
@@ -88,6 +92,14 @@
             <td>
                 {{ order.city }}
             </td>
+            {% if order.user.id is defined %}
+                <td>
+                    {{ order.user.formCompany }}
+                </td>
+                <td>
+                    {{ order.user.nameCompany }}
+                </td>
+            {% endif %}
             <td>
                 {% if order.delivery != null %}
                 {% if order.delivery == 0 %}

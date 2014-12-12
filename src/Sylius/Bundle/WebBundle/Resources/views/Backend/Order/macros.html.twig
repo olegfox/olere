@@ -76,11 +76,11 @@
                 {{ buttons.show(path('sylius_backend_order_show', {'id': order.id})) }}
                     <br/>
 
-                {% if not is_granted('ROLE_MANAGER2') %}
+                {#{% if not is_granted('ROLE_MANAGER2') %}#}
                 <a href="{{ path('sylius_backend_order_export', {'id': order.id}) }}" target="_blank" class="btn btn-primary">
                     <i class="glyphicon glyphicon-plus-sign"></i><span>Экспорт в xlsx</span>
                 </a>
-                {% endif %}
+                {#{% endif %}#}
 
                 {% if not order.deleted %}
                 {#{{ buttons.edit(path('sylius_backend_order_update', {'id': order.id})) }}#}

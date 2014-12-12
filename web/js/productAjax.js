@@ -71,31 +71,34 @@ $(function () {
                 }
             }
 //          Скроллим вниз
-            if($(".indexByTaxonAjax.hold").length <= 0){
-                if ((scrollTop >= ($(document).height() - $(window).height()) - 1000)) {
-                    var link = $(".indexByTaxonAjax").attr('href');
-                    $(".indexByTaxonAjax").addClass('hold');
-                    var $page_last = $(".catalog .page").last();
-                    var re = /[0-9]+/;
-                    var number_page = link.match(re);
-                    if(pages['page'+number_page] != undefined){
-                        $page_last
-                            .append('<div class="page" id="page'+number_page+'">'+pages['page'+number_page]+'</div>');
-                        after_insert_page_bottom($page_last);
-                    }else{
-                        $.get(link, {}, function (data) {
+            setTimeout(function(){
+                if($(".indexByTaxonAjax.hold").length <= 0){
+                    if ((scrollTop >= ($(document).height() - $(window).height()) - 1000)) {
+                        var link = $(".indexByTaxonAjax").attr('href');
+                        $(".indexByTaxonAjax").addClass('hold');
+                        var $page_last = $(".catalog .page").last();
+                        var re = /[0-9]+/;
+                        var number_page = link.match(re);
+                        if(pages['page'+number_page] != undefined){
                             $page_last
-                                .after(data);
-                            $(".indexByTaxonAjax.hold").remove();
+                                .append('<div class="page" id="page'+number_page+'">'+pages['page'+number_page]+'</div>');
                             after_insert_page_bottom($page_last);
-                        }).fail(function(){
-                            $(".indexByTaxonAjax").hide();
-                        });
+                        }else{
+                            $.get(link, {}, function (data) {
+                                $page_last
+                                    .after(data);
+                                $(".indexByTaxonAjax.hold").remove();
+                                after_insert_page_bottom($page_last);
+                            }).fail(function(){
+                                $(".indexByTaxonAjax").hide();
+                            });
+                        }
                     }
                 }
-            }
 
-            lastScrollTop = scrollTop;
+                lastScrollTop = scrollTop;
+            }, 500);
+
         }
     });
 });

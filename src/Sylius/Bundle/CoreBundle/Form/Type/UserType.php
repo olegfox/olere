@@ -43,7 +43,28 @@ class UserType extends ProfileFormType
             ->add('lastName', 'text', array(
                 'label' => 'sylius.form.user.last_name'
             ))
-        ;
+            ->add('city', 'text', array(
+                'label' => 'Введите название города',
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array(
+                    "placeholder" => "Введите название города"
+                )
+            ))
+            ->add('nameCompany', 'text', array('label' => 'form.nameCompany', 'translation_domain' => 'FOSUserBundle', "attr" => array(
+                "placeholder" => "form.nameCompany"
+            )))
+            ->add('formCompany', 'choice', array(
+                'choices' => array(
+                    'ООО' => 'ООО',
+                    'ИП' => 'ИП',
+                    'ЗАО' => 'ЗАО',
+                    'ГК' => 'ГК',
+                    'Совместная закупка' => 'Совместная закупка',
+                ),
+                'label' => 'form.formCompany',
+                'translation_domain' => 'FOSUserBundle',
+                'empty_value' => 'form.formCompany'
+            ));
 
         $this->buildUserForm($builder, $options);
 
@@ -55,7 +76,7 @@ class UserType extends ProfileFormType
                 'label' => 'sylius.form.user.enabled'
             ))
             ->add('groups', 'sylius_group_choice', array(
-                'label'    => 'sylius.form.user.groups',
+                'label' => 'sylius.form.user.groups',
                 'multiple' => true,
                 'required' => false
             ))
@@ -78,7 +99,7 @@ class UserType extends ProfileFormType
                 )
             ))
             ->add('roles', 'collection', array(
-                'label'    => 'Роль',
+                'label' => 'Роль',
                 'required' => true,
 //                'choices' => array(
 //                    'ROLE_SYLIUS_ADMIN' => 'Администратор',
@@ -87,8 +108,7 @@ class UserType extends ProfileFormType
 //                    'ROLE_USER_OPT' => 'Оптовый покупатель'
 //                )
             ))
-            ->remove('username')
-        ;
+            ->remove('username');
     }
 
     /**
@@ -97,18 +117,18 @@ class UserType extends ProfileFormType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => $this->dataClass,
-            'validation_groups'  => function (FormInterface $form) {
-                $data = $form->getData();
-                $groups = array('Profile', 'sylius');
-                if ($data && !$data->getId()) {
-                    $groups[] = 'ProfileAdd';
-                }
+            'data_class' => $this->dataClass,
+            'validation_groups' => function (FormInterface $form) {
+                    $data = $form->getData();
+                    $groups = array('Profile', 'sylius');
+                    if ($data && !$data->getId()) {
+                        $groups[] = 'ProfileAdd';
+                    }
 
-                return $groups;
-            },
+                    return $groups;
+                },
             'cascade_validation' => true,
-            'intention'          => 'profile',
+            'intention' => 'profile',
         ));
     }
 

@@ -67,11 +67,11 @@ class RegistrationController extends BaseController
 //                $this->registerMessage($user->getEmail(), $plainPassword);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
+                    $url = $this->container->get('router')->generate('sylius_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
 
-                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+//                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
             }
@@ -103,11 +103,11 @@ class RegistrationController extends BaseController
 
         $form = $formFactory->createForm();
         $form->remove("inn");
-        $form->remove("nameCompany");
-        $form->remove("formCompany");
+//        $form->remove("nameCompany");
+//        $form->remove("formCompany");
         $form->remove("profileCompany");
         $form->remove("countPoint");
-        $form->remove("city");
+//        $form->remove("city");
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {
@@ -122,7 +122,7 @@ class RegistrationController extends BaseController
                 $user->setPlainPassword($plainPassword);
                 $user->setTextPassword($plainPassword);
                 $userManager->updateUser($user);
-
+                $this->registerMessageToManager($user);
 //                $this->registerMessage($user->getEmail(), $form['plainPassword']->getData());
 
                 if (null === $response = $event->getResponse()) {
@@ -168,8 +168,19 @@ class RegistrationController extends BaseController
         $mailer->send($message);
     }
 
+    public function registerMessageToManager($user){
+        $mailer = $this->container->get('mailer');
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Новая регистрация на сайте Olere')
+            ->setFrom(array('order@olere.ru' => "Olere"))
+            ->setTo("order@olere.ru")
+            ->setBody($this->container->get('templating')->render('SyliusWebBundle:Email:registerMessageToManager.html.twig', array('user' => $user)), 'text/html');
+        $mailer->send($message);
+    }
+
     public function registrationConfirmedAction(){
-        return $this->container->get('templating')->render('FOSUserBundle:Registration:confirmed.html.twig');
+//        return $this->container->render('FOSUserBundle:Registration:confirmed.html.twig');
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.twig');
     }
 
     public function getDoctrine()

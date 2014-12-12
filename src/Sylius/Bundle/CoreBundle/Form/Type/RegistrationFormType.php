@@ -39,7 +39,7 @@ class RegistrationFormType extends BaseType
         )));
         $builder->add('formCompany', 'choice', array(
             'choices' => array(
-                'ООО2' => 'ООО',
+                'ООО' => 'ООО',
                 'ИП' => 'ИП',
                 'ЗАО' => 'ЗАО',
                 'ГК' => 'ГК',

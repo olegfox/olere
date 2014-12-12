@@ -13,6 +13,9 @@
             {#<th>{{ sylius_resource_sort('lastName', 'sylius.address.lastname'|trans) }}</th>#}
             <th>{{ sylius_resource_sort('email', 'sylius.user.email'|trans) }}</th>
             <th>{{ sylius_resource_sort('createdAt', 'sylius.user.registration_date'|trans) }}</th>
+            <th>Форма компании</th>
+            <th>Название компании</th>
+            <th>Город</th>
             <th>Тип</th>
             <th>{{ sylius_resource_sort('enabled', 'sylius.user.enabled'|trans) }}</th>
             <th>Статус</th>
@@ -27,6 +30,9 @@
             {#<td>{{ user.lastName }}</td>#}
             <td><a href="{{ path('sylius_backend_user_show', {'id': user.id}) }}">{{ user.email }}</a></td>
             <td>{{ user.createdAt|date('d-m-Y H:i') }}</td>
+            <td>{{ user.formCompany }}</td>
+            <td>{{ user.nameCompany }}</td>
+            <td>{{ user.city }}</td>
             <td>
                 {% if user.isOpt %}
                     Оптовый
