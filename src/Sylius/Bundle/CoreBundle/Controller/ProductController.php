@@ -220,10 +220,12 @@ class ProductController extends ResourceController
                         '
                     )->setParameter('sku', $articul)->getResult();
                     $flag = 1;
+                    $new = 1;
                     if (count($product) <= 0) {
                         $flag = 1;
                     }
                     if (count($product) > 0) {
+                        $new = 0;
                         if ($product[0]->isRing()) {
 //                        if ($product[0]->getName() == 'Кольца') {
                             $f = 0;
@@ -372,7 +374,7 @@ class ProductController extends ResourceController
 //                            }
 //                        }
 //                            $product->getMasterVariant()->setOnHand(1);
-                            if (count($product) <= 0) {
+                            if ($new) {
                                 $manager->persist($product);
                             }
 

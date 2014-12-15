@@ -40,6 +40,40 @@ function addCartRing() {
     });
 }
 $(function () {
+    $('.advantages ul li')
+        .click(function(){
+
+            var text = $(this).find('img').attr('alt');
+
+            $('.windowOverlay').remove();
+            $('.window').remove();
+            $('body').append('<div class="windowOverlay"></div>');
+            $('.windowOverlay').fadeIn(500);
+            $('body').append('<div class="window">'+text+'<div class="close"></div></div>');
+            $('.window')
+                .css({
+                    'position' : 'fixed',
+                    'height' : $('.window').height() + 40,
+                    'top' : ($('body').height() + 40 - $('.window').height())/2
+                });
+
+            $('.window .close')
+                .click(function(){
+                    $('.window').animate({
+                        'opacity' : 0
+                    }, 500);
+                    $('.windowOverlay').fadeOut(500, function(){
+                        $('.windowOverlay').remove();
+                        $('.window').remove();
+                    });
+                });
+
+            $('.windowOverlay').click(function(){
+                $('.window .close').click();
+            });
+
+        });
+
     addCartRing();
     addCart();
 //    if (window.location.href.indexOf('catalog') + 1) {
