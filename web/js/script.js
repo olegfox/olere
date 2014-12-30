@@ -130,6 +130,9 @@ function preview(object, original, image, name) {
 function filter(category) {
     if (category != 'sale') {
         var cat = $(".filter #type").val();
+        if(cat == undefined){
+            cat = $(".filter #catalog").val();
+        }
     }
     var price_from = $(".filter #price_from").val();
     var price_to = $(".filter #price_to").val();

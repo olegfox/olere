@@ -93,7 +93,7 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              JOIN t.products p
              JOIN p.variants v
-             WHERE t.taxonomy = 9
+             WHERE (t.taxonomy = 9 or t.taxonomy = 8)
              AND v.metal LIKE :silver
              ORDER BY t.position ASC
             '
@@ -514,26 +514,28 @@ class ProductController extends ResourceController
                     foreach ($files as $file) {
                         $fileName = str_replace('./', '', $file);
                         $symbols = array(' ', '-', '_', '(', '.');
-                        if (in_array($fileName{strlen($sku)}, $symbols)) {
-                            if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
+                        if(strlen($sku) <=  strlen($fileName)){
+                            if (in_array($fileName{strlen($sku)}, $symbols)) {
+                                if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
 
-                            } else {
-                                $fl = 0;
-                                foreach ($images as $i) {
-                                    if ($i == $fileName) {
-                                        $fl = 1;
+                                } else {
+                                    $fl = 0;
+                                    foreach ($images as $i) {
+                                        if ($i == $fileName) {
+                                            $fl = 1;
+                                        }
                                     }
-                                }
-                                foreach ($p->getMasterVariant()->getImages() as $image) {
-                                    $path = $image->getOriginal();
+                                    foreach ($p->getMasterVariant()->getImages() as $image) {
+                                        $path = $image->getOriginal();
 //                            $path_parts = explode(".", $path);
-                                    if ($path == $fileName) {
-                                        $fl = 1;
+                                        if ($path == $fileName) {
+                                            $fl = 1;
+                                        }
                                     }
-                                }
 //                        print "fl = ".$fl;
-                                if ($fl == 0) {
-                                    $images[] = $fileName;
+                                    if ($fl == 0) {
+                                        $images[] = $fileName;
+                                    }
                                 }
                             }
                         }

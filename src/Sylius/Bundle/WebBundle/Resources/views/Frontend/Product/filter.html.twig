@@ -1,14 +1,15 @@
 <div class="head filter">
     {% if taxons is defined %}
+        {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
+            {% set category = 'catalog' %}
+            {#тип украшения:#}
+        {% else %}
+            {% set category = 'collections' %}
+            {#коллекция:#}
+        {% endif %}
+    {% if taxons|length > 0 %}
     <div class="type">
                 <span>
-                    {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
-                        {% set category = 'catalog' %}
-                        {#тип украшения:#}
-                    {% else %}
-                        {% set category = 'collections' %}
-                        {#коллекция:#}
-                    {% endif %}
                 </span>
         <select name="" id="type" onchange="filter('{{ category }}');">
             {% for t in taxons %}
@@ -16,6 +17,7 @@
             {% endfor %}
         </select>
     </div>
+    {% endif %}
     {% endif %}
     <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}hide{% endif %}">
         <select name="" id="catalog" onchange="filter('{{ category }}');">
