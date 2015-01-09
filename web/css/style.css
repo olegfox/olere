@@ -639,6 +639,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     display: inline-block;
     margin-top: -1px;
     margin-bottom: -1px;
+    vertical-align: top;
 }
 
 .latestProducts .box {

@@ -514,7 +514,7 @@ class ProductController extends ResourceController
                     foreach ($files as $file) {
                         $fileName = str_replace('./', '', $file);
                         $symbols = array(' ', '-', '_', '(', '.');
-                        if(strlen($sku) <=  strlen($fileName)){
+                        if(strlen($sku) < strlen($fileName)){
                             if (in_array($fileName{strlen($sku)}, $symbols)) {
                                 if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
 

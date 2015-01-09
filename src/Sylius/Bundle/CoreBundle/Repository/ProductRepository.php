@@ -58,7 +58,7 @@ class ProductRepository extends VariableProductRepository
             ->innerJoin('product.taxons', 'taxon2')
             ->andWhere('variant.onHand > 0')
             ->andWhere('variant.flagSale = 1')
-            ->andWhere('product.action = 0');
+            ->andWhere('product.action = 0 or product.action is NULL');
         if (isset($filter['collection'])) {
             if ($filter['collection'] != 'any') {
                 $queryBuilder
@@ -129,7 +129,7 @@ class ProductRepository extends VariableProductRepository
         }
 
         $queryBuilder
-            ->andWhere('product.enabled = 0');
+            ->andWhere('product.enabled = 0 or product.enabled is NULL');
         if (isset($filter['price_from'])) {
             if ($type == 0) {
                 $queryBuilder
@@ -240,7 +240,7 @@ class ProductRepository extends VariableProductRepository
             }
         }
         $queryBuilder
-            ->andWhere('product.enabled = 0');
+            ->andWhere('product.enabled = 0 or product.enabled is NULL');
         if (isset($filter['price_from'])) {
             if ($type == 0) {
                 $queryBuilder
@@ -299,7 +299,7 @@ class ProductRepository extends VariableProductRepository
                 ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
-                ->andWhere('product.action = 0');
+                ->andWhere('product.action = 0 or product.action is NULL');
             if (isset($filter['collection'])) {
                 if ($filter['collection'] != 'any') {
                     $queryBuilder
@@ -366,7 +366,7 @@ class ProductRepository extends VariableProductRepository
                 }
             }
             $queryBuilder
-                ->andWhere('product.enabled = 0');
+                ->andWhere('product.enabled = 0 or product.enabled is NULL');
             if (isset($filter['price_from'])) {
                 if ($type == 0) {
                     $queryBuilder
@@ -415,8 +415,8 @@ class ProductRepository extends VariableProductRepository
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
                 ->orderBy("product.name", $sorting["name"])
-                ->andWhere('product.enabled = 0')
-                ->andWhere('product.action = 0')
+                ->andWhere('product.enabled = 0 or product.enabled is NULL')
+                ->andWhere('product.action = 0 or product.action is NULL')
                 ->setParameter('taxon', $taxon);
         } elseif (isset($sorting["price"])) {
             $queryBuilder
@@ -425,8 +425,8 @@ class ProductRepository extends VariableProductRepository
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
                 ->orderBy("variant.price", $sorting["price"])
-                ->andWhere('product.enabled = 0')
-                ->andWhere('product.action = 0')
+                ->andWhere('product.enabled = 0 or product.enabled is NULL')
+                ->andWhere('product.action = 0 or product.action is NULL')
                 ->setParameter('taxon', $taxon);
         } else {
             $queryBuilder
@@ -434,8 +434,8 @@ class ProductRepository extends VariableProductRepository
                 ->leftJoin('product.variants', 'variant')
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
-                ->andWhere('product.enabled = 0')
-                ->andWhere('product.action = 0')
+                ->andWhere('product.enabled = 0 or product.enabled is NULL')
+                ->andWhere('product.action = 0 or product.action is NULL')
                 ->setParameter('taxon', $taxon);
         }
 

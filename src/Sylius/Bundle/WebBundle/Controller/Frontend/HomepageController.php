@@ -54,8 +54,8 @@ class HomepageController extends Controller
              JOIN p.taxons t
              WHERE (p.name LIKE :search
              OR v.sku LIKE :search)
-             AND p.enabled = 0
-             AND p.action = 0
+             AND (p.enabled = 0 or p.enabled is NULL)
+             AND (p.action = 0 or p.action is NULL)
              GROUP BY v.sku
             ')->setParameters(array(
                 'search' => '%'.$search.'%'
