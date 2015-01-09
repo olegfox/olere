@@ -549,15 +549,15 @@ class ProductController extends ResourceController
                             if (!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
                                 exec('wget ftp://fotobank.olere.ru/"' . $i . '" -P /var/www/sylius/web/import/files/', $output, $retval);
 //                                print 'wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/Migura/web/import/files/';
+//                                $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
+//                                while ($ret == FTP_MOREDATA) {
+//                                    echo ".";
+//                                    $ret = ftp_nb_continue($connect);
+//                                }
                             }
 //                            $fp = fopen($i, "w");
 //                            fclose($fp);
-//                            $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
 //                            print $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i;
-//                            while ($ret == FTP_MOREDATA) {
-//                                echo ".";
-//                                $ret = ftp_nb_continue($connect);
-//                            }
                             if (file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
                                 $variantImage = new VariantImage();
                                 $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
