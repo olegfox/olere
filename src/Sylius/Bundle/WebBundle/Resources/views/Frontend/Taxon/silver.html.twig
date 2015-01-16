@@ -1,4 +1,9 @@
 {% from 'SyliusWebBundle:Frontend/Taxon:macros.html.twig' import gridSilver %}
 
-{% include 'SyliusWebBundle:Frontend/Taxon:message.html.twig' %}
+{#{% if app.environment == 'prod' %}#}
+{#{% include 'SyliusWebBundle:Frontend/Taxon:message.html.twig' %}#}
+{#{% else %}#}
 {#{{ gridSilver(collections) }}#}
+{#{% endif %}#}
+
+{{ gridSilver(collections) }}

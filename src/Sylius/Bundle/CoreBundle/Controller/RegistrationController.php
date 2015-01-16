@@ -37,7 +37,7 @@ class RegistrationController extends BaseController
         $dispatcher = $this->container->get('event_dispatcher');
 
         $user = $userManager->createUser();
-        $user->setEnabled(true);
+//        $user->setEnabled(true);
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -92,7 +92,7 @@ class RegistrationController extends BaseController
         $dispatcher = $this->container->get('event_dispatcher');
 
         $user = $userManager->createUser();
-        $user->setEnabled(true);
+//        $user->setEnabled(true);
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -150,6 +150,7 @@ class RegistrationController extends BaseController
 //            if(count($user->getTextPassword()) <= 0){
 //                $user
 //            }
+            $user->setEnabled(true);
             $userManager->updateUser($user);
             $this->registerMessage($user->getEmail(), $user->getTextPassword());
             return new Response('Письмо успешно отправлено!');
@@ -173,7 +174,7 @@ class RegistrationController extends BaseController
         $message = \Swift_Message::newInstance()
             ->setSubject('Новая регистрация на сайте Olere')
             ->setFrom(array('order@olere.ru' => "Olere"))
-            ->setTo(array('order@olere.ru', 'olegmitin25011986@gmail.com'))
+            ->setTo(array('order@olere.ru', 'olegmitin25011986@gmail.com', 'chai@olere.ru', 'knn@olere.ru'))
             ->setBody($this->container->get('templating')->render('SyliusWebBundle:Email:registerMessageToManager.html.twig', array('user' => $user)), 'text/html');
         $mailer->send($message);
     }

@@ -32,6 +32,35 @@ use Doctrine\Common\Collections\ArrayCollection;
 class ProductController extends ResourceController
 {
 
+    function lock($name)
+    {
+        $lock = sys_get_temp_dir() . "/$name.lock";
+        $aborted = file_exists($lock) ? filemtime($lock) : null;
+        $fp = fopen($lock, 'w');
+
+        if (!flock($fp, LOCK_EX | LOCK_NB)) {
+            // заблокировать файл не удалось, значит запущена копия скрипта
+            return false;
+        }
+        // получили блокировку файла
+
+        // если файл уже существовал значит предыдущий запуск кто-то прибил извне
+        if ($aborted) {
+            error_log(sprintf("Запуск скрипта %s был завершен аварийно %s", $name, date('c', $aborted)));
+        }
+
+        // снятие блокировки по окончанию работы
+        // если этот callback, не будет выполнен, то блокировка
+        // все равно будет снята ядром, но файл останется
+        register_shutdown_function(function () use ($fp, $lock) {
+            flock($fp, LOCK_UN);
+            fclose($fp);
+            unlink($lock);
+        });
+
+        return true;
+    }
+
     public function collectionAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -95,7 +124,7 @@ class ProductController extends ResourceController
              JOIN p.variants v
              WHERE (t.taxonomy = 9 or t.taxonomy = 8)
              AND v.metal LIKE :silver
-             ORDER BY t.position ASC
+             ORDER BY t.taxonomy DESC, t.position ASC
             '
         )->setParameter('silver', "%серебро%")->getResult();
 
@@ -286,11 +315,11 @@ class ProductController extends ResourceController
                             }
                             if (count($product) <= 0) {
                                 $product = $repository->createNew();
-                            }else{
+                            } else {
                                 $product = $product[0];
                             }
 
-                            foreach($product->getProperties() as $pr){
+                            foreach ($product->getProperties() as $pr) {
                                 $em->remove($pr);
 //                                $product->removeProperty($pr);
                                 $em->flush();
@@ -404,35 +433,40 @@ class ProductController extends ResourceController
 
     public function scanCodeArticulAction()
     {
-        set_time_limit(0);
-        ini_set('error_reporting', E_ALL);
-        ini_set('display_errors', TRUE);
-        header('Content-Type: text/html; charset=UTF-8');
-        $manager = $this->container->get('sylius.manager.product');
-        $repositoryProducts = $this->container->get('sylius.repository.product');
-        $products = $repositoryProducts->findAll();
-        $count = 0;
-        foreach ($products as $p) {
-            if ($p->getSkuCode() == 4) {
+        if ($this->lock('scanCodeArticul')) {
+            set_time_limit(0);
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', TRUE);
+            header('Content-Type: text/html; charset=UTF-8');
+            $manager = $this->container->get('sylius.manager.product');
+            $repositoryProducts = $this->container->get('sylius.repository.product');
+            $products = $repositoryProducts->findAll();
+            $count = 0;
+            foreach ($products as $p) {
+                if ($p->getSkuCode() == 4) {
 //                print ($p->getCreatedAt()->getTimestamp() + 60*60*24*7*2)." = ".time();
-                if ($p->getCreatedAt()->getTimestamp() + 60 * 60 * 24 * 7 * 2 < time()) {
-                    $manager->remove($p);
-                    $count++;
+                    if ($p->getCreatedAt()->getTimestamp() + 60 * 60 * 24 * 7 * 2 < time()) {
+                        $manager->remove($p);
+                        $count++;
+                    }
                 }
             }
+            $manager->flush();
+            return new Response("Удалено $count продуктов.");
+        } else {
+            return new Response("Скрипт уже запущен.");
         }
-        $manager->flush();
-        return new Response("Удалено $count продуктов.");
     }
 
     public function scanProductsAction(Request $request)
     {
-        set_time_limit(0);
-        ini_set('error_reporting', E_ALL);
-        ini_set('display_errors', TRUE);
-        header('Content-Type: text/html; charset=UTF-8');
-        $repositoryProducts = $this->container->get('sylius.repository.product');
-        $products = $repositoryProducts->findAll();
+        if ($this->lock('scanProducts')) {
+            set_time_limit(0);
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', TRUE);
+            header('Content-Type: text/html; charset=UTF-8');
+            $repositoryProducts = $this->container->get('sylius.repository.product');
+            $products = $repositoryProducts->findAll();
 //        $em = $this->getDoctrine()->getManager();
 //        $products = $em->createQuery(
 //            'SELECT p FROM
@@ -440,147 +474,154 @@ class ProductController extends ResourceController
 //             WHERE p.taxons IS NULL
 //            '
 //        )->getResult();
-        $count = 0;
-        if (count($products) > 0) {
-            $repositoryTaxon = $this->container->get('sylius.repository.taxon');
-            $manager = $this->container->get('sylius.manager.product');
-            foreach ($products as $product) {
-                $taxons = array();
-                $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
-                if ($catalog) {
-                    $taxons[] = $catalog;
-                }
-                $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
-                if ($collection) {
-                    $taxons[] = $collection;
-                }
-                $fc = 0;
-                foreach ($taxons as $t) {
-                    $flag = 0;
-                    foreach ($product->getTaxons() as $taxon) {
-                        if ($t->getId() == $taxon->getId()) {
-                            $flag = 1;
+            $count = 0;
+            if (count($products) > 0) {
+                $repositoryTaxon = $this->container->get('sylius.repository.taxon');
+                $manager = $this->container->get('sylius.manager.product');
+                foreach ($products as $product) {
+                    $taxons = array();
+                    $catalog = $repositoryTaxon->findOneBy(array('name' => $product->getCatalog()));
+                    if ($catalog) {
+                        $taxons[] = $catalog;
+                    }
+                    $collection = $repositoryTaxon->findOneBy(array('name' => $product->getCollection()));
+                    if ($collection) {
+                        $taxons[] = $collection;
+                    }
+                    $fc = 0;
+                    foreach ($taxons as $t) {
+                        $flag = 0;
+                        foreach ($product->getTaxons() as $taxon) {
+                            if ($t->getId() == $taxon->getId()) {
+                                $flag = 1;
+                            }
+                        }
+                        if ($flag == 0) {
+                            $product->addTaxon($t);
+                            $fc = 1;
                         }
                     }
-                    if ($flag == 0) {
-                        $product->addTaxon($t);
-                        $fc = 1;
+                    if ($fc == 1) {
+                        $count++;
                     }
                 }
-                if ($fc == 1) {
-                    $count++;
-                }
+                $manager->flush();
             }
-            $manager->flush();
+            return new Response("Обновлено $count продуктов.");
+        } else {
+            return new Response("Скрипт уже запущен.");
         }
-        return new Response("Обновлено $count продуктов.");
     }
 
     public function importScanAction(Request $request)
     {
-        set_time_limit(80000);
-        ini_set('max_execution_time', 80000);
-        ini_set('error_reporting', E_ALL);
-        ini_set('display_errors', TRUE);
-        header('Content-Type: text/html; charset=UTF-8');
-        $repository = $this->container->get('sylius.repository.product');
-        $manager = $this->container->get('sylius.manager.product');
+        if ($this->lock('importScan')) {
+            set_time_limit(80000);
+            ini_set('max_execution_time', 80000);
+            ini_set('error_reporting', E_ALL);
+            ini_set('display_errors', TRUE);
+            header('Content-Type: text/html; charset=UTF-8');
+            $repository = $this->container->get('sylius.repository.product');
+            $manager = $this->container->get('sylius.manager.product');
 //        if ($request->isMethod('POST')) {
-        $products = $repository->findAll();
-        $connect = ftp_connect('fotobank.olere.ru');
-        $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
-        $filesystem = new Filesystem($adapter);
-        $imageUploader = new ImageUploader($filesystem);
-        if (!$connect) {
-            return false;
-        }
+            $products = $repository->findBy(array(), array('id' => 'desc'));
+            $connect = ftp_connect('fotobank.olere.ru');
+            $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
+            $filesystem = new Filesystem($adapter);
+            $imageUploader = new ImageUploader($filesystem);
+            if (!$connect) {
+                return false;
+            }
 
-        $result = ftp_login($connect, 'anonymous', '');
+            $result = ftp_login($connect, 'anonymous', '');
 
-        if ($result == false) return false;
-        ftp_set_option($connect, FTP_TIMEOUT_SEC, 80000);
-        ftp_pasv($connect, true);
-        if ($result) {
-            $count = 0;
-            $total = 0;
+            if ($result == false) return false;
+            ftp_set_option($connect, FTP_TIMEOUT_SEC, 80000);
+            ftp_pasv($connect, true);
+            if ($result) {
+                $count = 0;
+                $total = 0;
 //            ftp_chdir($connect, '/');
-            $files = ftp_nlist($connect, ".");
-            foreach ($products as $p) {
-                if (is_object($p)) {
-                    $sku = $p->getSku();
+                $files = ftp_nlist($connect, ".");
+                foreach ($products as $p) {
+                    if (is_object($p)) {
+                        $sku = $p->getSku();
 //                Scan ftp for sku
-                    $images = array();
+                        $images = array();
 //                print "sku = ".$sku;
-                    foreach ($files as $file) {
-                        $fileName = str_replace('./', '', $file);
-                        $symbols = array(' ', '-', '_', '(', '.');
-                        if(strlen($sku) < strlen($fileName)){
-                            if (in_array($fileName{strlen($sku)}, $symbols)) {
-                                if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
+                        foreach ($files as $file) {
+                            $fileName = str_replace('./', '', $file);
+                            $symbols = array(' ', '-', '_', '(', '.');
+                            if (strlen($sku) < strlen($fileName)) {
+                                if (in_array($fileName{strlen($sku)}, $symbols)) {
+                                    if (@stristr($fileName, $sku) === false || @stripos($fileName, $sku) != 0) {
 
-                                } else {
-                                    $fl = 0;
-                                    foreach ($images as $i) {
-                                        if ($i == $fileName) {
-                                            $fl = 1;
+                                    } else {
+                                        $fl = 0;
+                                        foreach ($images as $i) {
+                                            if ($i == $fileName) {
+                                                $fl = 1;
+                                            }
                                         }
-                                    }
-                                    foreach ($p->getMasterVariant()->getImages() as $image) {
-                                        $path = $image->getOriginal();
+                                        foreach ($p->getMasterVariant()->getImages() as $image) {
+                                            $path = $image->getOriginal();
 //                            $path_parts = explode(".", $path);
-                                        if ($path == $fileName) {
-                                            $fl = 1;
+                                            if ($path == $fileName) {
+                                                $fl = 1;
+                                            }
                                         }
-                                    }
 //                        print "fl = ".$fl;
-                                    if ($fl == 0) {
-                                        $images[] = $fileName;
+                                        if ($fl == 0) {
+                                            $images[] = $fileName;
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 //                print var_dump($files);
-                    if (count($images) > 0) {
-                        natcasesort($images);
-                        $images = array_reverse($images);
-                        foreach ($images as $i) {
+                        if (count($images) > 0) {
+                            natcasesort($images);
+                            $images = array_reverse($images);
+                            foreach ($images as $i) {
 //                            print "Вывод команды";
-                            if (!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
-                                exec('wget ftp://fotobank.olere.ru/"' . $i . '" -P /var/www/sylius/web/import/files/', $output, $retval);
+                                if (!file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
+                                    exec('wget ftp://fotobank.olere.ru/' . $i . ' -P /var/www/sylius/web/import/files/', $output, $retval);
 //                                print 'wget ftp://fotobank.olere.ru/"'.$i.'" -P /var/www/Migura/web/import/files/';
 //                                $ret = ftp_nb_get($connect, $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i, $i, FTP_BINARY, 0);
 //                                while ($ret == FTP_MOREDATA) {
 //                                    echo ".";
 //                                    $ret = ftp_nb_continue($connect);
 //                                }
-                            }
+                                }
 //                            $fp = fopen($i, "w");
 //                            fclose($fp);
 //                            print $_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i;
-                            if (file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
-                                $variantImage = new VariantImage();
-                                $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
-                                $variantImage->setFile($fileinfo);
-                                $imageUploader->upload($variantImage);
-                                $variantImage->setOriginal($i);
-                                $p->getMasterVariant()->addImage($variantImage);
-                                $manager->flush();
-                                $count++;
-                            } else {
-                                print("Не удалось скачать файл " . $i . "\n");
+                                if (file_exists($_SERVER['DOCUMENT_ROOT'] . 'import/files/' . $i)) {
+                                    $variantImage = new VariantImage();
+                                    $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $i);
+                                    $variantImage->setFile($fileinfo);
+                                    $imageUploader->upload($variantImage);
+                                    $variantImage->setOriginal($i);
+                                    $p->getMasterVariant()->addImage($variantImage);
+                                    $manager->flush();
+                                    $count++;
+                                } else {
+                                    print("Не удалось скачать файл " . $i . "\n");
+                                }
+                                $total++;
                             }
-                            $total++;
                         }
                     }
                 }
+                ftp_quit($connect);
+                return new Response("Необходимо обновить " . $total . ".Обновление картинок завершено. Обновлено " . $count . " картинок.");
             }
-            ftp_quit($connect);
-            return new Response("Необходимо обновить " . $total . ".Обновление картинок завершено. Обновлено " . $count . " картинок.");
-        }
 //        }
 
-        return new Response("fail");
+            return new Response("fail");
+        } else {
+            return new Response("Сканер уже запущен");
+        }
     }
 
     public function removeDoubleAction()
@@ -638,6 +679,7 @@ class ProductController extends ResourceController
         $ajax = $request->get('ajax');
         $filter = array(
             'price' => 'any',
+            'priceSale' => 'any',
             'material' => 'any',
             'weight' => 'any',
             'box' => 'any',
@@ -1238,6 +1280,7 @@ class ProductController extends ResourceController
         } else {
             $filter = array(
                 'price' => 'any',
+                'priceSale' => 'any',
                 'material' => 'any',
                 'weight' => 'any',
                 'box' => 'any',
@@ -1306,6 +1349,7 @@ class ProductController extends ResourceController
                 } else {
                     $filter = array(
                         'price' => 'any',
+                        'priceSale' => 'any',
                         'material' => 'any',
                         'weight' => 'any',
                         'box' => 'any',
@@ -1484,12 +1528,13 @@ class ProductController extends ResourceController
         return new Response($onHand);
     }
 
-    public function exportOrderAction($id){
+    public function exportOrderAction($id)
+    {
         $repository = $this->container->get('sylius.repository.order');
 
         $order = $repository->find($id);
 
-        if(!$order){
+        if (!$order) {
             throw $this->createNotFoundException('Заказ не найден');
         }
 
@@ -1505,10 +1550,10 @@ class ProductController extends ResourceController
 
         $i = 6;
         $quantity = 0;
-        foreach($order->getItems() as $key => $orderItem){
+        foreach ($order->getItems() as $key => $orderItem) {
             $sheet->getRowDimension($i)
                 ->setRowHeight(200);
-            if(is_object($orderItem->getVariant()->getProduct()->getImage())){
+            if (is_object($orderItem->getVariant()->getProduct()->getImage())) {
                 $objDrawing = new \PHPExcel_Worksheet_Drawing();
                 $objDrawing->setWorksheet($sheet);
 //            $objDrawing->setName("name");
@@ -1523,64 +1568,64 @@ class ProductController extends ResourceController
                 $sheet->getRowDimension($i)
                     ->setRowHeight($height - 80);
                 $objDrawing->setPath($filename);
-                $objDrawing->setCoordinates('B'.$i);
+                $objDrawing->setCoordinates('B' . $i);
                 $objDrawing->setOffsetX(0);
                 $objDrawing->setOffsetY(1);
             }
-            $sheet->getStyle('E'.$i)->getAlignment()->setWrapText(true);
-            $sheet->getStyle('F'.$i)->getAlignment()->setWrapText(true);
-            $sheet->getStyle('H'.$i)->getAlignment()->setWrapText(true);
+            $sheet->getStyle('E' . $i)->getAlignment()->setWrapText(true);
+            $sheet->getStyle('F' . $i)->getAlignment()->setWrapText(true);
+            $sheet->getStyle('H' . $i)->getAlignment()->setWrapText(true);
 
-            $sheet->getStyle('A'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('C'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('D'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('E'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('F'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('G'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('H'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('I'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('J'.$i)->getAlignment()->setVertical('center');
-            $sheet->getStyle('K'.$i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('A' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('C' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('D' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('E' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('F' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('G' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('H' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('I' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('J' . $i)->getAlignment()->setVertical('center');
+            $sheet->getStyle('K' . $i)->getAlignment()->setVertical('center');
 
-            $sheet->getStyle('A'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('C'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('D'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('E'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('F'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('G'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('H'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('I'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('J'.$i)->getAlignment()->setHorizontal('center');
-            $sheet->getStyle('K'.$i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('A' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('C' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('D' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('E' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('F' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('G' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('H' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('I' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('J' . $i)->getAlignment()->setHorizontal('center');
+            $sheet->getStyle('K' . $i)->getAlignment()->setHorizontal('center');
 
-            $sheet->setCellValue('A'.$i, $key);
-            $sheet->setCellValue('C'.$i, $orderItem->getVariant()->getSku());//артикул
-            $sheet->setCellValue('D'.$i, $orderItem->getVariant()->getProduct()->getName());//наименование
+            $sheet->setCellValue('A' . $i, $key);
+            $sheet->setCellValue('C' . $i, $orderItem->getVariant()->getSku()); //артикул
+            $sheet->setCellValue('D' . $i, $orderItem->getVariant()->getProduct()->getName()); //наименование
             $property = $orderItem->getVariant()->getProduct()->getProperties();
             $p = array();
-            foreach($property as $pr){
-                if($pr->getProperty()->getId() == 10){
+            foreach ($property as $pr) {
+                if ($pr->getProperty()->getId() == 10) {
                     $p['color'] = $pr->getValue();
-                }elseif($pr->getProperty()->getId() == 11){
+                } elseif ($pr->getProperty()->getId() == 11) {
                     $p['gb'] = $pr->getValue();
-                }elseif($pr->getProperty()->getId() == 12){
+                } elseif ($pr->getProperty()->getId() == 12) {
                     $p['sost'] = $pr->getValue();
                 }
             }
 
-            if(isset($p['sost'])){
-                $sheet->setCellValue('E'.$i, $p['sost']);//состав
+            if (isset($p['sost'])) {
+                $sheet->setCellValue('E' . $i, $p['sost']); //состав
             }
-            if(isset($p['gb'])){
-                $sheet->setCellValue('F'.$i, $p['gb']);//габариты
+            if (isset($p['gb'])) {
+                $sheet->setCellValue('F' . $i, $p['gb']); //габариты
             }
-            $sheet->setCellValue('G'.$i, $orderItem->getVariant()->getSize());//размер кольца
-            if(isset($p['color'])){
-                $sheet->setCellValue('H'.$i, $p['color']);//цвет
+            $sheet->setCellValue('G' . $i, $orderItem->getVariant()->getSize()); //размер кольца
+            if (isset($p['color'])) {
+                $sheet->setCellValue('H' . $i, $p['color']); //цвет
             }
-            $sheet->setCellValue('I'.$i, $orderItem->getUnitPrice()/100);//цена
-            $sheet->setCellValue('J'.$i, $orderItem->getQuantity());//заказать
-            $sheet->setCellValue('K'.$i, $orderItem->getTotal()/100);//стоимость
+            $sheet->setCellValue('I' . $i, $orderItem->getUnitPrice() / 100); //цена
+            $sheet->setCellValue('J' . $i, $orderItem->getQuantity()); //заказать
+            $sheet->setCellValue('K' . $i, $orderItem->getTotal() / 100); //стоимость
 
             $quantity = $quantity + $orderItem->getQuantity();
             $i++;
@@ -1588,9 +1633,9 @@ class ProductController extends ResourceController
 
 //        $i = $i + 1;
 
-        $sheet->setCellValue('I'.$i, 'Итого');
-        $sheet->setCellValue('J'.$i, $quantity);//итого (шт.)
-        $sheet->setCellValue('K'.$i, $order->getTotal()/100);//итого (стоимость)
+        $sheet->setCellValue('I' . $i, 'Итого');
+        $sheet->setCellValue('J' . $i, $quantity); //итого (шт.)
+        $sheet->setCellValue('K' . $i, $order->getTotal() / 100); //итого (стоимость)
 
         $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
 
@@ -1606,7 +1651,8 @@ class ProductController extends ResourceController
 //        return new Response('');
     }
 
-    public function exportIndexAction(){
+    public function exportIndexAction()
+    {
 //        set_time_limit(0);
 //        ini_set('error_reporting', E_ALL);
 //        ini_set('display_errors', TRUE);
@@ -1624,51 +1670,51 @@ class ProductController extends ResourceController
         $sheet = $objPHPExcel->setActiveSheetIndex(0);
 
         $i = 2;
-        foreach($products as $product){
-            $sheet->setCellValue('A'.$i, $product->getSku());
-            $sheet->setCellValue('B'.$i, $product->getName());
-            $sheet->setCellValue('B'.$i, $product->getName());
+        foreach ($products as $product) {
+            $sheet->setCellValue('A' . $i, $product->getSku());
+            $sheet->setCellValue('B' . $i, $product->getName());
+            $sheet->setCellValue('B' . $i, $product->getName());
 
             $property = $product->getProperties();
             $p = array();
-            foreach($property as $pr){
-                if($pr->getProperty()->getId() == 10){
+            foreach ($property as $pr) {
+                if ($pr->getProperty()->getId() == 10) {
                     $p['color'] = $pr->getValue();
-                }elseif($pr->getProperty()->getId() == 11){
+                } elseif ($pr->getProperty()->getId() == 11) {
                     $p['gb'] = $pr->getValue();
-                }elseif($pr->getProperty()->getId() == 12){
+                } elseif ($pr->getProperty()->getId() == 12) {
                     $p['sost'] = $pr->getValue();
                 }
             }
 
-            if(isset($p['gb'])){
-                $sheet->setCellValue('C'.$i, $p['gb']);//габариты
+            if (isset($p['gb'])) {
+                $sheet->setCellValue('C' . $i, $p['gb']); //габариты
             }
 
-            if(isset($p['color'])){
-                $sheet->setCellValue('D'.$i, $p['color']);//габариты
+            if (isset($p['color'])) {
+                $sheet->setCellValue('D' . $i, $p['color']); //габариты
             }
 
-            if(isset($p['sost'])){
-                $sheet->setCellValue('E'.$i, $p['sost']);//состав
+            if (isset($p['sost'])) {
+                $sheet->setCellValue('E' . $i, $p['sost']); //состав
             }
 
-            $sheet->setCellValue('F'.$i, $product->getDescription());
-            $sheet->setCellValue('G'.$i, $product->getCollection());
-            $sheet->setCellValue('H'.$i, $product->getCatalog());
-            $sheet->setCellValue('I'.$i, $product->getSkuCode());
-            $sheet->setCellValue('J'.$i, $product->getMasterVariant()->getOnHand());
-            $sheet->setCellValue('K'.$i, $product->getPriceSale()/100);
-            $sheet->setCellValue('L'.$i, $product->getMasterVariant()->getMetal());
-            $sheet->setCellValue('M'.$i, $product->getMasterVariant()->getBox());
-            $sheet->setCellValue('N'.$i, $product->getMasterVariant()->getSize());
-            $sheet->setCellValue('O'.$i, $product->getMasterVariant()->getWeight());
-            $sheet->setCellValue('P'.$i, $product->getPriceOpt()/100);
-            $sheet->setCellValue('Q'.$i, $product->getMasterVariant()->getFlagSale() ? 1 : 0);
-            $sheet->setCellValue('R'.$i, $product->getAction() ? 1 : 0);
-            $sheet->setCellValue('S'.$i, $product->getNew() ? 1 : 0);
-            $sheet->setCellValue('T'.$i, $product->getWarehouse());
-            $sheet->setCellValue('U'.$i, $product->getHit() ? 1 : 0);
+            $sheet->setCellValue('F' . $i, $product->getDescription());
+            $sheet->setCellValue('G' . $i, $product->getCollection());
+            $sheet->setCellValue('H' . $i, $product->getCatalog());
+            $sheet->setCellValue('I' . $i, $product->getSkuCode());
+            $sheet->setCellValue('J' . $i, $product->getMasterVariant()->getOnHand());
+            $sheet->setCellValue('K' . $i, $product->getPriceSale() / 100);
+            $sheet->setCellValue('L' . $i, $product->getMasterVariant()->getMetal());
+            $sheet->setCellValue('M' . $i, $product->getMasterVariant()->getBox());
+            $sheet->setCellValue('N' . $i, $product->getMasterVariant()->getSize());
+            $sheet->setCellValue('O' . $i, $product->getMasterVariant()->getWeight());
+            $sheet->setCellValue('P' . $i, $product->getPriceOpt() / 100);
+            $sheet->setCellValue('Q' . $i, $product->getMasterVariant()->getFlagSale() ? 1 : 0);
+            $sheet->setCellValue('R' . $i, $product->getAction() ? 1 : 0);
+            $sheet->setCellValue('S' . $i, $product->getNew() ? 1 : 0);
+            $sheet->setCellValue('T' . $i, $product->getWarehouse());
+            $sheet->setCellValue('U' . $i, $product->getHit() ? 1 : 0);
 
             $i++;
 

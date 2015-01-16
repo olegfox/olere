@@ -19,6 +19,7 @@
 
     <mapped-superclass name="Sylius\Bundle\CoreBundle\Model\Taxon" table="sylius_taxon">
         <field name="path" nullable="true" />
+        <field name="path2" nullable="true" />
 
         <field name="position" type="integer">
             <gedmo:sortable-position/>

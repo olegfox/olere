@@ -43,6 +43,36 @@ class UserType extends ProfileFormType
             ->add('lastName', 'text', array(
                 'label' => 'sylius.form.user.last_name'
             ))
+            ->add('inn', 'text', array(
+                'label' => 'Инн'
+            ))
+            ->add('phone', 'text', array(
+                'label' => 'Телефон'
+            ))
+            ->add('profileCompany', 'text', array(
+                'label' => 'Профиль компании'
+            ))
+            ->add('countPoint', 'text', array(
+                'label' => 'Количество торговых точек'
+            ))
+            ->add('organization', 'text', array(
+                'label' => 'Организация'
+            ))
+            ->add('kpp', 'text', array(
+                'label' => 'КПП'
+            ))
+            ->add('currentAccount', 'text', array(
+                'label' => 'Расчетный счет'
+            ))
+            ->add('bank', 'text', array(
+                'label' => 'Банк'
+            ))
+            ->add('correspondentAccount', 'text', array(
+                'label' => 'Корр. счет'
+            ))
+            ->add('bik', 'text', array(
+                'label' => 'Бик'
+            ))
             ->add('city', 'text', array(
                 'label' => 'Введите название города',
                 'translation_domain' => 'FOSUserBundle',

@@ -33,5 +33,13 @@ class TaxonType extends BaseTaxonType
                 'label' => 'sylius.form.taxon.file'
             )
         );
+
+        $builder->add(
+            'file2',
+            'file',
+            array(
+                'label' => 'Выберите изображение для серебра'
+            )
+        );
     }
 }

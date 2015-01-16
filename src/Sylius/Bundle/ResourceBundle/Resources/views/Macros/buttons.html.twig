@@ -1,36 +1,36 @@
 {% macro show(url, message) %}
-<a href="{{ url }}" class="btn btn-default">
+<a href="{{ url }}" class="btn btn-default" style="min-width: 159px">
    <i class="glyphicon glyphicon-book"></i><span>{{ message is empty ? 'sylius.show'|trans : message }}</span>
 </a>
 {% endmacro %}
 
 {% macro generic(url, message, icon) %}
-<a href="{{ url }}" class="btn btn-default">
+<a href="{{ url }}" class="btn btn-default" style="min-width: 159px">
     {% if icon is not empty %}<i class="glyphicon glyphicon-{{ icon }}"></i>{% endif %}<span>{{ message }}</span>
 </a>
 {% endmacro %}
 
 {% macro create(url, message) %}
-<a href="{{ url }}" class="btn btn-primary">
+<a href="{{ url }}" class="btn btn-primary" style="min-width: 159px">
     <i class="glyphicon glyphicon-plus-sign"></i><span>{{ message is empty ? 'sylius.create'|trans : message }}</span>
 </a>
 {% endmacro %}
 
 {% macro edit(url, message) %}
-<a href="{{ url }}" class="btn btn-primary">
+<a href="{{ url }}" class="btn btn-primary" style="min-width: 159px">
     <i class="glyphicon glyphicon-pencil"></i><span>{{ message is empty ? 'sylius.edit'|trans : message }}</span>
 </a>
 {% endmacro %}
 
 {% macro delete(url, message, disabled=false, modal=true) %}
 {% if disabled %}
-<span class="btn btn-danger disabled">
+<span class="btn btn-danger disabled" style="min-width: 159px">
     <i class="glyphicon glyphicon-trash"></i><span>{{ message is empty ? 'sylius.delete'|trans : message }}</span>
 </span>
 {% else %}
 <form action="{{ url }}" method="post" class="delete-action-form" novalidate>
     <input type="hidden" name="_method" value="DELETE">
-    <button class="btn btn-danger{% if modal %} btn-confirm{% endif %}" type="submit">
+    <button class="btn btn-danger{% if modal %} btn-confirm{% endif %}" type="submit" style="min-width: 159px">
         <i class="glyphicon glyphicon-trash"></i> <span>{{ message is empty ? 'sylius.delete'|trans : message }}</span>
     </button>
 </form>

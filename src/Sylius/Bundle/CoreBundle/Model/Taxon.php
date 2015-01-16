@@ -27,6 +27,16 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     protected $path;
 
     /**
+     * @var \SplFileInfo
+     */
+    protected $file2;
+
+    /**
+     * @var string
+     */
+    protected $path2;
+
+    /**
      * @var \DateTime
      */
     protected $createdAt;
@@ -82,6 +92,32 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     /**
      * {@inheritdoc}
      */
+    public function hasFile2()
+    {
+        return null !== $this->file2;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFile2()
+    {
+        return $this->file2;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFile2(\SplFileInfo $file2)
+    {
+        $this->file2 = $file2;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function hasPath()
     {
         return null !== $this->path;
@@ -101,6 +137,32 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasPath2()
+    {
+        return null !== $this->path2;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPath2()
+    {
+        return $this->path2;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPath2($path2)
+    {
+        $this->path2 = $path2;
 
         return $this;
     }

@@ -714,6 +714,7 @@ sylius:
     stock: Наличие
     update_header: Редактирование вариантов
   "yes": да
+  "no": нет
   zone:
     add_member: Добавить
     create: Создать новую зону

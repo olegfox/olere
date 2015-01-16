@@ -27,12 +27,12 @@
         {#<div class="page-header">#}
         {#<h1>{{ page.title }}</h1>#}
         {#</div>#}
-        {% if page.id == '/contacts' %}
-            <div style="height: 450px;">
-                <script type="text/javascript" charset="utf-8"
-                        src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=LydqtCSXJEan_mSpQQRcOzZxe4DWvhNd&width=100%&height=450"></script>
-            </div>
-        {% endif %}
+        {#{% if page.id == '/contacts' %}#}
+            {#<div style="height: 450px;">#}
+                {#<script type="text/javascript" charset="utf-8"#}
+                        {#src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=LydqtCSXJEan_mSpQQRcOzZxe4DWvhNd&width=100%&height=450"></script>#}
+            {#</div>#}
+        {#{% endif %}#}
         {{ page.body|raw }}
     </div>
 {% endblock %}

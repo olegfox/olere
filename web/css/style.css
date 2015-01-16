@@ -567,6 +567,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalogSearch .head {
     margin-top: 18px;
+    color: #000;
 }
 
 .catalog .head a:hover,
@@ -2024,7 +2025,7 @@ ul li p{
 }
 .wrap_blocks .blocks{
     position: relative;
-    max-width: 1250px;
+    max-width: 1130px;
     width: 100%;
     margin: 0px auto 0px auto;
     padding: 0px;
@@ -2037,39 +2038,52 @@ ul li p{
     vertical-align: top;
 }
 .wrap_blocks .blocks .bl .wrap{
+    display: block;
+    border: 0;
+    text-decoration: none;
     background-color: #FFF;
     -moz-box-shadow: 0 0 24px rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 0 24px rgba(0, 0, 0, 0.19);
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.19);
     margin: 0px 25px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 .wrap_blocks .blocks .bl .wrap p{
     color: #000;
     font-family: "Calibri";
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
-
+    text-align: left;
     line-height: 22px;
     background: #FFFFFF;
-    padding: 50px 30px;
+    padding: 30px 30px 0px 30px;
     margin: 0px;
-    height: 200px;
+    height: 143px;
     overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
-.wrap_blocks .blocks .bl .wrap a{
+.wrap_blocks .blocks .bl .wrap span{
     color: #FFF;
     font-family: "Calibri";
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.14);
-
     background: #99c45a;
-    height: 80px;
-    line-height: 80px;
     text-align: center;
-    display: block;
+    display: inline-block;
+    width: auto;
+    padding: 10px 15px;
+    margin: 0 auto 30px auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 /* end blocks */
 
@@ -2161,3 +2175,16 @@ ul li p{
     background: url("/images/close.png") no-repeat;
 }
 /* end gallery */
+
+.wrap_message{
+    border: solid 1px;
+    text-align: center;
+    height: 500px;
+    line-height: 500px;
+}
+.wrap_message .message{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 22px;
+    font-size: 18px;
+}

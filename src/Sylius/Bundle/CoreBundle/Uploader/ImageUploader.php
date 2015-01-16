@@ -53,6 +53,36 @@ class ImageUploader implements ImageUploaderInterface
         );
     }
 
+    public function upload2(ImageInterface $image)
+    {
+        if (!$image->hasFile2()) {
+            return;
+        }
+
+        if (null !== $image->getPath2()) {
+            $this->remove($image->getPath2());
+        }
+
+        do {
+            $hash = md5(uniqid(mt_rand(), true));
+            if(method_exists($image->getFile2(), "getClientOriginalName")) {
+                $path = $this->expandPath($hash . '.' . pathinfo((string)$image->getFile2()->getClientOriginalName(), PATHINFO_EXTENSION));
+            } elseif(method_exists($image->getFile2(), "guessExtension")){
+                $path = $this->expandPath($hash.'.'.$image->getFile2()->guessExtension());
+            }else{
+                $path =  $this->expandPath($hash.'.'.pathinfo((string)$image->getFile2(), PATHINFO_EXTENSION));
+            }
+
+        } while ($this->filesystem->has($path));
+
+        $image->setPath2($path);
+
+        $this->filesystem->write(
+            $image->getPath2(),
+            file_get_contents($image->getFile2()->getPathname())
+        );
+    }
+
     public function remove($path)
     {
         return $this->filesystem->delete($path);

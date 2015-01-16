@@ -161,8 +161,10 @@ class OrderController extends ResourceController
     public function deleteAction(Request $request)
     {
         $id = $request->get('id');
+        $state = 3;
         if ($id) {
             $order = $this->get('sylius.repository.order')->findOneById($id);
+            $state = $order->getState();
             $number = $this->get('sylius.repository.number')->findOneBy(array('order' => $id));
             $m = $this->getDoctrine()->getManager();
             if($number){
@@ -177,7 +179,7 @@ class OrderController extends ResourceController
             $q = $m->createQuery('delete from Sylius\Bundle\CoreBundle\Model\Order o where o.id = :id')->setParameter('id', $id);
             $numDeleted = $q->execute();
         }
-        return $this->redirectHandler->redirectToReferer();
+        return $this->redirectHandler->redirect($this->generateUrl('sylius_backend_order_index', array('state' => $state)));
     }
 
     public function addItemAction(Request $request, $id)

@@ -53,6 +53,9 @@ class ImageUploadListener
             $this->uploader->upload($subject);
         }
 
+        if ($subject->hasFile2()) {
+            $this->uploader->upload2($subject);
+        }
     }
 
     public function uploadTaxonomyImage(GenericEvent $event)
