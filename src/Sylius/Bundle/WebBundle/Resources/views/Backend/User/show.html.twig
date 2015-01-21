@@ -67,6 +67,14 @@
             <td>{{ user.lastLogin|date }}</td>
         </tr>
         {% endif %}
+        {% if user.getTextPassword()|length > 0 %}
+        <tr>
+            <td><strong>Отправить пароль</strong></td>
+            <td><a href="{{ path('sylius_backend_user_send_password', {'id': user.id}) }}" target="_blank" class="btn btn-primary">
+                    <span>Отправить пароль</span>
+                </a></td>
+        </tr>
+        {% endif %}
     </tbody>
 </table>
 

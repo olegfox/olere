@@ -54,6 +54,7 @@ class ProductRepository extends VariableProductRepository
 
         $queryBuilder
             ->innerJoin('product.variants', 'variant')
+            ->innerJoin('variant.images', 'image')
             ->innerJoin('product.taxons', 'taxon')
             ->innerJoin('product.taxons', 'taxon2')
             ->andWhere('variant.onHand > 0')
@@ -180,6 +181,7 @@ class ProductRepository extends VariableProductRepository
 
         $queryBuilder
             ->innerJoin('product.variants', 'variant')
+            ->innerJoin('variant.images', 'image')
             ->innerJoin('product.taxons', 'taxon')
             ->innerJoin('product.taxons', 'taxon2')
             ->andWhere('variant.onHand > 0')
@@ -297,6 +299,7 @@ class ProductRepository extends VariableProductRepository
                 ->innerJoin('product.taxons', 'taxon')
                 ->innerJoin('product.taxons', 'taxon2')
                 ->leftJoin('product.variants', 'variant')
+                ->innerJoin('variant.images', 'image')
                 ->andWhere('taxon = :taxon')
                 ->andWhere('variant.onHand > 0')
                 ->andWhere('product.action = 0 or product.action is NULL');

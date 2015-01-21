@@ -55,6 +55,7 @@ class UserController extends ResourceController
             $id = $request->get('id');
             $user = $this->get('fos_user.user_manager')->findUserBy(array('id' => $id)); // get a user from the datastore
             $user->setPlainPassword($request->get('sylius_user')['plainPassword']);
+            $user->setTextPassword($request->get('sylius_user')['plainPassword']);
             $this->get('fos_user.user_manager')->updatePassword($user);
             $this->get('fos_user.user_manager')->updateUser($user, false);
 
