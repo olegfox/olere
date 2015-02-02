@@ -46,6 +46,12 @@ sylius_scan_products:
     defaults:
         _controller: sylius.controller.product:scanProductsAction
 
+#Сканирование счетчиков пользователей и отправка отчетов
+sylius_scan_users:
+    pattern: /scan/users/
+    defaults:
+        _controller: sylius.controller.user:scanUsersAction
+
 sylius_by_ring_form:
     pattern: /by/ring/form/{sku}
     defaults:

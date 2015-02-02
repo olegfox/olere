@@ -104,6 +104,8 @@
         <field name="address" column="address" type="string" nullable="true" />
         <field type="integer" name="status" column="status" nullable="true" />
         <field type="boolean" name="action" column="action" nullable="true" />
+        <field type="integer" name="flagClickCart" column="flag_click_cart" nullable="true" />
+        <field type="datetime" name="dateTimeClickCart" column="date_time_click_cart" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>

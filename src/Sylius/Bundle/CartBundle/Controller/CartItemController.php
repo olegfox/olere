@@ -103,6 +103,15 @@ class CartItemController extends Controller
                 "total" => $total,
                 "quantity" => $event->getCart()->getQuantity()
             );
+
+            // Установка счетчика
+            $user = $this->getUser();
+            if($user->getFlagClickCart() < 3){
+                $user->setFlagClickCart($user->getFlagClickCart() + 1);
+                $user->setDateTimeClickCart(new \DateTime());
+                $em->flush();
+            }
+
             return new Response(json_encode($result));
         }else{
             return new Response('На складе нет такого количества.');

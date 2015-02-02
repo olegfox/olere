@@ -54,6 +54,8 @@ class User extends BaseUser implements UserInterface
     protected $comments;
     protected $dateSend;
     protected $textPassword;
+    protected $flagClickCart;
+    protected $dateTimeClickCart;
 
     public function __construct()
     {
@@ -725,6 +727,30 @@ class User extends BaseUser implements UserInterface
     public function getDateSend()
     {
         return $this->dateSend;
+    }
+
+    public function setFlagClickCart($flagClickCart)
+    {
+        $this->flagClickCart = $flagClickCart;
+
+        return $this;
+    }
+
+    public function getFlagClickCart()
+    {
+        return $this->flagClickCart;
+    }
+
+    public function setDateTimeClickCart($dateTimeClickCart)
+    {
+        $this->dateTimeClickCart = $dateTimeClickCart;
+
+        return $this;
+    }
+
+    public function getDateTimeClickCart()
+    {
+        return $this->dateTimeClickCart;
     }
 
 }

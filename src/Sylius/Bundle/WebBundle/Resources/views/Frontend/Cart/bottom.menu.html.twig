@@ -1,3 +1,4 @@
+{% if is_granted('ROLE_USER') %}
 <div class="wrap_trash">
     <div class="trash">
         {% set cart = sylius_cart_get() %}
@@ -10,3 +11,4 @@
         </a>
     </div>
 </div>
+{% endif %}

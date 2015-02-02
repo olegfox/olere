@@ -113,6 +113,12 @@ class CartController extends Controller
      */
     public function clearAction()
     {
+        // Обнуление счетчика
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user->setFlagClickCart(0);
+        $em->flush();
+
         $eventDispatcher = $this->getEventDispatcher();
 
         // Update models

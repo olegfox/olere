@@ -23,6 +23,22 @@ use Sylius\Bundle\VariableProductBundle\Doctrine\ORM\VariableProductRepository;
 class ProductRepository extends VariableProductRepository
 {
     /**
+     * Устанавливает в ноль количество у всех продуктов
+     */
+    public function clearBalance()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+
+        $q = $queryBuilder->update('Sylius\Bundle\CoreBundle\Model\Variant', 'v')
+            ->set('v.onHand', '?1')
+            ->setParameter(1, 0)
+            ->getQuery();
+        $q->execute();
+
+        return true;
+    }
+
+    /**
      * Create paginator for products categorized
      * under given taxon.
      *
@@ -317,12 +333,17 @@ class ProductRepository extends VariableProductRepository
             }
             if (isset($filter['material'])) {
                 if ($filter['material'] != 'any') {
-                    $queryBuilder
-                        ->andWhere('variant.metal LIKE :material');
+                    if($filter['material'] != '%серебро%'){
+                        $queryBuilder
+                            ->andWhere('variant.metal LIKE :material');
+                    }else{
+                        $queryBuilder
+                            ->andWhere('variant.metal LIKE :material');
+                    }
                 } else {
                     $params['notSilver'] = '%серебро%';
                     $queryBuilder
-                        ->andWhere('variant.id NOT IN (SELECT v.id FROM Sylius\Bundle\CoreBundle\Model\Variant v WHERE v.metal LIKE :notSilver)');
+                        ->andWhere('variant.id NOT IN (SELECT v.id FROM Sylius\Bundle\CoreBundle\Model\Variant v JOIN v.product prod JOIN prod.properties prop WHERE v.metal LIKE :notSilver)');
                 }
             }
             if (isset($filter['weight'])) {

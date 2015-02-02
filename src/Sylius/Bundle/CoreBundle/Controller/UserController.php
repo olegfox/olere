@@ -33,9 +33,46 @@ class UserController extends ResourceController
         $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject();
         $sheet = $objPHPExcel->setActiveSheetIndex(0);
 
+        // Заголовки
+        $sheet->setCellValue('A1', 'Имя');
+        $sheet->setCellValue('B1', 'ИНН');
+        $sheet->setCellValue('C1', 'Название компании');
+        $sheet->setCellValue('D1', 'Телефон');
+        $sheet->setCellValue('E1', 'Город');
+        $sheet->setCellValue('F1', 'Организационная форма');
+        $sheet->setCellValue('G1', 'Профиль деятельности компании');
+        $sheet->setCellValue('H1', 'Кол-во торговых точек');
+        $sheet->setCellValue('I1', 'Организация');
+        $sheet->setCellValue('J1', 'КПП');
+        $sheet->setCellValue('K1', 'Расчетный счет');
+        $sheet->setCellValue('L1', 'Банк');
+        $sheet->setCellValue('M1', 'Корр. счет');
+        $sheet->setCellValue('N1', 'БИК');
+        $sheet->setCellValue('O1', 'Адрес');
+        $sheet->setCellValue('P1', 'Статус');
+        $sheet->setCellValue('Q1', 'Email');
+
+        $row = 1;
+
         foreach($users as $key => $user){
-            $n = $key+1;
-            $sheet->setCellValue('A'.$n, $user->getEmail());
+            $row++;
+            $sheet->setCellValue('A'.$row, $user->getFirstName());
+            $sheet->setCellValue('B'.$row, $user->getInn());
+            $sheet->setCellValue('C'.$row, $user->getNameCompany());
+            $sheet->setCellValue('D'.$row, $user->getPhone());
+            $sheet->setCellValue('E'.$row, $user->getCity());
+            $sheet->setCellValue('F'.$row, $user->getFormCompany());
+            $sheet->setCellValue('G'.$row, $user->getProfileCompany());
+            $sheet->setCellValue('H'.$row, $user->getCountPoint());
+            $sheet->setCellValue('I'.$row, $user->getOrganization());
+            $sheet->setCellValue('J'.$row, $user->getKpp());
+            $sheet->setCellValue('K'.$row, $user->getCurrentAccount());
+            $sheet->setCellValue('L'.$row, $user->getBank());
+            $sheet->setCellValue('M'.$row, $user->getCorrespondentAccount());
+            $sheet->setCellValue('N'.$row, $user->getBik());
+            $sheet->setCellValue('O'.$row, $user->getAddress());
+            $sheet->setCellValue('P'.$row, $user->getStatus());
+            $sheet->setCellValue('Q'.$row, $user->getEmail());
         }
 
         $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
@@ -84,6 +121,30 @@ class UserController extends ResourceController
             }
         }
         return $this->redirectHandler->redirectToReferer();
+    }
+
+    public function scanUsersAction(){
+        $em = $this->getDoctrine()->getManager();
+        $users = $this->get('sylius.repository.user')->findAll();
+
+        foreach($users as $user){
+            if($user->getFlagClickCart() >= 3 && (time() - $user->getDateTimeClickCart()->getTimestamp()) > 60*60){
+                $user->setFlagClickCart(0);
+
+                $mailer = $this->get('mailer');
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Olere')
+                    ->setFrom(array('order@olere.ru' => "Olere (Пользователь не оформивший заказ)"))
+//                    ->setTo(array('order@olere.ru', 'olegmitin25011986@gmail.com', 'chai@olere.ru', 'knn@olere.ru'))
+                    ->setTo(array('1991oleg22@gmail.com'))
+                    ->setBody($this->renderView('SyliusWebBundle:Email:user.not.order.html.twig', array('user' => $user)), 'text/html');
+                $mailer->send($message);
+
+                $em->flush();
+            }
+        }
+
+        return new Response('', Response::HTTP_OK);
     }
 
 }

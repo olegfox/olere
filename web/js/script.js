@@ -8,6 +8,7 @@ function addCart() {
                     $(".wrap_trash .trash span span").html("");
                     $(".wrap_trash .trash span span").eq(0).html(data['quantity']);
                     $(".wrap_trash .trash span span").eq(1).html(data['total']);
+                    yaCounter25824779.reachGoal('ADD_CART');
                 }
                 catch (e) {
 //                    $(".wrap_trash").hide();

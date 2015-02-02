@@ -165,6 +165,12 @@ class OrderController extends Controller
         $sc = new SessionCartStorage($session);
         $sc->resetCurrentCartIdentifier();
 
+        // Обнуление счетчика
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user->setFlagClickCart(0);
+        $em->flush();
+
         return $this->render(
             'SyliusWebBundle:Frontend/Account:Order/complete.html.twig', array(
                 'order' => $order

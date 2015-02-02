@@ -47,11 +47,12 @@ security:
                     amazon:   "/login/check-amazon"
                     facebook: "/login/check-facebook"
                     google:   "/login/check-google"
-                login_path:   /connect
-                failure_path: /connect
+                login_path:   /login
+                failure_path: /login
                 oauth_user_provider:
                     service: sylius.oauth.user_provider
-            logout: true
+            logout:
+                invalidate_session: false
             anonymous: true
 
         dev:
@@ -70,5 +71,6 @@ security:
         - { path: "/administration.*", role: [ROLE_SYLIUS_ADMIN, ROLE_MANAGER, ROLE_MANAGER2, ROLE_MANAGER3] }
 
         - { path: "/account.*", role: ROLE_USER }
+        - { path: "/cart.*", role: ROLE_USER }
 
         - { path: "/_partial.*", ip: 127.0.0.1 }

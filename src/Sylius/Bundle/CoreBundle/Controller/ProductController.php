@@ -67,8 +67,11 @@ class ProductController extends ResourceController
         $collections = $em->createQuery(
             'SELECT t FROM
              Sylius\Bundle\CoreBundle\Model\Taxon t
+             JOIN t.products p
+             JOIN p.variants v
              WHERE t.taxonomy = 8
              AND t.parent IS NOT NULL
+             AND v.onHand > 0
              ORDER BY t.position ASC
             '
         )->getResult();
@@ -89,6 +92,8 @@ class ProductController extends ResourceController
         $collections = $em->createQuery(
             'SELECT t FROM
              Sylius\Bundle\CoreBundle\Model\Taxon t
+             JOIN t.products p
+             JOIN p.variants v
              WHERE t.taxonomy = 9
              AND t.parent IS NOT NULL
              AND t.parent IN
@@ -97,15 +102,16 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon taxon
              WHERE taxon.parent IS NULL
              )
-             AND t.id NOT IN
+             AND 0 <
              (
-             SELECT tt.id FROM
-             Sylius\Bundle\CoreBundle\Model\Taxon tt
-             JOIN tt.products pp
+             SELECT COUNT(pp.id) FROM
+             Sylius\Bundle\CoreBundle\Model\Product pp
+             JOIN pp.taxons tt
              JOIN pp.variants vv
-             WHERE tt.taxonomy = 9
-             AND vv.metal LIKE :silver
+             WHERE tt.id = t.id
+             AND vv.metal NOT LIKE :silver
              )
+             AND v.onHand > 0
              ORDER BY t.position ASC
             '
         )->setParameter('silver', "%серебро%")->getResult();
@@ -122,8 +128,8 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              JOIN t.products p
              JOIN p.variants v
-             WHERE (t.taxonomy = 9 or t.taxonomy = 8)
-             AND v.metal LIKE :silver
+             WHERE v.metal LIKE :silver
+             AND v.onHand > 0
              ORDER BY t.taxonomy DESC, t.position ASC
             '
         )->setParameter('silver', "%серебро%")->getResult();
@@ -196,16 +202,20 @@ class ProductController extends ResourceController
             $form->bind($request);
             $xls = $form['file']->getData();
             if ($xls != "") {
-//                $newFileName = uniqid() . '.' . 'xlsx';
                 $newFileName = $xls->getClientOriginalName();
                 $newFileName = iconv("utf-8", "cp1251", $newFileName);
                 $xls->move('import/xls/', $newFileName);
                 $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject('import/xls/' . $newFileName);
                 $objWorksheet = $objPHPExcel->getActiveSheet();
                 $highestRow = $objWorksheet->getHighestRow();
-//            foreach ($objWorksheet->getDrawingCollection() as $drawing) {
-//                    print "imageContents = ".$drawing->getPath()."<br/>";
-//            }
+
+                /**
+                 * Если таблица не пустая, то обнуляем остатки
+                 */
+                if($highestRow > 0){
+                    $repository->clearBalance();
+                }
+
                 $data = array();
                 $i = 0;
                 $imagesJson = $request->get('gallery');
@@ -718,23 +728,27 @@ class ProductController extends ResourceController
                      JOIN p.variants v
                      WHERE t.taxonomy = 9
                      AND v.metal LIKE :silver
+                     AND v.onHand > 0
                     '
                 )->setParameter('silver', "%серебро%")->getResult();
             } else {
                 $taxons = $em->createQuery(
                     'SELECT t FROM
                      Sylius\Bundle\CoreBundle\Model\Taxon t
+                     JOIN t.products p
+                     JOIN p.variants v
                      WHERE t.taxonomy = 9
                      AND t.parent IS NOT NULL
-                     AND t.id NOT IN
+                     AND 0 <
                      (
-                     SELECT tt.id FROM
-                     Sylius\Bundle\CoreBundle\Model\Taxon tt
-                     JOIN tt.products pp
+                     SELECT COUNT(pp.id) FROM
+                     Sylius\Bundle\CoreBundle\Model\Product pp
                      JOIN pp.variants vv
-                     WHERE tt.taxonomy = 9
-                     AND vv.metal LIKE :silver
+                     JOIN pp.taxons tt
+                     WHERE tt.id = t.id
+                     AND vv.metal NOT LIKE :silver
                      )
+                     AND v.onHand > 0
                      ORDER BY t.position ASC
                     '
                 )->setParameter('silver', "%серебро%")->getResult();
@@ -1478,14 +1492,15 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.taxonomy = 9
              AND t.parent IS NOT NULL
-             AND t.id NOT IN
+             AND 0 <
              (
-             SELECT tt.id FROM
-             Sylius\Bundle\CoreBundle\Model\Taxon tt
-             JOIN tt.products pp
-             JOIN pp.variants vv
-             WHERE tt.taxonomy = 9
-             AND vv.metal LIKE :silver
+             SELECT COUNT(p.id) FROM
+             Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.variants vv
+             JOIN p.taxons tt
+             WHERE tt.id = t.id
+             AND vv.metal NOT LIKE :silver
+             AND vv.onHand > 0
              )
             '
         )->setParameter('silver', "%серебро%")->getResult();
@@ -1503,6 +1518,13 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              WHERE t.taxonomy = 8
              AND t.parent IS NOT NULL
+             AND 0 <
+             (
+             SELECT COUNT(p.id) FROM
+             Sylius\Bundle\CoreBundle\Model\Product p
+             JOIN p.taxons tt
+             WHERE tt.id = t.id
+             )
             '
         )->getResult();
         return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
