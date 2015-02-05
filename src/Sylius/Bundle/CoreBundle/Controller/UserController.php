@@ -135,8 +135,8 @@ class UserController extends ResourceController
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Olere')
                     ->setFrom(array('order@olere.ru' => "Olere (Пользователь не оформивший заказ)"))
-//                    ->setTo(array('order@olere.ru', 'olegmitin25011986@gmail.com', 'chai@olere.ru', 'knn@olere.ru'))
-                    ->setTo(array('1991oleg22@gmail.com'))
+                    ->setTo(array('moa@olere.ru', 'info@migura.ru', 'knn@olere.ru'))
+//                    ->setTo(array('1991oleg22@gmail.com'))
                     ->setBody($this->renderView('SyliusWebBundle:Email:user.not.order.html.twig', array('user' => $user)), 'text/html');
                 $mailer->send($message);
 

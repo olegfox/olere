@@ -119,10 +119,11 @@ class OrderRepository extends CartRepository
             $queryBuilder
                 ->andWhere('o.number = :number')
                 ->setParameter('number', $criteria['number']);
+        }else{
+            $queryBuilder
+                ->andWhere('o.state = :state')
+                ->setParameter('state', $state);
         }
-        $queryBuilder
-            ->andWhere('o.state = :state')
-            ->setParameter('state', $state);
         if (!empty($criteria['totalFrom'])) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->gte('o.total', ':totalFrom'))

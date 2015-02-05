@@ -23,16 +23,7 @@
         'bundles/syliusweb/css/frontend.css'
         'bundles/syliusweb/css/blueimp-gallery.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('css/flexslider-custom.css') }}" type="text/css"/>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('css/simplemodal.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('js/fancybox/source/jquery.fancybox.css') }}" type="text/css"
-              media="screen"/>
-        <link rel="stylesheet" href="{{ asset('js/fancybox/source/helpers/jquery.fancybox-buttons.css') }}"
-              type="text/css" media="screen"/>
-        <link rel="stylesheet" href="{{ asset('js/ion.rangeSlider/css/ion.rangeSlider.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('js/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css') }}" type="text/css"/>
         {% endstylesheets %}
         {% set cart = sylius_cart_get() %}
         {% if cart.total > 0 and app.request.attributes.get('_route') != 'sylius_cart_summary' and app.request.attributes.get('_route') != 'sylius_checkout_display' %}
@@ -214,18 +205,8 @@
     {#{% endif %}#}
     <script src="{{ asset('js/jquery.placeholder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/list.product.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/flexslider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/button.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('js/fancybox/source/jquery.fancybox.pack.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('js/fancybox/source/helpers/jquery.fancybox-buttons.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('js/fancybox/source/helpers/jquery.fancybox-media.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/ion.rangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.simplemodal.1.4.4.min.js') }}"></script>
     {% javascripts output='assets/compiled/frontend.js'
     'bundles/syliusweb/js/jquery.blueimp-gallery.min.js'
     'bundles/syliusweb/js/confirm-modal.js'

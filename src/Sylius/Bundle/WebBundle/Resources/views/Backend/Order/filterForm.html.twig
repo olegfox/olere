@@ -1,6 +1,6 @@
 {% form_theme form 'SyliusWebBundle:Backend:filterForms.html.twig' %}
 
-<form method="get" action="{{ path('sylius_backend_order_index', {state : 1}) }}" class="form-inline form-filter">
+<form method="get" action="{{ path('sylius_backend_order_index', {state : app.request.get('state') ? app.request.get('state') : 3 }) }}" class="form-inline form-filter">
 {{ form_row(form.number) }}
 {#{{ form_row(form.createdAtFrom, {'attr': {'class': 'datepicker'}}) }}#}
 {#{{ form_row(form.createdAtTo, {'attr': {'class': 'datepicker'}}) }}#}

@@ -199,7 +199,7 @@ class ProductController extends ResourceController
         $manager = $this->container->get('sylius.manager.product');
         $em = $this->getDoctrine()->getManager();
         if ($request->isMethod('POST')) {
-            $form->bind($request);
+            $form->handleRequest($request);
             $xls = $form['file']->getData();
             if ($xls != "") {
                 $newFileName = $xls->getClientOriginalName();
@@ -212,43 +212,50 @@ class ProductController extends ResourceController
                 /**
                  * Если таблица не пустая, то обнуляем остатки
                  */
-                if($highestRow > 0){
+                if ($highestRow > 0) {
                     $repository->clearBalance();
                 }
 
                 $data = array();
                 $i = 0;
-                $imagesJson = $request->get('gallery');
-                $adapter = new LocalAdapter($this->get('kernel')->getRootDir() . '/../web/media/image');
-                $filesystem = new Filesystem($adapter);
-                $imageUploader = new ImageUploader($filesystem);
+
+                /*
+                 * Цикл по всем строкам таблицы
+                 */
                 for ($row = 2; $row <= $highestRow; $row++) {
-                    $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue();
-                    $name = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue();
-                    $gb = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue();
-                    $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue();
-                    $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue();
-                    $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue();
+
+                    $articul = $objPHPExcel->getActiveSheet()->getCell('A' . $row)->getValue(); //Артикул
+                    $name = $objPHPExcel->getActiveSheet()->getCell('B' . $row)->getValue(); // Наименование изделия
+                    $gb = $objPHPExcel->getActiveSheet()->getCell('C' . $row)->getValue(); // Габариты изделия
+                    $color = $objPHPExcel->getActiveSheet()->getCell('D' . $row)->getValue(); // Цвет
+                    $sost = $objPHPExcel->getActiveSheet()->getCell('E' . $row)->getValue(); // Состав
+                    $description = $objPHPExcel->getActiveSheet()->getCell('F' . $row)->getValue(); // Описание
                     if ($description == NULL) {
                         $description = "";
                     }
-                    $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue();
-                    $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue();
-                    $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue();
-                    $onHand = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue();
-                    $priceSale = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue();
-                    $metal = $objPHPExcel->getActiveSheet()->getCell('L' . $row)->getValue();
-                    $box = $objPHPExcel->getActiveSheet()->getCell('M' . $row)->getValue();
-                    $size = $objPHPExcel->getActiveSheet()->getCell('N' . $row)->getValue();
-                    $weight = $objPHPExcel->getActiveSheet()->getCell('O' . $row)->getValue();
-                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('P' . $row)->getValue();
+                    $collection = $objPHPExcel->getActiveSheet()->getCell('G' . $row)->getValue(); // Коллекция
+                    $catalog = $objPHPExcel->getActiveSheet()->getCell('H' . $row)->getValue(); // Каталог
+                    $codeArticul = $objPHPExcel->getActiveSheet()->getCell('I' . $row)->getValue(); // Код артикула
+                    $onHand = $objPHPExcel->getActiveSheet()->getCell('J' . $row)->getValue(); // Глубина
+                    $priceSale = $objPHPExcel->getActiveSheet()->getCell('K' . $row)->getValue(); // Цена со скидкой
+                    $metal = $objPHPExcel->getActiveSheet()->getCell('L' . $row)->getValue(); // Металл
+                    $box = $objPHPExcel->getActiveSheet()->getCell('M' . $row)->getValue(); // Вставка
+                    $size = $objPHPExcel->getActiveSheet()->getCell('N' . $row)->getValue(); // Размерность
+                    $weight = $objPHPExcel->getActiveSheet()->getCell('O' . $row)->getValue(); // Вес
+                    $priceOpt = $objPHPExcel->getActiveSheet()->getCell('P' . $row)->getValue(); // Цена для опта
 //                    $price = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
-                    $flagSale = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue();
-                    $action = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue();
-                    $new = $objPHPExcel->getActiveSheet()->getCell('S' . $row)->getValue();
-                    $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue();
-                    $hit = $objPHPExcel->getActiveSheet()->getCell('U' . $row)->getValue();
-                    $product = $em->createQuery(
+                    $flagSale = $objPHPExcel->getActiveSheet()->getCell('Q' . $row)->getValue(); // Флажок скидки
+                    $action = $objPHPExcel->getActiveSheet()->getCell('R' . $row)->getValue(); // Флажок акции
+                    $new = $objPHPExcel->getActiveSheet()->getCell('S' . $row)->getValue(); // Флажок новинки
+                    $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue(); // Склад
+                    $hit = $objPHPExcel->getActiveSheet()->getCell('U' . $row)->getValue(); // Хит
+
+                    $product = null;
+
+                    /*
+                     * Проверяем есть ли товар с таким артикулом
+                     */
+                    $products = $em->createQuery(
                         'SELECT p FROM
                          Sylius\Bundle\CoreBundle\Model\Product p
                          WHERE p IN (
@@ -258,178 +265,191 @@ class ProductController extends ResourceController
                          )
                         '
                     )->setParameter('sku', $articul)->getResult();
-                    $flag = 1;
-                    $new = 1;
-                    if (count($product) <= 0) {
-                        $flag = 1;
-                    }
-                    if (count($product) > 0) {
-                        $new = 0;
-                        if ($product[0]->isRing()) {
-//                        if ($product[0]->getName() == 'Кольца') {
-                            $f = 0;
-                            foreach ($product as $p) {
+
+                    /*
+                     * Если товар найден с таким артикулом
+                     */
+                    if (count($products) > 0) {
+
+                        /*
+                         * Если товар имеет кольцо
+                         */
+                        if ($products[0]->isRing()) {
+
+                            foreach ($products as $p) {
+
+                                /*
+                                 * Если такой размер есть
+                                 */
                                 if ($p->getMasterVariant()->getSize() == $size) {
-                                    $f = 1;
+                                    $product = $p;
                                     break;
                                 }
+
                             }
-                            if ($f == 0) {
-                                $flag = 1;
+
+                        }else{
+                            $product = $products[0];
+                        }
+
+                    }
+
+                    /*
+                     * Массив для вывода отчета
+                     */
+                    $data[$i] = array(
+                        "articul" => $articul,
+                        "name" => $name,
+                        "sost" => $sost,
+                        "color" => $color,
+                        "gb" => $gb,
+                        "onHand" => $onHand,
+                        "description" => $description,
+                        "collection" => $collection,
+                        "codeArticul" => $codeArticul,
+                        "priceOpt" => $priceOpt,
+                        "catalog" => $catalog,
+                        "image" => ""
+                    );
+
+                    /*
+                     * Если у продукта задано имя
+                     */
+                    if ($name != "") {
+
+                        $fl_new = 0; // Флаг, если создаем новый продукт, то 0, если нет то 1
+
+                        /*
+                         * Находим коллекцию и каталог по названию
+                         */
+                        $cat = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $catalog));
+                        $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
+
+                        /*
+                         * Добавляем их в единый массив
+                         */
+                        $taxs = new ArrayCollection();
+
+                        if ($col || $cat) {
+                            if ($cat) {
+                                $taxs[] = $cat;
+                            }
+                            if ($col) {
+                                $taxs[] = $col;
                             }
                         }
-                    }
-                    if ($flag == 1) {
-                        $data[$i] = array(
-                            "articul" => $articul,
-                            "name" => $name,
-                            "sost" => $sost,
-                            "color" => $color,
-                            "gb" => $gb,
-                            "onHand" => $onHand,
-                            "description" => $description,
-                            "collection" => $collection,
-                            "codeArticul" => $codeArticul,
-                            "priceOpt" => $priceOpt,
-                            "catalog" => $catalog,
-                            "image" => ""
-                        );
-                        if ($name != "") {
-//                        if ($imagesJson != "") {
-//                            $images = json_decode($imagesJson);
-//                            foreach ($images as $image) {
-//                                $path_parts = explode(".", $image);
-//                                if (@stristr($path_parts[0], $articul) === false) {
-//
-//                                } else {
-//                                    $data[$i]["image"][] = $image;
-//                                }
-//                            }
-//                        }
-                            $nameCat = $name;
-                            if (strlen($name) > 10) {
-                                $nameCat = mb_substr($name, 0, 10);
-                            }
-//                        print 'Сокращённое название каталога: '.$nameCat;
-                            $cat = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $catalog));
-//                    Находим в базе коллекцию по названию из таблицы
-                            $col = $this->get('sylius.repository.taxon')->findOneBy(array("name" => $collection));
-                            $taxs = new ArrayCollection();
-                            if ($col || $cat) {
-                                if ($cat) {
-                                    $taxs[] = $cat;
-                                }
-                                if ($col) {
-                                    $taxs[] = $col;
-                                }
-                            }
-                            if (count($product) <= 0) {
-                                $product = $repository->createNew();
-                            } else {
-                                $product = $product[0];
-                            }
+
+                        /*
+                         * Если продукт не найден, то создаём новый
+                         */
+                        if (count($product) <= 0) {
+                            $product = $repository->createNew();
+                        }else{
+
+                            $fl_new = 1;
+
+                            /*
+                             * Если найден, то удаляем у него свойства и приязку к коллекции или каталогу
+                             */
 
                             foreach ($product->getProperties() as $pr) {
                                 $em->remove($pr);
-//                                $product->removeProperty($pr);
                                 $em->flush();
                             }
 
-                            $product->setCatalog($catalog);
-                            $product->setCollection($collection);
-                            $product->setName($name);
-                            $product->setDescription($description);
-                            $product->setPriceOpt($priceOpt * 100);
-                            $product->setPriceSale($priceSale * 100);
-                            if (count($taxs) > 0) {
-                                $product->setTaxons($taxs);
-                            }
-                            $product->getMasterVariant()->setSku($articul);
-                            $product->getMasterVariant()->setSkuCode($codeArticul);
-                            $product->getMasterVariant()->setOnHand($onHand);
-                            $product->getMasterVariant()->setMetal($metal);
-                            $product->getMasterVariant()->setBox($box);
-                            $product->getMasterVariant()->setSize($size);
-                            $product->getMasterVariant()->setWeight($weight);
-                            $product->getMasterVariant()->setFlagSale($flagSale);
-                            $product->setAction($action);
-                            $product->setNew($new);
-                            $product->setWarehouse($warehouse);
-                            $product->setHit($hit);
-
-
-                            /* Add product property */
-                            $propertyRepository = $this->container->get('sylius.repository.property');
-                            $productPropertyRepository = $this->container->get('sylius.repository.product_property');
-
-                            /* Color property */
-                            $color_property = $propertyRepository->findOneBy(array('id' => 10));
-                            $productProperty = $productPropertyRepository->createNew();
-
-                            $productProperty
-                                ->setProperty($color_property)
-                                ->setValue($color);
-
-                            $product->addProperty($productProperty);
-
-                            /* end Color property */
-
-                            /* Gb property */
-                            $gb_property = $propertyRepository->findOneBy(array('id' => 11));
-                            $productProperty = $productPropertyRepository->createNew();
-
-                            $productProperty
-                                ->setProperty($gb_property)
-                                ->setValue($gb);
-
-                            $product->addProperty($productProperty);
-
-                            /* end Gb property */
-
-                            /* Sost property */
-                            $sost_property = $propertyRepository->findOneBy(array('id' => 12));
-                            $productProperty = $productPropertyRepository->createNew();
-
-                            $productProperty
-                                ->setProperty($sost_property)
-                                ->setValue($sost);
-
-                            $product->addProperty($productProperty);
-
-                            /* end Gb property */
-
-                            /* end Add product property */
-
-
-//                        if (isset($data[$i]["image"][0])) {
-//                            if ($data[$i]["image"][0] != "") {
-//                                foreach ($data[$i]["image"] as $im) {
-//                                    $variantImage = new VariantImage();
-//                                    $fileinfo = new \SplFileInfo(getcwd() . '/import/files/' . $im);
-//                                    $variantImage->setFile($fileinfo);
-//                                    $imageUploader->upload($variantImage);
-//                                    $product->getMasterVariant()->addImage($variantImage);
-//                                }
-//                            }
-//                        }
-//                            $product->getMasterVariant()->setOnHand(1);
-                            if ($new) {
-                                $manager->persist($product);
+                            foreach ($product->getTaxons() as $t) {
+                                $em->remove($t);
+                                $em->flush();
                             }
 
-                            $manager->flush();
-                            $product->setPosition($product->getId());
-                            $product->setPosition2($product->getId());
-                            $i++;
                         }
-                    } else {
-//echo 'stroka = '.$row.' id = '.$product[0]->getId().'\n';
-                        continue;
+
+                        $product->setCatalog($catalog);
+                        $product->setCollection($collection);
+                        $product->setName($name);
+                        $product->setDescription($description);
+                        $product->setPriceOpt($priceOpt * 100);
+                        $product->setPriceSale($priceSale * 100);
+
+                        if (count($taxs) > 0) {
+                            $product->setTaxons($taxs);
+                        }
+
+                        $product->getMasterVariant()->setSku($articul);
+                        $product->getMasterVariant()->setSkuCode($codeArticul);
+                        $product->getMasterVariant()->setOnHand($onHand);
+                        $product->getMasterVariant()->setMetal($metal);
+                        $product->getMasterVariant()->setBox($box);
+                        $product->getMasterVariant()->setSize($size);
+                        $product->getMasterVariant()->setWeight($weight);
+                        $product->getMasterVariant()->setFlagSale($flagSale);
+                        $product->setAction($action);
+                        $product->setNew($new);
+                        $product->setWarehouse($warehouse);
+                        $product->setHit($hit);
+
+
+                        /* Add product property */
+                        $propertyRepository = $this->container->get('sylius.repository.property');
+                        $productPropertyRepository = $this->container->get('sylius.repository.product_property');
+
+                        /* Color property */
+                        $color_property = $propertyRepository->findOneBy(array('id' => 10));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($color_property)
+                            ->setValue($color);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Color property */
+
+                        /* Gb property */
+                        $gb_property = $propertyRepository->findOneBy(array('id' => 11));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($gb_property)
+                            ->setValue($gb);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Gb property */
+
+                        /* Sost property */
+                        $sost_property = $propertyRepository->findOneBy(array('id' => 12));
+                        $productProperty = $productPropertyRepository->createNew();
+
+                        $productProperty
+                            ->setProperty($sost_property)
+                            ->setValue($sost);
+
+                        $product->addProperty($productProperty);
+
+                        /* end Gb property */
+
+                        /* end Add product property */
+
+                        /*
+                         * Если создавали новый продукт, то добавляем его в базу данных
+                         */
+                        if ($fl_new == 0) {
+                            $manager->persist($product);
+                        }
+
+                        $manager->flush();
+
+                        $product->setPosition($product->getId());
+                        $product->setPosition2($product->getId());
+
+                        $i++;
                     }
 
                 }
+
                 $manager->flush();
-//                $this->importScanAction($request);
+
                 return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
                     'form' => $form->createView(),
                     'data' => $data
@@ -751,7 +771,7 @@ class ProductController extends ResourceController
                      AND v.onHand > 0
                      ORDER BY t.position ASC
                     '
-                )->setParameter('silver', "%серебро%")->getResult();
+                )->setParameter('silver', "%серебро%")->getArrayResult();
             }
         }
 

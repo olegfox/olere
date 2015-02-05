@@ -80,7 +80,6 @@ $(function () {
 //    if (window.location.href.indexOf('catalog') + 1) {
 //        $("a[href='/catalog']").parent().addClass("current");
 //    }
-    $(".fancybox").fancybox();
     $(window).load(function () {
         footerBottom();
     });
@@ -89,29 +88,6 @@ $(function () {
     });
 
     $('input, textarea').placeholder();
-
-    if ($('.head.filter').length > 0) {
-        $(".head.filter #price").ionRangeSlider({
-            min: 1,
-            max: 2000,
-            type: "double",
-            onFinish: function (data) {
-                $(".head.filter #price_from").val(data.from);
-                $(".head.filter #price_to").val(data.to);
-            }
-        });
-
-
-        $(window).scroll(function () {
-//            if ($(window).scrollTop() > 125) {
-//                $('.borderHead.filter').addClass('fixed');
-//                $('.wrap_filter').addClass('fixed');
-//            } else {
-//                $('.borderHead.filter').removeClass('fixed');
-//                $('.wrap_filter').removeClass('fixed');
-//            }
-        });
-    }
 
 });
 
