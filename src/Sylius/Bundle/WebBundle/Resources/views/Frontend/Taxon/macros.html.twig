@@ -6,6 +6,10 @@
 
     {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}<div class="boxes boxesCat">{% for t in collections %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBoxSilver.html.twig' %}{% endfor %}</div>{% endmacro %}
 
+{% macro gridAccesories(collections) %}
+
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}<div class="boxes boxesCat">{% for t in collections %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBoxAccesories.html.twig' %}{% endfor %}</div>{% endmacro %}
+
 {% macro gridSub(collections, size = 4) %}
 
     {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}<div class="boxes boxesCat">{% for t in collections %}{% include 'SyliusWebBundle:Frontend/Taxon:_singleBoxSub.html.twig' %}{% endfor %}</div>{% endmacro %}

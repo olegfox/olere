@@ -1,0 +1,24 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block border %}
+    <div class="borderHead"></div>
+{% endblock %}
+
+{% block content %}
+    <!-- Catalog -->
+    <div class="catalog">
+        <div class="head">
+            Аксессуары
+        </div>
+        {{ render(url('sylius_accesories_main')) }}
+    </div>
+
+    {% if page.enable is defined %}
+        {% if page.enable == 0 %}
+            <div class="content">
+                {{ render(url('sylius_page_show_content', {'id' : 'accesoriesBlock'})) }}
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

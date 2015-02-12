@@ -3,6 +3,8 @@
         {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
             {% set category = 'catalog' %}
             {#тип украшения:#}
+        {% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}
+            {% set category = 'accesories' %}
         {% else %}
             {% set category = 'collections' %}
             {#коллекция:#}
@@ -19,13 +21,13 @@
     </div>
     {% endif %}
     {% endif %}
-    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}hide{% endif %}">
+    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
         <select name="" id="catalog" onchange="filter('{{ category }}');">
             <option value="any">все типы</option>
             {{ render(url('sylius_get_catalog_list', {filter: filter.catalog})) }}
         </select>
     </div>
-    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}hide{% endif %}">
+    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
         <select name="" id="collection" onchange="filter('{{ category }}');">
             <option value="any">все коллекции</option>
             {{ render(url('sylius_get_collection_list', {filter: filter.collection})) }}
@@ -111,7 +113,7 @@
         </select>
     </div>
     <div class="box">
-        <select name="" id="box" onchange="filter('{{ category }}');" {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}class="hide"{% endif %}>
+        <select name="" id="box" onchange="filter('{{ category }}');" {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}class="hide"{% endif %}>
             <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>выбрать вставку</option>
             <option value="%камень%" {% if filter.box == "%камень%" %}selected="selected"{% endif %}>камень</option>
             <option value="%бриллиант%" {% if filter.box == "%бриллиант%" %}selected="selected"{% endif %}>бриллиант</option>

@@ -71,6 +71,7 @@ class ProductController extends ResourceController
              JOIN p.variants v
              WHERE t.taxonomy = 8
              AND t.parent IS NOT NULL
+             AND p.accesories <> 1
              AND v.onHand > 0
              ORDER BY t.position ASC
             '
@@ -110,6 +111,7 @@ class ProductController extends ResourceController
              JOIN pp.variants vv
              WHERE tt.id = t.id
              AND vv.metal NOT LIKE :silver
+             AND pp.accesories <> 1
              )
              AND v.onHand > 0
              ORDER BY t.position ASC
@@ -135,6 +137,25 @@ class ProductController extends ResourceController
         )->setParameter('silver', "%серебро%")->getResult();
 
         return $this->render('SyliusWebBundle:Frontend/Taxon:silver.html.twig', array(
+            'collections' => $collections
+        ));
+    }
+
+    public function accesoriesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->createQuery(
+            'SELECT t FROM
+             Sylius\Bundle\CoreBundle\Model\Taxon t
+             JOIN t.products p
+             JOIN p.variants v
+             WHERE p.accesories = 1
+             AND v.onHand > 0
+             ORDER BY t.taxonomy DESC, t.position ASC
+            '
+        )->getResult();
+
+        return $this->render('SyliusWebBundle:Frontend/Taxon:accesories.html.twig', array(
             'collections' => $collections
         ));
     }
@@ -249,6 +270,7 @@ class ProductController extends ResourceController
                     $new = $objPHPExcel->getActiveSheet()->getCell('S' . $row)->getValue(); // Флажок новинки
                     $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue(); // Склад
                     $hit = $objPHPExcel->getActiveSheet()->getCell('U' . $row)->getValue(); // Хит
+                    $accesories = $objPHPExcel->getActiveSheet()->getCell('V' . $row)->getValue(); // Флажок аксессуара
 
                     $product = null;
 
@@ -390,6 +412,7 @@ class ProductController extends ResourceController
                         $product->setNew($new);
                         $product->setWarehouse($warehouse);
                         $product->setHit($hit);
+                        $product->setAccesories($accesories);
 
 
                         /* Add product property */
@@ -746,6 +769,15 @@ class ProductController extends ResourceController
                  WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
                 '
             )->setParameter('taxonomy', 8)->getResult();
+        } elseif($routeName == 'sylius_product_index_by_taxon_accesories'){
+            $taxons = $em->createQuery(
+                'SELECT t FROM
+                 Sylius\Bundle\CoreBundle\Model\Taxon t
+                 JOIN t.products p
+                 JOIN p.variants v
+                 WHERE p.accesories = 1 AND v.onHand > 0 AND t.parent IS NOT NULL
+                '
+            )->getResult();
         } else {
             if ($filter['material'] == '%серебро%') {
                 $taxons = $em->createQuery(

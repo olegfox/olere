@@ -192,6 +192,15 @@ class HomepageController extends Controller
         ));
     }
 
+    public function accesoriesAction(Request $request){
+        $repositoryPage = $this->get('sylius.repository.page');
+
+        $page = $repositoryPage->findPage('accesoriesBlock');
+        return $this->render('SyliusWebBundle:Frontend/Homepage:accesories.html.twig', array(
+            'page' => $page
+        ));
+    }
+
     /**
      * Store front page.
      *

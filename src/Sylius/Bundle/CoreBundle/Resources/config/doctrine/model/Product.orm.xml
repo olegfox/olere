@@ -50,6 +50,12 @@
             </options>
         </field>
 
+        <field name="accesories" type="boolean" nullable="true" >
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+
         <field name="warehouse" type="string" nullable="true" ></field>
         <field name="hit" type="boolean" nullable="true" >
             <options>

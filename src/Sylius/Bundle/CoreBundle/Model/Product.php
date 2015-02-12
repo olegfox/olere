@@ -99,6 +99,8 @@ class Product extends BaseProduct implements ProductInterface
 
     private $hit;
 
+    private $accesories = 0;
+
     /**
      * Constructor.
      */
@@ -576,6 +578,18 @@ class Product extends BaseProduct implements ProductInterface
     public function setHit($hit)
     {
         $this->hit = $hit;
+
+        return $this;
+    }
+
+    public function getAccesories()
+    {
+        return $this->accesories;
+    }
+
+    public function setAccesories($accesories)
+    {
+        $this->accesories = $accesories;
 
         return $this;
     }

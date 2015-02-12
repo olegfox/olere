@@ -134,6 +134,12 @@ class FrontendMenuBuilder extends MenuBuilder
                     "route" => "sylius_collections",
                     "routeParameters" => array()
                 );
+            } elseif ($id == 'accesories') {
+                $pagemenu[$id] = array(
+                    "name" => $page->getTitle(),
+                    "route" => "sylius_accesories",
+                    "routeParameters" => array()
+                );
             } else {
                 if ($id == 'sale' && $group->getShowOptPrice() == 1) {
 
@@ -317,6 +323,9 @@ class FrontendMenuBuilder extends MenuBuilder
             }
             if(stripos($this->request->getRequestUri(), 'silver', 0) !== FALSE){
                 $menu->setCurrentUri('/silver');
+            }
+            if(stripos($this->request->getRequestUri(), 'accesories', 0) !== FALSE){
+                $menu->setCurrentUri('/accesories');
             }
         }
 //        if ($this->cartProvider->hasCart()) {
