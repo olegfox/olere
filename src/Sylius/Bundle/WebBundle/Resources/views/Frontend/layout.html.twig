@@ -23,6 +23,7 @@
         'bundles/syliusweb/css/frontend.css'
         'bundles/syliusweb/css/blueimp-gallery.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('css/simplemodal.css') }}" type="text/css"/>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
         {% endstylesheets %}
         {% set cart = sylius_cart_get() %}
@@ -204,6 +205,7 @@
         {#<script type="text/javascript" src="{{ asset('js/menu.resize.scroll.js') }}"></script>#}
     {#{% endif %}#}
     <script src="{{ asset('js/jquery.placeholder.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.simplemodal.1.4.4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/list.product.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/button.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>

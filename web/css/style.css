@@ -671,6 +671,11 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     margin: 0px 4px 8px 4px;
 }
 
+.catalog .boxCat .inner_box .wrap_description{
+    /*position: absolute;*/
+    /*bottom: -50px;*/
+}
+
 .catalog .inner_box {
     -o-transition: .5s;
     -ms-transition: .5s;
@@ -748,7 +753,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     position: absolute;
     width: 75px;
     height: 30px;
-    background: #0077ed;
+    background: red;
     text-align: center;
     line-height: 30px;
     color: #fff;
@@ -988,9 +993,10 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .box .description a.header {
     display: block;
     font-size: 20px;
-    height: 50px;
-    line-height: 50px;
+    line-height: 25px;
     color: #fff;
+    padding: 11px 10px;
+    min-height: 50px;
 }
 
 .catalog .box .description a.header2 {

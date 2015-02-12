@@ -212,9 +212,9 @@ class ProductController extends ResourceController
                 /**
                  * Если таблица не пустая, то обнуляем остатки
                  */
-                if ($highestRow > 0) {
-                    $repository->clearBalance();
-                }
+//                if ($highestRow > 0) {
+//                    $repository->clearTempBalance();
+//                }
 
                 $data = array();
                 $i = 0;
@@ -288,8 +288,15 @@ class ProductController extends ResourceController
 
                             }
 
+//                            if($product != null){
+//                                if($product->getMasterVariant()->getOnHandTemp() <= 0) continue;
+//                            }
+
                         }else{
+
                             $product = $products[0];
+
+//                            if($product->getMasterVariant()->getOnHandTemp() <= 0) continue;
                         }
 
                     }
@@ -297,20 +304,20 @@ class ProductController extends ResourceController
                     /*
                      * Массив для вывода отчета
                      */
-                    $data[$i] = array(
-                        "articul" => $articul,
-                        "name" => $name,
-                        "sost" => $sost,
-                        "color" => $color,
-                        "gb" => $gb,
-                        "onHand" => $onHand,
-                        "description" => $description,
-                        "collection" => $collection,
-                        "codeArticul" => $codeArticul,
-                        "priceOpt" => $priceOpt,
-                        "catalog" => $catalog,
-                        "image" => ""
-                    );
+//                    $data[$i] = array(
+//                        "articul" => $articul,
+//                        "name" => $name,
+//                        "sost" => $sost,
+//                        "color" => $color,
+//                        "gb" => $gb,
+//                        "onHand" => $onHand,
+//                        "description" => $description,
+//                        "collection" => $collection,
+//                        "codeArticul" => $codeArticul,
+//                        "priceOpt" => $priceOpt,
+//                        "catalog" => $catalog,
+//                        "image" => ""
+//                    );
 
                     /*
                      * Если у продукта задано имя
@@ -349,16 +356,11 @@ class ProductController extends ResourceController
                             $fl_new = 1;
 
                             /*
-                             * Если найден, то удаляем у него свойства и приязку к коллекции или каталогу
+                             * Если найден, то удаляем у него свойства
                              */
 
                             foreach ($product->getProperties() as $pr) {
                                 $em->remove($pr);
-                                $em->flush();
-                            }
-
-                            foreach ($product->getTaxons() as $t) {
-                                $em->remove($t);
                                 $em->flush();
                             }
 
@@ -378,6 +380,7 @@ class ProductController extends ResourceController
                         $product->getMasterVariant()->setSku($articul);
                         $product->getMasterVariant()->setSkuCode($codeArticul);
                         $product->getMasterVariant()->setOnHand($onHand);
+                        $product->getMasterVariant()->setOnHandTemp(0);
                         $product->getMasterVariant()->setMetal($metal);
                         $product->getMasterVariant()->setBox($box);
                         $product->getMasterVariant()->setSize($size);
@@ -447,6 +450,10 @@ class ProductController extends ResourceController
                     }
 
                 }
+
+                $manager->flush();
+
+//                $repository->clearBalance();
 
                 $manager->flush();
 
@@ -717,7 +724,7 @@ class ProductController extends ResourceController
             'color' => 'any',
             'collection' => 'any',
             'catalog' => 'any',
-            'created' => 'any',
+            'created' => 'desc',
             'price_to' => 1,
             'price_from' => 1
         );

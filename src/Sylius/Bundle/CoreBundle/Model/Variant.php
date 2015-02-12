@@ -73,6 +73,13 @@ class Variant extends BaseVariant implements VariantInterface
     protected $onHand = 0;
 
     /**
+     * On hand stock temp.
+     *
+     * @var integer
+     */
+    protected $onHandTemp = 0;
+
+    /**
      * Is variant available on demand?
      *
      * @var Boolean
@@ -264,6 +271,28 @@ class Variant extends BaseVariant implements VariantInterface
 
         if (0 > $this->onHand) {
             $this->onHand = 0;
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOnHandTemp()
+    {
+        return $this->onHandTemp;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOnHandTemp($onHandTemp)
+    {
+        $this->onHandTemp = $onHandTemp;
+
+        if (0 > $this->onHandTemp) {
+            $this->onHandTemp = 0;
         }
 
         return $this;

@@ -24,6 +24,11 @@
         <field name="priceSale" column="priceSale" type="integer" nullable="true" />
         <field name="onHold" column="on_hold" type="integer" />
         <field name="onHand" column="on_hand" type="integer" />
+        <field name="onHandTemp" column="on_hand_temp" type="integer" nullable="true">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
         <field name="availableOnDemand" column="available_on_demand" type="boolean" />
         <field name="flagSale" column="flag_sale" type="boolean" nullable="true" />
         <field name="metal" column="metal" type="string" nullable="true" />

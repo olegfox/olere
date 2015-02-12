@@ -23,7 +23,7 @@ use Sylius\Bundle\VariableProductBundle\Doctrine\ORM\VariableProductRepository;
 class ProductRepository extends VariableProductRepository
 {
     /**
-     * Устанавливает в ноль количество у всех продуктов
+     * Устанавливает в ноль количество у всех продуктов которых нет на реальном складе
      */
     public function clearBalance()
     {
@@ -31,7 +31,22 @@ class ProductRepository extends VariableProductRepository
 
         $q = $queryBuilder->update('Sylius\Bundle\CoreBundle\Model\Variant', 'v')
             ->set('v.onHand', '?1')
+            ->set('v.onHandTemp', '?1')
+            ->where('v.onHandTemp = 1')
             ->setParameter(1, 0)
+            ->getQuery();
+        $q->execute();
+
+        return true;
+    }
+
+    public function clearTempBalance()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+
+        $q = $queryBuilder->update('Sylius\Bundle\CoreBundle\Model\Variant', 'v')
+            ->set('v.onHandTemp', '?1')
+            ->setParameter(1, 1)
             ->getQuery();
         $q->execute();
 
