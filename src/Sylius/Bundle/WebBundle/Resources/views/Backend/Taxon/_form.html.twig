@@ -2,6 +2,9 @@
 
 <fieldset>
     {{ form_row(form.name, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.metaTitle, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.metaKeywords, {'attr': {'class': 'input-lg'}}) }}
+    {{ form_row(form.metaDescription, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.parent, {'attr': {'class': 'input-lg'} }) }}
     {{ form_row(form.permalink, {'attr': {'class': 'input-lg'} }) }}
     {{ form_row(form.file) }}

@@ -55,6 +55,12 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
 
     private $position;
 
+    protected $metaTitle;
+
+    protected $metaKeywords;
+
+    protected $metaDescription;
+
     public function __construct()
     {
         parent::__construct();
@@ -255,6 +261,61 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     public function setSale($sale = null)
     {
         $this->sale = $sale;
+
+        return $this;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaTitle($metaTitle = null)
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaKeywords($metaKeywords = null)
+    {
+        $this->metaKeywords = $metaKeywords;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetaDescription($metaDescription = null)
+    {
+        $this->metaDescription = $metaDescription;
 
         return $this;
     }

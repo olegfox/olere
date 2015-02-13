@@ -34,7 +34,7 @@ $(function () {
 //                pages[$('.page').last().attr('id')] = $('.page').last().html();
 //            }
             $page_last.prev('.page').remove();
-            $(window).scrollTop($(window).scrollTop() - height);
+            $(window).scrollTop($(window).scrollTop() - $page_last.next('.page').height());
         }
         $("img.lazy").lazyload();
         initClick();

@@ -69,10 +69,7 @@ class ProductController extends ResourceController
              Sylius\Bundle\CoreBundle\Model\Taxon t
              JOIN t.products p
              JOIN p.variants v
-             WHERE t.taxonomy = 8
-             AND t.parent IS NOT NULL
-             AND p.accesories <> 1
-             AND v.onHand > 0
+             WHERE t.taxonomy = 8 AND t.parent IS NOT NULL  AND p.accesories = 0
              ORDER BY t.position ASC
             '
         )->getResult();
@@ -111,7 +108,6 @@ class ProductController extends ResourceController
              JOIN pp.variants vv
              WHERE tt.id = t.id
              AND vv.metal NOT LIKE :silver
-             AND pp.accesories <> 1
              )
              AND v.onHand > 0
              ORDER BY t.position ASC
@@ -131,6 +127,7 @@ class ProductController extends ResourceController
              JOIN t.products p
              JOIN p.variants v
              WHERE v.metal LIKE :silver
+             AND t.taxonomy = 9
              AND v.onHand > 0
              ORDER BY t.taxonomy DESC, t.position ASC
             '
@@ -482,7 +479,7 @@ class ProductController extends ResourceController
 
                 return $this->render('SyliusWebBundle:Backend/Import:index.html.twig', array(
                     'form' => $form->createView(),
-                    'data' => $data
+                    'count' => $i
                 ));
             }
         }
@@ -766,7 +763,9 @@ class ProductController extends ResourceController
             $taxons = $em->createQuery(
                 'SELECT t FROM
                  Sylius\Bundle\CoreBundle\Model\Taxon t
-                 WHERE t.taxonomy = :taxonomy AND t.parent IS NOT NULL
+                 JOIN t.products p
+                 JOIN p.variants v
+                 WHERE p.accesories <> 1 AND v.onHand > 0 AND t.taxonomy = :taxonomy AND t.parent IS NOT NULL
                 '
             )->setParameter('taxonomy', 8)->getResult();
         } elseif($routeName == 'sylius_product_index_by_taxon_accesories'){
@@ -810,7 +809,7 @@ class ProductController extends ResourceController
                      AND v.onHand > 0
                      ORDER BY t.position ASC
                     '
-                )->setParameter('silver', "%серебро%")->getArrayResult();
+                )->setParameter('silver', "%серебро%")->getResult();
             }
         }
 
@@ -1582,7 +1581,7 @@ class ProductController extends ResourceController
              SELECT COUNT(p.id) FROM
              Sylius\Bundle\CoreBundle\Model\Product p
              JOIN p.taxons tt
-             WHERE tt.id = t.id
+             WHERE tt.id = t.id AND p.accesories <> 1
              )
             '
         )->getResult();

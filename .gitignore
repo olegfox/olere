@@ -8,6 +8,7 @@ app/config/parameters.yml
 app/config/*.local.yml
 app/config/deploy.rb
 behat.yml
+web/robots.txt
 
 web/bundles/*
 web/import/*

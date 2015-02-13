@@ -30,32 +30,8 @@
         {% include 'SyliusWebBundle:Backend/Import:_form.html.twig' %}
         {{ create() }}
     </form>
-    {% if data is defined %}
-        <table>
-            <thead>
-                <th>Артикул</th>
-                <th></th>
-                <th>Название</th>
-                <th>Цена</th>
-                <th>Остаток</th>
-            </thead>
-            <tbody>
-            {% for d in data %}
-
-                <tr>
-                    <td>{{ d.articul }}</td>
-                    <td>
-                        {% if d.image[0] is defined %}
-                        <img src="{{ asset("import/files/"~d.image[0]) }}" />
-                        {% endif %}
-                    </td>
-                    <td>{{ d.name }}</td>
-                    <td>{{ d.price }}</td>
-                    <td>{{ d.onHand }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    {% if count is defined %}
+       Загружено {{ count }} товаров
     {% endif %}
 {% endblock %}
 

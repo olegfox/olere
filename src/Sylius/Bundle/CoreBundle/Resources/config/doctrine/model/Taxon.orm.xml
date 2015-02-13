@@ -25,6 +25,10 @@
             <gedmo:sortable-position/>
         </field>
 
+        <field type="text" name="metaTitle" column="meta_title" nullable="true" />
+        <field type="text" name="metaKeywords" column="meta_keywords" nullable="true" />
+        <field type="text" name="metaDescription" column="meta_description" nullable="true" />
+
         <one-to-one field="sale" target-entity="Sylius\Bundle\CoreBundle\Model\Sale">
         </one-to-one>
 

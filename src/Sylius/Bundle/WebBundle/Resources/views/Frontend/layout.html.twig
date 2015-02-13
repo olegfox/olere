@@ -2,15 +2,9 @@
 {% set settings = sylius_settings_all('general') %}
 <html{% block html %}{% endblock %}>
 <head>
-    <title>
-        {% block title %}
-            {{ settings.title|default('sylius.meta.frontend_title'|trans) }}
-        {% endblock %}
-    </title>
-    <meta charset="UTF-8">
-    <meta name="description"
-          content="{% block metaDescription %}{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}{% endblock %}">
-    <meta name="keywords" content="{% block metaKeywords %}{{ settings.meta_keywords|default('sylius.meta.frontend_keywords'|trans) }}{% endblock %}">
+    {% block title %}{{ taxon.metaTitle }}{% endblock %}
+    {% block metaDescription %}{{ taxon.metaDescription }}{% endblock %}
+    {% block metaKeywords %}{{ taxon.metaKeywords }}{% endblock %}
 
     {# stylesheets... #}
     {% block stylesheets %}

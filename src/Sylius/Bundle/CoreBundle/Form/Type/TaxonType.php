@@ -26,20 +26,32 @@ class TaxonType extends BaseTaxonType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add(
-            'file',
-            'file',
-            array(
-                'label' => 'sylius.form.taxon.file'
+        $builder
+            ->add(
+                'file',
+                'file',
+                array(
+                    'label' => 'sylius.form.taxon.file'
+                )
             )
-        );
-
-        $builder->add(
-            'file2',
-            'file',
-            array(
-                'label' => 'Выберите изображение для серебра'
+            ->add(
+                'file2',
+                'file',
+                array(
+                    'label' => 'Выберите изображение для серебра'
+                )
             )
-        );
+            ->add('metaTitle', 'text', array(
+                'required' => false,
+                'label' => 'Мета-заголовок'
+            ))
+            ->add('metaKeywords', 'text', array(
+                'required' => false,
+                'label' => 'Ключевые слова'
+            ))
+            ->add('metaDescription', 'text', array(
+                'required' => false,
+                'label' => 'Мета-описание'
+            ));
     }
 }
