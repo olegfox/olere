@@ -174,7 +174,7 @@ class RegistrationController extends BaseController
         $message = \Swift_Message::newInstance()
             ->setSubject('Новая регистрация на сайте Olere')
             ->setFrom(array('order@olere.ru' => "Olere"))
-            ->setTo(array('order@olere.ru', 'olegmitin25011986@gmail.com', 'chai@olere.ru', 'knn@olere.ru'))
+            ->setTo($this->container->getParameter('sylius.email_register'))
             ->setBody($this->container->get('templating')->render('SyliusWebBundle:Email:registerMessageToManager.html.twig', array('user' => $user)), 'text/html');
         $mailer->send($message);
     }
