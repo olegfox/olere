@@ -168,7 +168,7 @@ class HomepageController extends Controller
     public function catalogAction(Request $request){
         $repositoryPage = $this->get('sylius.repository.page');
 
-        $page = $repositoryPage->findPage('catalogBlock');
+        $page = $repositoryPage->findPage('catalog');
         return $this->render('SyliusWebBundle:Frontend/Homepage:catalog.html.twig', array(
             'page' => $page
         ));
@@ -177,7 +177,7 @@ class HomepageController extends Controller
     public function collectionsAction(Request $request){
         $repositoryPage = $this->get('sylius.repository.page');
 
-        $page = $repositoryPage->findPage('collectionsBlock');
+        $page = $repositoryPage->findPage('collections');
         return $this->render('SyliusWebBundle:Frontend/Homepage:collections.html.twig', array(
             'page' => $page
         ));
@@ -186,7 +186,7 @@ class HomepageController extends Controller
     public function silverAction(Request $request){
         $repositoryPage = $this->get('sylius.repository.page');
 
-        $page = $repositoryPage->findPage('silverBlock');
+        $page = $repositoryPage->findPage('silver');
         return $this->render('SyliusWebBundle:Frontend/Homepage:silver.html.twig', array(
             'page' => $page
         ));
@@ -195,7 +195,7 @@ class HomepageController extends Controller
     public function accesoriesAction(Request $request){
         $repositoryPage = $this->get('sylius.repository.page');
 
-        $page = $repositoryPage->findPage('accesoriesBlock');
+        $page = $repositoryPage->findPage('accesories');
         return $this->render('SyliusWebBundle:Frontend/Homepage:accesories.html.twig', array(
             'page' => $page
         ));

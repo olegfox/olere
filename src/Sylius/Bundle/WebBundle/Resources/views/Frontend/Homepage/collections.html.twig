@@ -21,12 +21,12 @@
         {{ render(url('sylius_collections_main')) }}
     </div>
 
-    {% if page.enable is defined %}
-        {% if page.enable == 0 %}
-            <div class="content">
-                {{ render(url('sylius_page_show_content', {'id' : 'collectionsBlock'})) }}
-            </div>
-        {% endif %}
-    {% endif %}
+    {#{% if page.enable is defined %}#}
+        {#{% if page.enable == 0 %}#}
+            {#<div class="content">#}
+                {#{{ render(url('sylius_page_show_content', {'id' : 'collectionsBlock'})) }}#}
+            {#</div>#}
+        {#{% endif %}#}
+    {#{% endif %}#}
 
 {% endblock %}

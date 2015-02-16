@@ -17,12 +17,12 @@
         {{ render(url('sylius_silver_main')) }}
     </div>
 
-    {% if page.enable is defined %}
-        {% if page.enable == 0 %}
-            <div class="content">
-                {{ render(url('sylius_page_show_content', {'id' : 'silverBlock'})) }}
-            </div>
-        {% endif %}
-    {% endif %}
+    {#{% if page.enable is defined %}#}
+        {#{% if page.enable == 0 %}#}
+            {#<div class="content">#}
+                {#{{ render(url('sylius_page_show_content', {'id' : 'silverBlock'})) }}#}
+            {#</div>#}
+        {#{% endif %}#}
+    {#{% endif %}#}
 
 {% endblock %}
