@@ -32,6 +32,14 @@
         <field name="position2" type="integer" nullable="true" >
         </field>
 
+        <field name="numberList" column="number_list" type="integer" nullable="true" >
+            <gedmo:sortable-position/>
+        </field>
+
+        <field name="numberComplect" column="number_complect" type="integer" nullable="true" >
+            <gedmo:sortable-group/>
+        </field>
+
         <field name="enabled" type="boolean" >
             <options>
                 <option name="default">0</option>

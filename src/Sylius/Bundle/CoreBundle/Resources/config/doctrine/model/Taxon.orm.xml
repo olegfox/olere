@@ -34,6 +34,12 @@
 
         <many-to-many field="products" mapped-by="taxons" target-entity="Sylius\Bundle\ProductBundle\Model\ProductInterface"/>
 
+        <one-to-many field="metriks" target-entity="Sylius\Bundle\CoreBundle\Model\Metrika" mapped-by="taxon">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
     </mapped-superclass>
 
 </doctrine-mapping>

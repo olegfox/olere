@@ -101,6 +101,16 @@ class Product extends BaseProduct implements ProductInterface
 
     private $accesories = 0;
 
+    /*
+     * Номер списка
+     */
+    private $numberList = 0;
+
+    /*
+     * Номер комплекта
+     */
+    private $numberComplect = 0;
+
     /**
      * Constructor.
      */
@@ -639,4 +649,27 @@ class Product extends BaseProduct implements ProductInterface
         return 0;
     }
 
+    public function getNumberList()
+    {
+        return $this->numberList;
+    }
+
+    public function setNumberList($numberList)
+    {
+        $this->numberList = $numberList;
+
+        return $this;
+    }
+
+    public function getNumberComplect()
+    {
+        return $this->numberComplect;
+    }
+
+    public function setNumberComplect($numberComplect)
+    {
+        $this->numberComplect = $numberComplect;
+
+        return $this;
+    }
 }

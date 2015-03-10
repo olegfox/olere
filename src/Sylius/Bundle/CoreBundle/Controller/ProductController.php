@@ -268,6 +268,8 @@ class ProductController extends ResourceController
                     $warehouse = $objPHPExcel->getActiveSheet()->getCell('T' . $row)->getValue(); // Склад
                     $hit = $objPHPExcel->getActiveSheet()->getCell('U' . $row)->getValue(); // Хит
                     $accesories = $objPHPExcel->getActiveSheet()->getCell('V' . $row)->getValue(); // Флажок аксессуара
+                    $numberList = $objPHPExcel->getActiveSheet()->getCell('W' . $row)->getValue(); // номер списка
+                    $numberComplect = $objPHPExcel->getActiveSheet()->getCell('X' . $row)->getValue(); // номер комплекта
 
                     $product = null;
 
@@ -410,7 +412,12 @@ class ProductController extends ResourceController
                         $product->setWarehouse($warehouse);
                         $product->setHit($hit);
                         $product->setAccesories($accesories);
-
+//                        if(!is_null($numberList)){
+//                            $product->setNumberList($numberList);
+//                        }
+//                        if(!is_null($numberComplect)){
+//                            $product->setNumberComplect($numberComplect);
+//                        }
 
                         /* Add product property */
                         $propertyRepository = $this->container->get('sylius.repository.property');

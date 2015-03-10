@@ -77,6 +77,12 @@
             </cascade>
         </many-to-many>
 
+        <one-to-many field="metriks" target-entity="Sylius\Bundle\CoreBundle\Model\Metrika" mapped-by="user">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
 
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>

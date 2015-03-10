@@ -127,6 +127,10 @@ sylius_catalog:
     pattern: /catalog
     defaults: { _controller: sylius.controller.frontend.homepage:catalogAction}
 
+sylius_metrika:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/account/metrika.yml
+    prefix: /metrika
+
 sylius_currency:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/currency.yml
     prefix: /currency

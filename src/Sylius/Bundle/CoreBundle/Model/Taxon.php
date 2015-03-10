@@ -61,12 +61,15 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
 
     protected $metaDescription;
 
+    protected $metriks;
+
     public function __construct()
     {
         parent::__construct();
 
         $this->createdAt = new \DateTime();
         $this->products = new ArrayCollection();
+        $this->metriks = new ArrayCollection();
     }
 
     /**
@@ -318,5 +321,10 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
         $this->metaDescription = $metaDescription;
 
         return $this;
+    }
+
+    public function getMetriks()
+    {
+        return $this->metriks;
     }
 }

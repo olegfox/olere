@@ -49,5 +49,8 @@
     {#<script type="text/javascript" src="{{ asset('js/init_smoothZoom.js') }}"></script>#}
     <script type="text/javascript" src="{{ asset('js/jquery.lazyload.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/productAjax.js') }}"></script>
+    {% if app.user %}
+        <script type="text/javascript" src="{{ asset('js/metrika.js') }}"></script>
+    {% endif %}
 {% endblock %}
 

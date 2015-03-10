@@ -14,6 +14,7 @@ namespace Sylius\Bundle\CoreBundle\Controller;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sylius\Bundle\CoreBundle\Model\Metrika;
 
 class UserController extends ResourceController
 {
@@ -130,6 +131,11 @@ class UserController extends ResourceController
         foreach($users as $user){
             if($user->getFlagClickCart() >= 3 && (time() - $user->getDateTimeClickCart()->getTimestamp()) > 60*60){
                 $user->setFlagClickCart(0);
+
+//              Создаём соответствующую запись в метрике
+                $metrika = new Metrika();
+                $metrika->setType(Metrika::TYPE_NOT_ORDER);
+                $em->persist($metrika);
 
                 $mailer = $this->get('mailer');
                 $message = \Swift_Message::newInstance()

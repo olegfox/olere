@@ -1,0 +1,3 @@
+sylius_backend_metrika_index:
+    pattern:  /
+    defaults: { _controller: SyliusCoreBundle:Metrika:index}

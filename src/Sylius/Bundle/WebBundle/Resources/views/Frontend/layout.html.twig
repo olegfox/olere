@@ -122,15 +122,12 @@
             <div class="topMyAccount">
                 {% if is_granted('ROLE_USER') %}
                     {% if app.request.attributes.get('_route') == "fos_user_profile_edit" or app.request.attributes.get('_route') == "fos_user_profile_show" %}
-                        <a href="{{ path("fos_user_security_logout") }}" class="block"></a>
-                        <a href="{{ path("fos_user_security_logout") }}">Выход</a>
+                        <a href="{{ path("fos_user_security_logout") }}">Выход</a><span>/</span>
                     {% else %}
-                        <a href="{{ path("fos_user_profile_show") }}" class="block"></a>
-                        <a href="{{ path("fos_user_profile_show") }}">Личный кабинет</a>
+                        <a href="{{ path("fos_user_profile_show") }}">Личный кабинет</a><span>/</span>
                     {% endif %}
                 {% else %}
-                    <a href="{{ path("fos_user_security_login") }}" class="block"></a>
-                    <a href="{{ path("fos_user_security_login") }}">Вход</a>
+                    <a href="{{ path("fos_user_security_login") }}">Вход</a><span>/</span><a href="{{ path("fos_user_opt_register") }}">Регистрация</a>
                 {% endif %}
             </div>
             {% if app.user %}

@@ -1,0 +1,11 @@
+sylius_metrika_index:
+    pattern: /
+    methods: [POST]
+    defaults: { _controller: SyliusWebBundle:Frontend/Account/Metrika:index }
+
+sylius_metrika_report:
+    pattern: /{type}
+    methods: [GET]
+    defaults: { _controller: SyliusWebBundle:Frontend/Account/Metrika:report, type: day }
+    requirements:
+            type:  day|week|month

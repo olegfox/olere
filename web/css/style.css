@@ -139,10 +139,7 @@ a, a:hover, a:focus {
 
 .wrap_top .top .topMyAccount {
     position: relative;
-    margin-right: 26px;
-    padding-top: 5px;
-    margin-top: 10px;
-    height: 65px;
+    height: 75px;
 }
 
 .wrap_top .top .topMyAccount .block {
@@ -157,19 +154,17 @@ a, a:hover, a:focus {
     cursor: pointer;
 }
 
+.wrap_top .top .topMyAccount span{
+    display: inline-block;
+    margin: 0px 8px;
+}
+
 .wrap_top .top .topMyAccount:hover .block {
     background: url("/images/men.jpg") no-repeat -34px 0;
 }
 
 .wrap_top .top .topTrash {
-    background: url("/images/trash.jpg") no-repeat 0 0;
-    padding-top: 5px;
-    margin-top: 10px;
-    height: 65px;
-}
-
-.wrap_top .top .topTrash:hover {
-    background: url("/images/trash.jpg") no-repeat -73px 0;
+    height: 75px;
 }
 
 .wrap_top .top .topMyAccount a,
@@ -183,7 +178,7 @@ a, a:hover, a:focus {
     text-align: center;
     cursor: pointer;
     text-transform: uppercase;
-    display: block;
+    display: inline-block;
     padding-top: 30px;
 }
 
@@ -506,9 +501,9 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     font-family: "Calibri" !important;
     font-size: 12px !important;
     text-transform: uppercase !important;
-    border: solid 2px #fff;
+    border: solid 1px #fff;
     height: 30px;
-    line-height: 25px;
+    line-height: 24px;
     background: url(/images/arrow.png) no-repeat right center #d86a43;
     margin-left: 0px;
     padding-right: 19px;
@@ -992,11 +987,17 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalog .box .description a.header {
     display: block;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 25px;
     color: #fff;
     padding: 11px 10px;
     min-height: 50px;
+}
+
+@media (max-width: 1200px) {
+    .catalog .box .description a.header{
+        font-size: 11px;
+    }
 }
 
 .catalog .box .description a.header2 {
@@ -1302,6 +1303,24 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     text-transform: uppercase;
     color: #000;
     margin-bottom: 13px;
+}
+
+.product .buyBlock .register .register_message{
+    color: #f46f60;
+    margin-bottom: 13px;
+    font-family: 'Calibri';
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.product .buyBlock .register .register_button{
+    font-family: 'Calibri Bold' !important;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.product .buyBlock .register .register_button span{
+    margin: 0px 7px;
 }
 
 .product .buyBlock .articul {

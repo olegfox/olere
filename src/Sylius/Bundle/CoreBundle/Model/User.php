@@ -56,6 +56,7 @@ class User extends BaseUser implements UserInterface
     protected $textPassword;
     protected $flagClickCart;
     protected $dateTimeClickCart;
+    protected $metriks;
 
     public function __construct()
     {
@@ -63,6 +64,7 @@ class User extends BaseUser implements UserInterface
         $this->orders    = new ArrayCollection();
         $this->addresses = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->metriks = new ArrayCollection();
 
         parent::__construct();
     }
@@ -751,6 +753,11 @@ class User extends BaseUser implements UserInterface
     public function getDateTimeClickCart()
     {
         return $this->dateTimeClickCart;
+    }
+
+    public function getMetriks()
+    {
+        return $this->metriks;
     }
 
 }

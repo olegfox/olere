@@ -51,11 +51,13 @@ class HomepageController extends Controller
             'SELECT p
              FROM Sylius\Bundle\CoreBundle\Model\Product p
              JOIN p.variants v
+             JOIN v.images i
              JOIN p.taxons t
              WHERE (p.name LIKE :search
              OR v.sku LIKE :search)
              AND (p.enabled = 0 or p.enabled is NULL)
              AND (p.action = 0 or p.action is NULL)
+             AND v.onHand > 0
              GROUP BY v.sku
             ')->setParameters(array(
                 'search' => '%'.$search.'%'

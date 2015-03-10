@@ -206,6 +206,11 @@ class BackendMenuBuilder extends MenuBuilder
                 'labelAttributes' => array('icon' => 'glyphicon glyphicon-home'),
             ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.groups', $section)));
         }
+
+        $child->addChild('metrika', array(
+            'route' => 'sylius_backend_metrika_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-home'),
+        ))->setLabel('Метрика');
     }
 
     /**

@@ -1,0 +1,22 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusWebBundle:Backend/Metrika:macros.html.twig' import list %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li>Метрика</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-th-list"></i> Метрика</h1>
+    </div>
+
+    {{ list(metriks) }}
+
+    <a href="?type=excel" target="_blank" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus-sign"></i><span>Экспорт в xlsx</span>
+    </a>
+
+{% endblock content %}

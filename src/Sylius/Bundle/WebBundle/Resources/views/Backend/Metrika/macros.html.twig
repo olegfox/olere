@@ -1,0 +1,61 @@
+{% macro list(metriks) %}
+
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+    {% if metriks|length > 0 %}
+        {% for m in metriks %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                    <tr>
+                        <td>{{ m.user.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if m.user.phone|length > 0 %}
+                                {{ m.user.phone }},
+                            {% endif %}
+                            {% if m.user.nameCompany|length > 0 %}
+                                {{ m.user.nameCompany }},
+                            {% endif %}
+                            {% if m.user.city|length > 0 %}
+                                {{ m.user.city }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Сегодня в {{ m.user.lastLogin|date('H:i') }} заходил(a) на сайт
+                        </td>
+                    </tr>
+                    {% if m.catalogs|length > 0 %}
+                        <tr>
+                            <td>
+                                Посетил(а) {{ m.catalogs|join(', ') }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if m.orderCancel %}
+                        <tr>
+                            <td>
+                                Добавил(а) товары в корзину, но не оформила
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if m.order %}
+                        <tr>
+                            <td>
+                                Оформил(а) заказ
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+        <br/>
+        <br/>
+    {% else %}
+        {{ alerts.info('Нет событий') }}
+    {% endif %}
+{% endmacro %}

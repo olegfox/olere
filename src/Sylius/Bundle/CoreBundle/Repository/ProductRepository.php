@@ -425,25 +425,29 @@ class ProductRepository extends VariableProductRepository
                 }
             }
 
-            if (!isset($filter['created']) && !isset($filter['priceSale'])) {
-                if ($taxonomyId == 8) {
-                    $queryBuilder
-                        ->orderBy("product.position", $sorting["position"]);
-                } else {
-                    $queryBuilder
-                        ->orderBy("product.position2", $sorting["position"]);
-                }
-            } else {
-                if ($filter['created'] != 'desc' && $filter['created'] != 'asc' && $filter['priceSale'] != 'desc' && $filter['priceSale'] != 'asc') {
-                    if ($taxonomyId == 8) {
-                        $queryBuilder
-                            ->orderBy("product.position", $sorting["position"]);
-                    } else {
-                        $queryBuilder
-                            ->orderBy("product.position2", $sorting["position"]);
-                    }
-                }
-            }
+//            if (!isset($filter['created']) && !isset($filter['priceSale'])) {
+//                if ($taxonomyId == 8) {
+//                    $queryBuilder
+//                        ->orderBy("product.position", $sorting["position"]);
+//                } else {
+//                    $queryBuilder
+//                        ->orderBy("product.position2", $sorting["position"]);
+//                }
+//            } else {
+//                if ($filter['created'] != 'desc' && $filter['created'] != 'asc' && $filter['priceSale'] != 'desc' && $filter['priceSale'] != 'asc') {
+//                    if ($taxonomyId == 8) {
+//                        $queryBuilder
+//                            ->orderBy("product.position", $sorting["position"]);
+//                    } else {
+//                        $queryBuilder
+//                            ->orderBy("product.position2", $sorting["position"]);
+//                    }
+//                }
+//            }
+            $queryBuilder
+                ->orderBy('product.numberComplect', 'ASC');
+            $queryBuilder
+                ->orderBy('product.numberList', 'ASC');
             $queryBuilder
                 ->addGroupBy('variant.sku')
                 ->setParameters($params);

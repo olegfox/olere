@@ -58,6 +58,11 @@ doctrine:
                     softdeleteable:
                         class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                         enabled: false
+                dql:
+                    datetime_functions:
+                        month: Sylius\Bundle\CoreBundle\Dql\Month
+                        day: Sylius\Bundle\CoreBundle\Dql\Day
+                        year: Sylius\Bundle\CoreBundle\Dql\Year
 
 doctrine_phpcr:
     session:
