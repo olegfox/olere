@@ -52,6 +52,10 @@ class TaxonType extends BaseTaxonType
             ->add('metaDescription', 'text', array(
                 'required' => false,
                 'label' => 'Мета-описание'
+            ))
+            ->add('text', 'textarea', array(
+                'required' => false,
+                'label'    => 'Текст',
             ));
     }
 }

@@ -11,6 +11,7 @@
     {{ form_row(form.file2) }}
     <br>
     {{ form_row(form.description) }}
+    {{ form_row(form.text, {'attr': {'class': 'ckeditor', 'id' : 'ckeditor'}}) }}
 </fieldset>
 
 {{ form_rest(form) }}

@@ -8,10 +8,11 @@
                 <table class="table table-bordered table-hover">
                     <tbody>
                     <tr>
-                        <td>{{ m.user.firstName }}</td>
+                        <td><b>{{ m.user.firstName }}</b></td>
                     </tr>
                     <tr>
                         <td>
+                            <b>
                             {% if m.user.phone|length > 0 %}
                                 {{ m.user.phone }},
                             {% endif %}
@@ -21,6 +22,7 @@
                             {% if m.user.city|length > 0 %}
                                 {{ m.user.city }}
                             {% endif %}
+                            </b>
                         </td>
                     </tr>
                     <tr>

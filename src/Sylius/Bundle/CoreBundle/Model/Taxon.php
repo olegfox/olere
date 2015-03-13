@@ -48,6 +48,8 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
 
     protected $sale;
 
+    protected $text;
+
     /**
      * @var ArrayCollection
      */
@@ -326,5 +328,17 @@ class Taxon extends BaseTaxon implements ImageInterface, TaxonInterface
     public function getMetriks()
     {
         return $this->metriks;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
     }
 }

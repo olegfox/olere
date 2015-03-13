@@ -17,6 +17,10 @@
         {{ render(url('sylius_accesories_main')) }}
     </div>
 
+    <div class="content">
+        {{ page.body|raw }}
+    </div>
+
     {#{% if page.enable is defined %}#}
         {#{% if page.enable == 0 %}#}
             {#<div class="content">#}

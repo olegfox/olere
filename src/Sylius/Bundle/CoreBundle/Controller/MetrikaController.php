@@ -16,10 +16,12 @@ class MetrikaController extends Controller
         $results = $em
             ->createQuery('
              SELECT m FROM Sylius\Bundle\CoreBundle\Model\Metrika m
+             JOIN m.user u
              WHERE YEAR(m.datetime) = :year
              AND MONTH(m.datetime) = :month
              AND DAY(m.datetime) = :day
              AND m.type = :type
+             ORDER BY u.lastLogin ASC
              ')
             ->setParameters(array(
                 'year' => $today->format('Y'),
@@ -51,15 +53,17 @@ class MetrikaController extends Controller
                     );
 //                  Добавляем в массив все каталоги, которые посетил пользователь
                     foreach ($results as $r) {
-                        $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
-                        foreach ($metriks[$result->getUser()->getId()]['catalogs'] as $catalog){
-                            if ($catalog == $r->getTaxon()->getName()) {
-                                $flag_taxon = 1;
+                        if($r->getUser()->getId() == $result->getUser()->getId()){
+                            $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
+                            foreach ($metriks[$result->getUser()->getId()]['catalogs'] as $catalog){
+                                if ($catalog == $r->getTaxon()->getName()) {
+                                    $flag_taxon = 1;
+                                }
                             }
-                        }
-//                      Если такой каталог ещё не добавлен, то добавляем в массив
-                        if ($flag_taxon == 0) {
-                            $metriks[$result->getUser()->getId()]['catalogs'][] = $r->getTaxon()->getName();
+//                          Если такой каталог ещё не добавлен, то добавляем в массив
+                            if ($flag_taxon == 0) {
+                                $metriks[$result->getUser()->getId()]['catalogs'][] = $r->getTaxon()->getName();
+                            }
                         }
                     }
 //                  Определяем факт того, что пользователь добавил в корзину, но не оформил
