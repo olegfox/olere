@@ -1,0 +1,54 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li>{{ 'sylius.baner.index'|trans }}</a></li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.baner.index'|trans }}</h1>
+    </div>
+
+    {% if entities|length > 0 %}
+        <table class="records_list table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>{{ 'sylius.baner.image'|trans }}</th>
+                <th>{{ 'sylius.baner.link' }}</th>
+                <th>{{ 'sylius.baner.width' }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(300) }}" alt="" width="300px" /></a></td>
+                    <td><a href="{{ entity.link }}" target="_blank">{{ entity.link }}</a></td>
+                    <td>{{ entity.width }}</td>
+                    <td>
+                        <ul class="nav nav-pills">
+                            <li>
+                                <a href="{{ path('sylius_backend_baner_edit', { 'id': entity.id }) }}">{{ 'sylius.baner.update'|trans }}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning">
+            {{ 'sylius.baner.empty_list'|trans }}
+        </div>
+    {% endif %}
+
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="{{ path('sylius_backend_baner_new') }}">
+                {{ 'sylius.baner.create_header'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

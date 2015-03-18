@@ -161,6 +161,10 @@ sylius_account:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/account.yml
     prefix: /account
 
+sylius_baner:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/baner.yml
+    prefix: /baner
+
 sylius_account_order_complete:
     pattern: /orders/complete
     methods: [GET]

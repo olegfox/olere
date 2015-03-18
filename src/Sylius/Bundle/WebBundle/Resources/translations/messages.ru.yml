@@ -232,6 +232,19 @@ sylius:
     create_header: Добавить слайдер
     image: Изображение
     select_image: Выберите изображения
+  baner:
+    title: Банер
+    index: Список банеров
+    create_header: Добавить банер
+    update: Редактировать банер
+    edit: Редактирование банера
+    new: Добавление банера
+    delete: Удалить банер
+    image: Изображение
+    link: Ссылка
+    width: Ширина (%)
+    select_image: Выберите изображение
+    empty_list: Нет банеров
   country:
     add_province: Добавить регион
     create: Добавить поселок, село

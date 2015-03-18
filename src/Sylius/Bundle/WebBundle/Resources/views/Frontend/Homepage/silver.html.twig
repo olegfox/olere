@@ -17,9 +17,11 @@
         {{ render(url('sylius_silver_main')) }}
     </div>
 
-    <div class="content">
-        {{ page.body|raw }}
-    </div>
+    {% if page.body|length > 0 %}
+        <div class="content">
+            {{ page.body|raw }}
+        </div>
+    {% endif %}
 
     {#{% if page.enable is defined %}#}
         {#{% if page.enable == 0 %}#}

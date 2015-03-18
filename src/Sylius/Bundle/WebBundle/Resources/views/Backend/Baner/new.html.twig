@@ -1,0 +1,24 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% block topbar %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('sylius_backend_baner_index') }}">{{ 'sylius.baner.index'|trans }}</a></li>
+        <li>{{ 'sylius.baner.new'|trans }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-plus-sign"></i> {{ 'sylius.baner.create_header'|trans|raw }}</h1>
+    </div>
+
+    {{ form(form, { attr: {novalidate: 'novalidate', class: 'form-horizontal'} }) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('sylius_backend_baner_index') }}">
+                {{ 'sylius.baner.index'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

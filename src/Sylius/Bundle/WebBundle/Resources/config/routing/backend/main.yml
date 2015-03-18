@@ -163,6 +163,10 @@ sylius_backend_metrika:
     resource: @SyliusWebBundle/Resources/config/routing/backend/metrika.yml
     prefix: /metrika
 
+sylius_backend_baner:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/baner.yml
+    prefix: /baner
+
 # Images uploading
 image_upload:
     pattern:  /admin/image_upload/

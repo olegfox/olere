@@ -1,0 +1,21 @@
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% from 'SyliusWebBundle:Frontend/Baner:macros.html.twig' import list %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {{ list(baners) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
+    <script type="text/javascript">
+        var msnry = new Masonry( '#baners', {
+            // options
+        });
+    </script>
+{% endblock %}

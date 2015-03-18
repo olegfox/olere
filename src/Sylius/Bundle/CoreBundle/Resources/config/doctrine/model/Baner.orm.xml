@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+>
+
+    <entity name="Sylius\Bundle\CoreBundle\Model\Baner" table="sylius_baner">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="image" column="image" type="text" nullable="true">
+        </field>
+
+        <field name="link" column="link" type="text" nullable="true">
+        </field>
+
+        <field name="width" column="width" type="integer" nullable="true">
+        </field>
+
+    </entity>
+
+</doctrine-mapping>

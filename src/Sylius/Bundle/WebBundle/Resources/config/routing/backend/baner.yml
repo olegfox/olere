@@ -1,0 +1,26 @@
+sylius_backend_baner_index:
+    path:     /
+    defaults: { _controller: "SyliusCoreBundle:Baner:index" }
+
+sylius_backend_baner_new:
+    path:     /new
+    defaults: { _controller: "SyliusCoreBundle:Baner:new" }
+
+sylius_backend_baner_create:
+    path:     /create
+    defaults: { _controller: "SyliusCoreBundle:Baner:create" }
+    methods:  POST
+
+sylius_backend_baner_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SyliusCoreBundle:Baner:edit" }
+
+sylius_backend_baner_update:
+    path:     /{id}/update
+    defaults: { _controller: "SyliusCoreBundle:Baner:update" }
+    methods:  [POST, PUT]
+
+sylius_backend_baner_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SyliusCoreBundle:Baner:delete" }
+    methods:  [POST, DELETE]

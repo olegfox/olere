@@ -1,0 +1,3 @@
+sylius_baner_index:
+    pattern: /
+    defaults: { _controller: SyliusWebBundle:Frontend/Baner:index }

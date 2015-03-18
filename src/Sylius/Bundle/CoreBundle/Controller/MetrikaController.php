@@ -73,13 +73,15 @@ class MetrikaController extends Controller
                          WHERE YEAR(m.datetime) = :year
                          AND MONTH(m.datetime) = :month
                          AND DAY(m.datetime) = :day
+                         AND m.user = :user
                          AND m.type = :type
                          ')
                         ->setParameters(array(
                             'year' => $today->format('Y'),
                             'month' => $today->format('m'),
                             'day' => $today->format('d'),
-                            'type' => Metrika::TYPE_NOT_ORDER
+                            'type' => Metrika::TYPE_NOT_ORDER,
+                            'user' => $result->getUser()
                         ))
                         ->getSingleScalarResult();
                     if($not_order > 0){

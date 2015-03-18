@@ -135,6 +135,7 @@ class UserController extends ResourceController
 //              Создаём соответствующую запись в метрике
                 $metrika = new Metrika();
                 $metrika->setType(Metrika::TYPE_NOT_ORDER);
+                $metrika->setUser($user);
                 $em->persist($metrika);
 
                 $mailer = $this->get('mailer');

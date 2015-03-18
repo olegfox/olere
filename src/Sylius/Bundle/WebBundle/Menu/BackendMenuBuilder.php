@@ -180,6 +180,11 @@ class BackendMenuBuilder extends MenuBuilder
             "routeParameters" => array("type" => 1),
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
         ))->setLabel('Слайдер на главной Опт.');
+
+        $child->addChild('baner', array(
+            'route' => 'sylius_backend_baner_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-compressed'),
+        ))->setLabel('Банеры');
     }
 
     /**

@@ -37,9 +37,11 @@
             {% endif %}
         {% endif %}
     </div>
-    <div class="content">
-        {{ taxon.text|raw }}
-    </div>
+    {% if taxon.text|length > 0 %}
+        <div class="content">
+            {{ taxon.text|raw }}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

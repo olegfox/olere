@@ -1,0 +1,15 @@
+{% macro list(baners) %}
+    {% if baners|length > 0 %}
+        <div id="baners">
+            {% for baner in baners %}
+                <div class="item" data-width="{{ baner.width ? baner.width : '100' }}">
+                    {% if baner.link != "" %}
+                        <a href="{{ baner.link }}" target="_blank">
+                            <img src="{{ asset(baner.webPath) }}" alt="{{ asset(baner.webPath) }}"/>
+                        </a>
+                    {% endif %}    
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
