@@ -1347,6 +1347,7 @@ class ProductController extends ResourceController
     {
         $repositoryGroup = $this->container->get('sylius.repository.group');
         $groups = $repositoryGroup->findAll();
+        $ajax = $request->get('ajax');
         if ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER_OPT')) {
             $group = $groups[0];
         } elseif ($this->container->get('security.context')->getToken() && $this->container->get('security.context')->isGranted('ROLE_USER')) {
@@ -1380,33 +1381,39 @@ class ProductController extends ResourceController
 
             $groups = $this->get('sylius.repository.group')->findAll();
 
-            if ($page != 'all') {
-                $paginator = $this
-                    ->getRepository()
-                    ->createBySalePaginator($filter);
+            $paginator = $this
+                ->getRepository()
+                ->createBySalePaginator($filter);
 
-                $paginator->setMaxPerPage(40);
+            $paginator->setMaxPerPage(40);
+
+            $count_page = $paginator->getNbResults() / 40 + 1;
+
+            if ($page != 'all') {
                 $paginator->setCurrentPage($request->query->get('page', $page));
             } else {
-                $em = $this->getDoctrine()->getManager();
-                $paginator = $em->createQuery(
-                    'SELECT p FROM
-                     Sylius\Bundle\CoreBundle\Model\Product p
-                     JOIN p.variants v
-                     WHERE v.flagSale = 1
-                     AND p.action = 0
-                     GROUP BY v.sku
-                    '
-                )->getResult();
+                $paginator->setCurrentPage($request->query->get('page', 1));
             }
 
-            return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
-                'products' => $paginator,
-                'groups' => $groups,
-                'page' => $page,
-                'filter' => $filter,
-                'category' => 'sale'
-            ));
+            if ($ajax == 1) {
+                return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxonAjax.html.twig', array(
+                    'products' => $paginator,
+                    'groups' => $groups,
+                    'page' => $page,
+                    'count_page' => $count_page,
+                    'filter' => $filter,
+                    'category' => 'sale'
+                ));
+            }else{
+                return $this->render('SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig', array(
+                    'products' => $paginator,
+                    'groups' => $groups,
+                    'page' => $page,
+                    'count_page' => $count_page,
+                    'filter' => $filter,
+                    'category' => 'sale'
+                ));
+            }
         }
     }
 
@@ -1549,7 +1556,7 @@ class ProductController extends ResourceController
         return new Response('ok');
     }
 
-    public function getCollectionListAction($filter)
+    public function getCollectionListAction($filter, $category)
     {
         $em = $this->getDoctrine()->getManager();
         $collections = $em->createQuery(
@@ -1571,11 +1578,12 @@ class ProductController extends ResourceController
         )->setParameter('silver', "%серебро%")->getResult();
         return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
             'collections' => $collections,
-            'filter' => $filter
+            'filter' => $filter,
+            'category' => $category
         ));
     }
 
-    public function getCatalogListAction($filter)
+    public function getCatalogListAction($filter, $category)
     {
         $em = $this->getDoctrine()->getManager();
         $collections = $em->createQuery(
@@ -1594,7 +1602,8 @@ class ProductController extends ResourceController
         )->getResult();
         return $this->render('SyliusWebBundle:Frontend/Product:filter.collections.html.twig', array(
             'collections' => $collections,
-            'filter' => $filter
+            'filter' => $filter,
+            'category' => $category
         ));
     }
 

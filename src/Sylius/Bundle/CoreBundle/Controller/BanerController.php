@@ -23,7 +23,7 @@ class BanerController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('Sylius\Bundle\CoreBundle\Model\Baner')->findAll();
+        $entities = $em->getRepository('Sylius\Bundle\CoreBundle\Model\Baner')->findBy(array(), array('position' => 'ASC'));
 
         return $this->render('SyliusWebBundle:Backend/Baner:index.html.twig', array(
             'entities' => $entities,

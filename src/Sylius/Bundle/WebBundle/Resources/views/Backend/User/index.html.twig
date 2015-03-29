@@ -33,7 +33,7 @@
 <div class="row">
     <div class="col-md-12">
         <ul class="nav nav-tabs grid-tabs">
-            <li class="{{ activeTab == 'all' ? 'active' : '' }}"><a href="{{ path('sylius_backend_user_index') }}">{{ 'sylius.user.filter.all'|trans }}</a></li>
+            <li class="{{ activeTab == 'all' ? 'active' : '' }}"><a href="{{ path('sylius_backend_user_index', {'criteria': {'enabled': true}}) }}">{{ 'sylius.user.filter.confirmed'|trans }}</a></li>
             <li class="{{ activeTab == 'disabled' ? 'active' : '' }}"><a href="{{ path('sylius_backend_user_index', {'criteria': {'enabled': false}}) }}"><i class="glyphicon glyphicon-info-sign"></i> {{ 'sylius.user.filter.unconfirmed'|trans }}</a></li>
         </ul>
     </div>

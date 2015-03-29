@@ -243,6 +243,7 @@ sylius:
     image: Изображение
     link: Ссылка
     width: Ширина (%)
+    position: Позициия
     select_image: Выберите изображение
     empty_list: Нет банеров
   country:
@@ -692,6 +693,7 @@ sylius:
     enabled: Подтвержден?
     filter:
       all: Все пользователи
+      confirmed: Подтверждённые пользователи
       unconfirmed: Неподтвержденные пользователи
     first_name: Имя контактного лица
     general_info: 'Информация о пользователе «%username%»'

@@ -12,10 +12,25 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
     <script type="text/javascript">
-        var msnry = new Masonry( '#baners', {
-            // options
+        $(function(){
+            var $container = $('#baners');
+//            $container.css('width', $('.container').width());
+//            $container.imagesLoaded(function(){
+//                $container.find('.item').each(function(i, e){
+//                    $(e).css('width', $(e).width());
+//                });
+//                $container.masonry({
+//                    itemSelector: '.item'
+//                });
+//            });
+
+            $(window).resize(function(){
+//                $container.css('width', $('.container').width() - 40);
+//                $container.masonry('reloadItems');
+            });
         });
     </script>
 {% endblock %}

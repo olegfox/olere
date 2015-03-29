@@ -104,25 +104,30 @@ function preview(object, original, image, name) {
     smoothZoom($(object).parent().parent().parent().parent().parent().find(".pictureProduct")[0]);
 }
 
-function filter(category) {
+function filter(object, category) {
+    if($(object).attr('href')){
+        $(object).parent().find('a').removeClass('selected');
+        $(object).addClass('selected');
+    }
+
     if (category != 'sale') {
-        var cat = $(".filter #type").val();
+        var cat = $(".filter #type a.selected").attr('href');
         if(cat == undefined){
-            cat = $(".filter #catalog").val();
+            cat = $(".filter #catalog a.selected").attr('href');
         }
     }
-    var price_from = $(".filter #price_from").val();
-    var price_to = $(".filter #price_to").val();
-    var priceSale = $(".filter #priceSale").val();
-    var material = $(".filter #material").val();
+    var price_from = $(".filter #price_from a.selected").attr('href');
+    var price_to = $(".filter #price_to a.selected").attr('href');
+    var priceSale = $(".filter #priceSale a.selected").attr('href');
+    var material = $(".filter #material a.selected").attr('href');
     var weight = $(".filter #weight").val();
-    var color = $(".filter #color").val();
-    var collection = $(".filter #collection").val();
-    var catalog = $(".filter #catalog").val();
+    var color = $(".filter #color a.selected").attr('href');
+    var collection = $(".filter #collection a.selected").attr('href');
+    var catalog = $(".filter #catalog a.selected").attr('href');
 //    var depth = $(".filter #depth").val();
-    var box = $(".filter #box").val();
+    var box = $(".filter #box a.selected").attr('href');
     var size = $(".filter #size").val();
-    var created = $(".filter #created").val();
+    var created = $(".filter #created a.selected").attr('href');
     if (category != 'sale') {
         var href = "/" + category + "/1/" + cat + "?filter[price_from]=" + price_from + "&filter[price_to]=" + price_to + "&filter[material]=" + material + "&filter[weight]=" + weight;
     } else {
@@ -136,5 +141,6 @@ function filter(category) {
     href = href + "&filter[catalog]=" + catalog;
     href = href + "&filter[created]=" + created;
     href = href + "&filter[priceSale]=" + priceSale;
+
     window.location.href = href;
 }

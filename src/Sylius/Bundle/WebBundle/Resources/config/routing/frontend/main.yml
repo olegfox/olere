@@ -27,12 +27,12 @@ sylius_backend_import_scan:
         _controller: sylius.controller.product:importScanAction
 
 sylius_get_collection_list:
-    pattern: /get/collection/list/{filter}
+    pattern: /get/collection/list/{filter}/{category}
     defaults:
         _controller: sylius.controller.product:getCollectionListAction
 
 sylius_get_catalog_list:
-    pattern: /get/catalog/list/{filter}
+    pattern: /get/catalog/list/{filter}/{category}
     defaults:
         _controller: sylius.controller.product:getCatalogListAction
 

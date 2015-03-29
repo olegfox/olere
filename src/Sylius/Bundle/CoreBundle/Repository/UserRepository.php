@@ -72,6 +72,9 @@ class UserRepository extends EntityRepository
             $queryBuilder
                 ->andWhere('o.enabled = :enabled')
                 ->setParameter('enabled', $criteria['enabled']);
+        }else{
+            $queryBuilder
+                ->andWhere('o.enabled = 1');
         }
 
         if (empty($sorting)) {

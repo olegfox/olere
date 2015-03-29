@@ -44,14 +44,14 @@ a, a:hover, a:focus {
 }
 
 .wrap_top {
-    height: 75px;
+    height: 90px;
     background: #fff;
     border-bottom: solid 1px #dcdcdc;
 }
 
 .wrap_top .top {
-    height: 75px;
-    line-height: 75px;
+    height: 90px;
+    line-height: 90px;
     max-width: 1200px;
     max-width: 1240 px\9;
     margin: 0px auto;
@@ -125,7 +125,7 @@ a, a:hover, a:focus {
     background: url('/images/icon_phone.jpg') no-repeat 0 center;
     padding-left: 35px;
     font-family: 'Calibri';
-    font-size: 24px;
+    font-size: 18px;
     line-height: 72px;
 }
 
@@ -222,6 +222,12 @@ a, a:hover, a:focus {
     margin: 0 auto -50px;
     z-index: 2;
     position: relative;
+}
+
+.inner_container{
+    padding: 0px 20px;
+    display: table;
+    width: 100%;
 }
 
 .container .push {
@@ -456,6 +462,17 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     padding: 0 px\0/;
 }
 
+.catalog-products{
+    display: table-cell;
+    width: 80%;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.catalog-products .col-md-12 .alert-info, .col-md-12 .alert-success{
+    margin: 0px -15px 25px -15px;
+}
+
 .catalog.latestProducts {
     margin-bottom: 110px;
 }
@@ -472,47 +489,56 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     text-transform: uppercase;
 }
 
-.wrap_filter{
-    background: #d86a43;
-    margin-bottom: 20px;
+.catalog .head-products{
+    color: #000;
+    background: #fff;
+    margin-bottom: 0px;
+    min-height: 20px;
+    line-height: 20px;
 }
 
-.wrap_filter.fixed{
-    position: fixed;
-    top: 0px;
-    z-index: 3;
-    width: 100%;
+.catalog .head-products span{
+    margin-right: 4px;
 }
+
+.wrap_filter{
+    width: 20%;
+    display: table-cell;
+    padding-bottom: 20px;
+}
+
+/*.wrap_filter.fixed{*/
+    /*position: fixed;*/
+    /*top: 0px;*/
+    /*z-index: 3;*/
+    /*width: 100%;*/
+/*}*/
 
 .head.filter {
     font-family: "Calibri";
     font-size: 12px;
-    text-transform: uppercase;
     min-height: 50px;
     line-height: 50px;
-    background: #d86a43;
-    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 0px 20px;
 }
 
 .head.filter select {
     font-family: "Calibri" !important;
     font-size: 12px !important;
     text-transform: uppercase !important;
-    border: solid 1px #fff;
+    border: 0px;
     height: 30px;
     line-height: 24px;
-    background: url(/images/arrow.png) no-repeat right center #d86a43;
+    background: url(/images/arrow.png) no-repeat right center #fff;
     margin-left: 0px;
     padding-right: 19px;
     padding-right: 0 px\9;
-    background: #d86a43\9;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    color: #fff;
+    color: #000;
+    margin-left: 13px;
 }
 
 .head.filter .button_price {
@@ -559,6 +585,37 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .head.filter select#type {
     /*max-width: 100px;*/
 }
+.head.filter .filter-block{
+    display: block;
+    margin-right: 0px;
+}
+.head.filter .filter-block a{
+    display: block;
+    line-height: 18px;
+    font-family: 'Calibri';
+    font-size: 14px;
+    margin-left: 0px;
+    text-transform: uppercase;
+}
+.head.filter .filter-block a.last{
+    margin-bottom: 7px;
+}
+.head.filter .filter-block a:hover,
+.head.filter .filter-block a.selected{
+    color: #d86a43;
+}
+.head.filter .filter-block span,
+.head.filter .filter-block span a{
+    display: block;
+    line-height: 18px;
+    font-family: 'Calibri';
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    margin-left: 0px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
 
 .catalogSearch .head {
     margin-top: 18px;
@@ -567,7 +624,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalog .head a:hover,
 .product .head a:hover {
-    color: #01c4ba;
+    color: #d86a43;
 }
 
 .catalogMain .head {
@@ -690,11 +747,11 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 }
 
 .catalog .nameBox {
-    text-transform: uppercase;
     font-family: 'Calibri';
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
     width: 100%;
+    text-transform: uppercase;
 }
 
 .catalog .nameBox .name {
@@ -705,7 +762,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .nameBox .price {
     font-weight: normal;
     font-family: 'Calibri';
-    font-size: 16px;
+    font-size: 12px;
     display: block;
     text-align: left;
     margin-bottom: 2px;
@@ -772,7 +829,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
     display: block;
     width: 100%;
     font-family: 'Calibri';
-    font-size: 16px;
+    font-size: 12px;
     position: relative;
     width: 100%;
     padding: 10px 15px 5px 15px;
@@ -812,7 +869,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 .catalog .bottomBox .form-group label {
     height: 28px;
     padding: 0px;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 .catalog .bottomBox .form-group .col-lg-10 {
@@ -828,13 +885,13 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalog .bottomBox .form-group #sylius_cart_item_quantity {
     font-family: 'Calibri';
-    font-size: 16px;
+    font-size: 12px;
     text-transform: uppercase;
     padding: 0px 0px 0px 10px;
-    width: 73px;
-    height: 28px;
-    line-height: 26px;
-    line-height: 23 px\0/;
+    width: 55px;
+    height: 24px;
+    line-height: 21px;
+    line-height: 18 px\0/;
 }
 
 @media screen and (max-width: 1070px) {
@@ -845,7 +902,7 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalog .bottomBox button[type="submit"],
 .catalog .bottomBox input {
-    border: solid 2px #c4c4c4;
+    border: solid 1px #c4c4c4;
     width: 70px;
     background: none;
     font-weight: normal;
@@ -871,20 +928,20 @@ _:-ms-fullscreen, :root .wrap_menu .topSearch .searchText {
 
 .catalog .bottomBox button[type="submit"] {
     font-family: 'Calibri';
-    font-size: 16px;
+    font-size: 12px;
     text-transform: uppercase;
-    width: 114px;
-    height: 28px;
-    line-height: 24px;
-    line-height: 23 px\0/;
+    width: 93px;
+    height: 24px;
+    line-height: 20px;
+    line-height: 18 px\0/;
     display: inline-block;
     vertical-align: top;
 }
 
 @media screen and (max-width: 1070px) {
     .catalog .bottomBox button[type="submit"] {
-        margin-left: 5px;
-        width: 70px;
+        margin-left: 0px;
+        width: 60px;
     }
 }
 
@@ -1886,7 +1943,13 @@ a.btn-lg:hover {
 }
 
 .filter.head div.count {
-    color: #fff;
+    color: #000;
+    display: block;
+    line-height: 18px;
+    font-family: 'Calibri';
+    font-size: 14px;
+    margin-left: 0px;
+    text-transform: uppercase;
 }
 
 .filter.head div.box {
@@ -2213,3 +2276,19 @@ ul li p{
     line-height: 22px;
     font-size: 18px;
 }
+
+/* Baners */
+#baners{
+    position: relative;
+    padding: 18px 11px 0px 11px;
+}
+#baners img{
+    width: 100%;
+}
+#baners .item{
+    vertical-align: top;
+    margin-bottom: 18px;
+    padding: 0px 9px;
+    display: inline-block;
+}
+/* end Baners*/

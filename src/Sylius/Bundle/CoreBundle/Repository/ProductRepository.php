@@ -444,10 +444,10 @@ class ProductRepository extends VariableProductRepository
 //                    }
 //                }
 //            }
-            $queryBuilder
-                ->orderBy('product.numberComplect', 'ASC');
-            $queryBuilder
-                ->orderBy('product.numberList', 'ASC');
+//            $queryBuilder
+//                ->orderBy('product.numberComplect', 'ASC');
+//            $queryBuilder
+//                ->orderBy('product.numberList', 'ASC');
             $queryBuilder
                 ->addGroupBy('variant.sku')
                 ->setParameters($params);

@@ -1,0 +1,3 @@
+{% for t in taxons %}
+    <a href="{{ t.slug }}" {% if loop.last %}class="last"{% endif %} {% if taxon.id == t.id %}class="selected{% if loop.last %} last{% endif %}" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>{{ t.name }}</a>
+{% endfor %}

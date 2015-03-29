@@ -17,6 +17,9 @@
         <field name="width" column="width" type="integer" nullable="true">
         </field>
 
+        <field name="position" column="position" type="integer" nullable="true">
+        </field>
+
     </entity>
 
 </doctrine-mapping>

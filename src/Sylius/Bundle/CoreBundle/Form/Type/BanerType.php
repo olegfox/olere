@@ -35,8 +35,11 @@ class BanerType extends AbstractType
             ->add('link', 'text', array(
                 'label' => 'Ссылка'
             ))
-            ->add('link', null, array(
+            ->add('width', null, array(
                 'label' => 'Ширина (%)'
+            ))
+            ->add('position', null, array(
+                'label' => 'Позиция'
             ))
         ;
     }

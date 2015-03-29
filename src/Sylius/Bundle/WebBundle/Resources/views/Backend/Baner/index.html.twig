@@ -16,8 +16,9 @@
             <thead>
             <tr>
                 <th>{{ 'sylius.baner.image'|trans }}</th>
-                <th>{{ 'sylius.baner.link' }}</th>
-                <th>{{ 'sylius.baner.width' }}</th>
+                <th>{{ 'sylius.baner.link'|trans }}</th>
+                <th>{{ 'sylius.baner.width'|trans }}</th>
+                <th>{{ 'sylius.baner.position'|trans }}</th>
                 <th></th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(300) }}" alt="" width="300px" /></a></td>
                     <td><a href="{{ entity.link }}" target="_blank">{{ entity.link }}</a></td>
                     <td>{{ entity.width }}</td>
+                    <td>{{ entity.position }}</td>
                     <td>
                         <ul class="nav nav-pills">
                             <li>

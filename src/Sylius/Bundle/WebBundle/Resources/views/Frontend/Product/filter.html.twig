@@ -2,92 +2,96 @@
     {% if taxons is defined %}
         {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}
             {% set category = 'catalog' %}
-            {#тип украшения:#}
+            {% set head = 'Тип украшения' %}
         {% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}
             {% set category = 'accesories' %}
+            {% set head = 'Тип украшения' %}
         {% else %}
             {% set category = 'collections' %}
-            {#коллекция:#}
+            {% set head = 'Коллекция' %}
         {% endif %}
     {% if taxons|length > 0 %}
-    <div class="type">
-                <span>
-                </span>
-        <select name="" id="type" onchange="filter('{{ category }}');">
-            {% for t in taxons %}
-                <option value="{{ t.slug }}" {% if taxon.id == t.id %}selected="selected"{% endif %}>{{ t.name }}</option>
-            {% endfor %}
-        </select>
+    <div class="filter-block type">
+        <div id="type">
+            <span>{{ head }}</span>
+            {% if taxons is defined %}
+                {% include 'SyliusWebBundle:Frontend/Product:list.taxons.html.twig' %}
+            {% endif %}
+        </div>
     </div>
     {% endif %}
     {% endif %}
-    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
-        <select name="" id="catalog" onchange="filter('{{ category }}');">
-            <option value="any">все типы</option>
-            {{ render(url('sylius_get_catalog_list', {filter: filter.catalog})) }}
-        </select>
+    <div class="filter-block collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
+        <div id="catalog">
+            <span>Тип украшения</span>
+            <a href="any" {% if filter.catalog == 'any' %}class="selected" onclick="return false;"{% else %} onclick="filter(this, '{{ category }}'); return false;"{% endif %}>все типы</a>
+            {{ render(url('sylius_get_catalog_list', {filter: filter.catalog, category: category})) }}
+        </div>
     </div>
-    <div class="collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
-        <select name="" id="collection" onchange="filter('{{ category }}');">
-            <option value="any">все коллекции</option>
-            {{ render(url('sylius_get_collection_list', {filter: filter.collection})) }}
-        </select>
+    <div class="filter-block collection {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}hide{% endif %}">
+        <div id="collection">
+            <span>Коллекция</span>
+            <a href="any" {% if filter.collection == 'any' %}class="selected" onclick="return false;"{% else %} onchange="filter(this, '{{ category }}'); return false;"{% endif %}>все коллекции</a>
+            {{ render(url('sylius_get_collection_list', {filter: filter.collection, category: category})) }}
+        </div>
     </div>
-    <div class="price{% if app.user == 0 %} hide{% endif %}">
-        <span>цена от:</span>
-        <select name="" id="price_from" name="price_from" onchange="filter('{{ category }}');">
-            <option value="1" {% if filter.price_from == 1 %}selected="selected"{% endif %}>Все цены</option>
-            <option value="250" {% if filter.price_from == 250 %}selected="selected"{% endif %}>от 250 руб</option>
-            <option value="500" {% if filter.price_from == 500 %}selected="selected"{% endif %}>от 500 руб</option>
-            <option value="700" {% if filter.price_from == 700 %}selected="selected"{% endif %}>от 700 руб</option>
-            <option value="1000" {% if filter.price_from == 1000 %}selected="selected"{% endif %}>от 1000 руб</option>
-            <option value="1500" {% if filter.price_from == 1500 %}selected="selected"{% endif %}>от 1500 руб</option>
-            <option value="1700" {% if filter.price_from == 1700 %}selected="selected"{% endif %}>от 1700 руб</option>
-            <option value="2000" {% if filter.price_from == 2000 %}selected="selected"{% endif %}>от 2000 руб</option>
-            <option value="2500" {% if filter.price_from == 2500 %}selected="selected"{% endif %}>от 2500 руб</option>
-        </select>
-        <span> до:</span>
-        <select name="" id="price_to" name="price_to" onchange="filter('{{ category }}');">
-            <option value="1" {% if filter.price_to == 1 %}selected="selected"{% endif %}>Все цены</option>
-            <option value="250" {% if filter.price_to == 250 %}selected="selected"{% endif %}>до 250 руб</option>
-            <option value="500" {% if filter.price_to == 500 %}selected="selected"{% endif %}>до 500 руб</option>
-            <option value="700" {% if filter.price_to == 700 %}selected="selected"{% endif %}>до 700 руб</option>
-            <option value="1000" {% if filter.price_to == 1000 %}selected="selected"{% endif %}>до 1000 руб</option>
-            <option value="1500" {% if filter.price_to == 1500 %}selected="selected"{% endif %}>до 1500 руб</option>
-            <option value="1700" {% if filter.price_to == 1700 %}selected="selected"{% endif %}>до 1700 руб</option>
-            <option value="2000" {% if filter.price_to == 2000 %}selected="selected"{% endif %}>до 2000 руб</option>
-            <option value="2500" {% if filter.price_to == 2500 %}selected="selected"{% endif %}>до 2500 руб</option>
-        </select>
+    <div class="filter-block price{% if app.user == 0 %} hide{% endif %}">
+        <span>Цена от:</span>
+        <div id="price_from">
+            <a href="1" {% if filter.price_from == 1 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Все цены</a>
+            <a href="250" {% if filter.price_from == 250 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 250 руб</a>
+            <a href="500" {% if filter.price_from == 500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 500 руб</a>
+            <a href="700" {% if filter.price_from == 700 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 700 руб</a>
+            <a href="1000" {% if filter.price_from == 1000 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 1000 руб</a>
+            <a href="1500" {% if filter.price_from == 1500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 1500 руб</a>
+            <a href="1700" {% if filter.price_from == 1700 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 1700 руб</a>
+            <a href="2000" {% if filter.price_from == 2000 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 2000 руб</a>
+            <a href="2500" {% if filter.price_from == 2500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>от 2500 руб</a>
+        </div>
+        <span>Цена до:</span>
+        <div id="price_to">
+            <a href="1" {% if filter.price_to == 1 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Все цены</a>
+            <a href="250" {% if filter.price_to == 250 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 250 руб</a>
+            <a href="500" {% if filter.price_to == 500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 500 руб</a>
+            <a href="700" {% if filter.price_to == 700 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 700 руб</a>
+            <a href="1000" {% if filter.price_to == 1000 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 1000 руб</a>
+            <a href="1500" {% if filter.price_to == 1500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 1500 руб</a>
+            <a href="1700" {% if filter.price_to == 1700 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 1700 руб</a>
+            <a href="2000" {% if filter.price_to == 2000 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 2000 руб</a>
+            <a href="2500" {% if filter.price_to == 2500 %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>до 2500 руб</a>
+        </div>
         {#<input type="hidden" id="price_from" name="price_from" value="{{ filter.price_from }}" />#}
         {#<input type="hidden" id="price_to" name="price_to" value="{{ filter.price_to }}" />#}
         {#<input type="text" id="price" name="price" value="" data-from="{{ filter.price_from }}" data-to="{{ filter.price_to }}" />#}
         {#<button id="button_price" class="button_price" onclick="filter('{{ category }}');">Показать</button>#}
     </div>
-    <div class="priceSale{% if app.user == 0 %} hide{% endif %}">
-        <select name="" id="priceSale" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.priceSale == "any" %}selected="selected"{% endif %}>Скидки</option>
-            <option value="asc" {% if filter.priceSale == 'asc' %}selected="selected"{% endif %}>сначала без скидки</option>
-            <option value="desc" {% if filter.priceSale == 'desc' %}selected="selected"{% endif %}>сначала со скидкой</option>
-        </select>
+    <div class="filter-block priceSale{% if app.user == 0 %} hide{% endif %}">
+        <span>Скидки</span>
+        <div id="priceSale">
+            <a href="any" {% if filter.priceSale == "any" %}class="selected hide" onclick="return false;"{% else %}class="hide" onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Любые</a>
+            <a href="asc" {% if filter.priceSale == 'asc' %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Сначала без скидки</a>
+            <a href="desc" {% if filter.priceSale == 'desc' %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Сначала со скидкой</a>
+        </div>
     </div>
-    <div class="created">
-        <select name="" id="created" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.created == "any" %}selected="selected"{% endif %}>По дате</option>
-            <option value="asc" {% if filter.created == 'asc' %}selected="selected"{% endif %}>Старые</option>
-            <option value="desc" {% if filter.created == 'desc' %}selected="selected"{% endif %}>Новые</option>
-        </select>
+    <div class="filter-block created">
+        <span>Сортировка по дате</span>
+        <div id="created">
+            <a href="any" {% if filter.created == "any" %}class="selected hide" onclick="return false;"{% else %}class="hide" onclick="filter(this, '{{ category }}'); return false;"{% endif %}>По дате</a>
+            <a href="asc" {% if filter.created == 'asc' %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Старые</a>
+            <a href="desc" {% if filter.created == 'desc' %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Новые</a>
+        </div>
     </div>
-    <div class="material hide">
-        <span>материал:</span>
-        <select name="" id="material" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.material == "any" %}selected="selected"{% endif %}>любой</option>
-            <option value="%серебро%" {% if filter.material == "%серебро%" %}selected="selected"{% endif %}>серебро</option>
-        </select>
+    <div class="filter-block material hide">
+        <span>Материал:</span>
+        <div id="material">
+            <a href="any" {% if filter.material == "any" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Любой</a>
+            <a href="%серебро%" {% if filter.material == "%серебро%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Серебро</a>
+        </div>
     </div>
-    <div class="weight{% if filter.material != "серебро" %} hide{% endif %}">
-        <span>вес:</span>
-        <select name="" id="weight" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.weight == "any" %}selected="selected"{% endif %}>любой</option>
+    <div class="filter-block weight{% if filter.material != "%серебро%" %} hide{% endif %}">
+        <span>Вес:</span>
+        <select onchange="filter(this, '{{ category }}');" id="weight">
+            <option value="any" {% if filter.weight == "any" %}selected="selected"{% endif %}>Любой</option>
             {% for i in 0..100 %}
                 {% set i = i + 10 %}
                 <option value="{{ i }}" {% if filter.weight == i %}selected="selected"{% endif %}>{{ i }}</option>
@@ -104,24 +108,26 @@
             {#{% endfor %}#}
         {#</select>#}
     {#</div>#}
-    <div class="color">
-        <select name="" id="color" onchange="filter('{{ category }}');">
-            <option value="any" {% if filter.color == "any" %}selected="selected"{% endif %}>все цвета</option>
-            <option value="%черный%" {% if filter.color == "%черный%" %}selected="selected"{% endif %}>черный</option>
-            <option value="%серебряный%" {% if filter.color == "%серебряный%" %}selected="selected"{% endif %}>серебряный</option>
-            <option value="%сиреневый%" {% if filter.color == "%сиреневый%" %}selected="selected"{% endif %}>сиреневый</option>
-        </select>
+    <div class="filter-block color">
+        <div id="color">
+            <span>Цвет</span>
+            <a href="any" {% if filter.color == "any" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Все цвета</a>
+            <a href="%черный%" {% if filter.color == "%черный%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Черный</a>
+            <a href="%серебряный%" {% if filter.color == "%серебряный%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Серебряный</a>
+            <a href="%сиреневый%" {% if filter.color == "%сиреневый%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Сиреневый</a>
+        </div>
     </div>
-    <div class="box">
-        <select name="" id="box" onchange="filter('{{ category }}');" {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}class="hide"{% endif %}>
-            <option value="any" {% if filter.box == "any" %}selected="selected"{% endif %}>выбрать вставку</option>
-            <option value="%камень%" {% if filter.box == "%камень%" %}selected="selected"{% endif %}>камень</option>
-            <option value="%бриллиант%" {% if filter.box == "%бриллиант%" %}selected="selected"{% endif %}>бриллиант</option>
-        </select>
+    <div class="filter-block box">
+        <div id="box" {% if app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' or app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}class="hide"{% endif %}>
+            <span>Вставка</span>
+            <a href="any" {% if filter.box == "any" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Любая</a>
+            <a href="%камень%" {% if filter.box == "%камень%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Камень</a>
+            <a href="%бриллиант%" {% if filter.box == "%бриллиант%" %}class="selected" onclick="return false;"{% else %}onclick="filter(this, '{{ category }}'); return false;"{% endif %}>Бриллиант</a>
+        </div>
     </div>
-    <div class="size{% if taxon is defined %}{% if taxon.slug != 'kol-tsa' %} hide{% endif %}{% else %} hide{% endif %}">
-        <span>размерность:</span>
-        <select name="" id="size" onchange="filter('{{ category }}');">
+    <div class="filter-block size{% if taxon is defined %}{% if taxon.slug != 'kol-tsa' %} hide{% endif %}{% else %} hide{% endif %}">
+        <span>Размерность:</span>
+        <select id="size" onchange="filter(this, '{{ category }}');">
             <option value="any" {% if filter.size == "any" %}selected="selected"{% endif %}>любая</option>
             <option value="0" {% if filter.size == '0' %}selected="selected"{% endif %}>0</option>
             <option value="15" {% if filter.size == 15 %}selected="selected"{% endif %}>15</option>
@@ -139,7 +145,7 @@
         </select>
     </div>
     {% if products is defined %}
-    <div class="count">
+    <div class="filter-block count">
         Кол-во: {{ products|length }}
     </div>
     {% endif %}

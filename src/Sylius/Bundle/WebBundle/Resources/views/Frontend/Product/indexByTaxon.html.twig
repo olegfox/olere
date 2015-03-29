@@ -4,9 +4,9 @@
 {% from 'SyliusWebBundle:Frontend/Macros:misc.html.twig' import pagination %}
 {% from 'SyliusWebBundle:Frontend/Product:macros.html.twig' import grid %}
 
-{% block title %}{{ taxon.metaTitle }}{% endblock %}
-{% block metaDescription %}{{ taxon.metaDescription }}{% endblock %}
-{% block metaKeywords %}{{ taxon.metaKeywords }}{% endblock %}
+{% block title %}{% if taxon is defined %}{{ taxon.metaTitle }}{% else %}Sale{% endif %}{% endblock %}
+{% block metaDescription %}{% if taxon is defined %}{{ taxon.metaDescription }}{% endif %}{% endblock %}
+{% block metaKeywords %}{% if taxon is defined %}{{ taxon.metaKeywords }}{% endif %}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -14,18 +14,34 @@
 {% endblock %}
 
 {% block border %}
-    <div class="borderHead filter"></div>
     {% include 'SyliusWebBundle:Frontend/Product:showAjaxWindow.html.twig' %}
-{% endblock %}
-
-{% block content1 %}
-    <div class="wrap_filter">
-        {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
-    </div>
 {% endblock %}
 
 {% block content %}
     <div class="catalog">
+        <div class="head head-products">
+            {#{% if taxons is defined %}#}
+            {#{% if filter.material == "%серебро%" %}#}
+            {#<a href="{{ path('sylius_silver') }}">Серебро</a>#}
+            {#{% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon' %}#}
+            {#<a href="{{ path('sylius_catalog') }}">Бижутерия</a>#}
+            {#{% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_accesories' %}#}
+            {#<a href="{{ path('sylius_accesories') }}">Аксессуары</a>#}
+            {#{% elseif app.request.attributes.get('_route') == 'sylius_product_index_by_taxon_collections' %}#}
+            {#<a href="{{ path('sylius_collections') }}">Натур. камни</a>#}
+            {#{% endif %}#}
+            {#<span>/</span>{{ taxon.name }}#}
+            {#{% else %}#}
+            {#{% if app.request.attributes.get('_route') == 'sylius_sale' %}#}
+            {#Sale#}
+            {#{% endif %}#}
+            {#{% endif %}#}
+        </div>
+    </div>
+    <div class="inner_container">
+    <div class="wrap_filter">
+        {% include 'SyliusWebBundle:Frontend/Product:filter.html.twig' %}
+    </div><div class="catalog catalog-products">
         <div class="page" id="page{% if page == 'all' %}1{% else %}{{ page }}{% endif %}">
             {{ grid(products, groups) }}
         </div>
@@ -37,11 +53,14 @@
             {% endif %}
         {% endif %}
     </div>
-    {% if taxon.text|length > 0 %}
-        <div class="content">
-            {{ taxon.text|raw }}
-        </div>
+    {% if taxon is defined %}
+        {% if taxon.text|length > 0 %}
+            <div class="content">
+                {{ taxon.text|raw }}
+            </div>
+        {% endif %}
     {% endif %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}

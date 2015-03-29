@@ -15,6 +15,8 @@ class Baner
 
     protected $width;
 
+    protected $position;
+
     /**
      * @Assert\File()
      */
@@ -57,6 +59,18 @@ class Baner
     public function setWidth($width)
     {
         $this->width = $width;
+
+        return $this;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position)
+    {
+        $this->position = $position;
 
         return $this;
     }
