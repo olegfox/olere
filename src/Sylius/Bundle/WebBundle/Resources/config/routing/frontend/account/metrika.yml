@@ -8,4 +8,4 @@ sylius_metrika_report:
     methods: [GET]
     defaults: { _controller: SyliusWebBundle:Frontend/Account/Metrika:report, type: day }
     requirements:
-            type:  day|week|month
+            type:  hour|day|week|month

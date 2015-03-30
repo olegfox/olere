@@ -66,8 +66,62 @@ class MetrikaController extends Controller
         $sql_order = '';
         $params = array();
 
-//      Отчет за текущий день
-        if ($type == 'day') {
+//      Уведомление о зашедшом пользователе за час
+        if ($type == 'hour') {
+//          Получили метрики пользователей, которые зашли за последний час
+            $date = new \DateTime();
+            $date->modify('-1 hour');
+            $results = $em
+                ->createQuery('
+             SELECT m FROM Sylius\Bundle\CoreBundle\Model\Metrika m
+             JOIN m.user u
+             WHERE u.lastLogin > :datetime
+             AND m.datetime > :datetime
+             AND m.type = :type
+             ')
+                ->setParameters(array(
+                    'datetime' => $date->format('Y-m-d H:i:s'),
+                    'type' => Metrika::TYPE_CATALOG
+                ))
+                ->getResult();
+
+            $metriks = array();
+
+            foreach($results as $r){
+                if(!isset($metriks[$r->getUser()->getId()])){
+                    $metriks[$r->getUser()->getId()]['user'] = $r->getUser();
+                }
+
+                $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
+                if (isset($metriks[$r->getUser()->getId()]['catalogs'])) {
+                    foreach ($metriks[$r->getUser()->getId()]['catalogs'] as $catalog) {
+                        if ($catalog == $r->getTaxon()->getName()) {
+                            $flag_taxon = 1;
+                        }
+                    }
+                }
+
+//              Если такой каталог ещё не добавлен, то добавляем в массив
+                if ($flag_taxon == 0) {
+                    $metriks[$r->getUser()->getId()]['catalogs'][] = $r->getTaxon()->getName();
+                }
+            }
+
+//          Рассылаем уведомления
+            foreach($metriks as $m){
+                $mailer = $this->get('mailer');
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Olere')
+                    ->setFrom(array('order@olere.ru' => "Olere (Новый вошедший пользователь)"))
+                    ->setTo($this->container->getParameter('sylius.email_register'))
+                    ->setBody($this->renderView('SyliusWebBundle:Email:user.login.html.twig', array('user' => $m['user'], 'catalogs' => join(', ', $m['catalogs']))), 'text/html');
+                $mailer->send($message);
+            }
+
+            return new Response('', 200);
+
+        } //      Отчет за текущий день
+        elseif ($type == 'day') {
             $reportMetrika->setType(ReportMetrika::TYPE_DAY);
             $mailSubject = 'Отчёт за текущий день';
             $date = new \DateTime();
@@ -138,12 +192,17 @@ class MetrikaController extends Controller
             ->getSingleScalarResult();
 //      Пользователи, которые не купили
         $users = $em
-            ->createQuery('SELECT u FROM Sylius\Bundle\CoreBundle\Model\User u WHERE u IN (SELECT IDENTITY(m.user) FROM Sylius\Bundle\CoreBundle\Model\Metrika m ' . $sql_order_cancel . ' AND m.type = 1 )')
+            ->createQuery('SELECT u FROM Sylius\Bundle\CoreBundle\Model\User u WHERE u IN (SELECT IDENTITY(m.user) FROM Sylius\Bundle\CoreBundle\Model\Metrika m ' . $sql_order_cancel . ' AND m.type = 1 ) ORDER BY u.lastLogin ASC')
             ->setParameters($params)
             ->getResult();
 //      Список оформленных заказов
         $orders = $em
-            ->createQuery('SELECT o FROM Sylius\Bundle\CoreBundle\Model\Order o ' . $sql_order)
+            ->createQuery('SELECT o FROM Sylius\Bundle\CoreBundle\Model\Order o LEFT JOIN o.user u ' . $sql_order . ' ORDER BY u.lastLogin ASC')
+            ->setParameters($params)
+            ->getResult();
+//      Все метрики посещения каталогов
+        $metriks = $em
+            ->createQuery('SELECT m FROM Sylius\Bundle\CoreBundle\Model\Metrika m LEFT JOIN m.user u ' . $sql_order_cancel . ' AND m.type = 0 ORDER BY u.lastLogin ASC')
             ->setParameters($params)
             ->getResult();
 //      Группируем заказы по пользователям
@@ -155,23 +214,119 @@ class MetrikaController extends Controller
             $ordersUser[$o->getUser()->getId()]['orders'][] = $o;
         }
 
-//      Создаем отчет
-        $reportString = '';
-        $reportString = $reportString . 'На сайте зарегистрировалось ' . $count_register . ' чел.<br>';
-        $reportString = $reportString . 'Заходило зарегистрированных пользователей ' . $count_login . ' чел.<br>';
+//      Группируем данные по пользователям
+        $allData = array();
+
+//      Добавляем информацию о несовершенных покупках
         foreach ($users as $u) {
-            $reportString = $reportString . $u->getFirstName() . ' добавил(а) в корзину, но не купил(а)<br>';
-        }
-        foreach ($ordersUser as $o) {
-            $reportString = $reportString . $o['user']->getFirstName() . ' оформил(а) заказ(ы) на <br>';
-            foreach ($o['orders'] as $order) {
-                $reportString = $reportString . $order->getTotal() / 100 . ' руб. <br>';
+            if (!isset($allData[$u->getId()])) {
+                $allData[$u->getId()]['user'] = $u;
+                $allData[$u->getId()]['not_order'] = 1;
             }
         }
 
-        $reportMetrika->setText($reportString);
-        $em->persist($reportMetrika);
-        $em->flush();
+//      Добавляем информацию об оформленных заказах
+        foreach ($ordersUser as $o) {
+            if (!isset($allData[$o['user']->getId()])) {
+                $allData[$o['user']->getId()]['user'] = $o['user'];
+            }
+
+            $allData[$o['user']->getId()]['orders'] = $o['orders'];
+        }
+
+//      Добавляем информацию о посещённых каталогах
+        foreach ($metriks as $m) {
+            if (!isset($allData[$m->getUser()->getId()])) {
+                $allData[$m->getUser()->getId()]['user'] = $m->getUser();
+            }
+
+            $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
+            if (isset($allData[$m->getUser()->getId()]['catalogs'])) {
+                foreach ($allData[$m->getUser()->getId()]['catalogs'] as $catalog) {
+                    if ($catalog == $m->getTaxon()->getName()) {
+                        $flag_taxon = 1;
+                    }
+                }
+            }
+
+//          Если такой каталог ещё не добавлен, то добавляем в массив
+            if ($flag_taxon == 0) {
+                $allData[$m->getUser()->getId()]['catalogs'][] = $m->getTaxon()->getName();
+            }
+
+        }
+
+        $view = $this->renderView('SyliusWebBundle:Frontend/Metrika:report.html.twig', array('data' => $allData, 'countRegister' => $count_register, 'countLogin' => $count_login));
+
+        $objPHPExcel = $this->get('phpexcel')->createPHPExcelObject();
+        $sheet = $objPHPExcel->setActiveSheetIndex(0);
+
+//      Excel отчет для вложения в письмо
+        // Дата создания отчета
+        $sheet->setCellValue('A1', 'Дата создания отчета');
+        $sheet->setCellValue('B1', (new \DateTime())->format('d.m.Y'));
+
+        // Заголовки
+        $sheet->setCellValue('A3', 'Имя пользователя');
+        $sheet->setCellValue('B3', 'Телефон');
+        $sheet->setCellValue('C3', 'Название компании');
+        $sheet->setCellValue('D3', 'Город');
+        $sheet->setCellValue('E3', 'Когда заходил?');
+        $sheet->setCellValue('F3', 'Посетил');
+        $sheet->setCellValue('G3', 'Добавил в корзину, но не оформил');
+        $sheet->setCellValue('H3', 'Оформил заказ');
+        $sheet->setCellValue('I3', 'Суммы заказов');
+
+//      Установка жирного шрифта у заголовков
+        $objPHPExcel->getActiveSheet()->getStyle('A3:I3')->getFont()->setBold(true);
+
+        // Начальная строчка для вывода в файл
+        $row = 4;
+
+        foreach ($allData as $m) {
+            $sheet->setCellValue('A' . $row, $m['user']->getFirstName());
+            $sheet->setCellValue('B' . $row, $m['user']->getPhone());
+            $sheet->setCellValue('C' . $row, $m['user']->getNameCompany());
+            $sheet->setCellValue('D' . $row, $m['user']->getCity());
+
+            if ($type == 'day') {
+                $sheet->setCellValue('E' . $row, $m['user']->getLastLogin()->format('H:i'));
+            } else {
+                $sheet->setCellValue('E' . $row, $m['user']->getLastLogin()->format('d.m.Y H:i'));
+            }
+
+            $sheet->setCellValue('F' . $row, join(', ', $m['catalogs']));
+            $sheet->setCellValue('G' . $row, isset($m['not_order']) ? 'Да' : 'Нет');
+            $sheet->setCellValue('H' . $row, isset($m['orders']) ? 'Да' : 'Нет');
+
+            if (isset($m['orders'])) {
+                $totalString = '';
+                $i = 0;
+                foreach ($m['orders'] as $order) {
+                    $totalString = $totalString . $order->getTotal() / 100;
+                    $i++;
+                    if ($i != count($m['orders'])) {
+                        $totalString = $totalString . ', ';
+                    }
+                }
+                $sheet->setCellValue('I' . $row, $totalString);
+            }
+
+            $row++;
+        }
+
+//      Установка автоширины колонок
+        foreach (range('A', 'I') as $columnID) {
+            $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+                ->setAutoSize(true);
+        }
+
+        $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
+        $writer->save(getcwd() . '/export/metrika_' . $type . '.xlsx');
+
+//        $reportMetrika->setText($view);
+//        $em->persist($reportMetrika);
+//        $em->flush();
 
 //      Отправляем отчет на почту
         $mailer = $this->get('mailer');
@@ -179,11 +334,19 @@ class MetrikaController extends Controller
             ->setSubject('Olere')
             ->setFrom(array('order@olere.ru' => "Olere " . $mailSubject))
             ->setTo($this->container->getParameter('sylius.email_register'))
-            ->setContentType('text/html')
-            ->setBody($reportString);
+//            ->setTo('1991oleg22@gmail.com')
+            ->setContentType('text/html');
+
+        if ($type == 'day') {
+            $message
+                ->setBody($view, 'text/html');
+        }
+
+        $message
+            ->attach(\Swift_Attachment::fromPath(getcwd() . '/export/metrika_' . $type . '.xlsx'));
         $mailer->send($message);
 
-        return new Response($reportString);
+        return new Response($view);
     }
 
 }

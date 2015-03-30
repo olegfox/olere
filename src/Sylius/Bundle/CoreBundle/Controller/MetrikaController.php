@@ -16,10 +16,12 @@ class MetrikaController extends Controller
         $results = $em
             ->createQuery('
              SELECT m FROM Sylius\Bundle\CoreBundle\Model\Metrika m
+             JOIN m.user u
              WHERE YEAR(m.datetime) = :year
              AND MONTH(m.datetime) = :month
              AND DAY(m.datetime) = :day
              AND m.type = :type
+             ORDER BY u.lastLogin ASC
              ')
             ->setParameters(array(
                 'year' => $today->format('Y'),
@@ -51,15 +53,17 @@ class MetrikaController extends Controller
                     );
 //                  Добавляем в массив все каталоги, которые посетил пользователь
                     foreach ($results as $r) {
-                        $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
-                        foreach ($metriks[$result->getUser()->getId()]['catalogs'] as $catalog){
-                            if ($catalog == $r->getTaxon()->getName()) {
-                                $flag_taxon = 1;
+                        if($r->getUser()->getId() == $result->getUser()->getId()){
+                            $flag_taxon = 0; // Флаг, который показывает, есть ли данный каталог в массиве
+                            foreach ($metriks[$result->getUser()->getId()]['catalogs'] as $catalog){
+                                if ($catalog == $r->getTaxon()->getName()) {
+                                    $flag_taxon = 1;
+                                }
                             }
-                        }
-//                      Если такой каталог ещё не добавлен, то добавляем в массив
-                        if ($flag_taxon == 0) {
-                            $metriks[$result->getUser()->getId()]['catalogs'][] = $r->getTaxon()->getName();
+//                          Если такой каталог ещё не добавлен, то добавляем в массив
+                            if ($flag_taxon == 0) {
+                                $metriks[$result->getUser()->getId()]['catalogs'][] = $r->getTaxon()->getName();
+                            }
                         }
                     }
 //                  Определяем факт того, что пользователь добавил в корзину, но не оформил
@@ -69,13 +73,15 @@ class MetrikaController extends Controller
                          WHERE YEAR(m.datetime) = :year
                          AND MONTH(m.datetime) = :month
                          AND DAY(m.datetime) = :day
+                         AND m.user = :user
                          AND m.type = :type
                          ')
                         ->setParameters(array(
                             'year' => $today->format('Y'),
                             'month' => $today->format('m'),
                             'day' => $today->format('d'),
-                            'type' => Metrika::TYPE_NOT_ORDER
+                            'type' => Metrika::TYPE_NOT_ORDER,
+                            'user' => $result->getUser()
                         ))
                         ->getSingleScalarResult();
                     if($not_order > 0){
@@ -123,6 +129,9 @@ class MetrikaController extends Controller
             $sheet->setCellValue('G3', 'Добавил в корзину, но не оформил');
             $sheet->setCellValue('H3', 'Оформил заказ');
 
+//          Установка жирного шрифта у заголовков
+            $objPHPExcel->getActiveSheet()->getStyle('A3:I3')->getFont()->setBold(true);
+
             // Начальная строчка для вывода в файл
             $row = 4;
 
@@ -136,6 +145,12 @@ class MetrikaController extends Controller
                 $sheet->setCellValue('G'.$row, $m['orderCancel'] ? 'Да' : 'Нет');
                 $sheet->setCellValue('H'.$row, $m['order'] ? 'Да' : 'Нет');
                 $row++;
+            }
+
+//          Установка автоширины колонок
+            foreach(range('A','I') as $columnID) {
+                $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+                    ->setAutoSize(true);
             }
 
             $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');
