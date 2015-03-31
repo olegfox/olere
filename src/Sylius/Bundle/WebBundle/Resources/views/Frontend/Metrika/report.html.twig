@@ -1,0 +1,62 @@
+На сайте зарегистрировалось {{ countRegister }} чел.<br>
+Заходило зарегистрированных пользователей {{ countLogin }} чел.<br><br>
+
+{% for d in data %}
+    <table border="1">
+        <thead>
+            <th style="padding: 5px">Электронная почта (логин)</th>
+            <th style="padding: 5px">Имя</th>
+            {#<th>Организационная форма</th>#}
+            <th style="padding: 5px">Название компании</th>
+            <th style="padding: 5px">Город</th>
+            {#<th>Инн</th>#}
+            <th style="padding: 5px">Телефон</th>
+            {#<th>Профиль компании</th>#}
+            {#<th>Количество торговых точек</th>#}
+            {#<th>Организация</th>#}
+            {#<th>КПП</th>#}
+            {#<th>Расчетный счет</th>#}
+            {#<th>Банк</th>#}
+            {#<th>Корр. счет</th>#}
+            {#<th>Бик</th>#}
+        </thead>
+        <tr>
+            <td style="padding: 5px">{{ d['user'].getEmail() }}</td>
+            <td style="padding: 5px">{{ d['user'].getFirstName() }}</td>
+            {#<td>{{ d['user'].getFormCompany() }}</td>#}
+            <td style="padding: 5px">{{ d['user'].getNameCompany() }}</td>
+            <td style="padding: 5px">{{ d['user'].getCity() }}</td>
+            {#<td>{{ d['user'].getInn() }}</td>#}
+            <td style="padding: 5px">{{ d['user'].getPhone() }}</td>
+            {#<td>{{ d['user'].getProfileCompany() }}</td>#}
+            {#<td>{{ d['user'].getCountPoint() }}</td>#}
+            {#<td>{{ d['user'].getOrganization() }}</td>#}
+            {#<td>{{ d['user'].getKpp() }}</td>#}
+            {#<td>{{ d['user'].getCurrentAccount() }}</td>#}
+            {#<td>{{ d['user'].getBank() }}</td>#}
+            {#<td>{{ d['user'].getCorrespondentAccount() }}</td>#}
+            {#<td>{{ d['user'].getBik() }}</td>#}
+        </tr>
+        <tr>
+            <td colspan="15" style="padding: 5px">
+                <br>Последний раз заходила(а) {{ d['user'].lastLogin|date('d.m.Y H:i') }}<br>
+                {% if d['catalogs'] is defined %}
+                    {% if d['catalogs']|length > 0 %}
+                        <br>Посетил(а) {{ d['catalogs']|join(', ') }}<br>
+                    {% endif %}
+                {% endif %}
+                {% if d['not_order'] is defined %}
+                    <br>Добавил(а) в корзину, но не купил(а)<br>
+                {% endif %}
+                {% if d['orders'] is defined %}
+                    <br>Оформил(а) заказ(ы) на<br><br>
+                    {% for order in d['orders'] %}
+                        {{ order.total/100 }} руб. <br>
+                    {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+{% endfor %}

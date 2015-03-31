@@ -3,15 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Письмо с сайта Olere (Пользователь не оформивший заказ)</title>
+    <title>Письмо с сайта Olere (Новый вошедший пользователь)</title>
 </head>
 <body style="margin: 0px; width: 700px; font-family: Arial; letter-spacing: 2px;">
 <div class="content">
+    Заходил: {{ user.lastLogin|date('H:i') }}<br/><br/>
     Имя пользователя: {{ user.firstName }}<br/>
     Город: {{ user.City }}<br/>
     Название компании: {{ user.NameCompany }}<br/>
     Email: {{ user.email }}<br/>
     Телефон: {{ user.phone }}<br/>
+    <br>Посетил(а) {{ catalogs }}<br>
 </div>
 </body>
 </html>

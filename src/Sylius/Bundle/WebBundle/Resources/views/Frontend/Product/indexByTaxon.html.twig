@@ -52,14 +52,14 @@
                 <a class="indexByTaxonAjax" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'page': 2})|merge({'ajax': 1})|merge(app.request.query.all)) }}"></a>
             {% endif %}
         {% endif %}
-    </div>
-    {% if taxon is defined %}
-        {% if taxon.text|length > 0 %}
-            <div class="content">
-                {{ taxon.text|raw }}
-            </div>
+        {% if taxon is defined %}
+            {% if taxon.text|length > 0 %}
+                <div class="content">
+                    {{ taxon.text|raw }}
+                </div>
+            {% endif %}
         {% endif %}
-    {% endif %}
+    </div>
     </div>
 {% endblock %}
 

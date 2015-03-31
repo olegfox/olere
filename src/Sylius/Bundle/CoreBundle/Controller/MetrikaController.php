@@ -129,6 +129,9 @@ class MetrikaController extends Controller
             $sheet->setCellValue('G3', 'Добавил в корзину, но не оформил');
             $sheet->setCellValue('H3', 'Оформил заказ');
 
+//          Установка жирного шрифта у заголовков
+            $objPHPExcel->getActiveSheet()->getStyle('A3:I3')->getFont()->setBold(true);
+
             // Начальная строчка для вывода в файл
             $row = 4;
 
@@ -142,6 +145,12 @@ class MetrikaController extends Controller
                 $sheet->setCellValue('G'.$row, $m['orderCancel'] ? 'Да' : 'Нет');
                 $sheet->setCellValue('H'.$row, $m['order'] ? 'Да' : 'Нет');
                 $row++;
+            }
+
+//          Установка автоширины колонок
+            foreach(range('A','I') as $columnID) {
+                $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+                    ->setAutoSize(true);
             }
 
             $writer = $this->get('phpexcel')->createWriter($objPHPExcel, 'Excel2007');

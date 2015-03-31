@@ -5,9 +5,13 @@ sylius_user_registration_confirmed:
     pattern: /registration/confirmed
     defaults: { _controller: SyliusCoreBundle:Registration:registrationConfirmed }
 
+#sylius_homepage:
+#    pattern: /
+#    defaults: { _controller: sylius.controller.frontend.homepage:mainAction }
+
 sylius_homepage:
     pattern: /
-    defaults: { _controller: sylius.controller.frontend.homepage:mainAction }
+    defaults: { _controller: SyliusWebBundle:Frontend/Baner:index }
 
 sylius_remove_double:
     pattern: /remove_double/
@@ -160,10 +164,6 @@ sylius_checkout:
 sylius_account:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/account.yml
     prefix: /account
-
-sylius_baner:
-    resource: @SyliusWebBundle/Resources/config/routing/frontend/baner.yml
-    prefix: /baner
 
 sylius_account_order_complete:
     pattern: /orders/complete
